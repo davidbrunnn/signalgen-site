@@ -11,7 +11,8 @@ export async function POST(req: Request) {
   const cat = await readCatalog();
   const t = cat.tracks.find((x) => x.id === id);
   if (!t) return NextResponse.json({ error: 'Track not found.' }, { status: 404 });
-  if (t.sold) return NextResponse.json({ error: 'This track has already been sold (exclusive license).' }, { status: 409 });
+  if (t.sold && !t.nonExclusive) return NextResponse.json({ error: 'This track has already been sold (exclusive license).' }, { status: 409 });
+  const price = t.price || PRICE_USD;
   const stripe = new Stripe(key);
   const site = process.env.SITE_URL || new URL(req.url).origin;
   const session = await stripe.checkout.sessions.create({
@@ -20,10 +21,10 @@ export async function POST(req: Request) {
       quantity: 1,
       price_data: {
         currency: 'usd',
-        unit_amount: Math.round(PRICE_USD * 100),
+        unit_amount: Math.round(price * 100),
         product_data: {
           name: `${t.artist} — ${t.title}`,
-          description: `${t.bpm} BPM · ${t.key} · ${t.genre} · Extended Mix + Radio Edit (WAV 24-bit) · exclusive license`,
+          description: t.kind === 'pack' ? 'Construction kit: 8-bar loops of every bus (drums, bass, music, vox, fx) + MIDI of the day’s five picks · royalty-free, non-exclusive' : `${t.bpm} BPM · ${t.key} · ${t.genre} · Extended Mix + Radio Edit (WAV 24-bit) · exclusive license`,
           images: t.cover ? [t.cover] : undefined,
         },
       },

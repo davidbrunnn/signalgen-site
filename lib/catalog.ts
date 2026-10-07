@@ -19,6 +19,9 @@ export type Track = {
   day?: string;          // YYYY-MM-DD of the daily pick
   pick?: number;         // 1..5 rank of that day
   sold?: number;
+  kind?: 'track' | 'pack';   // pack = the daily construction kit (loops of every bus + MIDI of the five picks)
+  price?: number;            // overrides PRICE_USD (packs)
+  nonExclusive?: boolean;    // sold any number of times, never leaves the catalog
 };
 
 export type Catalog = { tracks: Track[]; updated: string };

@@ -96,19 +96,20 @@ export function Bars({ on }: { on?: boolean }) {
 }
 
 export default function TrackCard({ t, price }: { t: Track; price: number }) {
+  const p = t.price || price;
   return (
     <article className="card">
       <Link href={`/t/${t.id}`} className="cover">
         {t.cover ? <img src={t.cover} alt="" loading="lazy" /> : null}
-        {t.pick ? <span className="rank">PICK {t.pick} · {t.day}</span> : null}
+        {t.kind === 'pack' ? <span className="rank">PACK · {t.day}</span> : t.pick ? <span className="rank">PICK {t.pick} · {t.day}</span> : null}
         <Preview src={t.preview} />
       </Link>
       <div className="meta">
         <Link href={`/t/${t.id}`} className="title">{t.title}</Link>
-        <div className="sub">{t.bpm} BPM · {t.key} · {t.genre} · {fmtDur(t.duration)}</div>
+        <div className="sub">{t.kind === 'pack' ? t.genre : `${t.bpm} BPM · ${t.key} · ${t.genre} · ${fmtDur(t.duration)}`}</div>
         <div className="row">
-          <span className="usd">${price}</span>
-          <BuyButton id={t.id} price={price} />
+          <span className="usd">${p}</span>
+          <BuyButton id={t.id} price={p} />
         </div>
       </div>
     </article>

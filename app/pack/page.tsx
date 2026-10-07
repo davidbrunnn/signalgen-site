@@ -8,7 +8,7 @@ export default function PackPage() {
     <main className="wrap">
       <section className="hero">
         <h1>Any song in.<br /><em>Ableton pack</em> out.</h1>
-        <p>Drop a track — yours, a Suno render, a bounce. SIGNALGEN reverse-engineers it inside the SignalGen engine: a playable drum kit from the real hits, chops and loops, the MIDI of every part, synth instruments matched to the sounds, and the whole thing rebuilt as a mastered Ableton Live set. No samples of the original survive: everything is re-synthesized.</p>
+        <p>Drop a track — yours, a Suno render, a bounce. SIGNALGEN reverse-engineers it inside the SignalGen engine: a playable drum kit from the real hits, chops and loops, the MIDI of every part, synth instruments matched to the sounds, and the whole thing rebuilt as a mastered Ableton Live set. No samples of the original survive and nothing from third-party libraries goes in: every sound is re-synthesized or isolated from your own track, and drums use Ableton’s Core Library — so there is no watermark to remove and nothing to license.</p>
         <div className="price"><b>${PACK_PRICE_USD}</b><small>per pack · delivered in about an hour · link stays on this site</small></div>
       </section>
       <PackUpload price={PACK_PRICE_USD} />
