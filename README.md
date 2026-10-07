@@ -23,3 +23,11 @@ catálogo. `v2 loja publica "<Título>"` publica uma faixa específica; `v2 loja
 ## Rotas
 `/` catálogo (os 5 do dia + o resto) · `/t/<id>` a faixa · `POST /api/checkout` → Stripe Checkout · `/thanks?session_id=` links
 assinados (7 dias) · `GET /api/download?t=` · `POST/DELETE/GET /api/publish` (Bearer PUBLISH_TOKEN) · `POST /api/webhook` (Stripe).
+
+## SIGNALGEN PACK (`/pack`)
+
+Any song in, Ableton pack out. The browser uploads the file straight to Blob (`/api/pack/upload`, client token), Stripe Checkout
+charges `PACK_PRICE_USD` (default 19) with `metadata.kind = pack`; the webhook writes `pack/jobs/<id>.json` (`status: paid`).
+The Mac polls `/api/pack/jobs` (Bearer `PUBLISH_TOKEN`) through the SignalGen Studio app (`v2 pack fila`): downloads the song,
+runs the reamp (G109) and the packer (G111), uploads the zip to Blob and posts `status: done` with the url. The buyer's page is
+`/pack/<id>` (polls `/api/pack/status?id=`); the id is the secret, the zip url has a random suffix.

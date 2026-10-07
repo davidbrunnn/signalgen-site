@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { put } from '@vercel/blob';
 import { readCatalog, writeCatalog } from '@/lib/catalog';
+import { writeJob } from '@/lib/pack';
 
 export const runtime = 'nodejs';
 
@@ -17,6 +18,11 @@ export async function POST(req: Request) {
   catch (e: any) { return NextResponse.json({ error: `bad signature: ${e.message}` }, { status: 400 }); }
   if (ev.type === 'checkout.session.completed') {
     const s = ev.data.object as Stripe.Checkout.Session;
+    if (s.metadata?.kind === 'pack' && s.metadata.packId && s.payment_status === 'paid') {        // SIGNALGEN PACK: the paid song becomes a job for the Mac
+      await writeJob({ id: s.metadata.packId, title: s.metadata.title || 'song', filename: s.metadata.filename || '', audio: s.metadata.audio || '',
+        email: s.customer_details?.email || undefined, status: 'paid', created: new Date().toISOString(), updated: new Date().toISOString(), session: s.id });
+      return NextResponse.json({ ok: true });
+    }
     const trackId = s.metadata?.trackId;
     if (trackId && s.payment_status === 'paid') {
       const cat = await readCatalog();
