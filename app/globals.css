@@ -103,3 +103,11 @@ footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--m
 .dot.done { background: #8ff0b0; }
 .dot.error { background: #ff8a8a; }
 @keyframes pulse { from { opacity: .35 } to { opacity: 1 } }
+
+/* judge */
+.judge { margin-top: 20px; }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 640px) { .pair { grid-template-columns: 1fr; } }
+.side { border: 1px solid var(--line); border-radius: 20px; padding: 36px 24px; text-align: center; transition: border-color .15s, background .15s; }
+.side.on { border-color: var(--accent); background: rgba(155,208,255,.05); }
+.side .letter { font-size: 64px; font-weight: 700; letter-spacing: -.04em; line-height: 1; margin-bottom: 18px; }

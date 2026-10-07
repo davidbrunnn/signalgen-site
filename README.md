@@ -31,3 +31,9 @@ charges `PACK_PRICE_USD` (default 19) with `metadata.kind = pack`; the webhook w
 The Mac polls `/api/pack/jobs` (Bearer `PUBLISH_TOKEN`) through the SignalGen Studio app (`v2 pack fila`): downloads the song,
 runs the reamp (G109) and the packer (G111), uploads the zip to Blob and posts `status: done` with the url. The buyer's page is
 `/pack/<id>` (polls `/api/pack/status?id=`); the id is the secret, the zip url has a random suffix.
+
+## Judge (`/judge`)
+
+Visitors pick between two 30 s previews (keyboard a / b, space plays). Votes go to Blob `judge/votes/<id>.json`; the Mac reads
+them with `GET /api/judge?all=1` (Bearer `PUBLISH_TOKEN`) inside `v2 juiz aprende` as weak duels (weight 0.5): the public helps,
+the owner's own duels decide.
