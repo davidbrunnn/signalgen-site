@@ -19,23 +19,75 @@ export function BuyButton({ id, price, label = 'Buy' }: { id: string; price: num
   return <button className="btn" onClick={go} disabled={busy}>{busy ? '…' : `${label} · $${price}`}</button>;
 }
 
+function clock(s: number) {
+  if (!isFinite(s) || s < 0) s = 0;
+  return `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
+}
+
+/** Play button + a seek bar: click anywhere on the bar to jump the preview to that point (starts playing if paused). */
 export function Preview({ src, big = false }: { src?: string; big?: boolean }) {
   const a = useRef<HTMLAudioElement | null>(null);
   const [on, setOn] = useState(false);
+  const [pos, setPos] = useState(0);        // 0..1
+  const [time, setTime] = useState(0);
+  const [dur, setDur] = useState(0);
   useEffect(() => () => { a.current?.pause(); }, []);
   if (!src) return null;
+
+  function audio() {
+    if (!a.current) {
+      const el = new Audio(src);
+      el.preload = 'metadata';
+      el.onended = () => { setOn(false); setPos(0); setTime(0); };
+      el.onpause = () => setOn(false);
+      el.onplay = () => setOn(true);
+      el.onloadedmetadata = () => setDur(el.duration || 0);
+      el.ontimeupdate = () => { const d = el.duration || 0; setTime(el.currentTime); setPos(d ? el.currentTime / d : 0); };
+      a.current = el;
+    }
+    return a.current;
+  }
+  function play(el: HTMLAudioElement) {
+    if (current && current !== el) current.pause();
+    current = el; el.play();
+  }
   function toggle(e: React.MouseEvent) {
     e.preventDefault(); e.stopPropagation();
-    if (!a.current) { a.current = new Audio(src); a.current.onended = () => setOn(false); a.current.onpause = () => setOn(false); }
-    if (on) { a.current.pause(); return; }
-    if (current && current !== a.current) current.pause();
-    current = a.current; a.current.currentTime = 0; a.current.play(); setOn(true);
+    const el = audio();
+    if (on) { el.pause(); return; }
+    play(el);
   }
-  return (
-    <button className="play" data-on={on ? '1' : '0'} onClick={toggle} aria-label={on ? 'Pause preview' : 'Play preview'} style={big ? { position: 'static', width: 64, height: 64 } : undefined}>
+  function seek(e: React.MouseEvent<HTMLDivElement>) {
+    e.preventDefault(); e.stopPropagation();
+    const r = e.currentTarget.getBoundingClientRect();
+    const frac = Math.min(1, Math.max(0, (e.clientX - r.left) / r.width));
+    const el = audio();
+    const go = () => { const d = el.duration || 0; if (d) { el.currentTime = frac * d; setPos(frac); setTime(frac * d); } };
+    if (el.duration) go(); else el.addEventListener('loadedmetadata', go, { once: true });
+    if (!on) play(el);
+  }
+  const bar = (
+    <div className={big ? 'seek big' : 'seek'} onClick={seek} role="slider" aria-label="Seek preview" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(pos * 100)}>
+      <i style={{ width: `${pos * 100}%` }} />
+    </div>
+  );
+  const btn = (
+    <button className="play" data-on={on ? '1' : '0'} onClick={toggle} aria-label={on ? 'Pause preview' : 'Play preview'} style={big ? { position: 'static', width: 64, height: 64, flex: 'none' } : undefined}>
       {on ? '❚❚' : '▶'}
     </button>
   );
+  if (big) {
+    return (
+      <div className="player">
+        {btn}
+        <div className="track">
+          {bar}
+          <div className="clock"><span>{clock(time)}</span><span>{clock(dur)}</span></div>
+        </div>
+      </div>
+    );
+  }
+  return <>{btn}{bar}</>;
 }
 
 export function Bars({ on }: { on?: boolean }) {

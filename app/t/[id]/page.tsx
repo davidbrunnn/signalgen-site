@@ -18,10 +18,8 @@ export default async function TrackPage({ params }: { params: { id: string } }) 
           {t.pick ? `Pick ${t.pick} · ${t.day}` : t.genre}
         </div>
         <h1>{t.title}</h1>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-          <Preview src={t.preview} big />
-          <span style={{ color: 'var(--muted)', fontSize: 12, letterSpacing: '.18em', textTransform: 'uppercase' }}>30 s preview · final drop</span>
-        </div>
+        <Preview src={t.preview} big />
+        <div style={{ color: 'var(--muted)', fontSize: 12, letterSpacing: '.18em', textTransform: 'uppercase', marginTop: 6 }}>30 s preview · final drop · click the bar to jump</div>
         <div className="specs">
           <div><b>Tempo</b><span>{t.bpm} BPM</span></div>
           <div><b>Key</b><span>{t.key}</span></div>
