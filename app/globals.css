@@ -389,3 +389,55 @@ footer.site nav a:hover { color: var(--bone); }
   .offer-list { columns: 1; }
   .top nav .btn.small { height: var(--s4); padding: 0 var(--s2); }
 }
+
+/* ───────── marketplace home */
+.mhero { display: grid; grid-template-columns: 61.8fr 38.2fr; gap: var(--s5); align-items: end; padding: var(--s5) 0 var(--s3); }
+.mhero h1 { font-size: clamp(var(--t3), 5vw, 76px); line-height: .96; letter-spacing: -0.045em; margin: 0; max-width: 11em; }
+.mhero .lede { color: var(--smoke); margin: var(--s3) 0 var(--s4); max-width: 34em; }
+.mhero .lede a { color: var(--bone); text-decoration: underline; text-underline-offset: 3px; }
+.mhero .facts { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: var(--s3); }
+.mhero .facts li { border-top: 1px solid var(--line); padding-top: var(--s2); font-size: var(--t0); color: var(--smoke); }
+.mhero .facts b { display: block; font-size: var(--t3); letter-spacing: -0.04em; line-height: 1; color: var(--bone); margin-bottom: 4px; }
+.chip .muted { font-weight: 400; margin-left: 4px; }
+.chip[aria-pressed="true"] .muted { color: var(--ash); }
+.vitrine { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s4) var(--s3); }
+.tile { min-width: 0; }
+.tile.soft { grid-column: span 2; }
+.tile .vc { display: block; position: relative; aspect-ratio: 1; border-radius: var(--r3); overflow: hidden; background: var(--night-2); }
+.tile.soft .vc { aspect-ratio: 2.08 / 1; }
+.tile .vc img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s var(--ease), filter .3s var(--ease); }
+.tile.soft .vc img { object-position: left top; }
+.tile:hover .vc img { transform: scale(1.025); }
+.tile.sold .vc img { filter: grayscale(1) brightness(.55); }
+.tile .badge { position: absolute; right: var(--s2); top: var(--s2); font-size: var(--t0); font-weight: 700; background: var(--amber); color: var(--night); padding: 3px var(--s1); border-radius: var(--r1); }
+.tile .badge.dim { background: var(--night); color: var(--bone); }
+.tile .pb { position: absolute; right: var(--s2); bottom: var(--s2); }
+.tile .pb .playbtn { background: var(--ice); box-shadow: none; }
+.tile .pb .playbtn svg { fill: var(--night); }
+.tile .gen { height: 100%; padding: var(--s3); display: flex; flex-direction: column; justify-content: space-between; }
+.tile .gen span { font-size: var(--t0); color: var(--amber); font-weight: 700; }
+.tile .gen b { font-size: var(--t2); letter-spacing: -0.03em; line-height: 1.05; padding-right: 55px; }
+.tile .vm { display: grid; gap: 3px; padding: var(--s2) 2px 0; min-width: 0; }
+.tile .t { font-weight: 700; letter-spacing: -0.01em; font-size: var(--t1); }
+.tile .s { font-size: var(--t0); color: var(--smoke); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tile .r { display: flex; justify-content: space-between; align-items: center; margin-top: var(--s1); }
+.tile .usd { font-weight: 700; font-variant-numeric: tabular-nums; }
+.tile.sold .usd { color: var(--ash); }
+.promo { display: grid; grid-template-columns: 61.8fr 38.2fr; gap: 0; background: var(--night-2); border-radius: var(--r3); overflow: hidden; align-items: center; }
+.promo img { width: 100%; height: 100%; object-fit: cover; object-position: left top; display: block; min-height: 233px; }
+.promo > div { padding: var(--s4); display: grid; gap: var(--s2); justify-items: start; }
+.promo h2 { font-size: var(--t2); letter-spacing: -0.03em; line-height: 1.1; margin: 0; }
+.promo p { margin: 0; font-size: var(--t0); }
+.three { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s3); }
+.three div { border-top: 1px solid var(--line); padding-top: var(--s3); }
+.three h3 { margin: 0 0 var(--s1); font-size: var(--t2); letter-spacing: -0.03em; line-height: 1.1; }
+.three p { margin: 0; color: var(--smoke); font-size: var(--t0); }
+@media (max-width: 1060px) { .vitrine { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 880px) {
+  .mhero { grid-template-columns: 1fr; gap: var(--s4); padding-top: var(--s4); }
+  .vitrine { grid-template-columns: repeat(2, 1fr); gap: var(--s3) var(--s2); }
+  .tile.soft { grid-column: span 2; }
+  .tile.soft .vc { aspect-ratio: 2.05 / 1; }
+  .promo, .three { grid-template-columns: 1fr; }
+  .top nav .opt { display: none; }
+}

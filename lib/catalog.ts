@@ -119,7 +119,7 @@ export const PRICE_USD = Number(process.env.PRICE_USD || 59);
 
 export function priceOf(t: Track) { return t.price || PRICE_USD; }
 export function isSold(t: Track) { return !!t.sold && !t.nonExclusive; }
-export const SELL_TRACKS = process.env.SELL_TRACKS === '1';    // the tracks are proof of what SignalGen makes; selling them is optional
+export const SELL_TRACKS = process.env.SELL_TRACKS !== '0';    // ghost productions: each track sold once; SELL_TRACKS=0 turns the tracks into demos
 export function downloadsOf(t: Track) {
   if (t.downloads?.length) return t.downloads.filter((d) => t.files[d.key]);
   const d: { key: string; label: string; note?: string }[] = [];

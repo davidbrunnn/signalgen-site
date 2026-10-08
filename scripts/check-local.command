@@ -12,7 +12,7 @@ echo "== seed"; rm -f local-data/orders.json local-data/catalog.json; node scrip
 echo "== build"; npx next build || { echo BUILD_FAILED; exit 1; }
 PORT=3021; B="http://localhost:$PORT"
 lsof -ti tcp:$PORT | xargs kill 2>/dev/null
-SELL_TRACKS=1 npx next start -p $PORT > _check/server.log 2>&1 & PID=$!
+npx next start -p $PORT > _check/server.log 2>&1 & PID=$!
 for i in $(seq 1 40); do curl -s -o /dev/null "$B/" && break; sleep 0.5; done
 ID=$(node -e "console.log(require('./local-data/catalog.json').tracks[0].id)")
 code() { curl -s -o "$2" -w "%{http_code}" "$1"; }
@@ -37,7 +37,7 @@ echo "resell      $(curl -s -X POST "$B/api/checkout" -H 'content-type: applicat
 echo "home after  $(code "$B/" _check/home_after.html)"
 echo "sold page   $(code "$B/t/$ID" _check/track_sold.html)"
 # ── products: the software (license key) and a kit (zip download)
-echo "product pg  $(code "$B/p/signalgen" _check/product_signalgen.html)"
+echo "plugin page $(code "$B/signalgen" _check/signalgen.html)"
 echo "kit page    $(code "$B/p/kit-13-dark-current" _check/product_kit.html)"
 SP=$(curl -s -X POST "$B/api/local/pay" -H 'content-type: application/json' -d '{"id":"signalgen","email":"buyer@label.com"}'); echo "pay sg      $SP"
 STH=$(node -e "console.log(JSON.parse(process.argv[1]).url||'')" "$SP")

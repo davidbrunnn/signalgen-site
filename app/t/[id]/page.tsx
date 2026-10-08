@@ -20,7 +20,7 @@ export default async function TrackPage({ params }: { params: { id: string } }) 
   const sold = isSold(t), price = priceOf(t), pack = t.kind === 'pack';
   return (
     <main className="wrap">
-      <Link href="/#listen" className="back">All tracks</Link>
+      <Link href="/#ghost" className="back">Back to the store</Link>
       <div className="track">
         <div className="art">{t.cover ? <img src={t.cover} alt={`${t.title} cover art`} /> : null}</div>
         <div>
@@ -41,7 +41,7 @@ export default async function TrackPage({ params }: { params: { id: string } }) 
               <>
                 <div className="price">Made by SignalGen<small>no manual edits</small></div>
                 <p className="muted small">This track is a demo: generated, mixed and mastered by the engine from genre, key and tempo alone. Make your own in one click.</p>
-                <Link href="/#pricing" className="btn">Get SignalGen</Link>
+                <Link href="/signalgen" className="btn">Get SignalGen</Link>
               </>
             ) : sold ? (
               <>

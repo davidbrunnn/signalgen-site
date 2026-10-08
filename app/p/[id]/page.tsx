@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import type { Metadata } from 'next';
 import { readCatalog, priceOf, downloadsOf } from '@/lib/catalog';
 import { toP } from '@/lib/view';
@@ -17,11 +17,12 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
 export default async function ProductPage({ params }: { params: { id: string } }) {
   const t = (await readCatalog()).tracks.find((x) => x.id === params.id);
   if (!t || t.kind === 'track' || t.kind === 'pack') notFound();
-  const price = priceOf(t), soft = t.kind === 'software';
+  if (t.kind === 'software') redirect('/signalgen');
+  const price = priceOf(t), soft = false;
   const dls = downloadsOf(t);
   return (
     <main className="wrap">
-      <Link href={soft ? '/' : '/#sounds'} className="back">{soft ? 'Back' : 'All sounds'}</Link>
+      <Link href="/#kits" className="back">Back to the store</Link>
       <div className="track">
         <div>
           {t.cover ? <div className="art" style={{ position: 'static' }}><img src={t.cover} alt={`${t.title} cover`} /></div> : null}

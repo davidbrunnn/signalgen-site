@@ -4,8 +4,8 @@ import Link from 'next/link';
 import PlayerProvider from '@/components/Player';
 
 export const metadata: Metadata = {
-  title: 'SignalGen — a finished club track in Ableton Live, one click',
-  description: 'SignalGen writes whole tech house, bass house and minimal arrangements in Ableton Live: drums, bass, music, vocals, FX, mixed and mastered. Plus sample kits and presets from the same engine.',
+  title: 'SignalGen Store — ghost productions, sample kits, presets and the SignalGen plugin',
+  description: 'Unreleased club tracks sold once each, sample kits and preset packs synthesized in-house, and SignalGen — the plugin that writes a finished track in Ableton Live in one click.',
   icons: { icon: '/favicon.svg' },
 };
 export const viewport: Viewport = { themeColor: '#08090b' };
@@ -29,17 +29,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <header className="wrap top">
             <Link href="/" className="mark"><Mark /> SignalGen</Link>
             <nav aria-label="Main">
-              <Link href="/#listen">Listen</Link>
-              <Link href="/#how" className="opt">How it works</Link>
-              <Link href="/#sounds">Sounds</Link>
-              <Link href="/#pricing" className="btn small">Get SignalGen</Link>
+              <Link href="/#ghost">Ghost productions</Link>
+              <Link href="/#kits" className="opt">Samples</Link>
+              <Link href="/#presets" className="opt">Presets</Link>
+              <Link href="/signalgen" className="btn small">SignalGen plugin</Link>
             </nav>
           </header>
           {children}
           <footer className="wrap site">
             <div><b>SignalGen</b> — music generation for Ableton Live, by Davin. Payments by Stripe. © {new Date().getFullYear()}</div>
             <nav aria-label="Footer">
-              <Link href="/#sounds">Kits and presets</Link>
+              <Link href="/signalgen">The plugin</Link>
               <Link href="/pack">Any song to Ableton pack</Link>
               <Link href="/judge">Help us choose</Link>
               <Link href="/license">License terms</Link>
