@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { readCatalog, fmtDur, isSold, priceOf } from '@/lib/catalog';
+import { readCatalog, fmtDur, isSold, priceOf, SELL_TRACKS } from '@/lib/catalog';
 import { toP } from '@/lib/view';
 import { Wave } from '@/components/Player';
 import BuyButton from '@/components/BuyButton';
@@ -20,7 +20,7 @@ export default async function TrackPage({ params }: { params: { id: string } }) 
   const sold = isSold(t), price = priceOf(t), pack = t.kind === 'pack';
   return (
     <main className="wrap">
-      <Link href="/#catalog" className="back">Back to the catalog</Link>
+      <Link href="/#listen" className="back">All tracks</Link>
       <div className="track">
         <div className="art">{t.cover ? <img src={t.cover} alt={`${t.title} cover art`} /> : null}</div>
         <div>
@@ -37,7 +37,13 @@ export default async function TrackPage({ params }: { params: { id: string } }) 
             {t.truePeak ? <div><b>True peak</b><span>{t.truePeak} dBTP</span></div> : null}
           </div>
           <div className="buybox">
-            {sold ? (
+            {!SELL_TRACKS && !pack ? (
+              <>
+                <div className="price">Made by SignalGen<small>no manual edits</small></div>
+                <p className="muted small">This track is a demo: generated, mixed and mastered by the engine from genre, key and tempo alone. Make your own in one click.</p>
+                <Link href="/#pricing" className="btn">Get SignalGen</Link>
+              </>
+            ) : sold ? (
               <>
                 <div className="price">Signed</div>
                 <p className="muted small">This record has its owner. Exclusive licenses are sold once — have a listen to what is still available.</p>

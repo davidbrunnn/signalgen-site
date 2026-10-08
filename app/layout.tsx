@@ -4,8 +4,8 @@ import Link from 'next/link';
 import PlayerProvider from '@/components/Player';
 
 export const metadata: Metadata = {
-  title: 'Signal Studio — unreleased club records, one owner each',
-  description: 'Tech house, bass house and minimal by Davin. Mastered, Extended Mix and Radio Edit, WAV 24-bit. Each track is licensed exclusively, once.',
+  title: 'SignalGen — a finished club track in Ableton Live, one click',
+  description: 'SignalGen writes whole tech house, bass house and minimal arrangements in Ableton Live: drums, bass, music, vocals, FX, mixed and mastered. Plus sample kits and presets from the same engine.',
   icons: { icon: '/favicon.svg' },
 };
 export const viewport: Viewport = { themeColor: '#08090b' };
@@ -27,21 +27,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <PlayerProvider>
           <header className="wrap top">
-            <Link href="/" className="mark"><Mark /> Signal Studio</Link>
+            <Link href="/" className="mark"><Mark /> SignalGen</Link>
             <nav aria-label="Main">
-              <Link href="/#catalog">Catalog</Link>
+              <Link href="/#listen">Listen</Link>
               <Link href="/#how" className="opt">How it works</Link>
-              <Link href="/license">License</Link>
-              <Link href="/pack" className="opt">Pack</Link>
+              <Link href="/#sounds">Sounds</Link>
+              <Link href="/#pricing" className="btn small">Get SignalGen</Link>
             </nav>
           </header>
           {children}
           <footer className="wrap site">
-            <div><b>Signal Studio</b> — unreleased records by Davin, made with the SignalGen engine. Payments by Stripe. © {new Date().getFullYear()}</div>
+            <div><b>SignalGen</b> — music generation for Ableton Live, by Davin. Payments by Stripe. © {new Date().getFullYear()}</div>
             <nav aria-label="Footer">
-              <Link href="/#catalog">Catalog</Link>
-              <Link href="/license">License terms</Link>
+              <Link href="/#sounds">Kits and presets</Link>
+              <Link href="/pack">Any song to Ableton pack</Link>
               <Link href="/judge">Help us choose</Link>
+              <Link href="/license">License terms</Link>
               <a href="/SignalStudio_Whitepaper.pdf">Whitepaper</a>
             </nav>
           </footer>

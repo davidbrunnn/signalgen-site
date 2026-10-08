@@ -5,15 +5,16 @@ import { put, list } from '@vercel/blob';
 import { promises as fs } from 'fs';
 import path from 'path';
 
+/** One catalog item. The name is historical: it covers tracks, the SignalGen software, sample kits and preset packs. */
 export type Track = {
-  id: string;            // slug: titulo-bpm-key
+  id: string;            // slug
   title: string;
   artist: string;
   bpm: number;
-  key: string;           // "Fm", "A#", ...
+  key: string;           // "Fm", "A#", ... ('' for software and kits)
   camelot?: string;      // "6A"
   genre: string;
-  duration: number;      // seconds, extended mix
+  duration: number;      // seconds, extended mix (0 for non-tracks)
   radioDuration?: number;
   lufs?: number;
   truePeak?: number;
@@ -21,19 +22,27 @@ export type Track = {
   tags?: string[];
   cover?: string;        // public url (jpg)
   preview?: string;      // public url (m4a, 30 s)
-  files: { extended?: string; radio?: string };   // blob urls / file: paths (never shown; served through /api/download)
+  files: { extended?: string; radio?: string; [key: string]: string | undefined };   // blob urls / file: paths (never shown; served through /api/download)
+  downloads?: { key: string; label: string; note?: string }[];   // what the thank-you page offers (defaults to extended + radio for tracks)
   published: string;     // ISO date
   day?: string;          // YYYY-MM-DD of the daily pick
   pick?: number;         // 1..5 rank of that day
   sold?: number;
-  kind?: 'track' | 'pack';
+  kind?: 'track' | 'pack' | 'software' | 'kit' | 'preset';
   price?: number;
   nonExclusive?: boolean;
+  subtitle?: string;     // "Full Pack · 104 sounds · 128 BPM"
+  features?: string[];   // bullet list on the product page
+  contents?: string;     // "24 one shots · 96 loops"
+  sizeMb?: number;
+  screenshots?: string[];
+  licenseProduct?: 'signalgen' | 'mix' | 'sounds' | 'bundle';   // software: which SGN1 key to issue
 };
+export type Product = Track;
 
 export type Catalog = { tracks: Track[]; updated: string };
 
-export type Order = { session: string; trackId: string; email?: string; amount?: number; when: string; refunded?: boolean };
+export type Order = { session: string; trackId: string; email?: string; amount?: number; when: string; refunded?: boolean; key?: string; serial?: number };
 
 export const LOCAL = !process.env.BLOB_READ_WRITE_TOKEN;
 const DATA = path.join(process.cwd(), 'local-data');
@@ -95,6 +104,13 @@ export async function recordSale(o: Order): Promise<'ok' | 'dup' | 'taken'> {
   const t = cat.tracks.find((x) => x.id === o.trackId);
   if (t && t.sold && !t.nonExclusive) { await writeOrder({ ...o, refunded: true }); return 'taken'; }
   if (t) { t.sold = (t.sold || 0) + 1; await writeCatalog(cat); }
+  if (t?.kind === 'software' && o.email) {                       // the SignalGen key is issued once, at the moment of sale
+    try {
+      const { issueKey, nextSerial } = await import('@/lib/license');
+      o.serial = await nextSerial();
+      o.key = await issueKey(o.email, t.licenseProduct || 'bundle', o.serial);
+    } catch (e) { console.error('license key not issued', e); }
+  }
   await writeOrder(o);
   return 'ok';
 }
@@ -103,6 +119,18 @@ export const PRICE_USD = Number(process.env.PRICE_USD || 59);
 
 export function priceOf(t: Track) { return t.price || PRICE_USD; }
 export function isSold(t: Track) { return !!t.sold && !t.nonExclusive; }
+export const SELL_TRACKS = process.env.SELL_TRACKS === '1';    // the tracks are proof of what SignalGen makes; selling them is optional
+export function downloadsOf(t: Track) {
+  if (t.downloads?.length) return t.downloads.filter((d) => t.files[d.key]);
+  const d: { key: string; label: string; note?: string }[] = [];
+  if (t.files.extended) d.push({ key: 'extended', label: 'Extended Mix', note: 'WAV 24-bit' });
+  if (t.files.radio) d.push({ key: 'radio', label: 'Radio Edit', note: 'WAV 24-bit' });
+  return d;
+}
+export async function readOrders(): Promise<Order[]> {
+  if (LOCAL) return readJson<Order[]>('orders.json', []);
+  try { const { blobs } = await list({ prefix: 'studio/orders/', limit: 1000 }); return blobs.map((b) => ({ session: b.pathname.split('/').pop()!.split('.')[0] } as Order)); } catch { return []; }
+}
 
 export function fmtDur(s?: number) {
   if (!s) return '';

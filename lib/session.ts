@@ -2,14 +2,14 @@
 import Stripe from 'stripe';
 import { readOrder, recordSale, LOCAL } from '@/lib/catalog';
 
-export type Paid = { paid: boolean; trackId: string; email: string; amount: number; when: string; session: string; refunded?: boolean; test?: boolean };
+export type Paid = { paid: boolean; trackId: string; email: string; amount: number; when: string; session: string; refunded?: boolean; test?: boolean; key?: string; serial?: number };
 
 export async function paidSession(sid?: string): Promise<Paid | null> {
   if (!sid) return null;
   if (sid.startsWith('local_')) {
     if (!LOCAL) return null;
     const o = await readOrder(sid);
-    return o ? { paid: true, trackId: o.trackId, email: o.email || '', amount: o.amount || 0, when: o.when, session: sid, test: true } : null;
+    return o ? { paid: true, trackId: o.trackId, email: o.email || '', amount: o.amount || 0, when: o.when, session: sid, test: true, key: o.key, serial: o.serial } : null;
   }
   const key = process.env.STRIPE_SECRET_KEY;
   if (!key) return null;
@@ -26,6 +26,7 @@ export async function paidSession(sid?: string): Promise<Paid | null> {
     }
     const o = await readOrder(s.id);
     if (o?.refunded) p.refunded = true;
+    if (o?.key) { p.key = o.key; p.serial = o.serial; }
     return p;
   } catch { return null; }
 }

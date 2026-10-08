@@ -9,3 +9,19 @@ export const TERMS = [
   'Credit is optional. Nothing in this license requires naming Davin, Signal Studio or SignalGen.',
   'If two payments for the same recording complete at the same time, the first one wins and the second is refunded in full; no license is granted for a refunded payment.',
 ];
+
+export const KIT_TERMS = [
+  'SignalGen grants the licensee a non-exclusive, perpetual, worldwide, royalty-free license to the sounds, loops, MIDI and presets in the pack named above.',
+  'The licensee may use them in their own music, in any number of commercial or non-commercial releases, performances, videos and games, with no credit required.',
+  'All content was synthesized in-house or built from royalty-free licensed material; it contains no uncleared samples or third-party recordings.',
+  'The licensee may not resell, share or redistribute the files themselves, alone or as part of another sample pack, preset pack or library, modified or not.',
+  'The license is personal to the licensee (one person or one studio) and is not transferable.',
+];
+export const SOFTWARE_TERMS = [
+  'SignalGen grants the licensee a personal, perpetual, non-transferable license to install and use the SignalGen plugins (SignalGen, SignalGen Mix, SignalGen Sounds) on up to two computers they own.',
+  'The license key is tied to the licensee’s email address and may not be shared, sold or published.',
+  'Anything the licensee makes with the software — tracks, stems, MIDI, presets — belongs to the licensee and may be released commercially with no royalties and no credit required.',
+  'Updates within version 5 are included. New major versions may be offered at a discount.',
+  'Refund: within 14 days of purchase, if the software does not run in the licensee’s Ableton Live 12 on a supported macOS, the purchase is refunded in full and the key is revoked.',
+  'The licensee may not reverse engineer, redistribute or resell the software or its sound content as a library.',
+];

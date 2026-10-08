@@ -1,4 +1,13 @@
-# SIGNAL STUDIO
+# SignalGen · site
+
+Landing + loja do SignalGen (gerador de música para Ableton Live): o produto principal (instalador + chave SGN1 emitida na hora), os sample kits e preset packs, e as faixas geradas como prova (não vendidas, salvo `SELL_TRACKS=1`).
+
+## Local (10 faixas + 13 kits + presets, sem Stripe)
+`Abrir Loja (local).command` → http://localhost:3000. `npm run seed` lê ~/Desktop/SignalGen (Venda, Kits, Publicar). A chave de licença local usa `codigo/financeiro/licencas/private_key.hex`; em produção, `LICENSE_SEED_HEX` (o mesmo seed) na Vercel. `scripts/check-local.command` roda o fluxo inteiro.
+
+---
+
+# SIGNAL STUDIO (histórico: marketplace das faixas)
 
 Marketplace minimalista das faixas que o motor SignalGen produz e o Davin não vai lançar: US$ 59 por faixa (Extended Mix + Radio Edit,
 WAV 44,1 kHz / 24 bit, masterizada com devices nativos do Live), licença exclusiva. Next.js 14 · Stripe Checkout · Vercel Blob.

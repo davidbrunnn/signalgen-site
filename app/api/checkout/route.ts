@@ -2,7 +2,7 @@
 // local test checkout at /checkout/local, which walks the same flow without charging anything.
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
-import { readCatalog, priceOf, isSold, LOCAL } from '@/lib/catalog';
+import { readCatalog, priceOf, isSold, LOCAL, SELL_TRACKS } from '@/lib/catalog';
 
 export const runtime = 'nodejs';
 
@@ -12,6 +12,7 @@ export async function POST(req: Request) {
   const t = cat.tracks.find((x) => x.id === id);
   if (!t) return NextResponse.json({ error: 'This track is no longer in the catalog.' }, { status: 404 });
   if (isSold(t)) return NextResponse.json({ error: 'This track was just signed by someone else — exclusive licenses sell once.' }, { status: 409 });
+  if (t.kind === 'track' && !SELL_TRACKS) return NextResponse.json({ error: 'This track is a demo of what SignalGen makes and is not for sale.' }, { status: 403 });
   const key = process.env.STRIPE_SECRET_KEY;
   if (!key) {
     if (LOCAL) return NextResponse.json({ url: `/checkout/local?id=${encodeURIComponent(t.id)}` });
@@ -29,8 +30,9 @@ export async function POST(req: Request) {
         unit_amount: Math.round(price * 100),
         product_data: {
           name: `${t.artist} — ${t.title}`,
-          description: t.kind === 'pack'
-            ? 'Construction kit: 8-bar loops of every bus + MIDI. Royalty-free, non-exclusive.'
+          description: t.kind === 'software' ? `${t.subtitle || 'Lifetime license'}. License key issued on the confirmation page.`
+            : t.kind === 'kit' || t.kind === 'preset' ? `${t.subtitle || t.contents || ''}. Royalty-free, non-exclusive.`
+            : t.kind === 'pack' ? 'Construction kit: 8-bar loops of every bus + MIDI. Royalty-free, non-exclusive.'
             : `${t.bpm} BPM, ${t.key}, ${t.genre}. Extended Mix + Radio Edit, WAV 24-bit, mastered. Exclusive license.`,
           images: t.cover && t.cover.startsWith('http') ? [t.cover] : undefined,
         },

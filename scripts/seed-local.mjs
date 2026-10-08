@@ -67,6 +67,54 @@ for (const name of names) {
   });
   console.log(`ok  ${title}  (${bpm} BPM ${key}, ${bp.genre || genreS})`);
 }
+
+// ───── products: the SignalGen software, the sample kits and the preset packs
+const sg = path.dirname(venda);                                   // ~/Desktop/SignalGen
+const products = [];
+const file = (p) => (fs.existsSync(p) ? 'file:' + p : undefined);
+const mb = (p) => (fs.existsSync(p) ? Math.round(fs.statSync(p).size / 1048576) : undefined);
+
+const pkg = path.join(sg, 'Publicar', 'SignalGen-5.1.0-mac.pkg');
+products.push({
+  id: 'signalgen', kind: 'software', title: 'SignalGen', artist: 'SignalGen', bpm: 0, key: '', duration: 0,
+  subtitle: 'Version 5 · AU + VST3 for Ableton Live 12 · macOS', genre: 'Tech House · Bass House · Minimal · UK Garage · Hip-Hop',
+  price: Number(process.env.PRODUCT_PRICE_USD || 249), nonExclusive: true, licenseProduct: 'bundle',
+  description: 'The generator behind every track on this site. Choose a genre, a key and a tempo and SignalGen writes a complete arrangement in Ableton Live — drums, bass, music, vocals and FX as editable MIDI and audio, gain-staged, mixed and mastered with native devices. Eight takes per click, parts you can rewrite bar by bar, and Reamp: drop any song in and get its DNA back as a new one.',
+  features: ['Full track in one click: 150+ bars, intro to outro', 'Eight takes per click, pick by ear', 'Every part as MIDI: lead, chords, bass, arp, pad, drums', 'Rewrite only the bars you select, on the song’s chords', 'Reamp: any song in, its DNA out as a new track', 'Mixed and mastered with Live’s native devices', 'SignalGen Mix: the channel chain the engine mixes with', 'SignalGen Sounds: 200+ presets built from reference records', 'Measured against 17 chart tech house references', 'Lifetime license, offline, 2 computers'],
+  screenshots: ['/product/01_create.png', '/product/10_pick.png', '/product/05_midi.png', '/product/04_master.png'],
+  cover: '/product/live-set.jpg', sizeMb: mb(pkg), files: { pkg: file(pkg) },
+  downloads: [{ key: 'pkg', label: 'SignalGen 5.1.0 for macOS', note: 'Installer (.pkg), AU + VST3' }],
+  published: '2026-10-03T00:00:00.000Z', sold: sold['signalgen'] || 0,
+});
+
+const KIT_PRICE = { 'Vocal Kit': 29, 'Full Pack': 49, 'MIDI Pack': 19, 'Trio': 19 };
+let kits = [];
+try { kits = JSON.parse(fs.readFileSync(path.join(root, 'scripts', 'kits.json'), 'utf8')); } catch { console.log('no scripts/kits.json (run the kit prep on the Mac first)'); }
+for (const k of kits) {
+  const zip = k.zip.replace(/^.*?\/SignalGen\//, sg + '/');       // the prep ran in another mount; rebase to this Mac
+  const genre = k.genre.replace(/ · .*$/, ''), bpm = (k.genre.match(/(\d{2,3})(?!.*\d)/) || [])[1];
+  products.push({
+    id: k.id, kind: 'kit', title: k.title, artist: 'SignalGen', bpm: Number(bpm) || 0, key: '', duration: 0,
+    subtitle: `Vol. ${String(k.vol).padStart(2, '0')} · ${k.type} · ${k.genre}`, genre, contents: k.contents,
+    price: KIT_PRICE[k.type] || 19, nonExclusive: true,
+    description: `${k.title} is SignalGen sample pack volume ${k.vol}: ${k.contents.toLowerCase()}, ${k.genre}. Every sound was synthesized by the engine and its own synths, then measured and mastered — no third-party samples, nothing to clear.`,
+    features: ['WAV 24-bit, named by note and tempo', 'Synthesized in-house, royalty-free', 'Works in any DAW'],
+    cover: k.cover, preview: k.preview, sizeMb: mb(zip), files: { zip: file(zip) },
+    downloads: [{ key: 'zip', label: `${k.title} (Vol. ${k.vol})`, note: 'ZIP, WAV 24-bit' }],
+    published: new Date(2026, 9, k.vol).toISOString(), sold: sold[k.id] || 0,
+  });
+}
+const refs = path.join(venda, '_packs', 'SOUNDS OF THE REFS · TECH HOUSE.zip');
+if (fs.existsSync(refs)) products.push({
+  id: 'presets-sounds-of-the-refs-tech-house', kind: 'preset', title: 'Sounds of the Refs · Tech House', artist: 'SignalGen', bpm: 0, key: '', duration: 0,
+  subtitle: 'Preset pack · 31 Maestro presets · Tech House', genre: 'Tech House', contents: '31 presets (leads, keys) + 8-beat demo of each + README',
+  price: 19, nonExclusive: true,
+  description: 'Thirty-one presets for the SignalGen Sounds synth, each matched by the engine to a stem of a chart tech house record and named after it. Leads and keys that already sit where the references sit. Includes a short demo of every preset and the matching notes.',
+  features: ['Requires SignalGen Sounds (included with SignalGen)', 'Matched to real reference stems', 'Demo audio of every preset'],
+  sizeMb: mb(refs), files: { zip: file(refs) }, downloads: [{ key: 'zip', label: 'Sounds of the Refs · Tech House', note: 'ZIP, .maestro presets + demos' }],
+  published: '2026-10-07T00:00:00.000Z', sold: sold['presets-sounds-of-the-refs-tech-house'] || 0,
+});
+
 fs.mkdirSync(dataDir, { recursive: true });
-fs.writeFileSync(path.join(dataDir, 'catalog.json'), JSON.stringify({ tracks, updated: new Date().toISOString() }, null, 1));
-console.log(`\n${tracks.length} tracks -> local-data/catalog.json`);
+fs.writeFileSync(path.join(dataDir, 'catalog.json'), JSON.stringify({ tracks: [...products, ...tracks], updated: new Date().toISOString() }, null, 1));
+console.log(`\n${tracks.length} tracks + ${products.length} products -> local-data/catalog.json`);

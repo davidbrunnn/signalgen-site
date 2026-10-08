@@ -5,7 +5,7 @@ import { PlayButton, type PTrack } from '@/components/Player';
 
 type Row = PTrack & { camelot?: string; duration: string; published: string; bpm: number };
 
-export default function Catalog({ rows }: { rows: Row[] }) {
+export default function Catalog({ rows, demo = false }: { rows: Row[]; demo?: boolean }) {
   const genres = useMemo(() => ['All', ...Array.from(new Set(rows.map((r) => r.genre || ''))).filter(Boolean).sort()], [rows]);
   const [g, setG] = useState('All');
   const [sort, setSort] = useState<'new' | 'bpm'>('new');
@@ -28,7 +28,7 @@ export default function Catalog({ rows }: { rows: Row[] }) {
       <div className="rows" role="table" aria-label="Tracks">
         <div className="row thead" role="row">
           <span /><span className="ph" /><span className="cell">Title</span><span className="cell c-bpm">Tempo</span><span className="cell c-key">Key</span>
-          <span className="cell c-genre">Genre</span><span className="cell c-len">Length</span><span className="cell">Exclusive license</span>
+          <span className="cell c-genre">Genre</span><span className="cell c-len">Length</span><span className="cell">{demo ? 'Made by' : 'Exclusive license'}</span>
         </div>
         {shown.map((r) => (
           <div key={r.id} className={r.sold ? 'row sold' : 'row'} role="row">
@@ -40,7 +40,7 @@ export default function Catalog({ rows }: { rows: Row[] }) {
             <span className="cell c-genre">{r.genre}</span>
             <span className="cell c-len">{r.duration}</span>
             <span className="buy">
-              {r.sold ? <span className="cell">Signed</span> : <><span className="usd">${r.price}</span><Link href={`/t/${r.id}`} className="btn small">Get it</Link></>}
+              {demo ? <span className="cell">SignalGen, no edits</span> : r.sold ? <span className="cell">Signed</span> : <><span className="usd">${r.price}</span><Link href={`/t/${r.id}`} className="btn small">Get it</Link></>}
             </span>
           </div>
         ))}
