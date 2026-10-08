@@ -23,7 +23,7 @@ export default function PackStatus({ id }: { id: string }) {
       </div>
       {s?.note ? <p className="muted">{s.note}</p> : null}
       {st === 'done' && s?.url ? (
-        <div className="row" style={{ marginTop: 18, gap: 20 }}>
+        <div className="act" style={{ marginTop: 18, gap: 20 }}>
           <a className="btn" href={s.url}>Download the pack{s.size ? ` · ${(s.size / 1048576).toFixed(0)} MB` : ''}</a>
           <span className="muted">zip · Ableton Live 12 set, WAV 24-bit, MIDI, presets</span>
         </div>

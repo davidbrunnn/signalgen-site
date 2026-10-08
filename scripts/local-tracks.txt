@@ -1,0 +1,11 @@
+# The 10 tracks of the local preview (folder names inside ~/Desktop/SignalGen/Venda). One per line.
+Octans Tyr · 129 BPM · Gm · Tech House
+Pavo Loki · 130 BPM · G#m · Minimal
+Fornax Bastet · 130 BPM · F#m · Bass House
+Sagittarius Ares · 129 BPM · Dm · Tech House
+Auriga Tsukuyomi · 129 BPM · Dm · Tech House
+Cepheus Anubis · 129 BPM · Dm · Tech House
+Volans Anubis · 130 BPM · G#m · Bass House
+Vela Hermes · 130 BPM · D#m · Minimal
+Lyra Horus · 125 BPM · Dm · Tech House
+Lupus Ra · 128 BPM · A · Tech House
