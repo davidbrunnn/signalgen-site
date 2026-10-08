@@ -1,31 +1,37 @@
 import './globals.css';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import Link from 'next/link';
+import Mark from './Mark';
 
 export const metadata: Metadata = {
-  title: 'SIGNAL STUDIO',
-  description: 'Unreleased club tracks by Davin · mastered, radio edit included · US$ 59 per track.',
+  title: 'SignalGen · The advanced songstarter for Ableton Live',
+  description: 'Pick a genre, a key, a tempo and a mood. SignalGen writes the whole track and opens it in Ableton Live: arrangement, sounds, mix and master.',
   icons: { icon: '/favicon.svg' },
+  openGraph: { title: 'SignalGen', description: 'The songstarter that finishes the song.', images: ['/screens/start.webp'] },
 };
+export const viewport: Viewport = { themeColor: '#03060b' };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <header className="wrap top">
-          <Link href="/" className="logo">SIGNAL <span>STUDIO</span></Link>
-          <nav>
-            <Link href="/#today">Today</Link>
-            <Link href="/#all">Catalog</Link>
-            <Link href="/#license">License</Link>
-            <Link href="/pack">Pack</Link>
-            <Link href="/judge">Judge</Link>
-          </nav>
+        <a className="skip" href="#main">Skip to content</a>
+        <header className="top">
+          <div className="wrap top-in">
+            <Link href="/" className="logo" aria-label="SignalGen home"><Mark /> SignalGen</Link>
+            <nav aria-label="Main">
+              <a href="/#how">How it works</a>
+              <a href="/#listen">Listen</a>
+              <a href="/#pricing">Pricing</a>
+              <a href="/#faq">FAQ</a>
+            </nav>
+            <a href="/#access" className="btn btn-sm">Early access</a>
+          </div>
         </header>
-        {children}
-        <footer className="wrap">
-          <div>SIGNAL STUDIO · Davin · {new Date().getFullYear()}</div>
-          <div>WAV 44.1 kHz / 24 bit · Extended + Radio Edit · secure checkout by Stripe</div>
+        <div id="main">{children}</div>
+        <footer className="wrap foot">
+          <span><Mark /> SignalGen © {new Date().getFullYear()}</span>
+          <span>For Ableton Live 12 on macOS. AU and VST3.</span>
         </footer>
       </body>
     </html>
