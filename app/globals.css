@@ -328,12 +328,13 @@ footer.site nav a:hover { color: var(--bone); }
 .phero { display: grid; grid-template-columns: 38.2fr 61.8fr; gap: var(--s5); align-items: center; padding: var(--s5) 0 var(--s4); }
 .phero h1 { font-size: clamp(var(--t3), 4.6vw, 76px); line-height: .96; letter-spacing: -0.045em; margin: 0; }
 .phero .lede { color: var(--smoke); margin: var(--s3) 0 var(--s4); max-width: 30em; }
+.phero .act .small { white-space: nowrap; }
 .phero .lede b { color: var(--bone); }
 .trust { list-style: none; margin: var(--s4) 0 0; padding: 0; display: grid; gap: var(--s1); font-size: var(--t0); color: var(--smoke); }
 .trust b { color: var(--bone); margin-right: 6px; }
 .phero-shot { margin: 0; position: relative; }
 .phero-shot > img:first-child { width: 100%; border-radius: var(--r3); display: block; box-shadow: 0 34px 89px rgba(0,0,0,.55); }
-.phero-shot .plug { position: absolute; left: -34px; bottom: 34px; width: 38.2%; border-radius: var(--r2); box-shadow: 0 21px 55px rgba(0,0,0,.6); outline: 1px solid var(--line-2); }
+.phero-shot .plug { position: absolute; left: -34px; bottom: 21px; width: 34%; border-radius: var(--r2); box-shadow: 0 21px 55px rgba(0,0,0,.6); outline: 1px solid var(--line-2); }
 .phero-shot figcaption { margin-top: var(--s2); font-size: var(--t0); color: var(--ash); text-align: right; }
 .numbers { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s3); margin: 0 0 var(--s4); }
 .numbers div { border-top: 1px solid var(--line); padding-top: var(--s2); }
@@ -359,7 +360,7 @@ footer.site nav a:hover { color: var(--bone); }
 .sound .pb .playbtn svg { fill: var(--night); }
 .sound .gen { height: 100%; padding: var(--s3); display: flex; flex-direction: column; justify-content: space-between; }
 .sound .gen span { font-size: var(--t0); color: var(--amber); font-weight: 700; }
-.sound .gen b { font-size: var(--t2); letter-spacing: -0.03em; line-height: 1.05; }
+.sound .gen b { font-size: var(--t2); letter-spacing: -0.03em; line-height: 1.05; padding-right: 55px; }
 .sound .sm { display: grid; gap: 4px; padding: var(--s2) 2px 0; }
 .sound .t { font-weight: 700; letter-spacing: -0.01em; }
 .sound .r { display: flex; justify-content: space-between; align-items: center; margin-top: var(--s1); }

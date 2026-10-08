@@ -35,7 +35,7 @@ export default async function Home() {
           </ul>
         </div>
         <figure className="phero-shot">
-          <img src="/product/live-arr.jpg" alt="A SignalGen set open in Ableton Live: intro, groove, build, drop, break and second drop, with drums, bass, music, vocals and FX groups" />
+          <img src="/product/live-set.jpg" alt="A SignalGen set open in Ableton Live: intro, groove, build, drop, break and second drop, with drums, bass, music, vocals and FX groups" />
           <img className="plug" src="/product/01_create.png" alt="The SignalGen plugin: genre, key, scale, BPM and the New Track button" />
           <figcaption>Left: the plugin. Right: what came out of it, 129 BPM in D minor, 184 bars.</figcaption>
         </figure>
