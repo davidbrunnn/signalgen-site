@@ -3,6 +3,7 @@ import { DEMOS, GENRES, PRICE } from '@/lib/site';
 import Starter from './Starter';
 import Player from './Player';
 import Signup from './Signup';
+import { salesOpen, PRICE_BRL, brl } from '@/lib/sales';
 
 export const dynamic = 'force-dynamic';
 
@@ -45,6 +46,8 @@ export default async function Home() {
   const cat = await readCatalog();
   const fresh = cat.tracks.filter((t) => t.preview && t.kind !== 'pack').sort((a, b) => (b.published > a.published ? 1 : -1)).slice(0, 6);
   const months = Math.round(PRICE.lifetime / PRICE.monthly);
+  const open = salesOpen();
+  const cta = open ? { href: '#pricing', label: 'Get SignalGen' } : { href: '#access', label: 'Join early access' };
 
   return (
     <main>
@@ -52,7 +55,7 @@ export default async function Home() {
         <h1>The songstarter that finishes the song.</h1>
         <p className="lead">Choose a genre, a key, a tempo and a mood. SignalGen writes the whole track, then opens it in Ableton Live arranged, mixed and mastered, with every note still yours to change.</p>
         <div className="ctas">
-          <a href="#access" className="btn">Join early access</a>
+          <a href={cta.href} className="btn">{cta.label}</a>
           <a href="#listen" className="btn btn-quiet">Listen to what it makes</a>
         </div>
         <Starter />
@@ -152,23 +155,42 @@ export default async function Home() {
       </section>
 
       <section className="wrap band" id="pricing">
-        <h2>Founder access opens soon.</h2>
-        <div className="plans">
-          <div className="plan glass">
-            <h3>Monthly</h3>
-            <p className="price"><b>${PRICE.monthly}</b> a month</p>
-            <p>Every starter you want, every update. Cancel any time.</p>
-          </div>
-          <div className="plan glass plan-main">
-            <h3>Lifetime</h3>
-            <p className="price"><b>${PRICE.lifetime}</b> once</p>
-            <p>Pay once, keep it for good, updates included. About {months} months of the monthly plan.</p>
-          </div>
-        </div>
-        <div className="access" id="access">
-          <p className="body">Prices at launch. People on the list get in first, before the doors open to everyone.</p>
-          <Signup />
-        </div>
+        {open ? (
+          <>
+            <h2>Pay once. Keep it.</h2>
+            <div className="plans plans-one">
+              <div className="plan glass plan-main">
+                <h3>Lifetime license</h3>
+                <p className="price"><b>{brl(PRICE_BRL)}</b> once</p>
+                <p>SignalGen for Ableton Live 12 on macOS, AU and VST3. One key for two of your computers, every update included.</p>
+                <form action="/api/checkout" method="post" className="buy">
+                  <button type="submit" className="btn">Buy SignalGen</button>
+                </form>
+                <p className="fine">Pix or card, through Stripe. Your key appears right after payment and arrives by email.</p>
+              </div>
+            </div>
+          </>
+        ) : (
+          <>
+            <h2>Founder access opens soon.</h2>
+            <div className="plans">
+              <div className="plan glass">
+                <h3>Monthly</h3>
+                <p className="price"><b>${PRICE.monthly}</b> a month</p>
+                <p>Every starter you want, every update. Cancel any time.</p>
+              </div>
+              <div className="plan glass plan-main">
+                <h3>Lifetime</h3>
+                <p className="price"><b>${PRICE.lifetime}</b> once</p>
+                <p>Pay once, keep it for good, updates included. About {months} months of the monthly plan.</p>
+              </div>
+            </div>
+            <div className="access" id="access">
+              <p className="body">Prices at launch. People on the list get in first, before the doors open to everyone.</p>
+              <Signup />
+            </div>
+          </>
+        )}
       </section>
 
       <section className="wrap band split" id="faq">
@@ -180,7 +202,7 @@ export default async function Home() {
 
       <section className="wrap end">
         <h2>Your next session won’t start empty.</h2>
-        <a href="#access" className="btn">Join early access</a>
+        <a href={cta.href} className="btn">{cta.label}</a>
       </section>
     </main>
   );
