@@ -14,7 +14,7 @@ PORT=3021; B="http://localhost:$PORT"
 lsof -ti tcp:$PORT | xargs kill 2>/dev/null
 npx next start -p $PORT > _check/server.log 2>&1 & PID=$!
 for i in $(seq 1 40); do curl -s -o /dev/null "$B/" && break; sleep 0.5; done
-ID=$(node -e "console.log(require('./local-data/catalog.json').tracks[0].id)")
+ID=$(node -e "console.log(require('./local-data/catalog.json').tracks.find(t=>t.kind==='track').id)")
 code() { curl -s -o "$2" -w "%{http_code}" "$1"; }
 echo "home        $(code "$B/" _check/home.html)"
 echo "track       $(code "$B/t/$ID" _check/track.html)"
