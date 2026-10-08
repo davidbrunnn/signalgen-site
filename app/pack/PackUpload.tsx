@@ -30,7 +30,7 @@ export default function PackUpload({ price }: { price: number }) {
         <div className="big">{file ? file.name : 'Drop your song'}</div>
         <div className="small">{file ? `${(file.size / 1048576).toFixed(1)} MB · click to change` : 'wav · mp3 · aiff · m4a · flac · up to 200 MB'}</div>
       </div>
-      <div className="row" style={{ marginTop: 18, gap: 20 }}>
+      <div className="act" style={{ marginTop: 18, gap: 20 }}>
         <button className="btn" disabled={!file || !!busy} onClick={go}>{busy === 'upload' ? `Uploading ${pct}%` : busy === 'checkout' ? '…' : `Make my pack · $${price}`}</button>
         <span className="muted">Pay with Stripe. Your link appears on the next page and keeps working.</span>
       </div>

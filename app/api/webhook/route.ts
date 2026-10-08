@@ -1,8 +1,8 @@
-// Stripe webhook: checkout.session.completed -> the track is marked sold (exclusive) and the order is kept in Blob
+// Stripe webhook (production): checkout.session.completed → the order is recorded once and the exclusive track leaves the catalog.
+// If two buyers paid for the same exclusive track at the same moment, the second payment is refunded automatically.
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
-import { put } from '@vercel/blob';
-import { readCatalog, writeCatalog } from '@/lib/catalog';
+import { recordSale } from '@/lib/catalog';
 import { writeJob } from '@/lib/pack';
 
 export const runtime = 'nodejs';
@@ -25,11 +25,10 @@ export async function POST(req: Request) {
     }
     const trackId = s.metadata?.trackId;
     if (trackId && s.payment_status === 'paid') {
-      const cat = await readCatalog();
-      const t = cat.tracks.find((x) => x.id === trackId);
-      if (t) { t.sold = (t.sold || 0) + 1; await writeCatalog(cat); }
-      await put(`studio/orders/${s.id}.json`, JSON.stringify({ session: s.id, trackId, email: s.customer_details?.email, amount: s.amount_total, when: new Date().toISOString() }),
-        { access: 'public', addRandomSuffix: true, contentType: 'application/json' });   // the suffix keeps the url unguessable
+      const r = await recordSale({ session: s.id, trackId, email: s.customer_details?.email || undefined, amount: (s.amount_total || 0) / 100, when: new Date().toISOString() });
+      if (r === 'taken' && s.payment_intent) {
+        await stripe.refunds.create({ payment_intent: String(s.payment_intent), reason: 'duplicate' }).catch(() => null);
+      }
     }
   }
   return NextResponse.json({ ok: true });

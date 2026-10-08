@@ -1,41 +1,71 @@
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { readCatalog, PRICE_USD, fmtDur } from '@/lib/catalog';
-import { BuyButton, Preview } from '../../TrackCard';
+import type { Metadata } from 'next';
+import { readCatalog, fmtDur, isSold, priceOf, SELL_TRACKS } from '@/lib/catalog';
+import { toP } from '@/lib/view';
+import { Wave } from '@/components/Player';
+import BuyButton from '@/components/BuyButton';
 
 export const dynamic = 'force-dynamic';
+
+export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+  const t = (await readCatalog()).tracks.find((x) => x.id === params.id);
+  return t ? { title: `${t.title} — ${t.artist} · Signal Studio`, description: t.description || `${t.genre}, ${t.bpm} BPM, ${t.key}. Exclusive license.` } : {};
+}
 
 export default async function TrackPage({ params }: { params: { id: string } }) {
   const cat = await readCatalog();
   const t = cat.tracks.find((x) => x.id === params.id);
   if (!t) notFound();
+  const sold = isSold(t), price = priceOf(t), pack = t.kind === 'pack';
   return (
-    <main className="wrap track">
-      <div className="cover" style={{ borderRadius: 16, overflow: 'hidden', border: '1px solid var(--line)' }}>
-        {t.cover ? <img src={t.cover} alt="" /> : null}
-      </div>
-      <div>
-        <div className="sub" style={{ color: 'var(--muted)', fontSize: 12, letterSpacing: '.22em', textTransform: 'uppercase', marginBottom: 14 }}>
-          {t.pick ? `Pick ${t.pick} · ${t.day}` : t.genre}
+    <main className="wrap">
+      <Link href="/ghost" className="back">All ghost productions</Link>
+      <div className="track">
+        <div className="art">{t.cover ? <img src={t.cover} alt={`${t.title} cover art`} /> : null}</div>
+        <div>
+          <h1>{t.title}</h1>
+          <div className="by">{t.artist} — {t.genre}</div>
+          {sold ? null : <Wave t={toP(t)} />}
+          {t.description ? <p className="desc">{t.description}</p> : null}
+          <div className="specs">
+            <div><b>Tempo</b><span>{t.bpm} BPM</span></div>
+            <div><b>Key</b><span>{t.key}{t.camelot ? ` (${t.camelot})` : ''}</span></div>
+            <div><b>Extended Mix</b><span>{fmtDur(t.duration)}</span></div>
+            <div><b>Radio Edit</b><span>{t.radioDuration ? fmtDur(t.radioDuration) : 'Included'}</span></div>
+            {t.lufs ? <div><b>Loudness</b><span>{t.lufs} LUFS integrated</span></div> : null}
+            {t.truePeak ? <div><b>True peak</b><span>{t.truePeak} dBTP</span></div> : null}
+          </div>
+          <div className="buybox">
+            {!SELL_TRACKS && !pack ? (
+              <>
+                <div className="price">Made by SignalGen<small>no manual edits</small></div>
+                <p className="muted small">This track is a demo: generated, mixed and mastered by the engine from genre, key and tempo alone. Make your own in one click.</p>
+                <Link href="/signalgen" className="btn">Get SignalGen</Link>
+              </>
+            ) : sold ? (
+              <>
+                <div className="price">Signed</div>
+                <p className="muted small">This record has its owner. Exclusive licenses are sold once — have a listen to what is still available.</p>
+                <Link href="/ghost" className="btn quiet">See available tracks</Link>
+              </>
+            ) : (
+              <>
+                <div className="price">${price}<small>{pack ? 'non-exclusive pack' : 'exclusive license, both versions'}</small></div>
+                <ul>
+                  {pack ? <li>Loops of every bus and the MIDI of the day’s picks</li> : <>
+                    <li>Extended Mix and Radio Edit, WAV 44.1 kHz / 24-bit</li>
+                    <li>Mastered for streaming and club systems</li>
+                    <li>Removed from the catalog the moment you buy it</li>
+                    <li>License certificate issued in your name</li>
+                  </>}
+                </ul>
+                <BuyButton id={t.id} price={price} label={pack ? `Buy the pack, $${price}` : `Buy exclusive license, $${price}`} />
+                <p className="fine">Secure checkout by Stripe. By buying you accept the <Link href="/license" style={{ textDecoration: 'underline' }}>license terms</Link>.</p>
+              </>
+            )}
+          </div>
         </div>
-        <h1>{t.title}</h1>
-        <Preview src={t.preview} big />
-        <div style={{ color: 'var(--muted)', fontSize: 12, letterSpacing: '.18em', textTransform: 'uppercase', marginTop: 6 }}>30 s preview · final drop · click the bar to jump</div>
-        <div className="specs">
-          <div><b>Tempo</b><span>{t.bpm} BPM</span></div>
-          <div><b>Key</b><span>{t.key}</span></div>
-          <div><b>Genre</b><span>{t.genre}</span></div>
-          <div><b>Extended</b><span>{fmtDur(t.duration)}</span></div>
-          {t.radioDuration ? <div><b>Radio edit</b><span>{fmtDur(t.radioDuration)}</span></div> : null}
-          {t.lufs ? <div><b>Master</b><span>{t.lufs} LUFS · {t.truePeak} dBTP</span></div> : null}
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
-          <span style={{ fontSize: 36, fontWeight: 700, letterSpacing: '-.03em' }}>${PRICE_USD}</span>
-          <BuyButton id={t.id} price={PRICE_USD} label="Buy exclusive" />
-        </div>
-        <ul className="license" style={{ marginTop: 28 }}>
-          <li>Extended Mix + Radio Edit · WAV 44.1 kHz / 24 bit · mastered with Ableton Live native devices.</li>
-          <li>Exclusive license — the track is removed from the catalog once sold.</li>
-        </ul>
       </div>
     </main>
   );
