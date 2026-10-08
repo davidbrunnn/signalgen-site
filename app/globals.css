@@ -78,8 +78,8 @@ img { display: block; max-width: 100%; }
 .hero .tile:hover .cap, .hero .tile:focus-visible .cap { opacity: 1; transform: none; }
 .hero .tile .cap span { background: rgba(8, 9, 11, .78); padding: 4px var(--s1); border-radius: var(--r1); }
 .spiral { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
-.spiral path { fill: none; stroke: var(--amber); stroke-width: 1.25; opacity: .55; stroke-dasharray: 4000; stroke-dashoffset: 4000; animation: draw 3.4s var(--ease) .3s forwards; }
-@keyframes draw { to { stroke-dashoffset: 0; } }
+.spiral path { fill: none; stroke: var(--amber); stroke-width: .018; opacity: .7; animation: spiral 2.1s var(--ease) .34s backwards; }
+@keyframes spiral { from { opacity: 0; } }
 
 .hero h1 { font-size: clamp(var(--t3), 6.4vw, var(--t5)); line-height: .94; letter-spacing: -0.045em; font-weight: 700; margin: 0; max-width: 8.6em; }
 .hero .lede { font-size: var(--t1); color: var(--smoke); max-width: 30em; margin: var(--s4) 0 0; }
@@ -95,14 +95,13 @@ img { display: block; max-width: 100%; }
 .block header p { margin: 0; color: var(--smoke); font-size: var(--t0); max-width: 34em; }
 
 /* how a sale works: a real sequence, so it is numbered */
-.steps { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); margin: 0; padding: 0; }
 .steps li { list-style: none; padding: var(--s4) var(--s4) var(--s4) 0; border-right: 1px solid var(--line); }
 .steps li:last-child { border-right: 0; }
 .steps li + li { padding-left: var(--s4); }
 .steps .n { font-size: var(--t3); font-weight: 700; color: var(--ash); letter-spacing: -0.04em; line-height: 1; }
 .steps h3 { font-size: var(--t2); letter-spacing: -0.03em; margin: var(--s3) 0 var(--s1); line-height: 1.1; }
 .steps p { margin: 0; color: var(--smoke); font-size: var(--t0); max-width: 26em; }
-.steps ol { margin: 0; padding: 0; display: contents; }
 
 /* ───────── catalog: rows, not cards */
 .filters { display: flex; justify-content: space-between; align-items: center; gap: var(--s3); flex-wrap: wrap; margin-bottom: var(--s3); }
@@ -111,7 +110,7 @@ img { display: block; max-width: 100%; }
   transition: background .2s var(--ease), color .2s var(--ease); }
 .chip:hover { color: var(--bone); }
 .chip[aria-pressed="true"] { background: var(--bone); color: var(--night); font-weight: 700; }
-.sort { background: transparent; border: 0; color: var(--smoke); font-size: var(--t0); cursor: pointer; font-family: var(--font); }
+.sort { display: flex; gap: var(--s1); align-items: center; font-size: var(--t0); color: var(--ash); }
 
 .rows { border-top: 1px solid var(--line); }
 .row { display: grid; grid-template-columns: var(--s5) 34px minmax(0, 3fr) 1fr 1fr 1.3fr 1fr auto; align-items: center; gap: var(--s3);
@@ -289,8 +288,11 @@ footer.site nav a:hover { color: var(--bone); }
   .hero { display: block; aspect-ratio: auto; }
   .sq-a { padding: var(--s4) 0 var(--s4); min-height: 0; }
   .hero .tiles-m { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
-  .hero .tiles-m .tile:first-child { grid-column: 1 / 3; aspect-ratio: 1; }
-  .hero .tiles-m .tile { aspect-ratio: 1; }
+  .hero .tiles-m .tile { height: auto; aspect-ratio: 1; grid-column: auto; grid-row: auto; }
+  .hero .tiles-m .tile:first-child { grid-column: 1 / 3; }
+  .hero .tiles-m .tile:nth-child(n+4) { display: none; }
+  .hero .facts { gap: var(--s3); }
+  .hero .facts b { font-size: var(--s3); }
   .hero .tile .cap { opacity: 1; transform: none; }
   .spiral { display: none; }
   .block > header, .split, .track, footer.site { grid-template-columns: 1fr; }
@@ -302,8 +304,8 @@ footer.site nav a:hover { color: var(--bone); }
   footer.site nav { justify-content: flex-start; }
   .player-bar .in { grid-template-columns: var(--s5) minmax(0, 1fr) auto; }
   .player-bar .prog, .player-bar .pbuy { display: none; }
-  .row { grid-template-columns: var(--s5) minmax(0, 1fr) auto; gap: var(--s2); }
-  .row .c-bpm, .row .playbtn { display: none; }
+  .row { grid-template-columns: var(--s5) 34px minmax(0, 1fr) auto; gap: var(--s2); }
+  .row .c-bpm { display: none; }
   .row .buy .btn { display: none; }
   .thead { display: none; }
   .sheet { grid-template-columns: var(--s5) 1fr; }

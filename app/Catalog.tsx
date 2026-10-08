@@ -19,17 +19,21 @@ export default function Catalog({ rows }: { rows: Row[] }) {
         <div className="chips" role="group" aria-label="Filter by genre">
           {genres.map((x) => <button key={x} className="chip" aria-pressed={g === x} onClick={() => setG(x)}>{x}</button>)}
         </div>
-        <button className="sort" onClick={() => setSort(sort === 'new' ? 'bpm' : 'new')}>Sorted by {sort === 'new' ? 'newest' : 'tempo'} — change</button>
+        <div className="sort" role="group" aria-label="Sort">
+          <span>Sort</span>
+          <button className="chip" aria-pressed={sort === 'new'} onClick={() => setSort('new')}>Newest</button>
+          <button className="chip" aria-pressed={sort === 'bpm'} onClick={() => setSort('bpm')}>Tempo</button>
+        </div>
       </div>
       <div className="rows" role="table" aria-label="Tracks">
         <div className="row thead" role="row">
-          <span /><span /><span className="cell">Title</span><span className="cell c-bpm">Tempo</span><span className="cell c-key">Key</span>
+          <span /><span className="ph" /><span className="cell">Title</span><span className="cell c-bpm">Tempo</span><span className="cell c-key">Key</span>
           <span className="cell c-genre">Genre</span><span className="cell c-len">Length</span><span className="cell">Exclusive license</span>
         </div>
         {shown.map((r) => (
           <div key={r.id} className={r.sold ? 'row sold' : 'row'} role="row">
             <Link href={`/t/${r.id}`} className="thumb" aria-hidden="true" tabIndex={-1}>{r.cover ? <img src={r.cover} alt="" loading="lazy" /> : null}</Link>
-            {r.sold ? <span /> : <PlayButton t={r} queue={queue} />}
+            {r.sold ? <span className="ph" /> : <PlayButton t={r} queue={queue} />}
             <Link href={`/t/${r.id}`} className="title">{r.title}<small>{r.artist}</small></Link>
             <span className="cell c-bpm"><b>{r.bpm}</b> BPM</span>
             <span className="cell c-key"><b>{r.key}</b>{r.camelot ? ` ${r.camelot}` : ''}</span>

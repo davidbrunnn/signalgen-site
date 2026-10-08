@@ -49,7 +49,7 @@ export default async function Home() {
             </Link>
           ))}
         </div>
-        <svg className="spiral" viewBox="0 0 13 8" preserveAspectRatio="none" aria-hidden="true"><path d={SPIRAL} vectorEffect="non-scaling-stroke" /></svg>
+        <svg className="spiral" viewBox="0 0 13 8" preserveAspectRatio="none" aria-hidden="true"><path d={SPIRAL} /></svg>
       </section>
 
       <section className="block" id="how">
