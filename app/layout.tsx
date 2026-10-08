@@ -2,6 +2,7 @@ import './globals.css';
 import type { Metadata, Viewport } from 'next';
 import Link from 'next/link';
 import Mark from './Mark';
+import { salesOpen } from '@/lib/sales';
 
 export const metadata: Metadata = {
   title: 'SignalGen · The advanced songstarter for Ableton Live',
@@ -25,7 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <a href="/#pricing">Pricing</a>
               <a href="/#faq">FAQ</a>
             </nav>
-            <a href="/#access" className="btn btn-sm">Early access</a>
+            {salesOpen() ? <a href="/#pricing" className="btn btn-sm">Buy</a> : <a href="/#access" className="btn btn-sm">Early access</a>}
           </div>
         </header>
         <div id="main">{children}</div>

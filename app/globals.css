@@ -236,3 +236,18 @@ h1, h2, h3 { font-weight: 700; margin: 0; letter-spacing: -0.03em; }
   .btn { width: 100%; }
   .btn-sm { width: auto; }
 }
+
+/* checkout */
+.plans-one { grid-template-columns: minmax(0, 610px); }
+.buy { margin-top: var(--s21); }
+.buy .btn { width: 100%; }
+.plan .fine { font-size: var(--f13); color: var(--dim); margin: var(--s13) 0 0; }
+.thanks { min-height: 61vh; }
+.thanks h1 { font-size: clamp(var(--f34), 6vw, var(--f89)); line-height: 1; letter-spacing: -0.045em; max-width: 12em; }
+.keybox { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s13); margin-top: var(--s34); padding: var(--s21); border-radius: 21px;
+  background: var(--glass); border: 1px solid var(--sky-40); max-width: 987px; }
+.keybox code { flex: 1 1 377px; font-family: ui-monospace, Menlo, monospace; font-size: 17px; font-weight: 700; color: var(--sky); word-break: break-all; line-height: 1.5; }
+.thanks-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.thanks-steps p .btn { margin-top: var(--s8); }
+.small { font-size: var(--f13); }
+@media (max-width: 760px) { .thanks-steps { grid-template-columns: 1fr; } }
