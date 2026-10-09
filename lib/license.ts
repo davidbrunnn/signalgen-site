@@ -1,5 +1,5 @@
 // SignalGen · offline license keys ("SGN1-..."), the same bytes as plugins/signalgen-v5/tools/license/keygen.py on the Mac.
-//   payload (13 bytes) = version 1 · product (1 SignalGen · 2 Mix · 3 Sounds · 9 Bundle) · edition (1 founder · 2 full · 3 nfr · 4 trial)
+//   payload (13 bytes) = version 1 · product (1 SignalGen · 2 Mix · 3 Sounds · 4 Refiner · 5 Monet · 6 Ear · 9 Bundle = all) · edition (1 founder · 2 full · 3 nfr · 4 trial)
 //                        · serial u32 · issued day u16 (days since 2026-01-01) · sha512(email trimmed, lowercase)[:4]
 //   key = "SGN1-" + base32 (no padding) of payload + Ed25519(b"SGN1" + payload), in groups of 8
 // The private key is the 32-byte seed in ~/Desktop/SignalGen/codigo/financeiro/licencas/private_key.hex, given to the site as
@@ -10,9 +10,9 @@ import { createHash, createPrivateKey, createPublicKey, sign, verify, KeyObject 
 /** the key the plugins check (plugins/signalgen-v5/license/public_key.hex); a private key that doesn't match it would sell dead keys */
 export const PLUGIN_PUBLIC_KEY = process.env.SIGNALGEN_LICENSE_PUBLIC_KEY || 'd6becb0586afff69fe10626ceaf3404b5a3ac7386420f30d95ad83ec62fc73ca';
 
-export const PRODUCTS = { signalgen: 1, mix: 2, sounds: 3, bundle: 9 } as const;
+export const PRODUCTS = { signalgen: 1, mix: 2, sounds: 3, refiner: 4, monet: 5, ear: 6, bundle: 9 } as const;
 export const EDITIONS = { founder: 1, full: 2, nfr: 3, trial: 4 } as const;
-export const PRODUCT_NAMES: Record<number, string> = { 1: 'SignalGen', 2: 'SignalGen Mix', 3: 'SignalGen Sounds', 9: 'SignalGen Bundle' };
+export const PRODUCT_NAMES: Record<number, string> = { 1: 'SignalGen', 2: 'SignalGen Mix', 3: 'SignalGen Sounds', 4: 'Refiner', 5: 'Monet', 6: 'Ear', 9: 'SignalGen Bundle' };
 const EPOCH = Date.UTC(2026, 0, 1);
 const PKCS8 = Buffer.from('302e020100300506032b657004220420', 'hex');      // DER prefix of an Ed25519 private key (RFC 8410)
 const SPKI = Buffer.from('302a300506032b6570032100', 'hex');

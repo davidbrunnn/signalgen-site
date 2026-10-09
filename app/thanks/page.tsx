@@ -52,8 +52,8 @@ export default async function Thanks({ searchParams }: { searchParams: { session
       <KeyBox value={lic.key} />
       <ol className="steps thanks-steps">
         <li><b>Install</b><p>{dl ? <a href={dl} className="btn btn-sm">Download for Mac (.pkg)</a> : 'Open the .pkg from the download link in your email.'}</p></li>
-        <li><b>Rescan</b><p>In Ableton Live: Settings › Plug-Ins › Rescan. Put SignalGen on a MIDI track.</p></li>
-        <li><b>Activate</b><p>Click ACTIVATE (top right), type {email} and paste the key. It works offline.</p></li>
+        <li><b>Rescan</b><p>In Ableton Live: Settings › Plug-Ins › Rescan. Put SignalGen on a MIDI track; Refiner and Ear go on any audio channel.</p></li>
+        <li><b>Activate</b><p>Click ACTIVATE (top right), type {email} and paste the key. It works offline, and the same key opens all three.</p></li>
       </ol>
       <p className="body small">macOS may say it can’t verify the developer the first time: System Settings › Privacy & Security › Open Anyway, then open the .pkg again.</p>
     </main>

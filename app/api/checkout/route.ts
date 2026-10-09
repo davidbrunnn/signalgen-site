@@ -19,7 +19,7 @@ export async function POST(req: Request) {
         price_data: {
           currency: 'brl',
           unit_amount: Math.round(PRICE_BRL * 100),
-          product_data: { name: PRODUCT.name, description: 'AU + VST3 for Ableton Live 12 on macOS. One key for two of your computers, updates included.' },
+          product_data: { name: PRODUCT.name, description: 'SignalGen, Refiner and Ear, AU + VST3 for Ableton Live 12 on macOS. One key opens all three, on two of your computers, updates included.' },
         },
       }],
       metadata: meta,

@@ -162,7 +162,7 @@ export default async function Home() {
               <div className="plan glass plan-main">
                 <h3>Lifetime license</h3>
                 <p className="price"><b>{brl(PRICE_BRL)}</b> once</p>
-                <p>SignalGen for Ableton Live 12 on macOS, AU and VST3. One key for two of your computers, every update included.</p>
+                <p>SignalGen, plus Refiner (the EQ that shows resonances) and Ear (tempo, key and chords of your mix). AU and VST3 for Ableton Live 12 on macOS. One key opens all three, on two of your computers, every update included.</p>
                 <form action="/api/checkout" method="post" className="buy">
                   <button type="submit" className="btn">Buy SignalGen</button>
                 </form>

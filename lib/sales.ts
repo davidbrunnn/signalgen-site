@@ -1,11 +1,12 @@
-// SignalGen sales · one product for now: the SignalGen lifetime license, paid with Pix or card through Stripe Checkout.
+// SignalGen sales · one product: the lifetime license of the SignalGen installer (SignalGen + Refiner + Ear, the .pkg v38),
+// sold as a BUNDLE key so the one key opens all three plugins; Pix or card through Stripe Checkout.
 // The checkout opens only when the Stripe key is set and the license private key is the plugins' pair; until then the page
 // keeps the early access list.
 import { put, list } from '@vercel/blob';
 import { keyForOrder, seedMatchesPlugin } from './license';
 
 export const PRICE_BRL = Number(process.env.PRICE_BRL || 249);
-export const PRODUCT = { id: 'signalgen', edition: 'full', name: 'SignalGen · lifetime license' };
+export const PRODUCT = { id: process.env.LICENSE_PRODUCT || 'bundle', edition: 'full', name: 'SignalGen · lifetime license (SignalGen + Refiner + Ear)' };
 
 export function salesOpen() {
   return Boolean(process.env.STRIPE_SECRET_KEY) && seedMatchesPlugin();
@@ -79,8 +80,8 @@ Chave: ${o.key}
 
 Como ativar:
 1. Baixe e instale o SignalGen${dl ? ': ' + dl : ' (o .pkg do download)'}.
-2. Abra o Ableton Live, Settings > Plug-Ins > Rescan, e coloque o SignalGen numa faixa MIDI.
-3. Clique em ACTIVATE (canto superior direito), cole o email e a chave acima e clique em Activate.
+2. Abra o Ableton Live, Settings > Plug-Ins > Rescan, e coloque o SignalGen numa faixa MIDI (Refiner e Ear vão em qualquer canal de áudio).
+3. Clique em ACTIVATE (canto superior direito), cole o email e a chave acima e clique em Activate. A mesma chave abre os três plugins.
 Funciona offline. A licença é pessoal: use em até 2 computadores seus.
 
 Qualquer dúvida, é só responder este email.
