@@ -2,6 +2,7 @@
 // rebuilds the same key the email carries, straight from the paid session; no database needed.
 import Stripe from 'stripe';
 import { keyForOrder } from '@/lib/license';
+import { DOWNLOAD_URL } from '@/lib/sales';
 import { KeyBox, Waiting } from './parts';
 
 export const dynamic = 'force-dynamic';
@@ -44,7 +45,7 @@ export default async function Thanks({ searchParams }: { searchParams: { session
 
   const email = s.customer_details?.email || '';
   const lic = keyForOrder({ orderId: s.id, email, created: s.created, product: s.metadata?.product, edition: s.metadata?.edition });
-  const dl = process.env.DOWNLOAD_URL_MAC;
+  const dl = DOWNLOAD_URL;
   return (
     <main className="wrap band thanks">
       <h1>SignalGen is yours.</h1>

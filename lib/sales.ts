@@ -8,6 +8,11 @@ import { keyForOrder, seedMatchesPlugin } from './license';
 export const PRICE_BRL = Number(process.env.PRICE_BRL || 249);
 export const PRODUCT = { id: process.env.LICENSE_PRODUCT || 'bundle', edition: 'full', name: 'SignalGen · lifetime license (SignalGen + Refiner + Ear)' };
 
+/** the installer: the GitHub release of this repo (v5.2.0 = SignalGen · Refiner · Ear · Engine); DOWNLOAD_URL_MAC overrides it */
+export const VERSION = process.env.SIGNALGEN_VERSION || '5.2.0';
+export const DOWNLOAD_URL = process.env.DOWNLOAD_URL_MAC ||
+  `https://github.com/davidbrunnn/signalgen-site/releases/download/v${VERSION}/SignalGen-${VERSION}-mac.pkg`;
+
 export function salesOpen() {
   return Boolean(process.env.STRIPE_SECRET_KEY) && seedMatchesPlugin();
 }
@@ -70,7 +75,7 @@ export async function deliver(s: { id: string; created: number; amount_total: nu
 async function sendLicenseEmail(o: Order) {
   const apiKey = process.env.RESEND_API_KEY, from = process.env.MAIL_FROM;
   if (!apiKey || !from) return false;
-  const dl = process.env.DOWNLOAD_URL_MAC || '';
+  const dl = DOWNLOAD_URL;
   const text = `Olá${o.name ? ', ' + o.name.split(' ')[0] : ''}!
 
 Obrigado por comprar o ${o.product}. Aqui está a sua licença:
