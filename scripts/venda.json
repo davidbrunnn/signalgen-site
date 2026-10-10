@@ -480,5 +480,7 @@
    "price": 19,
    "buy": ""
   }
- ]
+ ],
+ "pay_url": "",
+ "portal_login_url": "https://billing.stripe.com/p/login/test_4gM3cvfrM3pCgHxe8m1RC00"
 }

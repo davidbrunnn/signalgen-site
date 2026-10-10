@@ -10,6 +10,8 @@ import html, json, os, re
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 data = json.load(open(os.path.join(ROOT, 'scripts', 'venda.json')))
 E = html.escape
+# Stripe backend (the pay/ Vercel project). Empty = checkout not live yet, buttons show "soon".
+PAY = (os.environ.get('PAY_URL') or data.get('pay_url') or '').rstrip('/')
 
 
 def md(s):
@@ -22,8 +24,13 @@ def mmss(s):
 
 
 def card(p):
-    buy = (f'<a class="btn" href="{E(p["buy"])}" rel="noopener">Buy · ${p["price"]}</a>' if p.get('buy')
-           else f'<span class="btn off" title="Checkout opening soon">${p["price"]} · soon</span>')
+    if PAY:      # Stripe-hosted Checkout through our backend; the price lives in Stripe under lookup_key = pack id
+        buy = (f'<form method="post" action="{E(PAY)}/api/checkout" class="buy"><input type="hidden" name="product" value="{E(p["id"])}">'
+               f'<button class="btn" type="submit">Buy · ${p["price"]}</button></form>')
+    elif p.get('buy'):
+        buy = f'<a class="btn" href="{E(p["buy"])}" rel="noopener">Buy · ${p["price"]}</a>'
+    else:
+        buy = f'<span class="btn off" title="Checkout opening soon">${p["price"]} · soon</span>'
     rows, last = [], None
     for i, it in enumerate(p['items']):
         if it['folder'] != last:
@@ -84,3 +91,48 @@ page = f'''<!doctype html>
 '''
 open(os.path.join(ROOT, 'index.html'), 'w').write(page)
 print('index.html:', len(prods), 'packs,', total, 'samples')
+
+# Thank-you page (Stripe success_url). Reads the order from the backend; works even if the webhook is a few seconds late.
+PORTAL = data.get('portal_login_url', '')
+thanks = f'''<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thank you — SignalGen Sounds</title><meta name="robots" content="noindex">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top"><div class="wrap top-in"><a class="logo" href="./"><svg class="mark" viewBox="0 0 21 18" aria-hidden="true"><path d="M0 9h3l2-7 3 14 3-11 2 4h8v2h-9l-1-2-3 11-3-14-1 5H0z"/></svg>SignalGen Sounds</a></div></header>
+<main class="wrap thanks">
+  <section class="hero"><h1 id="h">One moment.</h1><p class="lead" id="p">Checking your payment…</p></section>
+  <div class="act" id="a"></div>
+  <p class="lic">Your receipt and invoice are on their way to your email.{f' Manage purchases and invoices any time in the <a href="{E(PORTAL)}">customer portal</a>.' if PORTAL else ''}</p>
+</main>
+<script>
+(async () => {{
+  const PAY = {json.dumps(PAY)};
+  const id = new URLSearchParams(location.search).get('session_id') || '';
+  const h = document.getElementById('h'), p = document.getElementById('p'), a = document.getElementById('a');
+  const btn = (href, t, quiet) => {{ const x = document.createElement('a'); x.className = 'btn' + (quiet ? ' btn-quiet' : ''); x.href = href; x.textContent = t; a.appendChild(x); }};
+  if (!PAY || !id) {{ h.textContent = 'Thank you.'; p.textContent = 'Your receipt is on its way to your email.'; return; }}
+  for (let i = 0; i < 20; i++) {{
+    let o = null;
+    try {{ o = await (await fetch(PAY + '/api/order?session_id=' + encodeURIComponent(id))).json(); }} catch (e) {{}}
+    if (o && o.status === 'paid') {{
+      h.textContent = 'Thank you.'; p.textContent = (o.product || 'Your order') + ' is ready.';
+      if (o.download) btn(o.download, 'Download');
+      if (o.license) {{ const k = document.createElement('code'); k.className = 'key'; k.textContent = o.license; a.appendChild(k); }}
+      return;
+    }}
+    if (o && o.mode === 'subscription' && ['active', 'trialing'].includes(o.status)) {{ h.textContent = 'Welcome.'; p.textContent = (o.product || 'Your plan') + ' is active.'; return; }}
+    if (o && o.status === 'pending') p.textContent = 'Waiting for your payment to confirm (Pix can take a moment)…';
+    await new Promise(r => setTimeout(r, 3000));
+  }}
+  p.textContent = 'Your payment is still processing. The download link will also be in your receipt reply — or reload this page in a minute.';
+}})();
+</script>
+</body>
+</html>
+'''
+open(os.path.join(ROOT, 'obrigado.html'), 'w').write(thanks)
+print('obrigado.html written', '(checkout live)' if PAY else '(checkout not configured)')

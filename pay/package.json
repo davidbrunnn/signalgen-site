@@ -1,0 +1,10 @@
+{
+  "name": "signalgen-pay",
+  "private": true,
+  "description": "Stripe backend for the SignalGen Sounds store: Checkout Sessions, webhook fulfillment, downloads, customer portal.",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "stripe": "^22.6.0"
+  }
+}
