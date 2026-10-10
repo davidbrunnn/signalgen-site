@@ -1,0 +1,484 @@
+{
+ "products": [
+  {
+   "id": "speech-vocals-volume-i",
+   "title": "Speech Vocals Volume I",
+   "cover": "speech-vocals-volume-i/cover.jpg",
+   "count": 32,
+   "minutes": 10.3,
+   "zipMb": 120,
+   "format": "24-bit WAV · 48 kHz",
+   "folders": [
+    "01 Hype MC",
+    "02 Spoken Word",
+    "03 Hypnotic",
+    "04 Chant Hooks"
+   ],
+   "blurb": [
+    "32 spoken vocals, dry, ready to drop over House, Tech House, Techno and Melodic.",
+    "Two male voices — **Knox** and **Orion** — across four moods:",
+    "Format: 24-bit WAV · 48 kHz · stereo · dry (no reverb/delay) · trimmed, peak −1 dBFS."
+   ],
+   "items": [
+    {
+     "name": "SVV1 Hype MC - Bring It Back (Knox)",
+     "folder": "01 Hype MC",
+     "dur": 17.2,
+     "preview": "p/01.mp3"
+    },
+    {
+     "name": "SVV1 Hype MC - Can You Feel It (Knox)",
+     "folder": "01 Hype MC",
+     "dur": 19.7,
+     "preview": "p/02.mp3"
+    },
+    {
+     "name": "SVV1 Hype MC - Everybody Say Ohhh (Knox)",
+     "folder": "01 Hype MC",
+     "dur": 13.8,
+     "preview": "p/03.mp3"
+    },
+    {
+     "name": "SVV1 Hype MC - Live From The Basement (Knox)",
+     "folder": "01 Hype MC",
+     "dur": 27.9,
+     "preview": "p/04.mp3"
+    },
+    {
+     "name": "SVV1 Hype MC - Live From The Basement (Orion)",
+     "folder": "01 Hype MC",
+     "dur": 22.9,
+     "preview": "p/05.mp3"
+    },
+    {
+     "name": "SVV1 Hype MC - Not A Drill (Knox)",
+     "folder": "01 Hype MC",
+     "dur": 19.8,
+     "preview": "p/06.mp3"
+    },
+    {
+     "name": "SVV1 Hype MC - Not A Drill (Orion)",
+     "folder": "01 Hype MC",
+     "dur": 15.8,
+     "preview": "p/07.mp3"
+    },
+    {
+     "name": "SVV1 Hype MC - Quicker Now (Knox)",
+     "folder": "01 Hype MC",
+     "dur": 13.7,
+     "preview": "p/08.mp3"
+    },
+    {
+     "name": "SVV1 Hype MC - Take Me Higher (Knox)",
+     "folder": "01 Hype MC",
+     "dur": 25.3,
+     "preview": "p/09.mp3"
+    },
+    {
+     "name": "SVV1 Hype MC - Take Me Higher (Orion)",
+     "folder": "01 Hype MC",
+     "dur": 26.2,
+     "preview": "p/10.mp3"
+    },
+    {
+     "name": "SVV1 Spoken Word - Back In The Day (Knox)",
+     "folder": "02 Spoken Word",
+     "dur": 16.9,
+     "preview": "p/11.mp3"
+    },
+    {
+     "name": "SVV1 Spoken Word - Night Feels Heavy (Knox)",
+     "folder": "02 Spoken Word",
+     "dur": 16.8,
+     "preview": "p/12.mp3"
+    },
+    {
+     "name": "SVV1 Spoken Word - Nineteen And Broke (Knox)",
+     "folder": "02 Spoken Word",
+     "dur": 17.8,
+     "preview": "p/13.mp3"
+    },
+    {
+     "name": "SVV1 Spoken Word - Summer On The Coast (Knox)",
+     "folder": "02 Spoken Word",
+     "dur": 20.0,
+     "preview": "p/14.mp3"
+    },
+    {
+     "name": "SVV1 Spoken Word - Summer On The Coast (Orion)",
+     "folder": "02 Spoken Word",
+     "dur": 11.6,
+     "preview": "p/15.mp3"
+    },
+    {
+     "name": "SVV1 Spoken Word - The City Hums (Knox)",
+     "folder": "02 Spoken Word",
+     "dur": 23.6,
+     "preview": "p/16.mp3"
+    },
+    {
+     "name": "SVV1 Spoken Word - The City Hums (Orion)",
+     "folder": "02 Spoken Word",
+     "dur": 14.6,
+     "preview": "p/17.mp3"
+    },
+    {
+     "name": "SVV1 Spoken Word - The Six AM Train (Knox)",
+     "folder": "02 Spoken Word",
+     "dur": 16.1,
+     "preview": "p/18.mp3"
+    },
+    {
+     "name": "SVV1 Spoken Word - You Made It (Knox)",
+     "folder": "02 Spoken Word",
+     "dur": 16.4,
+     "preview": "p/19.mp3"
+    },
+    {
+     "name": "SVV1 Hypnotic - Come Closer (Knox)",
+     "folder": "03 Hypnotic",
+     "dur": 34.4,
+     "preview": "p/20.mp3"
+    },
+    {
+     "name": "SVV1 Hypnotic - Come Closer (Orion)",
+     "folder": "03 Hypnotic",
+     "dur": 16.5,
+     "preview": "p/21.mp3"
+    },
+    {
+     "name": "SVV1 Hypnotic - Deep Down In The Shadows (Knox)",
+     "folder": "03 Hypnotic",
+     "dur": 21.1,
+     "preview": "p/22.mp3"
+    },
+    {
+     "name": "SVV1 Hypnotic - Deep Down In The Shadows (Orion)",
+     "folder": "03 Hypnotic",
+     "dur": 14.1,
+     "preview": "p/23.mp3"
+    },
+    {
+     "name": "SVV1 Hypnotic - Feel The Rhythm (Knox)",
+     "folder": "03 Hypnotic",
+     "dur": 22.8,
+     "preview": "p/24.mp3"
+    },
+    {
+     "name": "SVV1 Hypnotic - Slow Down Breathe (Knox)",
+     "folder": "03 Hypnotic",
+     "dur": 22.4,
+     "preview": "p/25.mp3"
+    },
+    {
+     "name": "SVV1 Hypnotic - Slow Down Breathe (Orion)",
+     "folder": "03 Hypnotic",
+     "dur": 17.0,
+     "preview": "p/26.mp3"
+    },
+    {
+     "name": "SVV1 Chant Hooks - All Night Long (Knox)",
+     "folder": "04 Chant Hooks",
+     "dur": 18.5,
+     "preview": "p/27.mp3"
+    },
+    {
+     "name": "SVV1 Chant Hooks - All Night Long (Orion)",
+     "folder": "04 Chant Hooks",
+     "dur": 19.5,
+     "preview": "p/28.mp3"
+    },
+    {
+     "name": "SVV1 Chant Hooks - Concrete Jungle (Knox)",
+     "folder": "04 Chant Hooks",
+     "dur": 16.2,
+     "preview": "p/29.mp3"
+    },
+    {
+     "name": "SVV1 Chant Hooks - Dont Let Me Go (Knox)",
+     "folder": "04 Chant Hooks",
+     "dur": 21.8,
+     "preview": "p/30.mp3"
+    },
+    {
+     "name": "SVV1 Chant Hooks - Fade Into The Blue (Knox)",
+     "folder": "04 Chant Hooks",
+     "dur": 19.7,
+     "preview": "p/31.mp3"
+    },
+    {
+     "name": "SVV1 Chant Hooks - Shine On Me (Knox)",
+     "folder": "04 Chant Hooks",
+     "dur": 19.5,
+     "preview": "p/32.mp3"
+    }
+   ],
+   "price": 19,
+   "buy": ""
+  },
+  {
+   "id": "speech-vocals-volume-ii",
+   "title": "Speech Vocals Volume II",
+   "cover": "speech-vocals-volume-ii/cover.jpg",
+   "count": 40,
+   "minutes": 12.4,
+   "zipMb": 132,
+   "format": "24-bit WAV · 48 kHz",
+   "folders": [
+    "01 Hype MC",
+    "02 Spoken Word",
+    "03 Hypnotic",
+    "04 Chant Hooks"
+   ],
+   "blurb": [
+    "40 spoken vocals, dry, picked for House and Techno — the cleanest takes only.",
+    "Voices: Sloane (F, 14) · Luna (F, 13) · Vesper (F, 8) · Orion (M, 3) · Barrett (M, 2)",
+    "Format: 24-bit WAV · 48 kHz · stereo · dry (no reverb/delay) · trimmed, peak −1 dBFS."
+   ],
+   "items": [
+    {
+     "name": "SVV2 Hype MC - Everybody Say Ohhh (Luna)",
+     "folder": "01 Hype MC",
+     "dur": 19.0,
+     "preview": "p/01.mp3"
+    },
+    {
+     "name": "SVV2 Hype MC - Everybody Say Ohhh (Orion)",
+     "folder": "01 Hype MC",
+     "dur": 18.2,
+     "preview": "p/02.mp3"
+    },
+    {
+     "name": "SVV2 Hype MC - Everybody Say Ohhh (Sloane)",
+     "folder": "01 Hype MC",
+     "dur": 15.3,
+     "preview": "p/03.mp3"
+    },
+    {
+     "name": "SVV2 Hype MC - Not A Drill (Luna)",
+     "folder": "01 Hype MC",
+     "dur": 21.1,
+     "preview": "p/04.mp3"
+    },
+    {
+     "name": "SVV2 Hype MC - Quicker Now (Orion)",
+     "folder": "01 Hype MC",
+     "dur": 11.7,
+     "preview": "p/05.mp3"
+    },
+    {
+     "name": "SVV2 Hype MC - Quicker Now (Sloane)",
+     "folder": "01 Hype MC",
+     "dur": 16.2,
+     "preview": "p/06.mp3"
+    },
+    {
+     "name": "SVV2 Hype MC - Quicker Now (Vesper)",
+     "folder": "01 Hype MC",
+     "dur": 10.7,
+     "preview": "p/07.mp3"
+    },
+    {
+     "name": "SVV2 Hype MC - Take Me Higher (Luna)",
+     "folder": "01 Hype MC",
+     "dur": 20.1,
+     "preview": "p/08.mp3"
+    },
+    {
+     "name": "SVV2 Hype MC - Take Me Higher (Sloane)",
+     "folder": "01 Hype MC",
+     "dur": 18.5,
+     "preview": "p/09.mp3"
+    },
+    {
+     "name": "SVV2 Spoken Word - Back In The Day (Luna)",
+     "folder": "02 Spoken Word",
+     "dur": 15.7,
+     "preview": "p/10.mp3"
+    },
+    {
+     "name": "SVV2 Spoken Word - Back In The Day (Sloane)",
+     "folder": "02 Spoken Word",
+     "dur": 11.5,
+     "preview": "p/11.mp3"
+    },
+    {
+     "name": "SVV2 Spoken Word - Night Feels Heavy (Luna)",
+     "folder": "02 Spoken Word",
+     "dur": 15.0,
+     "preview": "p/12.mp3"
+    },
+    {
+     "name": "SVV2 Spoken Word - Night Feels Heavy (Sloane)",
+     "folder": "02 Spoken Word",
+     "dur": 17.8,
+     "preview": "p/13.mp3"
+    },
+    {
+     "name": "SVV2 Spoken Word - Night Feels Heavy (Vesper)",
+     "folder": "02 Spoken Word",
+     "dur": 13.5,
+     "preview": "p/14.mp3"
+    },
+    {
+     "name": "SVV2 Spoken Word - The City Hums (Barrett)",
+     "folder": "02 Spoken Word",
+     "dur": 19.2,
+     "preview": "p/15.mp3"
+    },
+    {
+     "name": "SVV2 Spoken Word - The City Hums (Luna)",
+     "folder": "02 Spoken Word",
+     "dur": 24.4,
+     "preview": "p/16.mp3"
+    },
+    {
+     "name": "SVV2 Spoken Word - The City Hums (Sloane)",
+     "folder": "02 Spoken Word",
+     "dur": 20.2,
+     "preview": "p/17.mp3"
+    },
+    {
+     "name": "SVV2 Spoken Word - You Made It (Luna)",
+     "folder": "02 Spoken Word",
+     "dur": 18.0,
+     "preview": "p/18.mp3"
+    },
+    {
+     "name": "SVV2 Spoken Word - You Made It (Sloane)",
+     "folder": "02 Spoken Word",
+     "dur": 19.3,
+     "preview": "p/19.mp3"
+    },
+    {
+     "name": "SVV2 Hypnotic - Come Closer (Luna)",
+     "folder": "03 Hypnotic",
+     "dur": 19.1,
+     "preview": "p/20.mp3"
+    },
+    {
+     "name": "SVV2 Hypnotic - Come Closer (Sloane)",
+     "folder": "03 Hypnotic",
+     "dur": 22.4,
+     "preview": "p/21.mp3"
+    },
+    {
+     "name": "SVV2 Hypnotic - Come Closer (Vesper)",
+     "folder": "03 Hypnotic",
+     "dur": 20.3,
+     "preview": "p/22.mp3"
+    },
+    {
+     "name": "SVV2 Hypnotic - Deep Down In The Shadows (Luna)",
+     "folder": "03 Hypnotic",
+     "dur": 21.3,
+     "preview": "p/23.mp3"
+    },
+    {
+     "name": "SVV2 Hypnotic - Deep Down In The Shadows (Vesper)",
+     "folder": "03 Hypnotic",
+     "dur": 17.8,
+     "preview": "p/24.mp3"
+    },
+    {
+     "name": "SVV2 Hypnotic - Feel The Rhythm (Sloane)",
+     "folder": "03 Hypnotic",
+     "dur": 23.6,
+     "preview": "p/25.mp3"
+    },
+    {
+     "name": "SVV2 Hypnotic - Feel The Rhythm (Vesper)",
+     "folder": "03 Hypnotic",
+     "dur": 17.8,
+     "preview": "p/26.mp3"
+    },
+    {
+     "name": "SVV2 Hypnotic - Slow Down Breathe (Luna)",
+     "folder": "03 Hypnotic",
+     "dur": 20.9,
+     "preview": "p/27.mp3"
+    },
+    {
+     "name": "SVV2 Hypnotic - Slow Down Breathe (Sloane)",
+     "folder": "03 Hypnotic",
+     "dur": 22.5,
+     "preview": "p/28.mp3"
+    },
+    {
+     "name": "SVV2 Hypnotic - Slow Down Breathe (Vesper)",
+     "folder": "03 Hypnotic",
+     "dur": 20.7,
+     "preview": "p/29.mp3"
+    },
+    {
+     "name": "SVV2 Chant Hooks - All Night Long (Barrett)",
+     "folder": "04 Chant Hooks",
+     "dur": 20.7,
+     "preview": "p/30.mp3"
+    },
+    {
+     "name": "SVV2 Chant Hooks - All Night Long (Luna)",
+     "folder": "04 Chant Hooks",
+     "dur": 23.0,
+     "preview": "p/31.mp3"
+    },
+    {
+     "name": "SVV2 Chant Hooks - All Night Long (Sloane)",
+     "folder": "04 Chant Hooks",
+     "dur": 23.3,
+     "preview": "p/32.mp3"
+    },
+    {
+     "name": "SVV2 Chant Hooks - Concrete Jungle (Luna)",
+     "folder": "04 Chant Hooks",
+     "dur": 16.1,
+     "preview": "p/33.mp3"
+    },
+    {
+     "name": "SVV2 Chant Hooks - Concrete Jungle (Sloane)",
+     "folder": "04 Chant Hooks",
+     "dur": 17.3,
+     "preview": "p/34.mp3"
+    },
+    {
+     "name": "SVV2 Chant Hooks - Concrete Jungle (Vesper)",
+     "folder": "04 Chant Hooks",
+     "dur": 16.9,
+     "preview": "p/35.mp3"
+    },
+    {
+     "name": "SVV2 Chant Hooks - Dont Let Me Go (Orion)",
+     "folder": "04 Chant Hooks",
+     "dur": 13.3,
+     "preview": "p/36.mp3"
+    },
+    {
+     "name": "SVV2 Chant Hooks - Fade Into The Blue (Luna)",
+     "folder": "04 Chant Hooks",
+     "dur": 17.3,
+     "preview": "p/37.mp3"
+    },
+    {
+     "name": "SVV2 Chant Hooks - Fade Into The Blue (Sloane)",
+     "folder": "04 Chant Hooks",
+     "dur": 29.8,
+     "preview": "p/38.mp3"
+    },
+    {
+     "name": "SVV2 Chant Hooks - Fade Into The Blue (Vesper)",
+     "folder": "04 Chant Hooks",
+     "dur": 21.0,
+     "preview": "p/39.mp3"
+    },
+    {
+     "name": "SVV2 Chant Hooks - Shine On Me (Sloane)",
+     "folder": "04 Chant Hooks",
+     "dur": 13.2,
+     "preview": "p/40.mp3"
+    }
+   ],
+   "price": 19,
+   "buy": ""
+  }
+ ]
+}
