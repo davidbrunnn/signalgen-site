@@ -61,7 +61,7 @@ export default function Create() {
         onDragOver={(e) => e.preventDefault()} onDrop={(e) => { e.preventDefault(); const f = e.dataTransfer.files[0]; if (f) setFile(f); }}>
         <input ref={inp} type="file" accept=".wav,.mp3,.aif,.aiff,.m4a,.flac,audio/*" hidden onChange={(e) => setFile(e.target.files?.[0] || null)} />
         <div className="big">{file ? file.name : 'Reference track (optional)'}</div>
-        <div className="small">{file ? 'click to change' : 'The engine reads its groove, energy and mix — never its melody.'}</div>
+        <div className="small">{file ? 'click to change' : 'The engine takes its tempo and key — never its melody.'}</div>
       </div>
       <div className="ctas" style={{ margin: '34px 0 0' }}>
         <button className="btn" disabled={!ready || !!busy} onClick={go}>{busy || 'New songstarter'}</button>
