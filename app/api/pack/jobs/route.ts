@@ -1,4 +1,4 @@
-// the Mac worker (Bearer PUBLISH_TOKEN): GET = paid/working jobs · POST {id, status, url?, size?, note?} = progress
+// the Mac worker (Bearer PUBLISH_TOKEN): GET [?kind=pack|starter|all] = paid/working jobs · POST {id, status, url?, size?, note?} = progress
 import { NextResponse } from 'next/server';
 import { listJobs, readJob, writeJob } from '@/lib/pack';
 
@@ -12,7 +12,8 @@ function authed(req: Request) {
 
 export async function GET(req: Request) {
   if (!authed(req)) return NextResponse.json({ error: 'unauthorized' }, { status: 401 });
-  const all = (await listJobs()).filter((j) => j.status === 'paid' || j.status === 'working');
+  const kind = new URL(req.url).searchParams.get('kind') || 'pack';          // the old pack worker never sees songstarters
+  const all = (await listJobs()).filter((j) => (j.status === 'paid' || j.status === 'working') && (kind === 'all' || (j.kind || 'pack') === kind));
   return NextResponse.json({ jobs: all });
 }
 

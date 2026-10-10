@@ -236,3 +236,29 @@ h1, h2, h3 { font-weight: 700; margin: 0; letter-spacing: -0.03em; }
   .btn { width: 100%; }
   .btn-sm { width: auto; }
 }
+
+/* /create — songstarter request (license + choices + optional reference) */
+.hero h1 em { font-style: normal; color: var(--sky); }
+.muted { color: var(--dim); }
+.sky { color: var(--sky); }
+.err { color: #ff8a8a; }
+.form { border-radius: 21px; padding: var(--s34); margin-bottom: var(--s89); display: grid; gap: var(--s21); }
+.form label { display: grid; gap: var(--s8); font-size: var(--f13); font-weight: 700; color: var(--dim); letter-spacing: .02em; }
+.form input, .form select { min-height: 55px; padding: 0 var(--s21); border-radius: 13px; border: 1px solid var(--sky-14); background: var(--panel); font-weight: 700; font-size: 17px; }
+.form input:focus, .form select:focus { border-color: var(--sky-40); outline: none; }
+.f2 { display: grid; grid-template-columns: 1fr 2fr; gap: var(--s21); }
+.f4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s21); }
+@media (max-width: 760px) { .f2, .f4 { grid-template-columns: 1fr; } .form { padding: var(--s21); } }
+.drop { border: 1px dashed var(--sky-40); border-radius: 13px; padding: var(--s34); cursor: pointer; text-align: center; }
+.drop.has { border-style: solid; background: var(--sky-08); }
+.drop .big { font-weight: 700; font-size: var(--f21); }
+.drop .small { color: var(--dim); font-size: var(--f13); margin-top: var(--s8); }
+.jobs { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--sky-08); }
+.jobs a { display: flex; justify-content: space-between; gap: var(--s21); padding: var(--s13) 0; border-bottom: 1px solid var(--sky-08); }
+.statusline { display: flex; align-items: center; gap: var(--s13); font-size: var(--f21); }
+.dot { width: 13px; height: 13px; border-radius: 50%; background: var(--dim); flex: none; }
+.dot.working, .dot.paid { background: var(--sky); animation: pulse 1.6s ease-in-out infinite; }
+.dot.done { background: var(--sky); }
+.dot.error { background: #ff8a8a; }
+@keyframes pulse { 50% { opacity: .35; } }
+@media (prefers-reduced-motion: reduce) { .dot.working, .dot.paid { animation: none; } }

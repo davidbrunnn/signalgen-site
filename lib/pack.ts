@@ -14,7 +14,20 @@ export type PackJob = {
   size?: number;
   note?: string;           // progress / error text from the Mac
   session?: string;        // stripe session id
+  // SONGSTARTER (kind=starter): a licensed customer asks the studio engine for a new set
+  kind?: 'pack' | 'starter';
+  serial?: number;         // the license serial (the quota counts by it)
+  genre?: string; key?: string; mood?: string;
+  platform?: 'windows' | 'mac';   // windows: every synth goes as audio + MIDI (the set opens with no third-party plugin)
 };
+
+export const STARTER_QUOTA = Number(process.env.STARTER_QUOTA || 10);   // songstarters per license per calendar month
+
+/** how many songstarters this license already asked for this month (any status but error) */
+export async function starterCount(serial: number): Promise<number> {
+  const m = new Date().toISOString().slice(0, 7);
+  return (await listJobs()).filter((j) => j.kind === 'starter' && j.serial === serial && j.status !== 'error' && j.created.slice(0, 7) === m).length;
+}
 
 export const PACK_PRICE_USD = Number(process.env.PACK_PRICE_USD || 19);
 const KEY = (id: string) => `pack/jobs/${id}.json`;
