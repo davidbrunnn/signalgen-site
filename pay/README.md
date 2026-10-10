@@ -58,3 +58,11 @@ The account is in Brazil, and Stripe Tax isn't available for Brazilian accounts 
 collected**. Managed Payments (Stripe as merchant of record) also requires a business in the US/CA/EU/UK/CH/NO/AU/JP/SG/HK.
 Tax obligations on international digital sales (and Brazilian NF-e) need your accountant. When it becomes available,
 it's `automatic_tax: { enabled: true }` in `api/checkout.js` after adding registrations.
+
+## The license by e-mail (risk "support at night", 10/10)
+
+`lib/mail.js`: when a `kind=license` product is fulfilled, the SGN1 key also goes to the buyer by e-mail (Resend), once
+(`license_mailed_at` on the PaymentIntent). If the e-mail fails the webhook answers 500 and Stripe retries; the key stays the
+same. Env: `RESEND_API_KEY`, `MAIL_FROM` (a verified sender of your domain), `MAIL_REPLY_TO`, `INSTALLER_URL` (the .pkg).
+Products: `metadata.license_product` = signalgen | refiner | strip | tempo | bundle, `metadata.license_edition` = founder | full.
+The Founders offer = Product "SignalGen Founders" with `kind=license`, `license_product=bundle`, `license_edition=founder`.

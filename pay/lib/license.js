@@ -4,7 +4,8 @@
 // The private seed only lives in the environment (LICENSE_SEED_HEX), never in the repo.
 import { createHash, createPrivateKey, sign as edSign } from 'node:crypto';
 
-const PRODUCTS = { signalgen: 1, mix: 2, sounds: 3, refiner: 4, monet: 5, ear: 6, bundle: 9 };
+const PRODUCTS = { signalgen: 1, mix: 2, sounds: 3, refiner: 4, monet: 5, ear: 6, strip: 7, tempo: 8, bundle: 9 };
+export const EDITIONS = { founder: 1, full: 2, nfr: 3, trial: 4 };
 const EPOCH = Date.UTC(2026, 0, 1);
 const SERIAL_BASE = 100000;
 
