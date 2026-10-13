@@ -1,6 +1,7 @@
 // Stripe webhook (production): checkout.session.completed → the order is recorded once and the exclusive track leaves the catalog.
 // If two buyers paid for the same exclusive track at the same moment, the second payment is refunded automatically.
 import { NextResponse } from 'next/server';
+import { siteUrl } from '@/lib/site';
 import Stripe from 'stripe';
 import { recordSale } from '@/lib/catalog';
 import { writeJob } from '@/lib/pack';
@@ -26,7 +27,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ ok: true });
     }
     if (s.metadata?.kind === 'ghost' && s.metadata.ghostId && s.payment_status === 'paid') {      // ghost production on demand: e-mail + the order page starts
-      await markPaid(s.metadata.ghostId, { session: s.id, amount: (s.amount_total || 0) / 100, test: !s.livemode, site: process.env.SITE_URL || new URL(req.url).origin });
+      await markPaid(s.metadata.ghostId, { session: s.id, amount: (s.amount_total || 0) / 100, test: !s.livemode, site: siteUrl(new URL(req.url).origin) });
       return NextResponse.json({ ok: true });
     }
     const trackId = s.metadata?.trackId;

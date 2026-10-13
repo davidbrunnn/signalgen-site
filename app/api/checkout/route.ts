@@ -1,6 +1,7 @@
 // Step 2 of the sale: the buyer clicks "Buy exclusive license". With Stripe keys → Stripe Checkout; without (local mode) → the
 // local test checkout at /checkout/local, which walks the same flow without charging anything.
 import { NextResponse } from 'next/server';
+import { siteUrl } from '@/lib/site';
 import Stripe from 'stripe';
 import { readCatalog, priceOf, isSold, LOCAL, SELL_TRACKS, hrefOf, approved, founderLeft, sgTier } from '@/lib/catalog';
 import { priceFor, countryOfRequest, minorUnits } from '@/lib/region';
@@ -24,7 +25,7 @@ export async function POST(req: Request) {
   }
   const price = priceOf(t);
   const stripe = new Stripe(key);
-  const site = process.env.SITE_URL || new URL(req.url).origin;
+  const site = siteUrl(new URL(req.url).origin);
   let session: Stripe.Checkout.Session;
   try {
   session = await stripe.checkout.sessions.create({

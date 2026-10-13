@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { siteUrl } from '@/lib/site';
 import type { Metadata } from 'next';
 import Stripe from 'stripe';
 import { readGhost, tokenOk, markPaid, publicView, GHOST_PRICE_USD } from '@/lib/ghost';
@@ -9,7 +10,7 @@ import { headers } from 'next/headers';
 export const dynamic = 'force-dynamic';
 export function generateMetadata({ searchParams }: { searchParams: { lang?: string } }): Metadata { return { title: t(getLang(searchParams)).order.metaTitle, robots: { index: false } }; }
 
-const origin = () => { const h = headers(); return process.env.SITE_URL || `${h.get('x-forwarded-proto') || 'http'}://${h.get('host')}`; };
+const origin = () => { const h = headers(); return siteUrl() || `${h.get('x-forwarded-proto') || 'http'}://${h.get('host')}`; };
 
 // The buyer's page: the stages the producer moves, and the chat. The link (with ?k=) is in the confirmation e-mail.
 export default async function Order({ params, searchParams }: { params: { id: string }; searchParams: { k?: string; s?: string; lang?: string } }) {

@@ -1,6 +1,7 @@
 // The order thread. GET: the buyer (?id&k) or the producer (admin key) reads stage + messages. POST: one message (and, for the
 // producer, the stage). The buyer page polls this every few seconds; nothing here exposes another order or the producer's e-mail.
 import { NextResponse } from 'next/server';
+import { siteUrl } from '@/lib/site';
 import { cookies } from 'next/headers';
 import { readGhost, tokenOk, adminOk, post, publicView } from '@/lib/ghost';
 
@@ -20,7 +21,7 @@ export async function POST(req: Request) {
   const b = await req.json().catch(() => ({}));
   const o = await readGhost(String(b?.id || ''));
   if (!o) return NextResponse.json({ error: 'not found' }, { status: 404 });
-  const site = process.env.SITE_URL || new URL(req.url).origin;
+  const site = siteUrl(new URL(req.url).origin);
   if (b?.as === 'producer') {
     if (!admin(req)) return NextResponse.json({ error: 'unauthorized' }, { status: 401 });
     const stage = Number.isInteger(b?.stage) ? b.stage : undefined;

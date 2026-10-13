@@ -1,5 +1,6 @@
 // Ghost production on demand · step 1: the brief becomes a pending order, then the buyer goes to pay (Stripe, or the local test checkout).
 import { NextResponse } from 'next/server';
+import { siteUrl } from '@/lib/site';
 import Stripe from 'stripe';
 import { LOCAL } from '@/lib/catalog';
 import { newGhost, writeGhost, orderUrl, GHOST_PRICE_USD } from '@/lib/ghost';
@@ -13,7 +14,7 @@ export async function POST(req: Request) {
   const L = t(lang);
   const o = newGhost(body?.brief || {}, lang);
   if (typeof o === 'string') return NextResponse.json({ error: o === 'email' ? L.form.emailHint : L.form.err }, { status: 400 });
-  const site = process.env.SITE_URL || new URL(req.url).origin;
+  const site = siteUrl(new URL(req.url).origin);
   const key = process.env.STRIPE_SECRET_KEY;
   if (!key) {
     if (!LOCAL) return NextResponse.json({ error: L.form.err }, { status: 500 });

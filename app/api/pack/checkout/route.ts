@@ -1,5 +1,6 @@
 // the song is already in Blob; this creates the job id and the Stripe session (metadata.kind = pack)
 import { NextResponse } from 'next/server';
+import { siteUrl } from '@/lib/site';
 import Stripe from 'stripe';
 import { PACK_PRICE_USD, packId } from '@/lib/pack';
 
@@ -13,7 +14,7 @@ export async function POST(req: Request) {
   const name = String(filename || 'song').replace(/\.[a-z0-9]+$/i, '').slice(0, 80) || 'song';
   const id = packId();
   const stripe = new Stripe(key);
-  const site = process.env.SITE_URL || new URL(req.url).origin;
+  const site = siteUrl(new URL(req.url).origin);
   const session = await stripe.checkout.sessions.create({
     mode: 'payment',
     line_items: [{
