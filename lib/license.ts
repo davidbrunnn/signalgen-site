@@ -53,5 +53,6 @@ export async function issueKey(email: string, product: keyof typeof PRODUCTS = '
 
 export async function nextSerial() {
   const orders = await readOrders();
-  return SERIAL_BASE + orders.filter((o) => o.serial).length + 1;
+  // online the listing carries no order body, so every order counts (serials only need to be unique and growing)
+  return SERIAL_BASE + (LOCAL ? orders.filter((o) => o.serial).length : orders.length) + 1;
 }

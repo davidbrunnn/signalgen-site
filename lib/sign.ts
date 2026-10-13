@@ -1,7 +1,8 @@
 // signed download tokens: HMAC-SHA256 over "trackId|version|exp"; valid 7 days after purchase
 import { createHmac, timingSafeEqual } from 'crypto';
+import { secretFor } from '@/lib/secret';
 
-const secret = () => process.env.DOWNLOAD_SECRET || 'dev-secret-change-me';
+const secret = () => secretFor('download');
 
 export function sign(trackId: string, version: string, days = 7) {
   const exp = Math.floor(Date.now() / 1000) + days * 86400;

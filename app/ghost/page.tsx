@@ -19,7 +19,7 @@ export default function Ghost({ searchParams }: { searchParams: { lang?: string 
   // every 8 s (scripts/ghost_preview.py) so a preview can't be lifted and passed off as a finished track
   const refs = [
     { id: 'ghost-ref-pull-me-close', title: 'Pull Me Close (Extended Mix)', artist: 'Davin', preview: '/media/ghost/pull-me-close-extended.m4a?v=2' },
-    { id: 'ghost-ref-vip', title: 'VIP · Hit the Bass (Extended Mix)', artist: 'DAVN', preview: '/media/ghost/vip-extended.m4a?v=2' },
+    { id: 'ghost-ref-vip', title: 'VIP · Hit the Bass (Extended Mix)', artist: 'Davin', preview: '/media/ghost/vip-extended.m4a?v=2' },
     { id: 'ghost-ref-leave-me-a-rave', title: 'Leave Me a Rave (Extended Mix)', artist: 'Davin', preview: '/media/ghost/leave-me-a-rave-extended.m4a?v=2' },
   ];
   return (

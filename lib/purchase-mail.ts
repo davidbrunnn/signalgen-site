@@ -24,7 +24,7 @@ export async function purchaseMail(t: Track, o: Order) {
   const { html, text } = layout({
     title: soft ? (free ? `${name}: sua chave` : `${name}: chave e instalador`) : `${name}: seus arquivos`,
     lines, button: soft ? 'Baixar o instalador' : 'Baixar os arquivos', url,
-    foot: 'Dúvidas? É só responder este e-mail. Guarde esta mensagem: ela é o seu comprovante de licença.',
+    foot: 'Tudo fica guardado na sua conta: entre em signalgen-site.vercel.app/entrar com este e-mail para baixar de novo. Dúvidas? É só responder este e-mail.',
   });
   return sendMail({ to: o.email!, subject: soft ? `${name} · sua chave de licença` : `${name} · seus arquivos`, html, text });
 }

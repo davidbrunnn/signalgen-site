@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import type { Metadata } from 'next';
-import { readCatalog, priceOf, isSound, hrefOf } from '@/lib/catalog';
+import { readCatalog, priceOf, isSound, hrefOf, forSale } from '@/lib/catalog';
 import { country, priceFor } from '@/lib/region';
 import type { Track } from '@/lib/catalog';
 import { toP } from '@/lib/view';
@@ -85,7 +85,8 @@ export default async function ProductPage({ params }: { params: { id: string } }
               {t.kind === 'preset' || t.kind === 'bundle' || c.presets ? <li>Serum 2 presets need Xfer Serum 2 (2.1.5+); the WAV loops work in any DAW</li> : <li>Works in any DAW</li>}
               <li>License certificate in your name</li>
             </ul>
-            <BuyButton id={t.id} price={price} label={`Buy ${t.kind === 'bundle' ? 'the bundle' : t.kind === 'preset' ? 'the presets' : 'the pack'} · ${money.display}`} />
+            {forSale(t) ? <BuyButton id={t.id} price={price} label={`Buy ${t.kind === 'bundle' ? 'the bundle' : t.kind === 'preset' ? 'the presets' : 'the pack'} · ${money.display}`} />
+              : <span className="btn soon" aria-disabled="true">Em breve · Coming soon</span>}
             {bundle && t.kind !== 'bundle' ? <p className="fine"><Link href={`/p/${bundle.id}`} style={{ textDecoration: 'underline' }}>Get both editions for {bundleDisplay}</Link> — the samples and the Serum 2 patches that play them.</p> : null}
             <p className="fine">Secure checkout by Stripe. By buying you accept the <Link href="/license" style={{ textDecoration: 'underline' }}>license terms</Link>.</p>
           </div>

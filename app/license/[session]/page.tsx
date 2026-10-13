@@ -2,11 +2,12 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { readCatalog, fmtDur } from '@/lib/catalog';
 import { paidSession, licenseNo } from '@/lib/session';
+import { fmt } from '@/lib/region';
 import { TERMS, KIT_TERMS, SOFTWARE_TERMS } from '../terms';
 import PrintButton from './PrintButton';
 
 export const dynamic = 'force-dynamic';
-export const metadata = { title: 'License certificate · Signal Studio' };
+export const metadata = { title: 'License certificate · SignalGen' };
 
 export default async function Certificate({ params }: { params: { session: string } }) {
   const p = await paidSession(params.session);
@@ -33,7 +34,7 @@ export default async function Certificate({ params }: { params: { session: strin
           {soft ? <><dt>Product</dt><dd>{t.title} — {t.subtitle}</dd><dt>License key</dt><dd style={{ fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 13, wordBreak: 'break-all' }}>{p.key || '—'}</dd></>
             : kit ? <><dt>Product</dt><dd>{t.title} — {t.subtitle || t.contents}</dd></>
             : <><dt>Original artist</dt><dd>{t.artist}</dd><dt>Recording</dt><dd>{t.title} — Extended Mix ({fmtDur(t.duration)}) and Radio Edit, {t.bpm} BPM, {t.key}, {t.genre}</dd></>}
-          <dt>Fee paid</dt><dd>US$ {p.amount}</dd>
+          <dt>Fee paid</dt><dd>{fmt(p.amount, p.currency || 'USD')}</dd>
           <dt>Reference</dt><dd style={{ fontWeight: 400, fontSize: 13, wordBreak: 'break-all' }}>{p.session}</dd>
         </dl>
         <ol>{terms.map((x) => <li key={x}>{x}</li>)}</ol>

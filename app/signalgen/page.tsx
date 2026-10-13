@@ -12,8 +12,8 @@ export function generateMetadata({ searchParams }: { searchParams: { lang?: stri
   return { title: L.sg.metaTitle, description: L.sg.metaDesc };
 }
 
-// SIGNALGEN (10/10/2026): everything it does and everything that comes with it — UI 2 screens, the Monet synth (free inside), the
-// unlimited stem splitter (Demucs, set up by the installer). Founder price for the first 100 licenses, then
+// SIGNALGEN (10/10/2026): everything it does — UI 2 screens, the unlimited stem splitter (Demucs, set up by the installer).
+// 13/10/2026 (David): no bundle — the only plugin that goes with the SignalGen is the Monet. "Em breve" until released. Founder price for the first 100 licenses, then
 // lifetime — R$ 199 / R$ 299 in Brazil, US$ 49 / US$ 74 abroad, the Brazilian price in local currency in Latin America (lib/region).
 export default async function SignalGenPage({ searchParams }: { searchParams: { lang?: string } }) {
   const lang = getLang(searchParams), L = t(lang), S = L.sg;

@@ -10,9 +10,10 @@ import { sendMail, layout } from '@/lib/mail';
 import { t, type Lang } from '@/lib/i18n';
 
 export const GHOST_PRICE_USD = 150;                       // legado (pedidos antigos)
-// 13/10/2026 (David): ghost production a R$ 599, cobrado em reais (o Stripe converte para cartões de fora)
-export const GHOST_PRICE_BRL = Number(process.env.GHOST_PRICE_BRL || 599);
-export const GHOST_LABEL = `R$ ${GHOST_PRICE_BRL}`;
+// 13/10/2026 (David): ghost production a R$ 1.200, cobrado em reais (o Stripe converte para cartões de fora).
+// GHOST_PRICE (não mais GHOST_PRICE_BRL: um valor antigo na Vercel seguraria os R$ 599).
+export const GHOST_PRICE_BRL = Number(process.env.GHOST_PRICE || 1200);
+export const GHOST_LABEL = `R$ ${GHOST_PRICE_BRL.toLocaleString('pt-BR')}`;
 /** where new orders and buyer messages arrive (David, 10/10/2026); GHOST_PRODUCER_EMAIL overrides */
 export const PRODUCER_EMAIL = process.env.GHOST_PRODUCER_EMAIL || 'brundavin@pm.me';
 export const STAGES = 7;                       // 0 order received · 1 brief · 2 sketch · 3 arrangement · 4 mix · 5 master · 6 delivered

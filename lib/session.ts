@@ -2,18 +2,18 @@
 import Stripe from 'stripe';
 import { readOrder, recordSale, LOCAL } from '@/lib/catalog';
 
-export type Paid = { paid: boolean; trackId: string; email: string; amount: number; when: string; session: string; refunded?: boolean; test?: boolean; key?: string; serial?: number; mailed?: boolean };
+export type Paid = { paid: boolean; trackId: string; email: string; amount: number; currency?: string; when: string; session: string; refunded?: boolean; test?: boolean; key?: string; serial?: number; mailed?: boolean };
 
 export async function paidSession(sid?: string): Promise<Paid | null> {
   if (!sid) return null;
   if (sid.startsWith('free_')) {                                   // Tempo (free, e-mail): the order is the whole record (13/10/2026)
     const o = await readOrder(sid);
-    return o ? { paid: true, trackId: o.trackId, email: o.email || '', amount: 0, when: o.when, session: sid, key: o.key, serial: o.serial, mailed: o.mailed } : null;
+    return o ? { paid: true, trackId: o.trackId, email: o.email || '', amount: 0, currency: o.currency, when: o.when, session: sid, key: o.key, serial: o.serial, mailed: o.mailed } : null;
   }
   if (sid.startsWith('local_')) {
     if (!LOCAL) return null;
     const o = await readOrder(sid);
-    return o ? { paid: true, trackId: o.trackId, email: o.email || '', amount: o.amount || 0, when: o.when, session: sid, test: true, key: o.key, serial: o.serial, mailed: o.mailed } : null;
+    return o ? { paid: true, trackId: o.trackId, email: o.email || '', amount: o.amount || 0, currency: o.currency, when: o.when, session: sid, test: true, key: o.key, serial: o.serial, mailed: o.mailed } : null;
   }
   const key = process.env.STRIPE_SECRET_KEY;
   if (!key) return null;
@@ -21,7 +21,7 @@ export async function paidSession(sid?: string): Promise<Paid | null> {
     const s = await new Stripe(key).checkout.sessions.retrieve(sid);
     const p: Paid = {
       paid: s.payment_status === 'paid', trackId: s.metadata?.trackId || '', email: s.customer_details?.email || '',
-      amount: (s.amount_total || 0) / 100, when: new Date(s.created * 1000).toISOString(), session: s.id, test: !s.livemode,
+      amount: (s.amount_total || 0) / (['clp', 'pyg'].includes(s.currency || '') ? 1 : 100), currency: (s.currency || 'usd').toUpperCase(), when: new Date(s.created * 1000).toISOString(), session: s.id, test: !s.livemode,
     };
     // local mode has no webhook: the thank-you page records the sale itself (idempotent)
     if (LOCAL && p.paid && p.trackId) {

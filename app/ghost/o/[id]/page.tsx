@@ -44,7 +44,7 @@ export default async function Order({ params, searchParams }: { params: { id: st
           L={{ stageNow: L.order.stageNow, chat: L.order.chat, placeholder: L.order.placeholder, send: L.order.send, sending: L.order.sending, you: L.order.you, producer: L.order.producer, system: L.order.system, brief: L.order.brief }}
           briefLabels={{ artist: F.artist, genre: F.genre, bpm: F.bpm, key: F.key, refs: F.refs, idea: F.idea, name: F.name, email: F.email }} />
       )}
-      <p className="muted small" style={{ marginTop: 'var(--s4)' }}>{L.order.keep} · {(o as any).currency === 'BRL' || !o.amount ? `R$ ${o.amount || GHOST_PRICE_BRL}` : `US$ ${o.amount}`}</p>
+      <p className="muted small" style={{ marginTop: 'var(--s4)' }}>{L.order.keep} · {(o as any).currency === 'BRL' || !o.amount ? `R$ ${(o.amount || GHOST_PRICE_BRL).toLocaleString('pt-BR')}` : `US$ ${o.amount}`}</p>
     </main>
   );
 }

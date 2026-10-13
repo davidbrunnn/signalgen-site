@@ -21,12 +21,9 @@ export const SG_PRICE = {
   USD: { founder: Number(process.env.FOUNDER_PRICE_USD || 49), lifetime: Number(process.env.LIFETIME_PRICE_USD || 74) },
 };
 
-/** MONET sold on its own (10/10/2026, David: "venda ele separado no marketplace por 30% do preço do Serum 2 verdadeiro"): Serum 2 is
- *  US$ 249 (Xfer Records), so US$ 74.70 abroad; in Brazil R$ 379 (30 % of Serum 2 in reais, rounded to a clean price), and the
- *  Brazilian price in local currency in Latin America, like the SignalGen. Free inside every SignalGen license. */
-export const SERUM2_USD = 249;
-export const MONET_PRICE = { BRL: Number(process.env.MONET_PRICE_BRL || 379), USD: Number(process.env.MONET_PRICE_USD || 74.7) };
-
+/** MONET on its own (13/10/2026, David): R$ 99 for the first 10 buyers (launch), then the regular price. Abroad the US$ figure;
+ *  in Latin America the Brazilian price in local currency. [launch, regular] */
+export const MONET_PRICE = { BRL: [99, Number(process.env.MONET_REGULAR_BRL || 379)], USD: [19.9, Number(process.env.MONET_REGULAR_USD || 74.7)] };
 export type Money = { amount: number; currency: string; display: string };
 
 export function countryFrom(get: (h: string) => string | null | undefined, cookie?: string | null): string {
@@ -76,20 +73,12 @@ export async function sgPrice(tier: 'founder' | 'lifetime', cc: string): Promise
   const a = SG_PRICE.USD[tier]; return { amount: a, currency: 'USD', display: fmt(a, 'USD') };
 }
 
-export async function monetPrice(cc: string): Promise<Money> {
-  if (cc === 'BR') return { amount: MONET_PRICE.BRL, currency: 'BRL', display: fmt(MONET_PRICE.BRL, 'BRL') };
-  const cur = LATAM[cc];
-  if (cur) {
-    const r = await rates(); const rate = r[cur] || FALLBACK[cur];
-    if (rate) { const a = nice(MONET_PRICE.BRL * rate); return { amount: a, currency: cur, display: fmt(a, cur) }; }
-  }
-  return { amount: MONET_PRICE.USD, currency: 'USD', display: fmt(MONET_PRICE.USD, 'USD') };
-}
+export const monetPrice = (cc: string, tier: 'founder' | 'lifetime' = 'founder') => { const i = tier === 'founder' ? 0 : 1; return localized(MONET_PRICE.BRL[i], MONET_PRICE.USD[i], cc); };
 
-/** The price of a software item in the visitor's currency: the SignalGen by tier, the Monet at 30 % of Serum 2. */
+/** The price of a software item in the visitor's currency, by tier (launch/founder or regular). */
 export async function softPrice(t: { licenseProduct?: string; sold?: number }, cc: string, tier: 'founder' | 'lifetime'): Promise<Money> {
-  if (t.licenseProduct === 'monet') return monetPrice(cc);
-  if (t.licenseProduct === 'refiner') return refinerPrice(cc);
+  if (t.licenseProduct === 'monet') return monetPrice(cc, tier);
+  if (t.licenseProduct === 'refiner') return refinerPrice(cc, tier);
   if (t.licenseProduct === 'ear') return FREE;                      // Tempo: free, in exchange for an e-mail (13/10/2026)
   return sgPrice(tier, cc);
 }
@@ -98,9 +87,10 @@ export async function softPrice(t: { licenseProduct?: string; sold?: number }, c
 export const minorUnits = (m: Money) => (ZERO_DECIMAL.has(m.currency) ? Math.round(m.amount) : Math.round(m.amount * 100));
 
 // ───── 13/10/2026 (David, plano de lançamento): a escada de preço ─────
-// Tempo grátis (e-mail) · packs e presets R$ 19,90 no Brasil (US$ do kit_loja fora) · Refiner R$ 49,90 / US$ 12,90 · SignalGen fundador
-// R$ 199 (Refiner + Monet + Tempo inclusos). Na América Latina, o preço brasileiro na moeda local, como o SignalGen.
-export const REFINER_PRICE = { BRL: Number(process.env.REFINER_PRICE_BRL || 49.9), USD: Number(process.env.REFINER_PRICE_USD || 12.9) };
+// Tempo grátis (e-mail) · Refiner R$ 49 → R$ 99 · Monet R$ 99 → regular · SignalGen (em breve) acompanha só o Monet.
+// Na América Latina, o preço brasileiro na moeda local.
+// 13/10/2026 (David): Refiner R$ 49 for the first 10 buyers (launch), R$ 99 after. [launch, regular]
+export const REFINER_PRICE = { BRL: [49, Number(process.env.REFINER_REGULAR_BRL || 99)], USD: [9.9, Number(process.env.REFINER_REGULAR_USD || 19.9)] };
 export const SOUND_PRICE_BRL = { pack: Number(process.env.SOUND_PRICE_BRL || 19.9), bundle: Number(process.env.SOUND_BUNDLE_PRICE_BRL || 29.9) };
 export const FREE: Money = { amount: 0, currency: 'BRL', display: '' };
 
@@ -114,7 +104,7 @@ export async function localized(brl: number, usd: number, cc: string): Promise<M
   }
   return { amount: usd, currency: 'USD', display: fmt(usd, 'USD') };
 }
-export const refinerPrice = (cc: string) => localized(REFINER_PRICE.BRL, REFINER_PRICE.USD, cc);
+export const refinerPrice = (cc: string, tier: 'founder' | 'lifetime' = 'founder') => { const i = tier === 'founder' ? 0 : 1; return localized(REFINER_PRICE.BRL[i], REFINER_PRICE.USD[i], cc); };
 
 /** Sample packs, Serum 2 presets and bundles: R$ 19,90 / R$ 29,90 in Brazil, that in local currency in Latin America, kit_loja's US$ elsewhere. */
 export async function soundPrice(t: { kind?: string; format?: string; price?: number; priceBrl?: number }, cc: string): Promise<Money> {

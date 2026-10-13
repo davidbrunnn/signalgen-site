@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { readCatalog, priceOf, isSold, LOCAL, hrefOf, sgTier } from '@/lib/catalog';
+import { readCatalog, priceOf, isSold, LOCAL, hrefOf, tierOf } from '@/lib/catalog';
 import { softPrice, country } from '@/lib/region';
 import LocalPay from './LocalPay';
 import { getLang } from '@/lib/i18n';
@@ -32,7 +32,7 @@ export default async function LocalCheckout({ searchParams }: { searchParams: { 
   if (!t) notFound();
   const X = TX[getLang() as keyof typeof TX] || TX.pt;
   const terms = t.kind === 'software' ? X.terms.software : t.kind === 'track' ? X.terms.track : X.terms.other;
-  const shown = t.kind === 'software' ? (await softPrice(t, country(), sgTier(t))).display : `$${priceOf(t)}`;
+  const shown = t.kind === 'software' ? (await softPrice(t, country(), await tierOf(t))).display : `$${priceOf(t)}`;
   return (
     <main className="wrap narrow">
       <h1>Checkout</h1>

@@ -11,8 +11,11 @@ function authed(req: Request) {
   return !!want && got === want;
 }
 
-export async function GET() {
-  return NextResponse.json(await readCatalog());
+// 13/10/2026: without the token the listing comes without `files` — those are the paid downloads (installers, zips, WAVs).
+export async function GET(req: Request) {
+  const cat = await readCatalog();
+  if (authed(req)) return NextResponse.json(cat);
+  return NextResponse.json({ ...cat, tracks: cat.tracks.map(({ files, ...t }) => ({ ...t, files: {} })) });
 }
 
 export async function POST(req: Request) {

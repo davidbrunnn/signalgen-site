@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { readCatalog, soonLabel } from '@/lib/catalog';
-import { country, sgPrice, refinerPrice } from '@/lib/region';
+import { readCatalog } from '@/lib/catalog';
+import { country, monetPrice, refinerPrice } from '@/lib/region';
+import { readCounters, offerFrom } from '@/lib/launch';
 import FreeForm from '@/components/FreeForm';
 import { getLang } from '@/lib/i18n';
 
@@ -15,7 +16,7 @@ const TX = {
     ph: 'seu@email.com', cta: 'Quero o Tempo grátis', err: 'Não deu. Confira o e-mail e tente de novo.', fine: 'Você recebe a chave na próxima página e por e-mail. Mandamos novidades da SignalGen de vez em quando; sai quando quiser.',
     trust: [['10 s', 'para o BPM e o tom'], ['Mix', 'ouve o canal ou a mix inteira'], ['R$ 0', 'vitalício, offline']],
     whatH: 'O que ele lê', what: [['BPM', 'Com desempate pelo tempo do set', 'Se o resultado for 4/3, 3/2 ou o dobro do BPM do set, o Tempo mostra a leitura que casa com a sua sessão.'], ['TOM', 'Tom e acordes', 'Perfis de tonalidade e progressão de acordes do trecho ouvido; publicado para os outros plugins da SignalGen.'], ['ARQUIVO', 'Solte um .wav ou .mp3', 'Lê o arquivo inteiro em vez do canal: bom para conferir uma referência antes de puxar para o set.']],
-    nextH: 'Quando quiser mais', nextP: 'O Tempo é a porta. Dentro da casa:', ref: 'Refiner · EQ de 24 bandas', sg: 'SignalGen · a faixa inteira, com tudo incluso',
+    nextH: 'Quando quiser mais', nextP: 'O Tempo é a porta. Dentro da casa:', ref: 'Refiner · EQ de 24 bandas', mo: 'Monet · sintetizador',
     trademark: 'Ableton e Live são marcas da Ableton AG. A SignalGen não é afiliada à Ableton.',
   },
   es: {
@@ -24,7 +25,7 @@ const TX = {
     ph: 'tu@email.com', cta: 'Quiero Tempo gratis', err: 'No funcionó. Revisa el e-mail e inténtalo de nuevo.', fine: 'Recibes la clave en la próxima página y por e-mail. Enviamos novedades de SignalGen de vez en cuando; te sales cuando quieras.',
     trust: [['10 s', 'para el BPM y el tono'], ['Mix', 'escucha el canal o toda la mix'], ['$ 0', 'de por vida, offline']],
     whatH: 'Qué lee', what: [['BPM', 'Con desempate por el tempo del set', 'Si el resultado es 4/3, 3/2 o el doble del BPM del set, Tempo muestra la lectura que encaja con tu sesión.'], ['TONO', 'Tono y acordes', 'Perfiles de tonalidad y progresión de acordes del fragmento escuchado.'], ['ARCHIVO', 'Suelta un .wav o .mp3', 'Lee el archivo entero en vez del canal.']],
-    nextH: 'Cuando quieras más', nextP: 'Tempo es la puerta. Dentro de la casa:', ref: 'Refiner · EQ de 24 bandas', sg: 'SignalGen · el tema entero, con todo incluido',
+    nextH: 'Cuando quieras más', nextP: 'Tempo es la puerta. Dentro de la casa:', ref: 'Refiner · EQ de 24 bandas', mo: 'Monet · sintetizador',
     trademark: 'Ableton y Live son marcas de Ableton AG. SignalGen no está afiliada a Ableton.',
   },
   en: {
@@ -33,7 +34,7 @@ const TX = {
     ph: 'you@email.com', cta: 'Get Tempo free', err: 'That didn’t work. Check the e-mail and try again.', fine: 'You get the key on the next page and by e-mail. We send SignalGen news now and then; leave whenever you like.',
     trust: [['10 s', 'to BPM and key'], ['Mix', 'listens to the channel or the whole mix'], ['$ 0', 'lifetime, offline']],
     whatH: 'What it reads', what: [['BPM', 'Tie-break by the set’s tempo', 'If the result is 4/3, 3/2 or twice the set’s BPM, Tempo shows the reading that fits your session.'], ['KEY', 'Key and chords', 'Key profiles and the chord progression of what it heard; published to the other SignalGen plugins.'], ['FILE', 'Drop a .wav or .mp3', 'Reads the whole file instead of the channel.']],
-    nextH: 'When you want more', nextP: 'Tempo is the door. Inside:', ref: 'Refiner · 24-band EQ', sg: 'SignalGen · the whole track, everything included',
+    nextH: 'When you want more', nextP: 'Tempo is the door. Inside:', ref: 'Refiner · 24-band EQ', mo: 'Monet · synthesizer',
     trademark: 'Ableton and Live are trademarks of Ableton AG. SignalGen is not affiliated with Ableton.',
   },
 };
@@ -48,8 +49,8 @@ export default async function TempoPage({ searchParams }: { searchParams: { lang
   const cat = await readCatalog();
   const it = cat.tracks.find((x) => x.id === 'tempo');
   const cc = country();
-  const [sgp, rp] = await Promise.all([sgPrice('founder', cc), refinerPrice(cc)]);
-  const SOON = soonLabel(getLang(searchParams));                       // 13/10/2026: o SignalGen esta em breve
+  const c = await readCounters();
+  const [rp, mp] = await Promise.all([refinerPrice(cc, offerFrom('refiner', c)?.tier || 'lifetime'), monetPrice(cc, offerFrom('monet', c)?.tier || 'lifetime')]);
   return (
     <main className="wrap">
       <section className="phero" aria-label="Tempo">
@@ -71,7 +72,7 @@ export default async function TempoPage({ searchParams }: { searchParams: { lang
         <header><h2>{X.nextH}</h2><p>{X.nextP}</p></header>
         <div className="act">
           <Link href="/refiner" className="btn quiet">{X.ref} · {rp.display}</Link>
-          <Link href="/signalgen" className="btn">{X.sg} · {SOON}</Link>
+          <Link href="/monet" className="btn quiet">{X.mo} · {mp.display}</Link>
         </div>
         <p className="muted small" style={{ marginTop: 'var(--s4)' }}>{X.trademark}</p>
       </section>
