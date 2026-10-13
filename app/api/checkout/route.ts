@@ -3,6 +3,8 @@
 import { NextResponse } from 'next/server';
 import { siteUrl } from '@/lib/site';
 import Stripe from 'stripe';
+import { randomBytes } from 'crypto';
+import { put } from '@vercel/blob';
 import { readCatalog, priceOf, isSold, LOCAL, SELL_TRACKS, hrefOf, approved, founderLeft, sgTier } from '@/lib/catalog';
 import { priceFor, countryOfRequest, minorUnits } from '@/lib/region';
 
@@ -26,6 +28,7 @@ export async function POST(req: Request) {
   const price = priceOf(t);
   const stripe = new Stripe(key);
   const site = siteUrl(new URL(req.url).origin);
+  const claim = randomBytes(12).toString('hex');                          // 13/10/2026: personal link printed on Stripe's own receipt (no domain/e-mail sender needed)
   let session: Stripe.Checkout.Session;
   try {
   session = await stripe.checkout.sessions.create({
@@ -47,7 +50,8 @@ export async function POST(req: Request) {
         },
       },
     }],
-    metadata: { trackId: t.id, currency: money.currency, country: countryOfRequest(req), ...(t.kind === 'software' ? { tier: sgTier(t) } : {}) },
+    payment_intent_data: { description: `Sua chave e downloads / Your key and downloads: ${site}/c/${claim}` },
+    metadata: { claim, trackId: t.id, currency: money.currency, country: countryOfRequest(req), ...(t.kind === 'software' ? { tier: sgTier(t) } : {}) },
     customer_creation: 'always',
     expires_at: Math.floor(Date.now() / 1000) + 31 * 60,                  // a held checkout lapses after ~30 min (Stripe minimum)
     custom_text: { submit: { message: `By paying you accept the SIGNAL STUDIO ${t.nonExclusive ? 'non-exclusive' : 'exclusive'} license: ${site}/license` } },
@@ -59,5 +63,6 @@ export async function POST(req: Request) {
     console.error('checkout', e?.type, e?.code, e?.message);
     return NextResponse.json({ error: `Stripe: ${e?.message || 'checkout failed'}`, code: e?.code || e?.type || '' }, { status: 502 });
   }
+  if (!LOCAL) { try { await put(`studio/claims/${claim}.json`, JSON.stringify({ s: session.id }), { access: 'public', addRandomSuffix: true, contentType: 'application/json' }); } catch (e) { console.error('claim', e); } }
   return NextResponse.json({ url: session.url });
 }
