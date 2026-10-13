@@ -3,8 +3,8 @@
 import type { Lang } from './i18n-shared';
 
 const pt = {
-  nav: { plugins: 'Plugins', packs: 'Packs', signalgen: 'SignalGen', ghost: 'Ghost production', signIn: 'Entrar', account: 'Minha conta', accountShort: 'Conta' },
-  footer: { line: 'plugins e produção sob encomenda. Pagamentos pelo Stripe.', license: 'Termos de licença' },
+  nav: { plugins: 'Plugins', packs: 'Packs e Vocais', packsShort: 'Vocais', signalgen: 'SignalGen', ghost: 'Ghost production', signIn: 'Entrar', account: 'Minha conta', accountShort: 'Conta', support: 'Suporte' },
+  footer: { line: 'plugins, vocais exclusivos e produção sob encomenda. Pagamentos pelo Stripe.', license: 'Termos de licença' },
   soon: 'Em breve', free: 'Grátis', buy: 'Comprar', details: 'Ver detalhes', see: 'Conhecer',
   offer: {
     launch: 'Preço de lançamento', first: 'Só para os 10 primeiros',
@@ -15,15 +15,16 @@ const pt = {
   },
   home: {
     eyebrow: 'Plugins AU + VST3 · macOS', h1a: 'Plugins avançados.', h1b: 'Preço justo.',
-    lede: 'Um EQ e um sintetizador com qualidade que compete com plugins extremamente caros. Instalador oficial, licença vitalícia e download na hora, direto aqui no site.',
-    toPlugins: 'Ver plugins', toTempo: 'Baixar o Clocker grátis',
+    lede: 'Um EQ e um sintetizador com qualidade que compete com plugins extremamente caros. E vocais exclusivos: cada vocal é vendido uma única vez, só quem compra tem, e ele some do catálogo.',
+    toPlugins: 'Ver plugins', toTempo: 'Baixar o Clocker grátis', toVocals: 'Vocais exclusivos',
+    baitTag: 'Novo · venda única', bait: 'Camaleon Pack: 6 vocais exclusivos, gravados em estúdio por uma cantora real.',
     facts: [['Vitalício', 'pague uma vez, é seu'], ['Na hora', 'chave e instalador ao pagar'], ['Pix ou cartão', 'pagamento seguro pelo Stripe'], ['Sua conta', 'baixe de novo quando quiser']],
     plugH: 'Plugins', plugP: 'AU + VST3 para macOS (Apple Silicon e Intel). Instalador oficial, chave pessoal, offline em até dois computadores.',
     refTag: 'EQ · 24 bandas', refP: 'O EQ que mostra onde cortar: ressonâncias marcadas no espectro, sidechain por banda e fase linear. Qualidade que compete com plugins extremamente caros.',
     monetTag: 'Sintetizador · wavetable', monetP: 'Qualidade comparável aos famosos sintetizadores da atualidade, por um preço que vale cada centavo. 3 osciladores, filtros analógicos de circuito e 200+ presets.',
     tempoTag: 'BPM · tom · acordes', tempoP: 'BPM, tom e acordes de qualquer coisa tocando, em 10 segundos.',
     sgTag: 'Gerador de faixas', sgP: 'A faixa inteira no Ableton Live em um clique. Acompanha o Monet.',
-    packH: 'Sample packs', packP: 'Os novos packs de samples e presets da SignalGen estão em produção. Entram aqui quando estiverem prontos.',
+    packH: 'Sample packs', packP: 'Os packs de samples e presets da SignalGen estão em produção. Entram aqui quando estiverem prontos.',
     howH: 'Como funciona', howP: 'Três passos, sem assinatura.',
     how: [['Escolha e pague', 'Pix ou cartão, pelo Stripe. Você paga uma vez e a licença é vitalícia.'], ['Baixe na hora', 'O instalador oficial e a sua chave de licença aparecem na página seguinte, prontos para usar.'], ['Fica na sua conta', 'Entre com o seu e-mail quando quiser para baixar de novo ou copiar a chave.']],
     licH: 'Uma licença. Linguagem simples.', licP: 'O texto completo está na', licLink: 'página da licença',
@@ -48,13 +49,31 @@ const pt = {
     moreH: 'Para completar o seu estúdio', ghostH: 'Suas ghost productions', ghostOpen: 'Abrir o acompanhamento', stage: 'Etapa',
     help: 'Precisa de ajuda? Responda ao e-mail do recibo.',
   },
+  vocals: {
+    title: 'Vocais exclusivos · SignalGen', h: 'Vocais exclusivos', p: 'Cada vocal é vendido uma única vez. Quem compra fica com ele para sempre, e ele sai do catálogo na hora: ninguém mais vai ter.',
+    facts: [['1 de 1', 'Uma venda por vocal. Não existe segunda cópia.'], ['Some do catálogo', 'Pagou, o vocal sai da loja no mesmo instante.'], ['Seu para lançar', 'Licença exclusiva: lance no seu nome, sem royalties.']],
+    one: '1 de 1', exclusive: 'Exclusivo', count: (n: number) => (n === 1 ? '1 vocal exclusivo' : `${n} vocais exclusivos`), buy: (p: string) => `Comprar com exclusividade · ${p}`, see: 'Ouvir e ver detalhes',
+    soon: 'Em breve', soonP: 'Este pack está sendo preparado para a venda. A prévia e o preço entram aqui em breve.', notify: 'Quero ser avisado',
+    sold: 'Vendido', soldH: 'Este vocal já tem dono.', soldP: 'Vocais exclusivos são vendidos uma única vez. Este saiu do catálogo, mas há outros esperando.', others: 'Ver os vocais disponíveis',
+    preview: 'Prévia de 30 segundos', previewP: 'A prévia leva uma marca falada a cada 3 segundos. O arquivo que você recebe é limpo, em WAV, sem marca.',
+    whatH: 'O que você recebe', what: [['Os arquivos originais', 'WAV em alta resolução, secos e prontos para a sua mix, mais o tom e o BPM de cada um.'], ['Exclusividade de verdade', 'O vocal sai do catálogo quando o pagamento confirma. Se duas pessoas pagarem ao mesmo tempo, a segunda é reembolsada na hora.'], ['Certificado no seu nome', 'Licença exclusiva e vitalícia, com número e data, para provar que o vocal é seu.']],
+    licenseLine: 'Licença exclusiva: use em lançamentos comerciais no seu nome, sem royalties. Só não pode revender o vocal como sample.', by: 'gravados em estúdio por uma cantora real',
+    empty: 'Novos vocais exclusivos entram aqui em breve.',
+  },
+  support: {
+    title: 'Suporte · SignalGen', eyebrow: 'Suporte', h1: 'Precisa de ajuda?', lede: 'Problema com instalação, chave, download ou pagamento: escreva aqui e a resposta chega no seu e-mail.',
+    name: 'Seu nome', email: 'Seu e-mail', topic: 'Assunto', topics: ['Instalação ou ativação', 'Chave de licença', 'Download', 'Pagamento ou reembolso', 'Vocais exclusivos', 'Ghost production', 'Outro'], message: 'O que aconteceu?', messagePh: 'Conte o que você tentou e o que apareceu na tela. Se for sobre uma compra, diga o e-mail usado nela.',
+    send: 'Enviar', sending: 'Enviando…', ok: 'Recebido. Respondemos no seu e-mail o quanto antes.', err: 'Preencha o e-mail e a mensagem e tente de novo.', slow: 'Muitas mensagens em pouco tempo. Tente em alguns minutos.',
+    fallback: 'Não conseguimos enviar por aqui agora. Clique para mandar pelo seu e-mail:', openMail: 'Abrir meu e-mail', quick: 'Respostas rápidas',
+    faq: [['Onde está minha chave?', 'Na sua conta: entre com o e-mail da compra e a chave aparece ao lado do plugin, com o botão de copiar.'], ['Como baixo de novo?', 'Também na sua conta: o botão Baixar gera um link novo sempre que você abrir a página.'], ['Posso desistir da compra?', 'Sim. Pela lei brasileira você pode desistir em até 7 dias: escreva aqui e devolvemos o valor.']],
+  },
   thanks: { account: 'Esta compra fica guardada na sua conta: entre com o seu e-mail quando quiser para baixar de novo.', toAccount: 'Abrir minha conta' },
 };
 type UI = typeof pt;
 
 const es: UI = {
-  nav: { plugins: 'Plugins', packs: 'Packs', signalgen: 'SignalGen', ghost: 'Ghost production', signIn: 'Entrar', account: 'Mi cuenta', accountShort: 'Cuenta' },
-  footer: { line: 'plugins y producción por encargo. Pagos con Stripe.', license: 'Términos de licencia' },
+  nav: { plugins: 'Plugins', packs: 'Packs y Voces', packsShort: 'Voces', signalgen: 'SignalGen', ghost: 'Ghost production', signIn: 'Entrar', account: 'Mi cuenta', accountShort: 'Cuenta', support: 'Soporte' },
+  footer: { line: 'plugins, voces exclusivas y producción por encargo. Pagos con Stripe.', license: 'Términos de licencia' },
   soon: 'Próximamente', free: 'Gratis', buy: 'Comprar', details: 'Ver detalles', see: 'Conocer',
   offer: {
     launch: 'Precio de lanzamiento', first: 'Solo para los 10 primeros',
@@ -65,8 +84,9 @@ const es: UI = {
   },
   home: {
     eyebrow: 'Plugins AU + VST3 · macOS', h1a: 'Plugins avanzados.', h1b: 'Precio justo.',
-    lede: 'Un EQ y un sintetizador con una calidad que compite con plugins extremadamente caros. Instalador oficial, licencia de por vida y descarga al instante, aquí mismo.',
-    toPlugins: 'Ver plugins', toTempo: 'Descargar Clocker gratis',
+    lede: 'Un EQ y un sintetizador con una calidad que compite con plugins extremadamente caros. Y voces exclusivas: cada voz se vende una sola vez, solo la tiene quien la compra, y desaparece del catálogo.',
+    toPlugins: 'Ver plugins', toTempo: 'Descargar Clocker gratis', toVocals: 'Voces exclusivas',
+    baitTag: 'Nuevo · venta única', bait: 'Camaleon Pack: 6 voces exclusivas, grabadas en estudio por una cantante real.',
     facts: [['De por vida', 'pagas una vez, es tuyo'], ['Al instante', 'clave e instalador al pagar'], ['Tarjeta', 'pago seguro con Stripe'], ['Tu cuenta', 'descarga de nuevo cuando quieras']],
     plugH: 'Plugins', plugP: 'AU + VST3 para macOS (Apple Silicon e Intel). Instalador oficial, clave personal, offline en hasta dos computadoras.',
     refTag: 'EQ · 24 bandas', refP: 'El EQ que muestra dónde cortar: resonancias marcadas en el espectro, sidechain por banda y fase lineal. Calidad que compite con plugins extremadamente caros.',
@@ -98,12 +118,30 @@ const es: UI = {
     moreH: 'Para completar tu estudio', ghostH: 'Tus ghost productions', ghostOpen: 'Abrir el seguimiento', stage: 'Etapa',
     help: '¿Necesitas ayuda? Responde al e-mail del recibo.',
   },
+  vocals: {
+    title: 'Voces exclusivas · SignalGen', h: 'Voces exclusivas', p: 'Cada voz se vende una sola vez. Quien la compra se la queda para siempre, y sale del catálogo al instante: nadie más la tendrá.',
+    facts: [['1 de 1', 'Una venta por voz. No existe una segunda copia.'], ['Sale del catálogo', 'Al pagar, la voz desaparece de la tienda en ese instante.'], ['Tuya para lanzar', 'Licencia exclusiva: lánzala a tu nombre, sin royalties.']],
+    one: '1 de 1', exclusive: 'Exclusiva', count: (n: number) => (n === 1 ? '1 voz exclusiva' : `${n} voces exclusivas`), buy: (p: string) => `Comprar en exclusiva · ${p}`, see: 'Escuchar y ver detalles',
+    soon: 'Próximamente', soonP: 'Este pack se está preparando para la venta. La muestra y el precio llegan aquí pronto.', notify: 'Quiero que me avisen',
+    sold: 'Vendida', soldH: 'Esta voz ya tiene dueño.', soldP: 'Las voces exclusivas se venden una sola vez. Esta salió del catálogo, pero hay otras esperando.', others: 'Ver las voces disponibles',
+    preview: 'Muestra de 30 segundos', previewP: 'La muestra lleva una marca hablada cada 3 segundos. El archivo que recibes es limpio, en WAV, sin marca.',
+    whatH: 'Qué recibes', what: [['Los archivos originales', 'WAV en alta resolución, secos y listos para tu mezcla, con el tono y el BPM de cada uno.'], ['Exclusividad real', 'La voz sale del catálogo cuando el pago se confirma. Si dos personas pagan a la vez, a la segunda se le reembolsa al instante.'], ['Certificado a tu nombre', 'Licencia exclusiva y de por vida, con número y fecha, para probar que la voz es tuya.']],
+    licenseLine: 'Licencia exclusiva: úsala en lanzamientos comerciales a tu nombre, sin royalties. Lo único que no puedes es revenderla como sample.', by: 'grabadas en estudio por una cantante real',
+    empty: 'Pronto llegan nuevas voces exclusivas.',
+  },
+  support: {
+    title: 'Soporte · SignalGen', eyebrow: 'Soporte', h1: '¿Necesitas ayuda?', lede: 'Problemas con la instalación, la clave, la descarga o el pago: escribe aquí y la respuesta llega a tu e-mail.',
+    name: 'Tu nombre', email: 'Tu e-mail', topic: 'Asunto', topics: ['Instalación o activación', 'Clave de licencia', 'Descarga', 'Pago o reembolso', 'Voces exclusivas', 'Ghost production', 'Otro'], message: '¿Qué pasó?', messagePh: 'Cuenta qué intentaste y qué apareció en pantalla. Si es sobre una compra, indica el e-mail que usaste.',
+    send: 'Enviar', sending: 'Enviando…', ok: 'Recibido. Respondemos a tu e-mail lo antes posible.', err: 'Completa el e-mail y el mensaje e inténtalo de nuevo.', slow: 'Demasiados mensajes en poco tiempo. Inténtalo en unos minutos.',
+    fallback: 'No pudimos enviarlo desde aquí ahora. Haz clic para mandarlo desde tu e-mail:', openMail: 'Abrir mi e-mail', quick: 'Respuestas rápidas',
+    faq: [['¿Dónde está mi clave?', 'En tu cuenta: entra con el e-mail de la compra y la clave aparece junto al plugin, con el botón de copiar.'], ['¿Cómo descargo de nuevo?', 'También en tu cuenta: el botón Descargar genera un enlace nuevo cada vez que abres la página.'], ['¿Puedo desistir de la compra?', 'Sí, dentro de 7 días: escribe aquí y devolvemos el importe.']],
+  },
   thanks: { account: 'Esta compra queda guardada en tu cuenta: entra con tu e-mail cuando quieras para descargar de nuevo.', toAccount: 'Abrir mi cuenta' },
 };
 
 const en: UI = {
-  nav: { plugins: 'Plugins', packs: 'Packs', signalgen: 'SignalGen', ghost: 'Ghost production', signIn: 'Sign in', account: 'My account', accountShort: 'Account' },
-  footer: { line: 'plugins and on-demand production. Payments by Stripe.', license: 'License terms' },
+  nav: { plugins: 'Plugins', packs: 'Packs & Vocals', packsShort: 'Vocals', signalgen: 'SignalGen', ghost: 'Ghost production', signIn: 'Sign in', account: 'My account', accountShort: 'Account', support: 'Support' },
+  footer: { line: 'plugins, exclusive vocals and on-demand production. Payments by Stripe.', license: 'License terms' },
   soon: 'Coming soon', free: 'Free', buy: 'Buy', details: 'See details', see: 'Learn more',
   offer: {
     launch: 'Launch price', first: 'First 10 buyers only',
@@ -114,8 +152,9 @@ const en: UI = {
   },
   home: {
     eyebrow: 'AU + VST3 plugins · macOS', h1a: 'Advanced plugins.', h1b: 'Fair price.',
-    lede: 'An EQ and a synthesizer with quality that competes with extremely expensive plugins. Official installers, lifetime licenses and instant download, right here.',
-    toPlugins: 'See plugins', toTempo: 'Get Clocker free',
+    lede: 'An EQ and a synthesizer with quality that competes with extremely expensive plugins. And exclusive vocals: each vocal is sold once, only its buyer has it, and it leaves the catalog.',
+    toPlugins: 'See plugins', toTempo: 'Get Clocker free', toVocals: 'Exclusive vocals',
+    baitTag: 'New · sold once', bait: 'Camaleon Pack: 6 exclusive vocals, recorded in a studio by a real singer.',
     facts: [['Lifetime', 'pay once, it is yours'], ['Instant', 'key and installer on payment'], ['Card', 'secure payment by Stripe'], ['Your account', 'download again any time']],
     plugH: 'Plugins', plugP: 'AU + VST3 for macOS (Apple Silicon and Intel). Official installer, personal key, offline on up to two computers.',
     refTag: 'EQ · 24 bands', refP: 'The EQ that shows you where to cut: resonances marked on the spectrum, per-band sidechain and linear phase. Quality that competes with extremely expensive plugins.',
@@ -146,6 +185,24 @@ const en: UI = {
     emptyH: 'No purchases under this e-mail yet.', emptyP: 'If you bought with another e-mail, sign out and sign in with that one. Everything you buy shows up here, with its key and installer.',
     moreH: 'To complete your studio', ghostH: 'Your ghost productions', ghostOpen: 'Open the tracking page', stage: 'Stage',
     help: 'Need help? Reply to the receipt e-mail.',
+  },
+  vocals: {
+    title: 'Exclusive vocals · SignalGen', h: 'Exclusive vocals', p: 'Each vocal is sold once. Whoever buys it keeps it for good, and it leaves the catalog on the spot: nobody else will ever have it.',
+    facts: [['1 of 1', 'One sale per vocal. There is no second copy.'], ['Gone from the catalog', 'Once paid, the vocal leaves the shop that instant.'], ['Yours to release', 'Exclusive license: release it under your name, royalty-free.']],
+    one: '1 of 1', exclusive: 'Exclusive', count: (n: number) => (n === 1 ? '1 exclusive vocal' : `${n} exclusive vocals`), buy: (p: string) => `Buy it exclusively · ${p}`, see: 'Listen and see details',
+    soon: 'Coming soon', soonP: 'This pack is being prepared for sale. Its preview and price land here soon.', notify: 'Let me know',
+    sold: 'Sold', soldH: 'This vocal already has an owner.', soldP: 'Exclusive vocals are sold once. This one has left the catalog, but others are waiting.', others: 'See the vocals available',
+    preview: '30-second preview', previewP: 'The preview carries a spoken tag every 3 seconds. The file you receive is clean, as WAV, with no tag.',
+    whatH: 'What you get', what: [['The original files', 'High-resolution WAV, dry and ready for your mix, with the key and tempo of each one.'], ['Real exclusivity', 'The vocal leaves the catalog when the payment confirms. If two people pay at the same moment, the second is refunded at once.'], ['A certificate in your name', 'An exclusive, lifetime license with a number and a date, to prove the vocal is yours.']],
+    licenseLine: 'Exclusive license: use it in commercial releases under your name, royalty-free. The one thing you can’t do is resell it as a sample.', by: 'recorded in a studio by a real singer',
+    empty: 'New exclusive vocals land here soon.',
+  },
+  support: {
+    title: 'Support · SignalGen', eyebrow: 'Support', h1: 'Need help?', lede: 'Trouble with installing, your key, a download or a payment: write here and the answer comes to your e-mail.',
+    name: 'Your name', email: 'Your e-mail', topic: 'Subject', topics: ['Installing or activating', 'License key', 'Download', 'Payment or refund', 'Exclusive vocals', 'Ghost production', 'Something else'], message: 'What happened?', messagePh: 'Tell us what you tried and what showed on screen. If it is about a purchase, give the e-mail you used.',
+    send: 'Send', sending: 'Sending…', ok: 'Got it. We answer to your e-mail as soon as we can.', err: 'Fill in the e-mail and the message and try again.', slow: 'Too many messages in a short time. Try again in a few minutes.',
+    fallback: 'We could not send it from here right now. Click to send it from your own e-mail:', openMail: 'Open my e-mail', quick: 'Quick answers',
+    faq: [['Where is my key?', 'In your account: sign in with the purchase e-mail and the key is next to the plugin, with a copy button.'], ['How do I download again?', 'Also in your account: the Download button makes a fresh link every time you open the page.'], ['Can I change my mind?', 'Yes, within 7 days: write here and we refund you.']],
   },
   thanks: { account: 'This purchase is kept in your account: sign in with your e-mail any time to download again.', toAccount: 'Open my account' },
 };

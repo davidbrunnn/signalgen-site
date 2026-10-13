@@ -6,11 +6,15 @@ import { country, refinerPrice, monetPrice, ghostMoney } from '@/lib/region';
 import { readCounters, offerFrom } from '@/lib/launch';
 import BuyButton from '@/components/BuyButton';
 import Offer from '@/components/Offer';
+import VocalTile from '@/components/VocalTile';
+import { vocalsOf, vocalState } from '@/lib/vocals';
+import { priceFor } from '@/lib/region';
 
 export const dynamic = 'force-dynamic';
 
 // 13/10/2026 (David): "Plugins avançados. Preço justo." The window: Refiner and Monet at their launch price (first 10 buyers, the
-// real counter), the free Clocker (ex-Tempo), the SignalGen as "em breve" (only the Monet goes with it) and the sample packs as "em breve".
+// real counter), the free Clocker (ex-Tempo), the SignalGen as "em breve" (only the Monet goes with it), the EXCLUSIVE VOCALS
+// (sold once each, lib/vocals) and the sample packs as "em breve".
 export default async function Home() {
   const lang = getLang(), U = ui(lang), X = U.home;
   const [cat, counters] = await Promise.all([readCatalog(), readCounters()]);
@@ -21,6 +25,9 @@ export default async function Home() {
     const [now, after] = await Promise.all([price(cc, offer?.tier || 'lifetime'), price(cc, 'lifetime')]);
     return { id, offer, now, after, t: by(id) };
   }));
+  const V = U.vocals;
+  const vocals = await Promise.all(vocalsOf(cat.tracks).map(async (t) => ({ t, state: vocalState(t), price: (await priceFor(t, cc)).display })));
+  const vq = vocals.filter((v) => v.t.preview).map(({ t }) => ({ id: t.id, title: t.title, artist: 'SignalGen', cover: t.cover, preview: t.preview, href: `/v/${t.id}`, sub: V.preview, cta: V.exclusive }));
   const copy = {
     refiner: { name: 'Refiner', tag: X.refTag, p: X.refP, img: '/product/ui2/refiner_01.png', href: '/refiner' },
     monet: { name: 'Monet', tag: X.monetTag, p: X.monetP, img: '/product/ui2/monet_01_synth.jpg', href: '/monet' },
@@ -34,8 +41,9 @@ export default async function Home() {
           <p className="lede">{X.lede}</p>
           <div className="act">
             <Link href="#plugins" className="btn">{X.toPlugins}</Link>
-            <Link href="/clocker" className="btn quiet">{X.toTempo}</Link>
+            <Link href="#packs" className="btn quiet">{X.toVocals}</Link>
           </div>
+          <Link href="/v/camaleon-pack" className="bait"><span className="o-badge">{X.baitTag}</span><span>{X.bait}</span></Link>
         </div>
         <div className="hero3-art" aria-hidden="true">
           <img className="a" src="/product/ui2/monet_01_synth.jpg" alt="" />
@@ -83,7 +91,13 @@ export default async function Home() {
       </section>
 
       <section className="block" id="packs">
-        <div className="soonband">
+        <header><h2>{V.h}</h2><p>{V.p}</p></header>
+        <ul className="facts4 three-up">{V.facts.map(([b, s]) => <li key={b}><b>{b}</b><span>{s}</span></li>)}</ul>
+        <div className="vgrid">
+          {vocals.map(({ t, state, price }, i) => <VocalTile key={t.id} t={t} state={state} price={price} V={V} soon={U.soon} queue={vq} big={i === 0 && vocals.length < 3} />)}
+          {!vocals.length ? <p className="muted">{V.empty}</p> : null}
+        </div>
+        <div className="soonband" style={{ marginTop: 'var(--s4)' }}>
           <div><h2>{X.packH}</h2><p className="muted">{X.packP}</p></div>
           <span className="pill soon big">{U.soon}</span>
         </div>

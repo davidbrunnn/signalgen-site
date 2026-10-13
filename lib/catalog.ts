@@ -29,7 +29,9 @@ export type Track = {
   pick?: number;         // 1..5 rank of that day
   sold?: number;
   score?: number;        // tracks: David's own rating as a fraction (nota 1–5 / 5). Ghost Production sells only score >= GHOST_MIN
-  kind?: 'track' | 'pack' | 'software' | 'kit' | 'preset' | 'bundle';
+  kind?: 'track' | 'pack' | 'software' | 'kit' | 'preset' | 'bundle' | 'vocal';   // 'vocal' = an exclusive vocal (or pack of them): sold once
+  voices?: number;       // exclusive vocals: how many vocals this item holds
+  credit?: string;       // exclusive vocals: who sang it / how it was made (one line)
   group?: string;        // sounds: the volume this SKU belongs to (kit id) — the product page shows every format of the volume
   format?: 'wav' | 'serum' | 'bundle' | 'collection';
   vol?: number;
@@ -164,15 +166,19 @@ export function approved(t: Track) { return t.kind !== 'track' || (t.score ?? 0)
 export const SELL_TRACKS = process.env.SELL_TRACKS !== '0';    // ghost productions: each track sold once; SELL_TRACKS=0 turns the tracks into demos
 /** Where a product lives on the site. */
 export function hrefOf(t: Pick<Track, 'id' | 'kind'>) {
-  return t.kind === 'track' ? `/t/${t.id}` : t.kind === 'software' ? (t.id === 'monet' ? '/monet' : t.id === 'refiner' ? '/refiner' : t.id === 'tempo' ? '/clocker' : '/signalgen') : `/p/${t.id}`;
+  return t.kind === 'track' ? `/t/${t.id}` : t.kind === 'vocal' ? `/v/${t.id}` : t.kind === 'software' ? (t.id === 'monet' ? '/monet' : t.id === 'refiner' ? '/refiner' : t.id === 'tempo' ? '/clocker' : '/signalgen') : `/p/${t.id}`;
 }
 /** 13/10/2026 (David: "bloqueie todos os outros produtos"): the only things on sale. Everything else in the catalog is "coming soon"
  *  (the SignalGen) or out of the window. FOR_SALE in the environment can widen it (comma-separated ids). */
 export const FOR_SALE = new Set((process.env.FOR_SALE || 'refiner,monet,tempo').split(',').map((s) => s.trim()).filter(Boolean));
 /** 13/10/2026 (David): the sample packs are "em breve" too and the vocals left the window — no pack is sold until PACKS_OPEN=1. */
 export const PACKS_OPEN = process.env.PACKS_OPEN === '1';
-export const forSale = (t?: Pick<Track, 'id' | 'kind'> | null) =>
-  !!t && FOR_SALE.has(t.id) && (PACKS_OPEN || !(t.kind === 'kit' || t.kind === 'preset' || t.kind === 'bundle'));
+export const forSale = (t?: Pick<Track, 'id' | 'kind'> & Partial<Pick<Track, 'files' | 'priceBrl' | 'sold' | 'nonExclusive'>> | null) => {
+  if (!t) return false;
+  // 13/10/2026 (David): exclusive vocals sell once — on sale while there is a file to deliver, a price, and no buyer yet
+  if (t.kind === 'vocal') return !!t.files?.zip && (t.priceBrl || 0) > 0 && !(t.sold && !t.nonExclusive);
+  return FOR_SALE.has(t.id) && (PACKS_OPEN || !(t.kind === 'kit' || t.kind === 'preset' || t.kind === 'bundle'));
+};
 export const soonLabel = (lang: string) => (lang === 'en' ? 'Coming soon' : lang === 'es' ? 'Próximamente' : 'Em breve');
 /** The SignalGen itself (the Monet is also kind 'software'). */
 export const isSignalGen = (t: Track) => t.kind === 'software' && !['monet', 'refiner', 'ear'].includes(t.licenseProduct || '');

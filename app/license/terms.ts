@@ -25,3 +25,13 @@ export const SOFTWARE_TERMS = [
   'Refund: within 14 days of purchase, if the software does not run in the licensee’s Ableton Live 12 on a supported macOS, the purchase is refunded in full and the key is revoked.',
   'The licensee may not reverse engineer, redistribute or resell the software or its sound content as a library.',
 ];
+
+// 13/10/2026: exclusive vocals — one buyer per vocal.
+export const VOCAL_TERMS = [
+  'SignalGen grants the licensee an exclusive, perpetual, worldwide license to the vocal recordings named above.',
+  'Exclusive means these vocals are sold once. They are removed from the SignalGen catalog at the moment of purchase and will not be licensed, sold or given to anyone else.',
+  'The licensee may use them in any number of commercial or non-commercial releases, under any artist name or label, on any platform, with no royalties owed and no credit required.',
+  'The licensee may edit, chop, tune, process and combine the vocals with other material, and owns the master rights to the released result.',
+  'The licensee may not resell, sublicense or redistribute the vocal files themselves as a product (for example as a sample, a sample pack or an acapella).',
+  'If two payments for the same vocals complete at the same time, the first one wins and the second is refunded in full; no license is granted for a refunded payment.',
+];

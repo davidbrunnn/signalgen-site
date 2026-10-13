@@ -117,7 +117,7 @@ export default async function Account() {
         </section>
       ) : null}
 
-      <p className="muted small" style={{ marginTop: 'var(--s5)' }}>{A.help}</p>
+      <p className="muted small" style={{ marginTop: 'var(--s5)' }}><Link href="/suporte" style={{ textDecoration: 'underline' }}>{U.nav.support}</Link> · {A.help}</p>
     </main>
   );
 }

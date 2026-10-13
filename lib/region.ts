@@ -72,9 +72,10 @@ export async function soundPrice(t: { kind?: string; format?: string; price?: nu
 export async function priceFor(t: { kind?: string; format?: string; price?: number; priceBrl?: number; licenseProduct?: string; sold?: number }, cc: string, tier: 'founder' | 'lifetime' = 'founder'): Promise<Money> {
   if (t.kind === 'software') return softPrice(t, cc, tier);
   if (t.kind === 'kit' || t.kind === 'preset' || t.kind === 'bundle') return soundPrice(t, cc);
+  if (t.kind === 'vocal') return localized(t.priceBrl || 0, cc);              // exclusive vocals: the item's own price, same number abroad
   return localized(t.price || 59, 'US');
 }
 
-// Ghost production (13/10/2026, David): R$ 1.200 in Brazil, US$ 1,200 abroad — the same number, like everything else.
-export const GHOST_PRICE = Number(process.env.GHOST_PRICE || 1200);
-export function ghostMoney(cc: string): Money { const currency = cc === 'BR' ? 'BRL' : 'USD'; return { amount: GHOST_PRICE, currency, display: fmt(GHOST_PRICE, currency) }; }
+// Ghost production (13/10/2026, David): R$ 2.000 in Brazil, US$ 600 abroad (the one price that is not the same number).
+export const GHOST = { BRL: Number(process.env.GHOST_BRL || 2000), USD: Number(process.env.GHOST_USD || 600) };
+export function ghostMoney(cc: string): Money { const currency = cc === 'BR' ? 'BRL' : 'USD'; return { amount: GHOST[currency], currency, display: fmt(GHOST[currency], currency) }; }

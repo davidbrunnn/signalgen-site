@@ -14,8 +14,8 @@ export async function POST(req: Request) {
   const { id } = await req.json().catch(() => ({}));
   const cat = await readCatalog(true);
   const t = cat.tracks.find((x) => x.id === id);
-  if (!t) return NextResponse.json({ error: 'This track is no longer in the catalog.' }, { status: 404 });
-  if (isSold(t)) return NextResponse.json({ error: 'This track was just signed by someone else — exclusive licenses sell once.' }, { status: 409 });
+  if (!t) return NextResponse.json({ error: 'Not in the catalog any more · Não está mais no catálogo.' }, { status: 404 });
+  if (isSold(t)) return NextResponse.json({ error: 'Vendido: alguém acabou de comprar com exclusividade · Sold: someone just bought it exclusively.' }, { status: 409 });
   if (!approved(t)) return NextResponse.json({ error: 'This track is not for sale.' }, { status: 403 });
   if (!forSale(t)) return NextResponse.json({ error: 'Em breve · Coming soon.' }, { status: 403 });            // 13/10/2026: only the window is on sale
   if (t.kind === 'track' && !SELL_TRACKS) return NextResponse.json({ error: 'This track is a demo of what SignalGen makes and is not for sale.' }, { status: 403 });
@@ -41,11 +41,12 @@ export async function POST(req: Request) {
         currency: money.currency.toLowerCase(),
         unit_amount: minorUnits(money),
         product_data: {
-          name: t.kind === 'track' ? `${t.artist} — ${t.title}` : t.licenseProduct === 'monet' ? 'MONET — synthesizer' : t.licenseProduct === 'refiner' ? 'REFINER — 24-band EQ' : `SignalGen — ${t.title}${t.kind === 'preset' ? ' (Serum 2 presets)' : t.format === 'bundle' ? ' (Bundle)' : ''}`,
+          name: t.kind === 'vocal' ? `${t.title} — exclusive vocals (1 of 1)` : t.kind === 'track' ? `${t.artist} — ${t.title}` : t.licenseProduct === 'monet' ? 'MONET — synthesizer' : t.licenseProduct === 'refiner' ? 'REFINER — 24-band EQ' : `SignalGen — ${t.title}${t.kind === 'preset' ? ' (Serum 2 presets)' : t.format === 'bundle' ? ' (Bundle)' : ''}`,
           description: t.kind === 'software' && t.licenseProduct === 'monet' ? `${tier === 'founder' ? 'Launch price (first 10) · ' : ''}Lifetime license: MONET synthesizer (AU + VST3). Key and installer on the confirmation page and in your account.`
             : t.kind === 'software' && t.licenseProduct === 'refiner' ? `${tier === 'founder' ? 'Launch price (first 10) · ' : ''}Lifetime license: REFINER, the 24-band EQ that shows you where to cut (AU + VST3). Key and installer on the confirmation page and in your account.`
             : t.kind === 'software' && isSignalGen(t) ? `${founderLeft(t) > 0 ? 'Founder lifetime license (first 100)' : 'Lifetime license'}: SignalGen + Monet. License key issued on the confirmation page.`
             : t.kind === 'software' ? 'Lifetime license. License key issued on the confirmation page.'
+            : t.kind === 'vocal' ? `${t.voices || 1} exclusive vocal${(t.voices || 1) > 1 ? 's' : ''}, sold once and removed from the catalog. WAV. Exclusive, perpetual license.`
             : t.kind === 'kit' || t.kind === 'preset' || t.kind === 'bundle' ? `${t.subtitle || ''}. ${t.contents || ''}. Royalty-free, non-exclusive.`
             : t.kind === 'pack' ? 'Construction kit: 8-bar loops of every bus + MIDI. Royalty-free, non-exclusive.'
             : `${t.bpm} BPM, ${t.key}, ${t.genre}. Extended Mix + Radio Edit, WAV 24-bit, mastered. Exclusive license.`,

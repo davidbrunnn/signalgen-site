@@ -252,6 +252,35 @@ if (parts.length > 3 && process.env.SOUNDS_BUNDLES === '1') {                   
   });
 }
 
+// ───── EXCLUSIVE VOCALS (13/10/2026, David): one folder per vocal (or pack of vocals) in ~/Desktop/SignalGen/Vocais.
+//   <pasta>/vocal.json   {"title": "Camaleon Pack", "priceBrl": 1490, "credit": "studio", "subtitle": "…", "description": "…"}
+//   <pasta>/*.wav        os originais · `python3 scripts/vocal_preview.py "<pasta>"` faz preview.m4a (30 s, tag a cada 3 s) e <Título>.zip
+//   <pasta>/Capa.jpg|png (opcional)
+// A vocal enters the catalog only with the zip, the tagged preview and a price. It sells ONCE: `sold` is kept from the catalog.
+const vocaisDir = path.join(sg, 'Vocais');
+if (fs.existsSync(vocaisDir)) for (const d of fs.readdirSync(vocaisDir).sort()) {
+  const dir = path.join(vocaisDir, d);
+  let v; try { v = JSON.parse(fs.readFileSync(path.join(dir, 'vocal.json'), 'utf8')); } catch { continue; }
+  const title = v.title || d, id = v.id || slug(title);
+  const zip = path.join(dir, `${title}.zip`), prev = path.join(dir, 'preview.m4a');
+  if (!fs.existsSync(zip) || !fs.existsSync(prev) || !(v.priceBrl > 0)) { console.log(`skip vocal (precisa de zip, preview.m4a e priceBrl): ${title}`); continue; }
+  const out = path.join(root, 'public', 'vocals', id); fs.mkdirSync(out, { recursive: true });
+  fs.copyFileSync(prev, path.join(out, 'preview.m4a'));
+  if (fs.existsSync(path.join(dir, 'preview.mp3'))) fs.copyFileSync(path.join(dir, 'preview.mp3'), path.join(out, 'preview.mp3'));
+  const capa = fs.readdirSync(dir).find((x) => /^capa\.(jpe?g|png)$/i.test(x));
+  if (capa) copyCover(path.join(dir, capa), path.join(out, 'cover.jpg'));
+  const wavs = fs.readdirSync(dir).filter((x) => /\.(wav|aiff?|flac)$/i.test(x)).length;
+  products.push({
+    id, kind: 'vocal', title, artist: 'SignalGen', bpm: v.bpm || 0, key: v.key || '', genre: v.genre || 'Vocals', duration: 0,
+    voices: v.voices || wavs || 1, credit: v.credit || '', subtitle: v.subtitle || '', description: v.description || '', priceBrl: v.priceBrl, price: v.priceBrl,
+    cover: capa ? `/vocals/${id}/cover.jpg` : fs.existsSync(path.join(out, 'cover.svg')) ? `/vocals/${id}/cover.svg` : undefined,
+    preview: `/vocals/${id}/preview.m4a`, sizeMb: mb(zip), files: { zip: file(zip) },
+    downloads: [{ key: 'zip', label: `${title} — exclusive vocals`, note: 'ZIP · WAV' }],
+    published: new Date(fs.statSync(zip).mtimeMs).toISOString(), sold: sold[id] || 0,
+  });
+  console.log(`vocal  ${title}  R$ ${v.priceBrl}`);
+}
+
 fs.mkdirSync(dataDir, { recursive: true });
 fs.writeFileSync(path.join(dataDir, 'catalog.json'), JSON.stringify({ tracks: [...products, ...tracks], updated: new Date().toISOString() }, null, 1));
 console.log(`\n${tracks.length} tracks + ${products.length} products (${vols.length} sound volumes) -> local-data/catalog.json`);

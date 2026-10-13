@@ -19,7 +19,8 @@ export async function purchaseMail(t: Track, o: Order) {
     : [
         `Obrigado pela compra. ${name} é seu.`,
         'Baixe pelo botão abaixo. A página gera links novos sempre que você abrir, então pode voltar nela quando quiser.',
-        'Licença royalty-free: use em lançamentos, remixes e trabalhos para clientes. Só não pode revender os sons em si.',
+        t.kind === 'vocal' ? 'Licença exclusiva: este vocal saiu do catálogo e ninguém mais vai ter. Use em lançamentos no seu nome, sem royalties. Só não pode revender o vocal como sample.'
+          : 'Licença royalty-free: use em lançamentos, remixes e trabalhos para clientes. Só não pode revender os sons em si.',
       ];
   const { html, text } = layout({
     title: soft ? (free ? `${name}: sua chave` : `${name}: chave e instalador`) : `${name}: seus arquivos`,

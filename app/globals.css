@@ -931,3 +931,53 @@ body::before { content: ''; position: absolute; left: 0; right: 0; top: 0; heigh
 .phero h1 em { font-style: normal; }
 .acct-link .tight { display: none; }
 @media (max-width: 560px) { .acct-link .wide { display: none; } .acct-link .tight { display: inline; } }
+
+/* ═════════ v5 · 13/10/2026 · exclusive vocals (1 of 1), the hero bait, support */
+.bait { display: flex; align-items: center; gap: var(--s2); flex-wrap: wrap; margin-top: var(--s4); padding: var(--s2) var(--s3); border-radius: var(--r3);
+  box-shadow: inset 0 0 0 1px var(--line-2); background: rgba(166, 207, 251, .05); font-size: 15px; line-height: 1.45; max-width: 34em; transition: box-shadow .2s var(--ease), background .2s var(--ease); }
+.bait:hover { box-shadow: inset 0 0 0 1px var(--ice); background: rgba(166, 207, 251, .09); }
+.bait .o-badge { flex: none; }
+.facts4.three-up { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-bottom: var(--s4); }
+.vgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s4) var(--s3); }
+.vtile { min-width: 0; display: flex; flex-direction: column; border-radius: 21px; overflow: hidden; background: linear-gradient(180deg, var(--night-2), #0c0f15); box-shadow: inset 0 0 0 1px var(--line);
+  transition: box-shadow .3s var(--ease), transform .4s var(--ease); }
+.vtile:hover { box-shadow: inset 0 0 0 1px var(--line-2), 0 34px 89px rgba(0, 0, 0, .35); transform: translateY(-3px); }
+.vtile .vc { display: block; position: relative; aspect-ratio: 1; background: #07080b; overflow: hidden; }
+.vtile .vc img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s var(--ease); }
+.vtile:hover .vc img { transform: scale(1.025); }
+.vtile .badge, .track.vocal .art .badge { position: absolute; left: var(--s2); top: var(--s2); background: var(--ice); color: var(--night); font-size: 11px; font-weight: 700; letter-spacing: .16em;
+  text-transform: uppercase; padding: 4px 10px; border-radius: 999px; }
+.vtile .pb { position: absolute; right: var(--s2); bottom: var(--s2); }
+.vtile .pb .playbtn { width: var(--s5); height: var(--s5); background: var(--ice); box-shadow: 0 0 34px rgba(166, 207, 251, .35); }
+.vtile .pb .playbtn svg { fill: var(--night); width: 16px; height: 16px; }
+.vtile .vm { padding: var(--s3); display: grid; gap: var(--s1); align-content: start; flex: 1; }
+.vtile .eyebrow { margin: 0; }
+.vtile h3 { margin: 0; font-size: var(--t2); letter-spacing: -0.03em; line-height: 1.1; }
+.vtile p { margin: 0; font-size: var(--t0); line-height: 1.5; }
+.vtile .r { display: flex; justify-content: space-between; align-items: center; gap: var(--s2); margin-top: var(--s2); flex-wrap: wrap; }
+.vtile .usd { font-size: var(--t2); letter-spacing: -0.03em; }
+.vtile.big { grid-column: span 2; flex-direction: row; }
+.vtile.big .vc { flex: 0 0 44%; aspect-ratio: 1; }
+.vtile.big .vm { align-content: center; padding: var(--s4); gap: var(--s2); }
+.vtile.big h3 { font-size: var(--t3); letter-spacing: -0.04em; line-height: 1; }
+.vtile.big p { font-size: 15px; }
+.track.vocal .art { position: relative; }
+.track.vocal .buybox li b { color: var(--bone); }
+.top nav.capsule .xs { display: none; }
+.support-page { align-items: start; grid-template-columns: minmax(0, 1fr) minmax(0, 520px); }
+.support-faq { margin-top: var(--s5); max-width: 30em; }
+.support-faq h2 { font-size: var(--t2); letter-spacing: -0.03em; margin: 0 0 var(--s2); }
+.login .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s3); }
+.login .field select, .login .field textarea { width: 100%; border-radius: var(--r2); border: 0; background: var(--night); color: var(--bone); padding: var(--s2) var(--s3);
+  font-family: var(--font); font-size: var(--t1); line-height: 1.5; box-shadow: inset 0 0 0 1px var(--line-2); }
+.login .field select { height: var(--s5); padding: 0 var(--s3); }
+.login .field textarea { resize: vertical; min-height: 144px; }
+.login .field select:focus, .login .field textarea:focus { outline: none; box-shadow: inset 0 0 0 1px var(--ice); }
+@media (max-width: 1060px) { .vgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 900px) { .support-page { grid-template-columns: 1fr; } .facts4.three-up { grid-template-columns: 1fr; } }
+@media (max-width: 760px) {
+  .top nav.capsule .xs { display: inline; }
+  .vgrid, .login .row2 { grid-template-columns: 1fr; }
+  .vtile.big { grid-column: auto; flex-direction: column; }
+  .vtile.big .vc { flex: none; }
+}

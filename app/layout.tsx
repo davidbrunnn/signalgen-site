@@ -8,8 +8,8 @@ import { ui } from '@/lib/i18n-ui';
 import { currentEmail } from '@/lib/account';
 
 export const metadata: Metadata = {
-  title: 'SignalGen — plugins avançados, preço justo: Refiner, Monet e Clocker',
-  description: 'Plugins avançados, preço justo. O EQ Refiner, o sintetizador Monet e o Clocker grátis (BPM e tom), para macOS em AU e VST3. Instalador oficial, licença vitalícia, download na hora.',
+  title: 'SignalGen — plugins avançados, preço justo, e vocais exclusivos',
+  description: 'Plugins avançados, preço justo. O EQ Refiner, o sintetizador Monet e o Clocker grátis (BPM e tom). E vocais exclusivos, vendidos uma única vez: só quem compra tem. Instalador oficial, licença vitalícia, download na hora.',
   icons: { icon: '/favicon.svg' },
 };
 export const viewport: Viewport = { themeColor: '#0a0c10' };
@@ -30,7 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Link href="/" className="mark"><Mark /> SIGNALGEN</Link>
             <nav aria-label="Main" className="capsule">
               <Link href="/#plugins">{U.nav.plugins}</Link>
-              <Link href="/#packs">{U.nav.packs}</Link>
+              <Link href="/#packs"><span className="xl">{U.nav.packs}</span><span className="xs">{U.nav.packsShort}</span></Link>
               <Link href="/signalgen">{U.nav.signalgen}</Link>
               <Link href="/ghost">Ghost<span className="xl"> production</span></Link>
             </nav>
@@ -47,8 +47,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/monet">Monet</Link>
               <Link href="/clocker">Clocker</Link>
               <Link href="/signalgen">SignalGen</Link>
+              <Link href="/#packs">{U.nav.packs}</Link>
               <Link href="/ghost">{U.nav.ghost}</Link>
               <Link href={signedIn ? '/conta' : '/entrar'}>{signedIn ? U.nav.account : U.nav.signIn}</Link>
+              <Link href="/suporte">{U.nav.support}</Link>
               <Link href="/license">{U.footer.license}</Link>
             </nav>
           </footer>

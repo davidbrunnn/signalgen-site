@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { readCatalog, fmtDur } from '@/lib/catalog';
 import { paidSession, licenseNo } from '@/lib/session';
 import { fmt } from '@/lib/region';
-import { TERMS, KIT_TERMS, SOFTWARE_TERMS } from '../terms';
+import { TERMS, KIT_TERMS, SOFTWARE_TERMS, VOCAL_TERMS } from '../terms';
 import PrintButton from './PrintButton';
 
 export const dynamic = 'force-dynamic';
@@ -16,7 +16,8 @@ export default async function Certificate({ params }: { params: { session: strin
   if (!t) notFound();
   const date = new Date(p.when).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
   const soft = t.kind === 'software', kit = t.kind === 'kit' || t.kind === 'preset' || t.kind === 'bundle' || t.kind === 'pack';
-  const terms = soft ? SOFTWARE_TERMS : kit ? KIT_TERMS : TERMS;
+  const vocal = t.kind === 'vocal';
+  const terms = soft ? SOFTWARE_TERMS : vocal ? VOCAL_TERMS : kit ? KIT_TERMS : TERMS;
   const kindLabel = soft ? 'software license' : kit ? 'royalty-free license' : 'exclusive license';
   return (
     <main className="wrap narrow">
@@ -33,12 +34,13 @@ export default async function Certificate({ params }: { params: { session: strin
           <dt>Date</dt><dd>{date}</dd>
           {soft ? <><dt>Product</dt><dd>{t.title} — {t.subtitle}</dd><dt>License key</dt><dd style={{ fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 13, wordBreak: 'break-all' }}>{p.key || '—'}</dd></>
             : kit ? <><dt>Product</dt><dd>{t.title} — {t.subtitle || t.contents}</dd></>
+            : vocal ? <><dt>Vocals</dt><dd>{t.title} — {t.voices || 1} exclusive vocal{(t.voices || 1) > 1 ? 's' : ''}{t.subtitle ? ` · ${t.subtitle}` : ''}</dd></>
             : <><dt>Original artist</dt><dd>{t.artist}</dd><dt>Recording</dt><dd>{t.title} — Extended Mix ({fmtDur(t.duration)}) and Radio Edit, {t.bpm} BPM, {t.key}, {t.genre}</dd></>}
           <dt>Fee paid</dt><dd>{fmt(p.amount, p.currency || 'USD')}</dd>
           <dt>Reference</dt><dd style={{ fontWeight: 400, fontSize: 13, wordBreak: 'break-all' }}>{p.session}</dd>
         </dl>
         <ol>{terms.map((x) => <li key={x}>{x}</li>)}</ol>
-        <div className="sig"><span>SignalGen{soft || kit ? '' : `, on behalf of ${t.artist}`}</span><span>{date}</span></div>
+        <div className="sig"><span>SignalGen{soft || kit || vocal ? '' : `, on behalf of ${t.artist}`}</span><span>{date}</span></div>
       </article>
     </main>
   );

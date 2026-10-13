@@ -15,7 +15,7 @@ type Rule = { max: number; windowMs: number };
 const MIN = 60_000;
 const LIMITS: [RegExp, Rule][] = [
   [/^\/api\/auth\//, { max: 10, windowMs: 10 * MIN }],
-  [/^\/api\/free$/, { max: 5, windowMs: 10 * MIN }],
+  [/^\/api\/(free|support)$/, { max: 5, windowMs: 10 * MIN }],
   [/^\/api\/license\//, { max: 20, windowMs: 10 * MIN }],
   [/^\/api\/(checkout|pack\/checkout|ghost\/order)$/, { max: 12, windowMs: 10 * MIN }],
   [/^\/api\/(ghost\/thread|judge|pack\/upload)$/, { max: 40, windowMs: 10 * MIN }],
