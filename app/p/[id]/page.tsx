@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import type { Metadata } from 'next';
-import { readCatalog, priceOf, isSound } from '@/lib/catalog';
+import { readCatalog, priceOf, isSound, hrefOf } from '@/lib/catalog';
 import { country, priceFor } from '@/lib/region';
 import type { Track } from '@/lib/catalog';
 import { toP } from '@/lib/view';
@@ -23,7 +23,7 @@ export default async function ProductPage({ params }: { params: { id: string } }
   const all = (await readCatalog()).tracks;
   const t = all.find((x) => x.id === params.id);
   if (!t) notFound();
-  if (t.kind === 'software') redirect(t.id === 'monet' ? '/monet' : '/signalgen');
+  if (t.kind === 'software') redirect(hrefOf(t));
   if (t.kind === 'track') redirect(`/t/${t.id}`);
   if (!isSound(t)) notFound();
   const price = priceOf(t);
@@ -44,7 +44,7 @@ export default async function ProductPage({ params }: { params: { id: string } }
   const shown = Object.fromEntries(await Promise.all([...more, ...includes].map(async (x) => [x.id, (await priceFor(x, cc)).display])));
   return (
     <main className="wrap">
-      <Link href="/#store" className="back">All packs</Link>
+      <Link href="/#packs" className="back">All packs</Link>
       <div className="track pack">
         <div>
           <div className="art">{t.cover ? <img src={t.cover} alt={`${t.title} cover`} /> : null}</div>
@@ -82,7 +82,7 @@ export default async function ProductPage({ params }: { params: { id: string } }
             <ul>
               <li>Instant download after payment</li>
               <li>Use in your releases — no royalties, no credit</li>
-              {t.kind === 'preset' || t.kind === 'bundle' ? <li>Serum 2 presets need Xfer Serum 2 (2.1.5+)</li> : <li>Works in any DAW</li>}
+              {t.kind === 'preset' || t.kind === 'bundle' || c.presets ? <li>Serum 2 presets need Xfer Serum 2 (2.1.5+); the WAV loops work in any DAW</li> : <li>Works in any DAW</li>}
               <li>License certificate in your name</li>
             </ul>
             <BuyButton id={t.id} price={price} label={`Buy ${t.kind === 'bundle' ? 'the bundle' : t.kind === 'preset' ? 'the presets' : 'the pack'} · ${money.display}`} />
@@ -133,7 +133,7 @@ export default async function ProductPage({ params }: { params: { id: string } }
       <section className="block">
         <header><h2>Good to know</h2><p /></header>
         <div className="three">
-          <div><h3>Made from scratch</h3><p>Every sound was synthesized by SignalGen’s engine and its own patches — no third-party samples, no factory presets. Nothing to clear.</p></div>
+          {/vocal/i.test(t.packType || '') ? <div><h3>Original voices</h3><p>Every phrase was written for SignalGen and sung by AI voice models made for it (Seed Audio). No third-party samples, nothing to clear.</p></div> : <div><h3>Made from scratch</h3><p>Every sound was synthesized by SignalGen’s engine and its own patches — no third-party samples, no factory presets. Nothing to clear.</p></div>}
           <div><h3>{t.kind === 'preset' ? 'Installing' : 'Ready for the grid'}</h3><p>{t.kind === 'preset' ? 'In Serum 2, open the preset menu → Show Serum Presets Folder and copy the Presets folder into User. Rescan and they appear, named and tagged.' : 'Loops are cut to exact bars at the tempo in the name; one shots are tuned and named by note (Ableton: C3 = middle C).'}</p></div>
           <div><h3>License</h3><p>Royalty-free and non-exclusive: use it in any release. Don’t resell or share the sounds themselves. <Link href="/license" style={{ textDecoration: 'underline' }}>Full terms</Link>.</p></div>
         </div>

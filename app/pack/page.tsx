@@ -1,9 +1,11 @@
 import PackUpload from './PackUpload';
+import { redirect } from 'next/navigation';
 import { PACK_PRICE_USD } from '@/lib/pack';
 
 export const metadata = { title: 'SIGNALGEN PACK' };
 
 export default function PackPage() {
+  if (process.env.SELL_PACK !== '1') redirect('/');                       // 13/10/2026: fora da vitrine (em breve)
   return (
     <main className="wrap">
       <section className="hero-plain">

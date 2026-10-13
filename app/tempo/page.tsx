@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { readCatalog } from '@/lib/catalog';
+import { readCatalog, soonLabel } from '@/lib/catalog';
 import { country, sgPrice, refinerPrice } from '@/lib/region';
 import FreeForm from '@/components/FreeForm';
 import { getLang } from '@/lib/i18n';
@@ -49,6 +49,7 @@ export default async function TempoPage({ searchParams }: { searchParams: { lang
   const it = cat.tracks.find((x) => x.id === 'tempo');
   const cc = country();
   const [sgp, rp] = await Promise.all([sgPrice('founder', cc), refinerPrice(cc)]);
+  const SOON = soonLabel(getLang(searchParams));                       // 13/10/2026: o SignalGen esta em breve
   return (
     <main className="wrap">
       <section className="phero" aria-label="Tempo">
@@ -70,7 +71,7 @@ export default async function TempoPage({ searchParams }: { searchParams: { lang
         <header><h2>{X.nextH}</h2><p>{X.nextP}</p></header>
         <div className="act">
           <Link href="/refiner" className="btn quiet">{X.ref} · {rp.display}</Link>
-          <Link href="/signalgen" className="btn">{X.sg} · {sgp.display}</Link>
+          <Link href="/signalgen" className="btn">{X.sg} · {SOON}</Link>
         </div>
         <p className="muted small" style={{ marginTop: 'var(--s4)' }}>{X.trademark}</p>
       </section>

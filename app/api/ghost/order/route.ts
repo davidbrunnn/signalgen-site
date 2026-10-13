@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 import { siteUrl } from '@/lib/site';
 import Stripe from 'stripe';
 import { LOCAL } from '@/lib/catalog';
-import { newGhost, writeGhost, orderUrl, GHOST_PRICE_USD } from '@/lib/ghost';
+import { newGhost, writeGhost, orderUrl, GHOST_PRICE_BRL } from '@/lib/ghost';
 import { isLang, t } from '@/lib/i18n';
 
 export const runtime = 'nodejs';
@@ -24,7 +24,7 @@ export async function POST(req: Request) {
   const stripe = new Stripe(key);
   const session = await stripe.checkout.sessions.create({
     mode: 'payment',
-    line_items: [{ quantity: 1, price_data: { currency: 'usd', unit_amount: GHOST_PRICE_USD * 100,
+    line_items: [{ quantity: 1, price_data: { currency: 'brl', unit_amount: Math.round(GHOST_PRICE_BRL * 100),
       product_data: { name: `${L.pay.item} — ${o.brief.artist}`, description: `${o.brief.genre}. ${L.pay.itemSub}.` } } }],
     customer_email: o.brief.email,
     metadata: { kind: 'ghost', ghostId: o.id },

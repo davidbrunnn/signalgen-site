@@ -9,7 +9,10 @@ import { LOCAL } from '@/lib/catalog';
 import { sendMail, layout } from '@/lib/mail';
 import { t, type Lang } from '@/lib/i18n';
 
-export const GHOST_PRICE_USD = 150;
+export const GHOST_PRICE_USD = 150;                       // legado (pedidos antigos)
+// 13/10/2026 (David): ghost production a R$ 599, cobrado em reais (o Stripe converte para cartões de fora)
+export const GHOST_PRICE_BRL = Number(process.env.GHOST_PRICE_BRL || 599);
+export const GHOST_LABEL = `R$ ${GHOST_PRICE_BRL}`;
 /** where new orders and buyer messages arrive (David, 10/10/2026); GHOST_PRODUCER_EMAIL overrides */
 export const PRODUCER_EMAIL = process.env.GHOST_PRODUCER_EMAIL || 'brundavin@pm.me';
 export const STAGES = 7;                       // 0 order received · 1 brief · 2 sketch · 3 arrangement · 4 mix · 5 master · 6 delivered
@@ -18,7 +21,7 @@ export type Brief = { name: string; email: string; artist: string; genre: string
 export type Msg = { id: string; from: 'client' | 'producer' | 'system'; text: string; t: string; stage?: number };
 export type GhostOrder = {
   id: string; token: string; lang: Lang; brief: Brief;
-  status: 'pending' | 'paid'; stage: number; created: string; paidAt?: string; session?: string; amount: number; test?: boolean;
+  status: 'pending' | 'paid'; stage: number; created: string; paidAt?: string; session?: string; amount: number; currency?: string; test?: boolean;
   messages: Msg[]; updated: string; seenProducer?: string; seenClient?: string;
 };
 
@@ -78,7 +81,7 @@ export function newGhost(b: Partial<Brief>, lang: Lang): GhostOrder | string {
   if (!brief.name || !brief.artist || !brief.genre) return 'missing';
   if (!/^\S+@\S+\.\S+$/.test(brief.email)) return 'email';
   const now = new Date().toISOString();
-  return { id: `g${rid(10)}`, token: rid(24), lang, brief, status: 'pending', stage: 0, created: now, amount: GHOST_PRICE_USD, messages: [], updated: now };
+  return { id: `g${rid(10)}`, token: rid(24), lang, brief, status: 'pending', stage: 0, created: now, amount: GHOST_PRICE_BRL, currency: 'BRL', messages: [], updated: now };
 }
 
 export const orderUrl = (o: GhostOrder, site: string) => `${site}/ghost/o/${o.id}?k=${o.token}&lang=${o.lang}`;

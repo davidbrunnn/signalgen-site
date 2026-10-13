@@ -1,0 +1,379 @@
+[
+ {
+  "product": {
+   "id": "low-glide",
+   "kind": "kit",
+   "format": "wav",
+   "packType": "Serum 2 Sound Pack",
+   "title": "Low Glide",
+   "artist": "SignalGen",
+   "bpm": 128,
+   "key": "",
+   "duration": 0,
+   "genre": "Tech House",
+   "nonExclusive": true,
+   "group": "low-glide",
+   "vol": 1,
+   "keys": [
+    "A#m",
+    "Am",
+    "Cm",
+    "Dm",
+    "Fm",
+    "Gm"
+   ],
+   "price": 9,
+   "priceBrl": 29.9,
+   "subtitle": "Serum 2 Sound Pack · Tech House · 128 BPM",
+   "contents": "24 basslines · 12 leads · 12 stabs · 6 chord loops · 6 plucks · 60 Serum 2 presets",
+   "specs": "48 kHz / 24-bit WAV · MIDI · Serum 2 (.SerumPreset)",
+   "counts": {
+    "wav": 180,
+    "midi": 120,
+    "presets": 60
+   },
+   "inside": [
+    {
+     "folder": "Bass",
+     "count": 24,
+     "what": "24 WAV"
+    },
+    {
+     "folder": "Bass / MIDI",
+     "count": 24,
+     "what": "24 MIDI"
+    },
+    {
+     "folder": "Chords",
+     "count": 6,
+     "what": "6 WAV"
+    },
+    {
+     "folder": "Chords / MIDI",
+     "count": 6,
+     "what": "6 MIDI"
+    },
+    {
+     "folder": "Leads",
+     "count": 12,
+     "what": "12 WAV"
+    },
+    {
+     "folder": "Leads / MIDI",
+     "count": 12,
+     "what": "12 MIDI"
+    },
+    {
+     "folder": "One Shots",
+     "count": 60,
+     "what": "60 WAV"
+    },
+    {
+     "folder": "Plucks",
+     "count": 6,
+     "what": "6 WAV"
+    },
+    {
+     "folder": "Plucks / MIDI",
+     "count": 6,
+     "what": "6 MIDI"
+    },
+    {
+     "folder": "Serum 2 / MIDI / Bass",
+     "count": 24,
+     "what": "24 MIDI"
+    },
+    {
+     "folder": "Serum 2 / MIDI / Chords",
+     "count": 6,
+     "what": "6 MIDI"
+    },
+    {
+     "folder": "Serum 2 / MIDI / Leads",
+     "count": 12,
+     "what": "12 MIDI"
+    },
+    {
+     "folder": "Serum 2 / MIDI / Plucks",
+     "count": 6,
+     "what": "6 MIDI"
+    },
+    {
+     "folder": "Serum 2 / MIDI / Stabs",
+     "count": 12,
+     "what": "12 MIDI"
+    },
+    {
+     "folder": "Serum 2 / Presets / Bass",
+     "count": 24,
+     "what": "24 Serum 2 presets"
+    },
+    {
+     "folder": "Serum 2 / Presets / Chords",
+     "count": 6,
+     "what": "6 Serum 2 presets"
+    },
+    {
+     "folder": "Serum 2 / Presets / Leads",
+     "count": 12,
+     "what": "12 Serum 2 presets"
+    },
+    {
+     "folder": "Serum 2 / Presets / Plucks",
+     "count": 6,
+     "what": "6 Serum 2 presets"
+    },
+    {
+     "folder": "Serum 2 / Presets / Stabs",
+     "count": 12,
+     "what": "12 Serum 2 presets"
+    },
+    {
+     "folder": "Serum 2 / Previews / Bass",
+     "count": 24,
+     "what": "24 WAV"
+    },
+    {
+     "folder": "Serum 2 / Previews / Chords",
+     "count": 6,
+     "what": "6 WAV"
+    },
+    {
+     "folder": "Serum 2 / Previews / Leads",
+     "count": 12,
+     "what": "12 WAV"
+    },
+    {
+     "folder": "Serum 2 / Previews / Plucks",
+     "count": 6,
+     "what": "6 WAV"
+    },
+    {
+     "folder": "Serum 2 / Previews / Stabs",
+     "count": 12,
+     "what": "12 WAV"
+    },
+    {
+     "folder": "Stabs",
+     "count": 12,
+     "what": "12 WAV"
+    },
+    {
+     "folder": "Stabs / MIDI",
+     "count": 12,
+     "what": "12 MIDI"
+    }
+   ],
+   "samples": [
+    {
+     "name": "Bass 01 - Fm - 128 BPM",
+     "tag": "Bass",
+     "src": "/sounds/low-glide/s01.mp3"
+    },
+    {
+     "name": "Bass 02 - Gm - 128 BPM",
+     "tag": "Bass",
+     "src": "/sounds/low-glide/s02.mp3"
+    },
+    {
+     "name": "Bass 03 - Am - 128 BPM",
+     "tag": "Bass",
+     "src": "/sounds/low-glide/s03.mp3"
+    },
+    {
+     "name": "Bass 04 - Dm - 128 BPM",
+     "tag": "Bass",
+     "src": "/sounds/low-glide/s04.mp3"
+    },
+    {
+     "name": "Lead 01 - Fm - 128 BPM",
+     "tag": "Lead",
+     "src": "/sounds/low-glide/s05.mp3"
+    },
+    {
+     "name": "Lead 02 - Gm - 128 BPM",
+     "tag": "Lead",
+     "src": "/sounds/low-glide/s06.mp3"
+    },
+    {
+     "name": "Lead 03 - Am - 128 BPM",
+     "tag": "Lead",
+     "src": "/sounds/low-glide/s07.mp3"
+    },
+    {
+     "name": "Stab 01 - Fm - 128 BPM",
+     "tag": "Stab",
+     "src": "/sounds/low-glide/s08.mp3"
+    },
+    {
+     "name": "Stab 02 - Gm - 128 BPM",
+     "tag": "Stab",
+     "src": "/sounds/low-glide/s09.mp3"
+    },
+    {
+     "name": "Chords 01 - Fm - 128 BPM",
+     "tag": "Chords",
+     "src": "/sounds/low-glide/s10.mp3"
+    },
+    {
+     "name": "Chords 02 - Gm - 128 BPM",
+     "tag": "Chords",
+     "src": "/sounds/low-glide/s11.mp3"
+    },
+    {
+     "name": "Pluck 01 - Fm - 128 BPM",
+     "tag": "Pluck",
+     "src": "/sounds/low-glide/s12.mp3"
+    }
+   ],
+   "description": "The first pack of the new SignalGen series, made by the SignalGen engine in Serum 2. The heart of it is the bass: a tube-driven saw bass through a resonant 12 dB low-pass with a short filter envelope, mono and legato, and a delayed portamento that lands each glide a 32nd late — the little lag that makes a tech house bassline groove. 24 basslines written on that groove in six minor keys, plus 12 driven mid leads, 12 night stabs, 6 chord loops and 6 plucks. Every loop ships as mastered WAV, as MIDI and as the exact Serum 2 preset that plays it: hear it, load it, write your own notes.",
+   "cover": "/sounds/low-glide/cover.jpg",
+   "preview": "/sounds/low-glide/demo.mp3",
+   "sizeMb": 178,
+   "downloads": [
+    {
+     "key": "zip",
+     "label": "Low Glide — sample pack (WAV + MIDI)",
+     "note": "ZIP · 48 kHz / 24-bit WAV · MIDI"
+    },
+    {
+     "key": "presets",
+     "label": "Low Glide — Serum 2 presets",
+     "note": "ZIP · .SerumPreset + previews + MIDI"
+    }
+   ],
+   "published": "2026-10-13T11:00:00.000Z"
+  },
+  "zips": {
+   "zip": "/sessions/rcw-01hxkzteykrppxg6z8dlq4ci/mnt/SignalGen/Kits/Venda/SignalGen - Low Glide (Sample Pack).zip",
+   "presets": "/sessions/rcw-01hxkzteykrppxg6z8dlq4ci/mnt/SignalGen/Kits/Venda/SignalGen - Low Glide (Serum 2 Presets).zip"
+  }
+ },
+ {
+  "product": {
+   "id": "signal-voices",
+   "kind": "kit",
+   "format": "wav",
+   "packType": "Vocal Pack",
+   "title": "Signal Voices",
+   "artist": "SignalGen",
+   "bpm": 0,
+   "key": "",
+   "duration": 0,
+   "genre": "Tech House",
+   "nonExclusive": true,
+   "group": "signal-voices",
+   "vol": 2,
+   "keys": [],
+   "price": 7,
+   "priceBrl": 19.9,
+   "subtitle": "Vocal Pack · Tech House · 124–130 BPM",
+   "contents": "48 phrases · 192 loops · 6 voices",
+   "specs": "48 kHz WAV · dry · loops at 124, 126, 128 and 130 BPM",
+   "counts": {
+    "wav": 240,
+    "midi": 0,
+    "presets": 0
+   },
+   "inside": [
+    {
+     "folder": "Female Vocals / Loops",
+     "count": 96,
+     "what": "96 WAV"
+    },
+    {
+     "folder": "Female Vocals / One Shots",
+     "count": 24,
+     "what": "24 WAV"
+    },
+    {
+     "folder": "Male Vocals / Loops",
+     "count": 96,
+     "what": "96 WAV"
+    },
+    {
+     "folder": "Male Vocals / One Shots",
+     "count": 24,
+     "what": "24 WAV"
+    }
+   ],
+   "samples": [
+    {
+     "name": "Feel the pressure - Knox",
+     "tag": "Male",
+     "src": "/sounds/signal-voices/s01.mp3"
+    },
+    {
+     "name": "Don't stop the rhythm - Vesper",
+     "tag": "Female",
+     "src": "/sounds/signal-voices/s02.mp3"
+    },
+    {
+     "name": "Heat in the room - Orion",
+     "tag": "Male",
+     "src": "/sounds/signal-voices/s03.mp3"
+    },
+    {
+     "name": "Bring the bass back - Luna",
+     "tag": "Female",
+     "src": "/sounds/signal-voices/s04.mp3"
+    },
+    {
+     "name": "Keep it moving - Barrett",
+     "tag": "Male",
+     "src": "/sounds/signal-voices/s05.mp3"
+    },
+    {
+     "name": "Midnight motion - Sloane",
+     "tag": "Female",
+     "src": "/sounds/signal-voices/s06.mp3"
+    },
+    {
+     "name": "Lock it in - Knox",
+     "tag": "Male",
+     "src": "/sounds/signal-voices/s07.mp3"
+    },
+    {
+     "name": "Velvet sound - Vesper",
+     "tag": "Female",
+     "src": "/sounds/signal-voices/s08.mp3"
+    },
+    {
+     "name": "Make it bounce - Orion",
+     "tag": "Male",
+     "src": "/sounds/signal-voices/s09.mp3"
+    },
+    {
+     "name": "Lose the time - Luna",
+     "tag": "Female",
+     "src": "/sounds/signal-voices/s10.mp3"
+    },
+    {
+     "name": "Late night ritual - Barrett",
+     "tag": "Male",
+     "src": "/sounds/signal-voices/s11.mp3"
+    },
+    {
+     "name": "Electric velvet - Sloane",
+     "tag": "Female",
+     "src": "/sounds/signal-voices/s12.mp3"
+    }
+   ],
+   "description": "Forty-eight original tech house and house vocal phrases by six SignalGen voices — Knox, Orion and Barrett (male), Vesper, Luna and Sloane (female). Dry, 48 kHz, first syllable on the one. Each phrase comes as a one shot ready to chop and as loops cut to exactly 2 or 4 bars at 124, 126, 128 and 130 BPM: drop on the grid, no warping.",
+   "cover": "/sounds/signal-voices/cover.jpg",
+   "preview": "/sounds/signal-voices/demo.mp3",
+   "sizeMb": 58,
+   "downloads": [
+    {
+     "key": "zip",
+     "label": "Signal Voices — vocal pack",
+     "note": "ZIP · 48 kHz WAV · dry · loops at 124, 126, 128 and 130 BPM"
+    }
+   ],
+   "published": "2026-10-13T10:00:00.000Z"
+  },
+  "zips": {
+   "zip": "/sessions/rcw-01hxkzteykrppxg6z8dlq4ci/mnt/SignalGen/Kits/Venda/SignalGen - Signal Voices (Vocal Pack).zip"
+  }
+ }
+]

@@ -5,7 +5,7 @@ import { siteUrl } from '@/lib/site';
 import Stripe from 'stripe';
 import { randomBytes } from 'crypto';
 import { put } from '@vercel/blob';
-import { readCatalog, priceOf, isSold, LOCAL, SELL_TRACKS, hrefOf, approved, founderLeft, sgTier } from '@/lib/catalog';
+import { readCatalog, priceOf, isSold, LOCAL, SELL_TRACKS, hrefOf, approved, founderLeft, sgTier, forSale } from '@/lib/catalog';
 import { priceFor, countryOfRequest, minorUnits } from '@/lib/region';
 
 export const runtime = 'nodejs';
@@ -17,6 +17,7 @@ export async function POST(req: Request) {
   if (!t) return NextResponse.json({ error: 'This track is no longer in the catalog.' }, { status: 404 });
   if (isSold(t)) return NextResponse.json({ error: 'This track was just signed by someone else — exclusive licenses sell once.' }, { status: 409 });
   if (!approved(t)) return NextResponse.json({ error: 'This track is not for sale.' }, { status: 403 });
+  if (!forSale(t)) return NextResponse.json({ error: 'Em breve · Coming soon.' }, { status: 403 });            // 13/10/2026: only the window is on sale
   if (t.kind === 'track' && !SELL_TRACKS) return NextResponse.json({ error: 'This track is a demo of what SignalGen makes and is not for sale.' }, { status: 403 });
   const money = await priceFor(t, countryOfRequest(req), sgTier(t));          // 13/10/2026: packs in BRL for Brazil (Pix shows up by itself), software by product
   if (money.amount <= 0) return NextResponse.json({ url: `${hrefOf(t)}#free` });   // free items (Tempo) go through /api/free with an e-mail

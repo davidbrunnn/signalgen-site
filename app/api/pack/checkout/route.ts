@@ -7,6 +7,7 @@ import { PACK_PRICE_USD, packId } from '@/lib/pack';
 export const runtime = 'nodejs';
 
 export async function POST(req: Request) {
+  if (process.env.SELL_PACK !== '1') return NextResponse.json({ error: 'Em breve · Coming soon.' }, { status: 403 });   // 13/10/2026: fora da vitrine
   const key = process.env.STRIPE_SECRET_KEY;
   if (!key) return NextResponse.json({ error: 'Stripe is not configured yet (STRIPE_SECRET_KEY).' }, { status: 500 });
   const { audio, filename } = await req.json().catch(() => ({}));

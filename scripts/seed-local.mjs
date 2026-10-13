@@ -113,6 +113,14 @@ const mb = (p) => (fs.existsSync(p) ? Math.round(fs.statSync(p).size / 1048576) 
 const pkgs = fs.existsSync(path.join(sg, 'Publicar')) ? fs.readdirSync(path.join(sg, 'Publicar')).filter((x) => /^SignalGen-[\d.]+-mac\.pkg$/.test(x)).sort((a, b) => a.localeCompare(b, undefined, { numeric: true })) : [];
 const pkg = path.join(sg, 'Publicar', pkgs[pkgs.length - 1] || 'SignalGen-5.2.0-mac.pkg');                   // the newest installer
 const pkgVer = (path.basename(pkg).match(/SignalGen-([\d.]+)-mac/) || [])[1] || '5';
+// 13/10/2026: each plugin sold on its own ships its own installer (installer-mac/build-pkg.command with SG_SO=<plugin>): <Name>-<ver>-mac.pkg
+const solo = (name) => {
+  const d = path.join(sg, 'Publicar'); if (!fs.existsSync(d)) return null;
+  const v = fs.readdirSync(d).filter((x) => new RegExp(`^${name}-[\\d.]+-mac\\.pkg$`).test(x)).sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+  return v.length ? path.join(d, v[v.length - 1]) : null;
+};
+const soloDl = (name, p) => (p ? { key: 'pkg', label: `${name} ${(path.basename(p).match(/-([\d.]+)-mac/) || [])[1] || ''} for macOS`.replace('  ', ' '), note: `Installer (.pkg) · ${name} only · AU + VST3 · Apple Silicon + Intel` }
+  : { key: 'pkg', label: `${name} for macOS`, note: `SignalGen installer (.pkg) — keep "${name}" in the installer choices · AU + VST3` });
 products.push({
   id: 'signalgen', kind: 'software', title: 'SignalGen', artist: 'SignalGen', bpm: 0, key: '', duration: 0,
   subtitle: 'Version 5 · AU + VST3 for Ableton Live 12 · macOS', genre: 'Tech House · Bass House · Minimal · UK Garage · Hip-Hop',
@@ -127,7 +135,8 @@ products.push({
 // MONET on its own (10/10/2026): the SignalGen synthesizer, free inside every SignalGen license, sold separately at 30 % of Serum 2
 // (lib/region MONET_PRICE). Same installer — the buyer keeps only "Monet" in the installer's choices; the key opens Monet only.
 const MONET = {"id": "monet", "kind": "software", "title": "Monet", "artist": "SignalGen", "bpm": 0, "key": "", "duration": 0, "subtitle": "Wavetable synthesizer · AU + VST3 · macOS", "genre": "Synthesizer", "price": 74.7, "nonExclusive": true, "licenseProduct": "monet", "description": "The SignalGen synthesizer: 3 wavetable oscillators with 16-voice unison, 14 filters including five analog circuit models, 4 LFOs, 3 envelopes you draw, MSEGs, a 16-slot matrix, 7 effects and 200+ presets. Free with SignalGen.", "features": ["3 wavetable oscillators, unison up to 16", "MODEL M and VINTAGE: analog oscillators and 5 circuit filters", "PAINT: draw a wave, it becomes a wavetable", "GRAIN and LEARN: drop any sample, it becomes a patch", "CHAOS, ROUND ROBIN, knob-to-knob modulation, 16 slots", "BASSLINE arpeggiator modes", "7 effects, guard limiter", "200+ presets", "Lifetime license, offline, 2 computers"], "screenshots": ["/product/ui2/monet_01_synth.jpg", "/product/ui2/monet_02_fx.jpg", "/product/ui2/monet_03_matrix.jpg", "/product/ui2/monet_04_presets.jpg"], "cover": "/product/ui2/monet_01_synth.jpg", "downloads": [{"key": "pkg", "label": "Monet for macOS", "note": "SignalGen installer (.pkg) — keep \"Monet\" in the installer choices · AU + VST3"}], "published": "2026-10-10T00:00:00.000Z"};
-MONET.sizeMb = mb(pkg); MONET.files = { pkg: file(pkg) }; MONET.sold = sold['monet'] || 0;
+{ const p = solo('Monet') || pkg; MONET.sizeMb = mb(p); MONET.files = { pkg: file(p) }; MONET.downloads = [soloDl('Monet', solo('Monet'))]; }
+MONET.sold = sold['monet'] || 0;
 products.push(MONET);
 
 // 13/10/2026 (David, plano de lançamento): REFINER sold on its own (R$ 49,90 / US$ 12,90, lib/region REFINER_PRICE) and TEMPO free in
@@ -135,11 +144,11 @@ products.push(MONET);
 const REFINER = {
   id: 'refiner', kind: 'software', title: 'Refiner', artist: 'SignalGen', bpm: 0, key: '', duration: 0,
   subtitle: '24-band EQ · AU + VST3 · macOS', genre: 'Equalizer', price: Number(process.env.REFINER_PRICE_USD || 12.9), nonExclusive: true, licenseProduct: 'refiner',
-  description: 'The EQ that shows you where to cut. 24 bands by single click, a 96 kHz-style spectrum, SMART analysis that marks the fundamental and its octaves in neon and the wrong resonances in red-to-blue, Sidechain (dynamic) and Level modes drawn as curves, Zero / Natural / Linear phase, Stereo / Mid-Side / Mono, Harmonic Lock, Delta and blind A/B. Tube, Glue and Density finish on the Init preset. Free with SignalGen.',
+  description: 'The EQ that shows you where to cut. 24 bands by single click, a 96 kHz-style spectrum, SMART analysis that marks the fundamental and its octaves in neon and the wrong resonances in red-to-blue, Sidechain (dynamic) and Level modes drawn as curves, Zero / Natural / Linear phase, Stereo / Mid-Side / Mono, Harmonic Lock, Delta and blind A/B. Free with SignalGen.',
   features: ['24 bands, one click each, drag the node or the curve', 'SMART: fundamental, octaves and resonances marked on the spectrum', 'Sidechain mode: dynamic EQ with internal, external or Mix detector', 'Level mode: the curve as a target, with stiffness and memory', 'Transient / Sustain per band', 'Zero, Natural and Linear phase · Stereo, Mid-Side, Mono', 'Harmonic Lock, Delta, blind A/B', 'MATCH: EQ toward a reference, up to 16 bands', 'Lifetime license, offline, 2 computers'],
   screenshots: ['/product/ui2/refiner_01.png', '/product/ui2/refiner_02.png', '/product/ui2/refiner_03.png'], cover: '/product/ui2/refiner_01.png',
-  downloads: [{ key: 'pkg', label: `Refiner for macOS`, note: 'SignalGen installer (.pkg) — keep "Refiner" in the installer choices · AU + VST3' }],
-  published: '2026-10-13T00:00:00.000Z', sizeMb: mb(pkg), files: { pkg: file(pkg) }, sold: sold['refiner'] || 0,
+  downloads: [soloDl('Refiner', solo('Refiner'))],
+  published: '2026-10-13T00:00:00.000Z', sizeMb: mb(solo('Refiner') || pkg), files: { pkg: file(solo('Refiner') || pkg) }, sold: sold['refiner'] || 0,
 };
 const TEMPO = {
   id: 'tempo', kind: 'software', title: 'Tempo', artist: 'SignalGen', bpm: 0, key: '', duration: 0,
@@ -147,8 +156,8 @@ const TEMPO = {
   description: 'Put it on any channel (or on the master, listening to the Mix sidechain), press LISTEN: 10 seconds later you have the BPM, the key and the chords of whatever is playing. Drop a file on it and it reads that instead. Free: leave your e-mail and the key is yours.',
   features: ['BPM in 10 s, tempo-of-the-set tie-break (4/3, 3/2, 2x)', 'Key and chords of what is playing', 'Listens to the channel or to the whole Mix', 'Drop a file to analyse it', 'Free, lifetime, offline'],
   screenshots: ['/product/ui2/tempo_01.png', '/product/ui2/tempo_02.png'], cover: '/product/ui2/tempo_01.png',
-  downloads: [{ key: 'pkg', label: `Tempo for macOS`, note: 'SignalGen installer (.pkg) — keep "Tempo" in the installer choices · AU + VST3' }],
-  published: '2026-10-13T00:00:00.000Z', sizeMb: mb(pkg), files: { pkg: file(pkg) }, sold: sold['tempo'] || 0,
+  downloads: [soloDl('Tempo', solo('Tempo'))],
+  published: '2026-10-13T00:00:00.000Z', sizeMb: mb(solo('Tempo') || pkg), files: { pkg: file(solo('Tempo') || pkg) }, sold: sold['tempo'] || 0,
 };
 products.push(REFINER, TEMPO);
 
@@ -170,6 +179,17 @@ const mergeLoops = (inside) => {                                                
 };
 const all = [];
 const pad2 = (n) => String(n).padStart(2, '0');
+// 13/10/2026 (David: "remova os sample packs, estao pessimos"): the old volumes leave the shop (OLD_PACKS=1 brings them back).
+// The new series comes from scripts/packs2.json (music-gen/tools/kit_loja2.py): Low Glide, Signal Voices…
+if (process.env.OLD_PACKS !== '1') vols = [];
+let packs2 = [];
+try { packs2 = JSON.parse(fs.readFileSync(path.join(root, 'scripts', 'packs2.json'), 'utf8')); } catch { console.log('no scripts/packs2.json (python3 music-gen/tools/kit_loja2.py)'); }
+for (const x of packs2) {
+  const files = {}; for (const [k, z] of Object.entries(x.zips || {})) { const f = file(rebase(z)); if (f) files[k] = f; }
+  if (!files.zip) { console.log(`skip (zip missing): ${x.title}`); continue; }
+  products.push({ ...x.product, files, sold: sold[x.product.id] || 0 });
+  console.log(`pack  ${x.product.title}  ${Object.keys(files).join('+')}`);
+}
 for (const v of vols) {
   // 13/10/2026: Song Packs (vol. 17+, packs cut from single songs) stay out of the shop window unless SELL_SONGPACKS=1 — their names are internal
   if ((v.type === 'Song Pack' || (v.vol || 0) >= 17) && process.env.SELL_SONGPACKS !== '1') { console.log(`skip (song pack, not in the window): ${v.title}`); continue; }

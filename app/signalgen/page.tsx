@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { readCatalog, priceOf, founderLeft, FOUNDER_SEATS, isSignalGen } from '@/lib/catalog';
+import { readCatalog, priceOf, founderLeft, FOUNDER_SEATS, isSignalGen, forSale } from '@/lib/catalog';
 import { sgPrice, country } from '@/lib/region';
 import BuyButton from '@/components/BuyButton';
 import { getLang, t } from '@/lib/i18n';
@@ -16,13 +16,15 @@ export function generateMetadata({ searchParams }: { searchParams: { lang?: stri
 // unlimited stem splitter (Demucs, set up by the installer). Founder price for the first 100 licenses, then
 // lifetime — R$ 199 / R$ 299 in Brazil, US$ 49 / US$ 74 abroad, the Brazilian price in local currency in Latin America (lib/region).
 export default async function SignalGenPage({ searchParams }: { searchParams: { lang?: string } }) {
-  const L = t(getLang(searchParams)), S = L.sg;
+  const lang = getLang(searchParams), L = t(lang), S = L.sg;
   const cat = await readCatalog();
   const sg = cat.tracks.find(isSignalGen);
   const left = founderLeft(sg), cc = country();
   const [fp, lp] = await Promise.all([sgPrice('founder', cc), sgPrice('lifetime', cc)]);
   const now = left > 0 ? fp : lp;
-  const buy = sg ? <BuyButton id={sg.id} price={sg ? priceOf(sg) : 0} label={S.buy(now.display)} /> : null;
+  const on = forSale(sg);                                                   // 13/10/2026: o SignalGen fica "em breve" ate liberar
+  const SOON = lang === 'en' ? 'Coming soon' : lang === 'es' ? 'Próximamente' : 'Em breve';
+  const buy = on && sg ? <BuyButton id={sg.id} price={sg ? priceOf(sg) : 0} label={S.buy(now.display)} /> : <span className="btn soon" aria-disabled="true">{SOON}</span>;
   return (
     <main className="wrap">
       <section className="phero" aria-label="SignalGen">
@@ -31,7 +33,7 @@ export default async function SignalGenPage({ searchParams }: { searchParams: { 
           <h1>{S.h1}</h1>
           <p className="lede">{S.lede}</p>
           <div className="act">{buy}</div>
-          {left > 0 ? <div className="founder-left"><span style={{ width: `${(left / FOUNDER_SEATS) * 100}%` }} />{S.founderLeft(left)}</div> : null}
+          {on && left > 0 ? <div className="founder-left"><span style={{ width: `${(left / FOUNDER_SEATS) * 100}%` }} />{S.founderLeft(left)}</div> : null}
           <ul className="trust">{S.trust.map(([b, s]) => <li key={b}><b>{b}</b>{s}</li>)}</ul>
         </div>
         <figure className="phero-shot">
@@ -82,13 +84,13 @@ export default async function SignalGenPage({ searchParams }: { searchParams: { 
             <span className="eyebrow">{S.founder}</span>
             <div className="amount">{fp.display}</div>
             <p className="muted small">{S.founderSub}</p>
-            {left > 0 ? <><div className="founder-left"><span style={{ width: `${(left / FOUNDER_SEATS) * 100}%` }} />{S.founderLeft(left)}</div>{buy}</> : <div className="tag">{S.soldOut}</div>}
+            {!on ? buy : left > 0 ? <><div className="founder-left"><span style={{ width: `${(left / FOUNDER_SEATS) * 100}%` }} />{S.founderLeft(left)}</div>{buy}</> : <div className="tag">{S.soldOut}</div>}
           </article>
           <article data-on={left > 0 ? '0' : '1'}>
             <span className="eyebrow">{S.lifetime}</span>
             <div className="amount">{lp.display}</div>
             <p className="muted small">{S.lifetimeSub}</p>
-            {left > 0 ? <div className="tag">{S.after}</div> : buy}
+            {!on ? null : left > 0 ? <div className="tag">{S.after}</div> : buy}
           </article>
           <ul className="offer-list">{S.includes.map((x) => <li key={x}>{x}</li>)}</ul>
         </div>

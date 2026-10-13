@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { readCatalog, priceOf } from '@/lib/catalog';
+import { readCatalog, priceOf, soonLabel } from '@/lib/catalog';
 import { monetPrice, country, fmt, SERUM2_USD, sgPrice } from '@/lib/region';
 import BuyButton from '@/components/BuyButton';
 import { getLang, t } from '@/lib/i18n';
@@ -23,6 +23,7 @@ export default async function MonetPage({ searchParams }: { searchParams: { lang
   const mo = cat.tracks.find((x) => x.id === 'monet');
   const cc = country();
   const [mp, sgp] = await Promise.all([monetPrice(cc), sgPrice('founder', cc)]);
+  const SOON = soonLabel(getLang(searchParams));                       // 13/10/2026: o SignalGen esta em breve
   const buy = mo ? <BuyButton id={mo.id} price={priceOf(mo)} label={M.buy(mp.display)} /> : null;
   const serum = fmt(SERUM2_USD, 'USD');
   return (
@@ -34,7 +35,7 @@ export default async function MonetPage({ searchParams }: { searchParams: { lang
           <p className="lede">{M.lede}</p>
           <div className="act">
             {buy}
-            <Link href="/signalgen" className="btn quiet">{M.orSg} · {sgp.display}</Link>
+            <Link href="/signalgen" className="btn quiet">{M.orSg} · {SOON}</Link>
           </div>
           <ul className="trust">{M.safe.map(([b, s]) => <li key={b}><b>{b}</b>{s}</li>)}</ul>
         </div>
@@ -75,7 +76,7 @@ export default async function MonetPage({ searchParams }: { searchParams: { lang
           </div>
           <div className="g-cta">
             <p><b>{M.orSg}</b></p>
-            <Link href="/signalgen" className="btn" style={{ width: '100%' }}>SignalGen · {sgp.display}</Link>
+            <Link href="/signalgen" className="btn" style={{ width: '100%' }}>SignalGen · {SOON}</Link>
           </div>
         </div>
         <p className="muted small" style={{ marginTop: 'var(--s4)' }}>{M.trademark}</p>

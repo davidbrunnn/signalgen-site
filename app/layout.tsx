@@ -6,8 +6,8 @@ import LangSwitch from '@/components/LangSwitch';
 import { getLang, t, HTML_LANG } from '@/lib/i18n';
 
 export const metadata: Metadata = {
-  title: 'SignalGen — gerador musical para Ableton Live, o synth Monet, packs e ghost production',
-  description: 'SignalGen: gera faixas completas, separa stems, remixa, reconstrói e recria timbres no Monet, dentro do Ableton Live. Mais sample packs e ghost production sob encomenda.',
+  title: 'SignalGen — plugins e vocais para produtores: Refiner, Monet, Tempo e packs',
+  description: 'Marketplace SignalGen: o EQ Refiner, o synth Monet, o Tempo grátis (BPM e tom) e packs de vocais e Serum 2. Instalador oficial, licença vitalícia, download na hora.',
   icons: { icon: '/favicon.svg' },
 };
 export const viewport: Viewport = { themeColor: '#0a0c10' };
@@ -26,9 +26,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <header className="wrap top">
             <Link href="/" className="mark"><Mark /> SIGNALGEN</Link>
             <nav aria-label="Main" className="capsule">
-              <Link href="/#store">{L.nav.packs}</Link>
+              <Link href="/#plugins">Plugins</Link>
+              <Link href="/#packs">{L.nav.packs}</Link>
               <Link href="/signalgen">{L.nav.signalgen}</Link>
-              <Link href="/monet">{L.nav.monet}</Link>
               <Link href="/ghost">{L.nav.ghost}</Link>
             </nav>
             <LangSwitch lang={lang} />
@@ -37,7 +37,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <footer className="wrap site">
             <div><b>SignalGen</b> — {L.footer.line} © {new Date().getFullYear()}</div>
             <nav aria-label="Footer">
-              <Link href="/#store">{L.footer.all}</Link>
+              <Link href="/#plugins">Plugins</Link>
+              <Link href="/#packs">{L.nav.packs}</Link>
               <Link href="/signalgen">{L.nav.signalgen}</Link>
               <Link href="/monet">{L.nav.monet}</Link>
               <Link href="/ghost">{L.nav.ghost}</Link>

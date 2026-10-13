@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { readCatalog, priceOf } from '@/lib/catalog';
+import { readCatalog, priceOf, soonLabel } from '@/lib/catalog';
 import { refinerPrice, country, sgPrice } from '@/lib/region';
 import BuyButton from '@/components/BuyButton';
 import { getLang } from '@/lib/i18n';
@@ -79,6 +79,7 @@ export default async function RefinerPage({ searchParams }: { searchParams: { la
   const it = cat.tracks.find((x) => x.id === 'refiner');
   const cc = country();
   const [rp, sgp] = await Promise.all([refinerPrice(cc), sgPrice('founder', cc)]);
+  const SOON = soonLabel(getLang(searchParams));                       // 13/10/2026: o SignalGen esta em breve
   const buy = it ? <BuyButton id={it.id} price={priceOf(it)} label={X.buy(rp.display)} /> : null;
   return (
     <main className="wrap">
@@ -87,7 +88,7 @@ export default async function RefinerPage({ searchParams }: { searchParams: { la
           <span className="eyebrow">{X.eyebrow}</span>
           <h1>{X.h1a} <em className="muted">{X.h1b}</em></h1>
           <p className="lede">{X.lede}</p>
-          <div className="act">{buy}<Link href="/signalgen" className="btn quiet">{X.orSg} · {sgp.display}</Link></div>
+          <div className="act">{buy}<Link href="/signalgen" className="btn quiet">{X.orSg} · {SOON}</Link></div>
           <ul className="trust">{X.trust.map(([b, s]) => <li key={b + s}><b>{b}</b>{s}</li>)}</ul>
         </div>
         <figure className="phero-shot monet-shot"><img src="/product/ui2/refiner_01.png" alt="Refiner" /></figure>
@@ -104,7 +105,7 @@ export default async function RefinerPage({ searchParams }: { searchParams: { la
         <header><h2>{X.priceH}</h2><p>{X.priceNote}</p></header>
         <div className="monet-price">
           <div data-row={0}><span>Refiner</span><b>{rp.display}</b></div>
-          <div data-row={1}><span>SignalGen (Refiner + Monet + Tempo)</span><b>{sgp.display}</b></div>
+          <div data-row={1}><span>SignalGen (Refiner + Monet + Tempo)</span><b>{SOON}</b></div>
           <div className="act">{buy}</div>
           <p className="muted small">{X.free}</p>
         </div>
@@ -112,7 +113,7 @@ export default async function RefinerPage({ searchParams }: { searchParams: { la
       <section className="block" id="faq">
         <div className="split">
           <div><h2 style={{ marginBottom: 'var(--s3)' }}>{X.faqH}</h2>{X.faq.map(([q, a], i) => <details key={q} open={i === 0}><summary>{q}</summary><p>{a}</p></details>)}</div>
-          <div className="g-cta"><p><b>{X.orSg}</b></p><Link href="/signalgen" className="btn" style={{ width: '100%' }}>SignalGen · {sgp.display}</Link></div>
+          <div className="g-cta"><p><b>{X.orSg}</b></p><Link href="/signalgen" className="btn" style={{ width: '100%' }}>SignalGen · {SOON}</Link></div>
         </div>
         <p className="muted small" style={{ marginTop: 'var(--s4)' }}>{X.trademark}</p>
       </section>

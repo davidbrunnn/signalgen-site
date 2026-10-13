@@ -117,14 +117,15 @@ export async function localized(brl: number, usd: number, cc: string): Promise<M
 export const refinerPrice = (cc: string) => localized(REFINER_PRICE.BRL, REFINER_PRICE.USD, cc);
 
 /** Sample packs, Serum 2 presets and bundles: R$ 19,90 / R$ 29,90 in Brazil, that in local currency in Latin America, kit_loja's US$ elsewhere. */
-export async function soundPrice(t: { kind?: string; format?: string; price?: number }, cc: string): Promise<Money> {
+export async function soundPrice(t: { kind?: string; format?: string; price?: number; priceBrl?: number }, cc: string): Promise<Money> {
   const usd = t.price || 12;
+  if (t.priceBrl) return localized(t.priceBrl, usd, cc);                      // 13/10/2026: the pack sets its own Brazilian price
   if (t.format === 'collection') return cc === 'BR' || LATAM[cc] ? localized(nice(usd * 5), usd, cc) : { amount: usd, currency: 'USD', display: fmt(usd, 'USD') };
   return localized(t.kind === 'bundle' ? SOUND_PRICE_BRL.bundle : SOUND_PRICE_BRL.pack, usd, cc);
 }
 
 /** Any catalog item in the visitor's currency. Free items come back with amount 0. */
-export async function priceFor(t: { kind?: string; format?: string; price?: number; licenseProduct?: string; sold?: number }, cc: string, tier: 'founder' | 'lifetime' = 'founder'): Promise<Money> {
+export async function priceFor(t: { kind?: string; format?: string; price?: number; priceBrl?: number; licenseProduct?: string; sold?: number }, cc: string, tier: 'founder' | 'lifetime' = 'founder'): Promise<Money> {
   if (t.kind === 'software') return softPrice(t, cc, tier);
   if (t.kind === 'kit' || t.kind === 'preset' || t.kind === 'bundle') return soundPrice(t, cc);
   const usd = t.price || 59; return { amount: usd, currency: 'USD', display: fmt(usd, 'USD') };

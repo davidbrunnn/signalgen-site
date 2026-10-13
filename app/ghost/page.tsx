@@ -2,7 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { Wave } from '@/components/Player';
 import { getLang, t } from '@/lib/i18n';
-import { GHOST_PRICE_USD } from '@/lib/ghost';
+import { GHOST_LABEL } from '@/lib/ghost';
 
 export const dynamic = 'force-dynamic';
 
@@ -29,7 +29,7 @@ export default function Ghost({ searchParams }: { searchParams: { lang?: string 
           <span className="eyebrow">{G.eyebrow}</span>
           <h1>{G.h1a} <em className="muted">{G.h1b}</em></h1>
           <p className="lede">{G.lede}</p>
-          <div className="g-price"><b>US$ {GHOST_PRICE_USD}</b><small>{G.per}</small></div>
+          <div className="g-price"><b>{GHOST_LABEL}</b><small>{G.per}</small></div>
           <Link href="/ghost/pedido" className="btn">{G.cta}</Link>
         </div>
         <aside className="g-ref" aria-label={G.previewH}>
@@ -76,7 +76,7 @@ export default function Ghost({ searchParams }: { searchParams: { lang?: string 
             {G.faq.map(([q, a], i) => <details key={q} open={i === 0}><summary>{q}</summary><p>{a}</p></details>)}
           </div>
           <div className="g-cta">
-            <div className="g-price"><b>US$ {GHOST_PRICE_USD}</b><small>{G.per}</small></div>
+            <div className="g-price"><b>{GHOST_LABEL}</b><small>{G.per}</small></div>
             <Link href="/ghost/pedido" className="btn" style={{ width: '100%' }}>{G.cta}</Link>
             <p className="muted small">{L.form.note}</p>
           </div>

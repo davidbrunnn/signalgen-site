@@ -42,6 +42,7 @@ export type Track = {
   includes?: string[];   // bundles: the SKUs inside
   wasPrice?: number;     // bundles: what the parts cost alone
   price?: number;
+  priceBrl?: number;                                              // 13/10/2026: a pack's own Brazilian price (lib/region soundPrice)
   nonExclusive?: boolean;
   subtitle?: string;     // "Full Pack · 104 sounds · 128 BPM"
   features?: string[];   // bullet list on the product page
@@ -153,6 +154,11 @@ export const SELL_TRACKS = process.env.SELL_TRACKS !== '0';    // ghost producti
 export function hrefOf(t: Pick<Track, 'id' | 'kind'>) {
   return t.kind === 'track' ? `/t/${t.id}` : t.kind === 'software' ? (t.id === 'monet' ? '/monet' : t.id === 'refiner' ? '/refiner' : t.id === 'tempo' ? '/tempo' : '/signalgen') : `/p/${t.id}`;
 }
+/** 13/10/2026 (David: "bloqueie todos os outros produtos"): the only things on sale. Everything else in the catalog is "coming soon"
+ *  (the SignalGen) or out of the window. FOR_SALE in the environment can widen it (comma-separated ids). */
+export const FOR_SALE = new Set((process.env.FOR_SALE || 'refiner,monet,tempo,low-glide,signal-voices').split(',').map((s) => s.trim()).filter(Boolean));
+export const forSale = (t?: Pick<Track, 'id'> | null) => !!t && FOR_SALE.has(t.id);
+export const soonLabel = (lang: string) => (lang === 'en' ? 'Coming soon' : lang === 'es' ? 'Próximamente' : 'Em breve');
 /** The SignalGen itself (the Monet is also kind 'software'). */
 export const isSignalGen = (t: Track) => t.kind === 'software' && !['monet', 'refiner', 'ear'].includes(t.licenseProduct || '');
 export const isFree = (t: Track) => t.kind === 'software' && t.licenseProduct === 'ear';
