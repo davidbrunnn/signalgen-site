@@ -375,5 +375,184 @@
   "zips": {
    "zip": "/sessions/rcw-01hxkzteykrppxg6z8dlq4ci/mnt/SignalGen/Kits/Venda/SignalGen - Signal Voices (Vocal Pack).zip"
   }
+ },
+ {
+  "product": {
+   "id": "hit-stars-pack",
+   "kind": "kit",
+   "format": "wav",
+   "packType": "Sample Pack",
+   "title": "Hit Stars Pack",
+   "artist": "SignalGen",
+   "bpm": 128,
+   "key": "",
+   "duration": 0,
+   "genre": "Tech House",
+   "nonExclusive": true,
+   "group": "hit-stars-pack",
+   "vol": 3,
+   "keys": [
+    "Am",
+    "Cm",
+    "Dm",
+    "Fm",
+    "G#m",
+    "Gm"
+   ],
+   "price": 9,
+   "priceBrl": 29.9,
+   "subtitle": "Sample Pack · Tech House · 128 BPM",
+   "contents": "31 basslines · 42 leads · 32 keys · 2 stabs · 2 plucks · 8 pads",
+   "specs": "48 kHz / 24-bit WAV · MIDI · Monet presets",
+   "counts": {
+    "wav": 234,
+    "midi": 117,
+    "presets": 0
+   },
+   "inside": [
+    {
+     "folder": "Bass",
+     "count": 31,
+     "what": "31 WAV"
+    },
+    {
+     "folder": "Bass / MIDI",
+     "count": 31,
+     "what": "31 MIDI"
+    },
+    {
+     "folder": "Keys",
+     "count": 32,
+     "what": "32 WAV"
+    },
+    {
+     "folder": "Keys / MIDI",
+     "count": 32,
+     "what": "32 MIDI"
+    },
+    {
+     "folder": "Leads",
+     "count": 42,
+     "what": "42 WAV"
+    },
+    {
+     "folder": "Leads / MIDI",
+     "count": 42,
+     "what": "42 MIDI"
+    },
+    {
+     "folder": "One Shots",
+     "count": 117,
+     "what": "117 WAV"
+    },
+    {
+     "folder": "Pads",
+     "count": 8,
+     "what": "8 WAV"
+    },
+    {
+     "folder": "Pads / MIDI",
+     "count": 8,
+     "what": "8 MIDI"
+    },
+    {
+     "folder": "Plucks",
+     "count": 2,
+     "what": "2 WAV"
+    },
+    {
+     "folder": "Plucks / MIDI",
+     "count": 2,
+     "what": "2 MIDI"
+    },
+    {
+     "folder": "Stabs",
+     "count": 2,
+     "what": "2 WAV"
+    },
+    {
+     "folder": "Stabs / MIDI",
+     "count": 2,
+     "what": "2 MIDI"
+    }
+   ],
+   "samples": [
+    {
+     "name": "SG Hit Stars - Bass 01 Sirius",
+     "tag": "Bass",
+     "src": "/sounds/hit-stars-pack/s01.mp3"
+    },
+    {
+     "name": "SG Hit Stars - Bass 02 Vega",
+     "tag": "Bass",
+     "src": "/sounds/hit-stars-pack/s02.mp3"
+    },
+    {
+     "name": "SG Hit Stars - Bass 03 Rigel",
+     "tag": "Bass",
+     "src": "/sounds/hit-stars-pack/s03.mp3"
+    },
+    {
+     "name": "SG Hit Stars - Bass 04 Altair",
+     "tag": "Bass",
+     "src": "/sounds/hit-stars-pack/s04.mp3"
+    },
+    {
+     "name": "SG Hit Stars - Lead 01 Hamal",
+     "tag": "Lead",
+     "src": "/sounds/hit-stars-pack/s05.mp3"
+    },
+    {
+     "name": "SG Hit Stars - Lead 02 Menkent",
+     "tag": "Lead",
+     "src": "/sounds/hit-stars-pack/s06.mp3"
+    },
+    {
+     "name": "SG Hit Stars - Lead 03 Algol",
+     "tag": "Lead",
+     "src": "/sounds/hit-stars-pack/s07.mp3"
+    },
+    {
+     "name": "SG Hit Stars - Keys 01 Adhafera",
+     "tag": "Keys",
+     "src": "/sounds/hit-stars-pack/s08.mp3"
+    },
+    {
+     "name": "SG Hit Stars - Keys 02 Rasalas",
+     "tag": "Keys",
+     "src": "/sounds/hit-stars-pack/s09.mp3"
+    },
+    {
+     "name": "SG Hit Stars - Stab 01 Dabih",
+     "tag": "Stab",
+     "src": "/sounds/hit-stars-pack/s10.mp3"
+    },
+    {
+     "name": "SG Hit Stars - Pluck 01 Matar",
+     "tag": "Pluck",
+     "src": "/sounds/hit-stars-pack/s11.mp3"
+    },
+    {
+     "name": "SG Hit Stars - Pad 01 Sadalbari",
+     "tag": "Pad",
+     "src": "/sounds/hit-stars-pack/s12.mp3"
+    }
+   ],
+   "description": "The timbres behind today's tech house, rebuilt as a sample pack. Every sound in Hit Stars was synthesized in Monet (SignalGen's own synth) from the presets the SignalGen engine uses on its best tracks — basses, leads, keys, stabs, plucks and pads. No third-party samples, no factory presets. Each sound comes four ways: a 4-bar loop (128 BPM, key in the file name), the MIDI clip of that loop, a tuned one shot and the Monet preset itself — drop the loop, replay the line with your own notes, or open the patch and tweak it. Every element is mastered.",
+   "cover": "/sounds/hit-stars-pack/cover.jpg",
+   "preview": "/sounds/hit-stars-pack/demo.mp3",
+   "sizeMb": 226,
+   "downloads": [
+    {
+     "key": "zip",
+     "label": "Hit Stars Pack — vocal pack",
+     "note": "ZIP · 48 kHz / 24-bit WAV · MIDI · Monet presets"
+    }
+   ],
+   "published": "2026-10-13T09:00:00.000Z"
+  },
+  "zips": {
+   "zip": "/sessions/rcw-01ubzd2inbtegpdepry49ndb/mnt/Desktop--SignalGen/Kits/Venda/SignalGen - Hit Stars Pack (Sample Pack).zip"
+  }
  }
 ]
