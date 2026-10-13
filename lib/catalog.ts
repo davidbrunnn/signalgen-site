@@ -54,7 +54,7 @@ export type Product = Track;
 
 export type Catalog = { tracks: Track[]; updated: string };
 
-export type Order = { session: string; trackId: string; email?: string; amount?: number; currency?: string; when: string; refunded?: boolean; key?: string; serial?: number };
+export type Order = { session: string; trackId: string; email?: string; amount?: number; currency?: string; when: string; refunded?: boolean; key?: string; serial?: number; mailed?: boolean };
 
 export const LOCAL = !process.env.BLOB_READ_WRITE_TOKEN;
 const DATA = path.join(process.cwd(), 'local-data');
@@ -122,6 +122,9 @@ export async function recordSale(o: Order): Promise<'ok' | 'dup' | 'taken'> {
       o.serial = await nextSerial();
       o.key = await issueKey(o.email, t.licenseProduct || 'bundle', o.serial);
     } catch (e) { console.error('license key not issued', e); }
+  }
+  if (t && o.email) {                                            // 13/10/2026: the buyer gets the key + the link to the downloads by e-mail
+    try { const { purchaseMail } = await import('@/lib/purchase-mail'); o.mailed = (await purchaseMail(t, o)) === 'sent'; } catch (e) { console.error('purchase mail', e); }
   }
   await writeOrder(o);
   return 'ok';

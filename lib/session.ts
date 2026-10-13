@@ -2,18 +2,18 @@
 import Stripe from 'stripe';
 import { readOrder, recordSale, LOCAL } from '@/lib/catalog';
 
-export type Paid = { paid: boolean; trackId: string; email: string; amount: number; when: string; session: string; refunded?: boolean; test?: boolean; key?: string; serial?: number };
+export type Paid = { paid: boolean; trackId: string; email: string; amount: number; when: string; session: string; refunded?: boolean; test?: boolean; key?: string; serial?: number; mailed?: boolean };
 
 export async function paidSession(sid?: string): Promise<Paid | null> {
   if (!sid) return null;
   if (sid.startsWith('free_')) {                                   // Tempo (free, e-mail): the order is the whole record (13/10/2026)
     const o = await readOrder(sid);
-    return o ? { paid: true, trackId: o.trackId, email: o.email || '', amount: 0, when: o.when, session: sid, key: o.key, serial: o.serial } : null;
+    return o ? { paid: true, trackId: o.trackId, email: o.email || '', amount: 0, when: o.when, session: sid, key: o.key, serial: o.serial, mailed: o.mailed } : null;
   }
   if (sid.startsWith('local_')) {
     if (!LOCAL) return null;
     const o = await readOrder(sid);
-    return o ? { paid: true, trackId: o.trackId, email: o.email || '', amount: o.amount || 0, when: o.when, session: sid, test: true, key: o.key, serial: o.serial } : null;
+    return o ? { paid: true, trackId: o.trackId, email: o.email || '', amount: o.amount || 0, when: o.when, session: sid, test: true, key: o.key, serial: o.serial, mailed: o.mailed } : null;
   }
   const key = process.env.STRIPE_SECRET_KEY;
   if (!key) return null;
@@ -31,6 +31,7 @@ export async function paidSession(sid?: string): Promise<Paid | null> {
     const o = await readOrder(s.id);
     if (o?.refunded) p.refunded = true;
     if (o?.key) { p.key = o.key; p.serial = o.serial; }
+    if (o?.mailed) p.mailed = true;
     return p;
   } catch { return null; }
 }
