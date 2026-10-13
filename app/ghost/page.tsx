@@ -2,7 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { Wave } from '@/components/Player';
 import { getLang, t } from '@/lib/i18n';
-import { GHOST_LABEL } from '@/lib/ghost';
+import { country, ghostMoney } from '@/lib/region';
 
 export const dynamic = 'force-dynamic';
 
@@ -14,7 +14,7 @@ export function generateMetadata({ searchParams }: { searchParams: { lang?: stri
 // GHOST PRODUCTION ON DEMAND (10/10/2026): no catalogue any more. One price, a brief, a payment, and a page where the buyer follows
 // every stage and talks to the producer. The preview is a released record of Davin's: the standard of what the buyer gets.
 export default function Ghost({ searchParams }: { searchParams: { lang?: string } }) {
-  const L = t(getLang(searchParams)), G = L.ghost;
+  const L = t(getLang(searchParams)), G = L.ghost, price = ghostMoney(country()).display;
   // three released records of Davin's, 72 s each from the build into the drop, watermarked with a spoken "Signal Creative Art"
   // every 8 s (scripts/ghost_preview.py) so a preview can't be lifted and passed off as a finished track
   const refs = [
@@ -29,7 +29,7 @@ export default function Ghost({ searchParams }: { searchParams: { lang?: string 
           <span className="eyebrow">{G.eyebrow}</span>
           <h1>{G.h1a} <em className="muted">{G.h1b}</em></h1>
           <p className="lede">{G.lede}</p>
-          <div className="g-price"><b>{GHOST_LABEL}</b><small>{G.per}</small></div>
+          <div className="g-price"><b>{price}</b><small>{G.per}</small></div>
           <Link href="/ghost/pedido" className="btn">{G.cta}</Link>
         </div>
         <aside className="g-ref" aria-label={G.previewH}>
@@ -76,7 +76,7 @@ export default function Ghost({ searchParams }: { searchParams: { lang?: string 
             {G.faq.map(([q, a], i) => <details key={q} open={i === 0}><summary>{q}</summary><p>{a}</p></details>)}
           </div>
           <div className="g-cta">
-            <div className="g-price"><b>{GHOST_LABEL}</b><small>{G.per}</small></div>
+            <div className="g-price"><b>{price}</b><small>{G.per}</small></div>
             <Link href="/ghost/pedido" className="btn" style={{ width: '100%' }}>{G.cta}</Link>
             <p className="muted small">{L.form.note}</p>
           </div>

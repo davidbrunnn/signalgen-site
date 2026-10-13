@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { LOCAL } from '@/lib/catalog';
-import { readGhost, tokenOk, GHOST_LABEL } from '@/lib/ghost';
+import { readGhost, tokenOk, orderLabel } from '@/lib/ghost';
 import { getLang, t } from '@/lib/i18n';
 import GhostLocalPay from './GhostLocalPay';
 
@@ -14,7 +14,7 @@ export default async function Pagar({ searchParams }: { searchParams: { id?: str
   if (!LOCAL || process.env.STRIPE_SECRET_KEY) notFound();
   const o = await readGhost(searchParams.id || '');
   if (!tokenOk(o, searchParams.k)) notFound();
-  const L = t(o.lang || getLang(searchParams));
+  const L = t(o.lang || getLang(searchParams), orderLabel(o));
   return (
     <main className="wrap narrow">
       <h1>{L.pay.h1}</h1>
@@ -22,7 +22,7 @@ export default async function Pagar({ searchParams }: { searchParams: { id?: str
       <div className="sheet">
         <span className="g-sheet-mark" aria-hidden="true">G</span>
         <div><div className="t">{L.pay.item}</div><div className="m">{o.brief.artist} · {o.brief.genre}. {L.pay.itemSub}.</div></div>
-        <div className="p">{GHOST_LABEL}</div>
+        <div className="p">{orderLabel(o)}</div>
       </div>
       <GhostLocalPay id={o.id} k={o.token} label={L.pay.btn} />
       <Link href="/ghost/pedido" className="back">{L.form.h1}</Link>

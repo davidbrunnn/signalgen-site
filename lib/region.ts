@@ -1,33 +1,22 @@
-// SignalGen's price by country (10/10/2026, David): R$ 199 in Brazil (founder; R$ 299 lifetime after the first 100), US$ 49 / US$ 74
-// outside Brazil, and in Latin America the local currency worth the same as the Brazilian price (R$ → local by today's rate, rounded
-// to a clean price: 2 significant digits, ending in 9 — R$ 199 ≈ MX$ 709, ARS $ 59.999, CLP $ 38.999, S/ 139…).
-// Country: Vercel's x-vercel-ip-country (or Cloudflare's cf-ipcountry); `?country=MX` on any page sets a cookie (testing, or a buyer
-// abroad with a Brazilian card can switch). Without either (the local store), Brazil.
+// Prices by country (13/10/2026, David): in Brazil the price in reais; everywhere else THE SAME NUMBER in US dollars
+// (R$ 49 in Brazil = US$ 49 abroad). No exchange rate, no local currencies.
+// Country: Vercel's x-vercel-ip-country (or Cloudflare's cf-ipcountry). The `?country=XX` override (cookie) only exists in the local
+// store: online it would let anyone abroad pick the price in reais.
 import { cookies, headers } from 'next/headers';
 
-export const LATAM: Record<string, string> = {
-  AR: 'ARS', BO: 'BOB', CL: 'CLP', CO: 'COP', CR: 'CRC', DO: 'DOP', EC: 'USD', GT: 'GTQ', HN: 'HNL', MX: 'MXN', NI: 'NIO',
-  PA: 'USD', PE: 'PEN', PY: 'PYG', SV: 'USD', UY: 'UYU', VE: 'USD',
-};
-const SYMBOL: Record<string, string> = { BRL: 'R$', USD: 'US$', MXN: 'MX$', ARS: 'ARS $', CLP: 'CLP $', COP: 'COP $', PEN: 'S/', UYU: '$U', PYG: '₲',
-  BOB: 'Bs', CRC: '₡', DOP: 'RD$', GTQ: 'Q', HNL: 'L', NIO: 'C$' };
+const ONLINE = !!process.env.BLOB_READ_WRITE_TOKEN || process.env.VERCEL === '1';
+const SYMBOL: Record<string, string> = { BRL: 'R$', USD: 'US$' };
 export const ZERO_DECIMAL = new Set(['CLP', 'PYG', 'JPY', 'KRW', 'VND', 'XAF', 'XOF']);
-// fallback when the rate service can't be reached (open.er-api.com, 09/10/2026): 1 BRL =
-const FALLBACK: Record<string, number> = { USD: 0.1993, MXN: 3.584, ARS: 302.6, CLP: 194.7, COP: 645.3, PEN: 0.686, UYU: 7.981, PYG: 1159,
-  BOB: 2.379, CRC: 90.76, DOP: 12.05, GTQ: 1.521, HNL: 5.343, NIO: 7.326 };
 
-export const SG_PRICE = {
-  BRL: { founder: Number(process.env.FOUNDER_PRICE_BRL || 199), lifetime: Number(process.env.LIFETIME_PRICE_BRL || 299) },
-  USD: { founder: Number(process.env.FOUNDER_PRICE_USD || 49), lifetime: Number(process.env.LIFETIME_PRICE_USD || 74) },
-};
+export const SG_PRICE = { founder: Number(process.env.FOUNDER_PRICE_BRL || 199), lifetime: Number(process.env.LIFETIME_PRICE_BRL || 299) };
 
 /** MONET on its own (13/10/2026, David): R$ 99 for the first 10 buyers (launch), then the regular price. Abroad the US$ figure;
  *  in Latin America the Brazilian price in local currency. [launch, regular] */
-export const MONET_PRICE = { BRL: [99, Number(process.env.MONET_REGULAR_BRL || 379)], USD: [19.9, Number(process.env.MONET_REGULAR_USD || 74.7)] };
+export const MONET_PRICE = [99, Number(process.env.MONET_REGULAR_BRL || 379)];
 export type Money = { amount: number; currency: string; display: string };
 
 export function countryFrom(get: (h: string) => string | null | undefined, cookie?: string | null): string {
-  const c = (cookie || get('x-vercel-ip-country') || get('cf-ipcountry') || 'BR').toUpperCase();
+  const c = ((ONLINE ? '' : cookie) || get('x-vercel-ip-country') || get('cf-ipcountry') || 'BR').toUpperCase();
   return /^[A-Z]{2}$/.test(c) ? c : 'BR';
 }
 /** The visitor's country in a server component / route handler. */
@@ -39,41 +28,15 @@ export function countryOfRequest(req: Request): string {
   return countryFrom((k) => req.headers.get(k), ck);
 }
 
-let cache: { at: number; r: Record<string, number> } | null = null;
-async function rates(): Promise<Record<string, number>> {
-  if (cache && Date.now() - cache.at < 12 * 3600e3) return cache.r;
-  try {
-    const r = await fetch('https://open.er-api.com/v6/latest/BRL', { next: { revalidate: 43200 } } as RequestInit);
-    const j = await r.json();
-    if (j?.rates?.USD) { cache = { at: Date.now(), r: j.rates }; return j.rates; }
-  } catch { /* offline */ }
-  return FALLBACK;
-}
-
-/** 2 significant digits, then one unit less: 713 → 709, 60 214 → 59 999, 39.6 → 39. */
-export function nice(v: number) {
-  if (v < 10) return Math.round(v);
-  const d = Math.pow(10, Math.floor(Math.log10(v)) - 1);
-  return Math.round(v / d) * d - 1;
-}
-
 export function fmt(amount: number, currency: string) {
   const dec = Number.isInteger(amount) ? 0 : 2;
-  const n = amount.toLocaleString(currency === 'BRL' ? 'pt-BR' : currency === 'USD' ? 'en-US' : 'es-419', { minimumFractionDigits: dec, maximumFractionDigits: dec });
+  const n = amount.toLocaleString(currency === 'BRL' ? 'pt-BR' : 'en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec });
   return `${SYMBOL[currency] || currency} ${n}`;
 }
 
-export async function sgPrice(tier: 'founder' | 'lifetime', cc: string): Promise<Money> {
-  if (cc === 'BR') { const a = SG_PRICE.BRL[tier]; return { amount: a, currency: 'BRL', display: fmt(a, 'BRL') }; }
-  const cur = LATAM[cc];
-  if (cur) {
-    const r = await rates(); const rate = r[cur] || FALLBACK[cur];
-    if (rate) { const a = nice(SG_PRICE.BRL[tier] * rate); return { amount: a, currency: cur, display: fmt(a, cur) }; }
-  }
-  const a = SG_PRICE.USD[tier]; return { amount: a, currency: 'USD', display: fmt(a, 'USD') };
-}
+export const sgPrice = (tier: 'founder' | 'lifetime', cc: string) => localized(SG_PRICE[tier], cc);
 
-export const monetPrice = (cc: string, tier: 'founder' | 'lifetime' = 'founder') => { const i = tier === 'founder' ? 0 : 1; return localized(MONET_PRICE.BRL[i], MONET_PRICE.USD[i], cc); };
+export const monetPrice = (cc: string, tier: 'founder' | 'lifetime' = 'founder') => { const i = tier === 'founder' ? 0 : 1; return localized(MONET_PRICE[i], cc); };
 
 /** The price of a software item in the visitor's currency, by tier (launch/founder or regular). */
 export async function softPrice(t: { licenseProduct?: string; sold?: number }, cc: string, tier: 'founder' | 'lifetime'): Promise<Money> {
@@ -87,36 +50,31 @@ export async function softPrice(t: { licenseProduct?: string; sold?: number }, c
 export const minorUnits = (m: Money) => (ZERO_DECIMAL.has(m.currency) ? Math.round(m.amount) : Math.round(m.amount * 100));
 
 // ───── 13/10/2026 (David, plano de lançamento): a escada de preço ─────
-// Tempo grátis (e-mail) · Refiner R$ 49 → R$ 99 · Monet R$ 99 → regular · SignalGen (em breve) acompanha só o Monet.
-// Na América Latina, o preço brasileiro na moeda local.
+// Clocker grátis (e-mail) · Refiner 49 → 99 · Monet 99 → regular · SignalGen (em breve) acompanha só o Monet.
 // 13/10/2026 (David): Refiner R$ 49 for the first 10 buyers (launch), R$ 99 after. [launch, regular]
-export const REFINER_PRICE = { BRL: [49, Number(process.env.REFINER_REGULAR_BRL || 99)], USD: [9.9, Number(process.env.REFINER_REGULAR_USD || 19.9)] };
+export const REFINER_PRICE = [49, Number(process.env.REFINER_REGULAR_BRL || 99)];
 export const SOUND_PRICE_BRL = { pack: Number(process.env.SOUND_PRICE_BRL || 19.9), bundle: Number(process.env.SOUND_BUNDLE_PRICE_BRL || 29.9) };
 export const FREE: Money = { amount: 0, currency: 'BRL', display: '' };
 
-/** A Brazilian price shown to the visitor: BRL in Brazil, local currency in Latin America (by today's rate), the US$ figure elsewhere. */
-export async function localized(brl: number, usd: number, cc: string): Promise<Money> {
-  if (cc === 'BR') return { amount: brl, currency: 'BRL', display: fmt(brl, 'BRL') };
-  const cur = LATAM[cc];
-  if (cur) {
-    const r = await rates(); const rate = r[cur] || FALLBACK[cur];
-    if (rate) { const a = nice(brl * rate); return { amount: a, currency: cur, display: fmt(a, cur) }; }
-  }
-  return { amount: usd, currency: 'USD', display: fmt(usd, 'USD') };
+/** A price shown to the visitor: reais in Brazil, the same number in US dollars everywhere else. */
+export async function localized(amount: number, cc: string): Promise<Money> {
+  const currency = cc === 'BR' ? 'BRL' : 'USD';
+  return { amount, currency, display: fmt(amount, currency) };
 }
-export const refinerPrice = (cc: string, tier: 'founder' | 'lifetime' = 'founder') => { const i = tier === 'founder' ? 0 : 1; return localized(REFINER_PRICE.BRL[i], REFINER_PRICE.USD[i], cc); };
+export const refinerPrice = (cc: string, tier: 'founder' | 'lifetime' = 'founder') => { const i = tier === 'founder' ? 0 : 1; return localized(REFINER_PRICE[i], cc); };
 
-/** Sample packs, Serum 2 presets and bundles: R$ 19,90 / R$ 29,90 in Brazil, that in local currency in Latin America, kit_loja's US$ elsewhere. */
+/** Sample packs, Serum 2 presets and bundles (closed while the packs are "em breve"): the pack's own price, or the default. */
 export async function soundPrice(t: { kind?: string; format?: string; price?: number; priceBrl?: number }, cc: string): Promise<Money> {
-  const usd = t.price || 12;
-  if (t.priceBrl) return localized(t.priceBrl, usd, cc);                      // 13/10/2026: the pack sets its own Brazilian price
-  if (t.format === 'collection') return cc === 'BR' || LATAM[cc] ? localized(nice(usd * 5), usd, cc) : { amount: usd, currency: 'USD', display: fmt(usd, 'USD') };
-  return localized(t.kind === 'bundle' ? SOUND_PRICE_BRL.bundle : SOUND_PRICE_BRL.pack, usd, cc);
+  return localized(t.priceBrl || (t.kind === 'bundle' ? SOUND_PRICE_BRL.bundle : SOUND_PRICE_BRL.pack), cc);
 }
 
 /** Any catalog item in the visitor's currency. Free items come back with amount 0. */
 export async function priceFor(t: { kind?: string; format?: string; price?: number; priceBrl?: number; licenseProduct?: string; sold?: number }, cc: string, tier: 'founder' | 'lifetime' = 'founder'): Promise<Money> {
   if (t.kind === 'software') return softPrice(t, cc, tier);
   if (t.kind === 'kit' || t.kind === 'preset' || t.kind === 'bundle') return soundPrice(t, cc);
-  const usd = t.price || 59; return { amount: usd, currency: 'USD', display: fmt(usd, 'USD') };
+  return localized(t.price || 59, 'US');
 }
+
+// Ghost production (13/10/2026, David): R$ 1.200 in Brazil, US$ 1,200 abroad — the same number, like everything else.
+export const GHOST_PRICE = Number(process.env.GHOST_PRICE || 1200);
+export function ghostMoney(cc: string): Money { const currency = cc === 'BR' ? 'BRL' : 'USD'; return { amount: GHOST_PRICE, currency, display: fmt(GHOST_PRICE, currency) }; }

@@ -8,12 +8,12 @@ import { randomBytes, timingSafeEqual } from 'crypto';
 import { LOCAL } from '@/lib/catalog';
 import { sendMail, layout } from '@/lib/mail';
 import { t, type Lang } from '@/lib/i18n';
+import { ghostMoney, fmt } from '@/lib/region';
 
-export const GHOST_PRICE_USD = 150;                       // legado (pedidos antigos)
-// 13/10/2026 (David): ghost production a R$ 1.200, cobrado em reais (o Stripe converte para cartões de fora).
-// GHOST_PRICE (não mais GHOST_PRICE_BRL: um valor antigo na Vercel seguraria os R$ 599).
-export const GHOST_PRICE_BRL = Number(process.env.GHOST_PRICE || 1200);
-export const GHOST_LABEL = `R$ ${GHOST_PRICE_BRL.toLocaleString('pt-BR')}`;
+/** The price of this order as it was placed (old orders have no currency: reais). */
+export const orderLabel = (o: { amount?: number; currency?: string }) => fmt(o.amount || ghostMoney('BR').amount, o.currency === 'USD' ? 'USD' : 'BRL');
+
+// 13/10/2026 (David): ghost production a R$ 1.200 no Brasil e US$ 1,200 fora (lib/region ghostMoney); o pedido guarda a moeda em que nasceu.
 /** where new orders and buyer messages arrive (David, 10/10/2026); GHOST_PRODUCER_EMAIL overrides */
 export const PRODUCER_EMAIL = process.env.GHOST_PRODUCER_EMAIL || 'brundavin@pm.me';
 export const STAGES = 7;                       // 0 order received · 1 brief · 2 sketch · 3 arrangement · 4 mix · 5 master · 6 delivered
@@ -74,7 +74,7 @@ export function adminOk(k?: string | null) {
 
 const clean = (s: unknown, n: number) => String(s ?? '').replace(/\r/g, '').trim().slice(0, n);
 
-export function newGhost(b: Partial<Brief>, lang: Lang): GhostOrder | string {
+export function newGhost(b: Partial<Brief>, lang: Lang, cc = 'BR'): GhostOrder | string {
   const brief: Brief = {
     name: clean(b.name, 80), email: clean(b.email, 120).toLowerCase(), artist: clean(b.artist, 80), genre: clean(b.genre, 40),
     bpm: clean(b.bpm, 8), key: clean(b.key, 12), refs: clean(b.refs, 1500), idea: clean(b.idea, 3000),
@@ -82,7 +82,7 @@ export function newGhost(b: Partial<Brief>, lang: Lang): GhostOrder | string {
   if (!brief.name || !brief.artist || !brief.genre) return 'missing';
   if (!/^\S+@\S+\.\S+$/.test(brief.email)) return 'email';
   const now = new Date().toISOString();
-  return { id: `g${rid(10)}`, token: rid(24), lang, brief, status: 'pending', stage: 0, created: now, amount: GHOST_PRICE_BRL, currency: 'BRL', messages: [], updated: now };
+  return { id: `g${rid(10)}`, token: rid(24), lang, brief, status: 'pending', stage: 0, created: now, amount: ghostMoney(cc).amount, currency: ghostMoney(cc).currency, messages: [], updated: now };
 }
 
 export const orderUrl = (o: GhostOrder, site: string) => `${site}/ghost/o/${o.id}?k=${o.token}&lang=${o.lang}`;
@@ -92,7 +92,7 @@ export const msg = (from: Msg['from'], text: string, stage?: number): Msg => ({ 
 export async function markPaid(id: string, info: { session?: string; amount?: number; test?: boolean; site: string }) {
   const o = await readGhost(id); if (!o) return null;
   if (o.status === 'paid') return o;
-  const L = t(o.lang);
+  const L = t(o.lang, orderLabel(o));
   o.status = 'paid'; o.paidAt = new Date().toISOString(); o.session = info.session; o.test = info.test; if (info.amount) o.amount = info.amount;
   o.stage = 0;
   o.messages.push(msg('system', `${L.stages[0][0]}. ${L.stages[0][1]}`, 0));
@@ -111,7 +111,7 @@ export async function markPaid(id: string, info: { session?: string; amount?: nu
 /** A message in the thread. Producer messages (and stage changes) e-mail the buyer; buyer messages e-mail the producer. */
 export async function post(o: GhostOrder, from: 'client' | 'producer', text: string, site: string, stage?: number) {
   const body = clean(text, 2000);
-  const L = t(o.lang);
+  const L = t(o.lang, orderLabel(o));
   if (from === 'producer' && typeof stage === 'number' && stage >= 0 && stage < STAGES && stage !== o.stage) {
     o.stage = stage;
     o.messages.push(msg('system', `${L.stages[stage][0]}. ${L.stages[stage][1]}`, stage));

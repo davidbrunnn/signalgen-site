@@ -2,16 +2,15 @@ import Link from 'next/link';
 import { readCatalog, forSale } from '@/lib/catalog';
 import { getLang } from '@/lib/i18n';
 import { ui } from '@/lib/i18n-ui';
-import { country, refinerPrice, monetPrice } from '@/lib/region';
+import { country, refinerPrice, monetPrice, ghostMoney } from '@/lib/region';
 import { readCounters, offerFrom } from '@/lib/launch';
-import { GHOST_LABEL } from '@/lib/ghost';
 import BuyButton from '@/components/BuyButton';
 import Offer from '@/components/Offer';
 
 export const dynamic = 'force-dynamic';
 
 // 13/10/2026 (David): "Plugins avançados. Preço justo." The window: Refiner and Monet at their launch price (first 10 buyers, the
-// real counter), the free Tempo, the SignalGen as "em breve" (only the Monet goes with it) and the sample packs as "em breve".
+// real counter), the free Clocker (ex-Tempo), the SignalGen as "em breve" (only the Monet goes with it) and the sample packs as "em breve".
 export default async function Home() {
   const lang = getLang(), U = ui(lang), X = U.home;
   const [cat, counters] = await Promise.all([readCatalog(), readCounters()]);
@@ -35,7 +34,7 @@ export default async function Home() {
           <p className="lede">{X.lede}</p>
           <div className="act">
             <Link href="#plugins" className="btn">{X.toPlugins}</Link>
-            <Link href="/tempo" className="btn quiet">{X.toTempo}</Link>
+            <Link href="/clocker" className="btn quiet">{X.toTempo}</Link>
           </div>
         </div>
         <div className="hero3-art" aria-hidden="true">
@@ -70,9 +69,9 @@ export default async function Home() {
           })}
         </div>
         <div className="pgrid minis">
-          <Link href="/tempo" className="pmini">
-            <div className="shot"><img src="/product/ui2/tempo_01.png" alt="Tempo" loading="lazy" /></div>
-            <div><span className="eyebrow">{X.tempoTag}</span><h3>Tempo</h3><p className="muted">{X.tempoP}</p></div>
+          <Link href="/clocker" className="pmini">
+            <div className="shot"><img src="/product/ui2/tempo_01.png" alt="Clocker" loading="lazy" /></div>
+            <div><span className="eyebrow">{X.tempoTag}</span><h3>Clocker</h3><p className="muted">{X.tempoP}</p></div>
             <span className="pill free">{U.free}</span>
           </Link>
           <Link href="/signalgen" className="pmini soon">
@@ -102,7 +101,7 @@ export default async function Home() {
 
       <section className="block">
         <div className="ghostline">
-          <p><b>{X.ghostLine}</b> <span className="muted">{X.ghostSub(GHOST_LABEL)}</span></p>
+          <p><b>{X.ghostLine}</b> <span className="muted">{X.ghostSub(ghostMoney(cc).display)}</span></p>
           <Link href="/ghost" className="btn small quiet">{X.ghostCta}</Link>
         </div>
       </section>

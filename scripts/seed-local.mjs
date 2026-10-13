@@ -129,12 +129,12 @@ products.push({
   features: ['Full track in one click: 150+ bars, intro to outro', 'Eight takes per click, pick by ear', 'Every part as MIDI: lead, chords, bass, arp, pad, drums', 'Rewrite only the bars you select, on the song’s chords', 'Reamp: any song in, its DNA out as a new track', 'Mixed and mastered with Live’s native devices', 'SignalGen Mix: the channel chain the engine mixes with', 'SignalGen Sounds: 200+ presets built from reference records', 'Measured against 17 chart tech house references', 'Lifetime license, offline, 2 computers'],
   screenshots: ['/product/ui2/sg_05_generate_pronto.jpg', '/product/ui2/sg_07_remix_pronto.jpg', '/product/ui2/sg_08_rebuild_pronto.jpg', '/product/ui2/sg_09_resynth_pronto.jpg'],
   cover: '/product/live-set.jpg', sizeMb: mb(pkg), files: { pkg: file(pkg) },
-  downloads: [{ key: 'pkg', label: `SignalGen ${pkgVer} for macOS`, note: 'Installer (.pkg): SignalGen, Monet, Refiner, Strip, Tempo · AU + VST3' }],
+  downloads: [{ key: 'pkg', label: `SignalGen ${pkgVer} for macOS`, note: 'Installer (.pkg): SignalGen + Monet · AU + VST3' }],
   published: '2026-10-03T00:00:00.000Z', sold: sold['signalgen'] || 0,
 });
 // MONET on its own (10/10/2026): the SignalGen synthesizer, free inside every SignalGen license, sold separately at 30 % of Serum 2
 // (lib/region MONET_PRICE). Same installer — the buyer keeps only "Monet" in the installer's choices; the key opens Monet only.
-const MONET = {"id": "monet", "kind": "software", "title": "Monet", "artist": "SignalGen", "bpm": 0, "key": "", "duration": 0, "subtitle": "Wavetable synthesizer · AU + VST3 · macOS", "genre": "Synthesizer", "price": 74.7, "nonExclusive": true, "licenseProduct": "monet", "description": "The SignalGen synthesizer: 3 wavetable oscillators with 16-voice unison, 14 filters including five analog circuit models, 4 LFOs, 3 envelopes you draw, MSEGs, a 16-slot matrix, 7 effects and 200+ presets. Free with SignalGen.", "features": ["3 wavetable oscillators, unison up to 16", "MODEL M and VINTAGE: analog oscillators and 5 circuit filters", "PAINT: draw a wave, it becomes a wavetable", "GRAIN and LEARN: drop any sample, it becomes a patch", "CHAOS, ROUND ROBIN, knob-to-knob modulation, 16 slots", "BASSLINE arpeggiator modes", "7 effects, guard limiter", "200+ presets", "Lifetime license, offline, 2 computers"], "screenshots": ["/product/ui2/monet_01_synth.jpg", "/product/ui2/monet_02_fx.jpg", "/product/ui2/monet_03_matrix.jpg", "/product/ui2/monet_04_presets.jpg"], "cover": "/product/ui2/monet_01_synth.jpg", "downloads": [{"key": "pkg", "label": "Monet for macOS", "note": "SignalGen installer (.pkg) — keep \"Monet\" in the installer choices · AU + VST3"}], "published": "2026-10-10T00:00:00.000Z"};
+const MONET = {"id": "monet", "kind": "software", "title": "Monet", "artist": "SignalGen", "bpm": 0, "key": "", "duration": 0, "subtitle": "Wavetable synthesizer · AU + VST3 · macOS", "genre": "Synthesizer", "price": 74.7, "nonExclusive": true, "licenseProduct": "monet", "description": "The SignalGen synthesizer: 3 wavetable oscillators with 16-voice unison, 14 filters including five analog circuit models, 4 LFOs, 3 envelopes you draw, MSEGs, a 16-slot matrix, 7 effects and 200+ presets.", "features": ["3 wavetable oscillators, unison up to 16", "MODEL M and VINTAGE: analog oscillators and 5 circuit filters", "PAINT: draw a wave, it becomes a wavetable", "GRAIN and LEARN: drop any sample, it becomes a patch", "CHAOS, ROUND ROBIN, knob-to-knob modulation, 16 slots", "BASSLINE arpeggiator modes", "7 effects, guard limiter", "200+ presets", "Lifetime license, offline, 2 computers"], "screenshots": ["/product/ui2/monet_01_synth.jpg", "/product/ui2/monet_02_fx.jpg", "/product/ui2/monet_03_matrix.jpg", "/product/ui2/monet_04_presets.jpg"], "cover": "/product/ui2/monet_01_synth.jpg", "downloads": [{"key": "pkg", "label": "Monet for macOS", "note": "SignalGen installer (.pkg) — keep \"Monet\" in the installer choices · AU + VST3"}], "published": "2026-10-10T00:00:00.000Z"};
 { const p = solo('Monet') || pkg; MONET.sizeMb = mb(p); MONET.files = { pkg: file(p) }; MONET.downloads = [soloDl('Monet', solo('Monet'))]; }
 MONET.sold = sold['monet'] || 0;
 products.push(MONET);
@@ -144,20 +144,20 @@ products.push(MONET);
 const REFINER = {
   id: 'refiner', kind: 'software', title: 'Refiner', artist: 'SignalGen', bpm: 0, key: '', duration: 0,
   subtitle: '24-band EQ · AU + VST3 · macOS', genre: 'Equalizer', price: Number(process.env.REFINER_PRICE_USD || 12.9), nonExclusive: true, licenseProduct: 'refiner',
-  description: 'The EQ that shows you where to cut. 24 bands by single click, a 96 kHz-style spectrum, SMART analysis that marks the fundamental and its octaves in neon and the wrong resonances in red-to-blue, Sidechain (dynamic) and Level modes drawn as curves, Zero / Natural / Linear phase, Stereo / Mid-Side / Mono, Harmonic Lock, Delta and blind A/B. Free with SignalGen.',
+  description: 'The EQ that shows you where to cut. 24 bands by single click, a 96 kHz-style spectrum, SMART analysis that marks the fundamental and its octaves in neon and the wrong resonances in red-to-blue, Sidechain (dynamic) and Level modes drawn as curves, Zero / Natural / Linear phase, Stereo / Mid-Side / Mono, Harmonic Lock, Delta and blind A/B.',
   features: ['24 bands, one click each, drag the node or the curve', 'SMART: fundamental, octaves and resonances marked on the spectrum', 'Sidechain mode: dynamic EQ with internal, external or Mix detector', 'Level mode: the curve as a target, with stiffness and memory', 'Transient / Sustain per band', 'Zero, Natural and Linear phase · Stereo, Mid-Side, Mono', 'Harmonic Lock, Delta, blind A/B', 'MATCH: EQ toward a reference, up to 16 bands', 'Lifetime license, offline, 2 computers'],
   screenshots: ['/product/ui2/refiner_01.png', '/product/ui2/refiner_02.png', '/product/ui2/refiner_03.png'], cover: '/product/ui2/refiner_01.png',
   downloads: [soloDl('Refiner', solo('Refiner'))],
   published: '2026-10-13T00:00:00.000Z', sizeMb: mb(solo('Refiner') || pkg), files: { pkg: file(solo('Refiner') || pkg) }, sold: sold['refiner'] || 0,
 };
 const TEMPO = {
-  id: 'tempo', kind: 'software', title: 'Tempo', artist: 'SignalGen', bpm: 0, key: '', duration: 0,
+  id: 'tempo', kind: 'software', title: 'Clocker', artist: 'SignalGen', bpm: 0, key: '', duration: 0,
   subtitle: 'BPM + key of anything · AU + VST3 · macOS', genre: 'Analyzer', price: 0, nonExclusive: true, licenseProduct: 'ear',
   description: 'Put it on any channel (or on the master, listening to the Mix sidechain), press LISTEN: 10 seconds later you have the BPM, the key and the chords of whatever is playing. Drop a file on it and it reads that instead. Free: leave your e-mail and the key is yours.',
   features: ['BPM in 10 s, tempo-of-the-set tie-break (4/3, 3/2, 2x)', 'Key and chords of what is playing', 'Listens to the channel or to the whole Mix', 'Drop a file to analyse it', 'Free, lifetime, offline'],
   screenshots: ['/product/ui2/tempo_01.png', '/product/ui2/tempo_02.png'], cover: '/product/ui2/tempo_01.png',
-  downloads: [soloDl('Tempo', solo('Tempo'))],
-  published: '2026-10-13T00:00:00.000Z', sizeMb: mb(solo('Tempo') || pkg), files: { pkg: file(solo('Tempo') || pkg) }, sold: sold['tempo'] || 0,
+  downloads: [soloDl('Clocker', solo('Clocker') || solo('Tempo'))],
+  published: '2026-10-13T00:00:00.000Z', sizeMb: mb(solo('Clocker') || solo('Tempo') || pkg), files: { pkg: file(solo('Clocker') || solo('Tempo') || pkg) }, sold: sold['tempo'] || 0,
 };
 products.push(REFINER, TEMPO);
 

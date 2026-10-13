@@ -2,6 +2,7 @@
 // The choice lives in the `lang` cookie (set by components/LangSwitch); `?lang=es` in any URL also works (and is remembered).
 // Translated today: header/footer, /signalgen, /ghost (the on-demand ghost production), the order page, the producer desk and the e-mails.
 import { cookies } from 'next/headers';
+import { country, ghostMoney } from './region';
 import { isLang, type Lang } from './i18n-shared';
 export { LANGS, LANG_LABEL, HTML_LANG, isLang, type Lang } from './i18n-shared';
 
@@ -41,7 +42,7 @@ const pt = {
     howH: 'Como funciona',
     how: [
       ['Briefing', 'Gênero, BPM, tom, referências e a vibe que você quer. Dois minutos.'],
-      ['Pagamento', 'R$ 1.200 pelo Stripe. Na hora chega um e-mail: sua track está em produção.'],
+      ['Pagamento', '{ghost} pelo Stripe. Na hora chega um e-mail: sua track está em produção.'],
       ['Produção ao vivo', 'Você vê em que etapa a faixa está — briefing, esboço, arranjo, mixagem, master — e fala com o produtor ali mesmo.'],
       ['Entrega', 'Os arquivos finais chegam na sua página e no seu e-mail.'],
     ],
@@ -73,7 +74,7 @@ const pt = {
     refs: 'Referências', refsHint: 'Links do Spotify, YouTube, SoundCloud ou Beatport — um por linha.',
     idea: 'A ideia', ideaHint: 'Vibe, energia, vocal ou não, o que não pode faltar, o que você não quer.',
     accept: 'Li e aceito os', terms: 'termos de licença exclusiva',
-    pay: 'Pagar R$ 1.200 e começar', paying: 'Abrindo o pagamento…',
+    pay: 'Pagar {ghost} e começar', paying: 'Abrindo o pagamento…',
     err: 'Não deu para abrir o pagamento agora. Tente de novo.',
     note: 'Pagamento seguro pelo Stripe. Sua página de acompanhamento abre logo depois.',
   },
@@ -82,7 +83,7 @@ const pt = {
     yours: 'Sua track sob encomenda',
     waitingPay: 'Aguardando o pagamento',
     waitingPayP: 'Assim que o pagamento for confirmado, a produção começa e esta página passa a mostrar cada etapa.',
-    payNow: 'Pagar R$ 1.200',
+    payNow: 'Pagar {ghost}',
     stageNow: 'Etapa atual',
     chat: 'Conversa com o produtor',
     placeholder: 'Escreva para o produtor…',
@@ -95,11 +96,11 @@ const pt = {
     test: 'Pedido de teste (loja local): nenhum valor foi cobrado.',
     delivered: 'Entregue',
   },
-  pay: { metaTitle: 'Pagamento · SignalGen', h1: 'Pagamento', test: 'Loja local: este é um pagamento de teste. Nenhum cartão é cobrado. Online, este passo é o Stripe Checkout.', btn: 'Pagar R$ 1.200 (teste)', item: 'Ghost production sob encomenda', itemSub: 'Extended Mix + Radio Edit, WAV 24-bit, licença exclusiva' },
+  pay: { metaTitle: 'Pagamento · SignalGen', h1: 'Pagamento', test: 'Loja local: este é um pagamento de teste. Nenhum cartão é cobrado. Online, este passo é o Stripe Checkout.', btn: 'Pagar {ghost} (teste)', item: 'Ghost production sob encomenda', itemSub: 'Extended Mix + Radio Edit, WAV 24-bit, licença exclusiva' },
   mail: {
     paidSubject: 'Sua track está em produção',
     paidHi: (n: string) => `Olá, ${n}!`,
-    paidBody: 'Recebemos o seu pagamento de R$ 1.200. A sua track já está em produção.',
+    paidBody: 'Recebemos o seu pagamento de {ghost}. A sua track já está em produção.',
     paidFollow: 'Acompanhe cada etapa e fale com o produtor na sua página:',
     open: 'Abrir minha página',
     updSubject: 'Atualização da sua track',
@@ -185,7 +186,7 @@ const pt = {
     ],
     trademark: 'Ableton, Logic, FL Studio e Bitwig são marcas dos seus donos. A SignalGen não é afiliada a essas empresas.',
   },
-  home: { ghostLine: 'Precisa de uma faixa pronta?', ghostSub: 'Ghost production sob encomenda: feita do zero para o seu nome, R$ 1.200.', ghostCta: 'Ghost production',
+  home: { ghostLine: 'Precisa de uma faixa pronta?', ghostSub: 'Ghost production sob encomenda: feita do zero para o seu nome, {ghost}.', ghostCta: 'Ghost production',
     softEyebrow: 'Software da SignalGen', sgH: 'SignalGen', sgP: 'Gerador, remix, rebuild, resynth e stem splitter ilimitado, no Ableton Live. Com o Monet.', sgCta: 'Conhecer o SignalGen', monetH: 'Monet', monetP: 'O sintetizador da SignalGen: qualidade comparável aos famosos sintetizadores da atualidade. Instalador oficial, sem crack, sem vírus.', monetCta: 'Conhecer o Monet',
   },
 };
@@ -219,7 +220,7 @@ const es: Dict = {
     howH: 'Cómo funciona',
     how: [
       ['Briefing', 'Género, BPM, tono, referencias y la vibra que buscas. Dos minutos.'],
-      ['Pago', 'R$ 1.200 con Stripe. Al instante llega un e-mail: tu track está en producción.'],
+      ['Pago', '{ghost} con Stripe. Al instante llega un e-mail: tu track está en producción.'],
       ['Producción en vivo', 'Ves en qué etapa está el tema — briefing, boceto, arreglo, mezcla, máster — y hablas con el productor ahí mismo.'],
       ['Entrega', 'Los archivos finales llegan a tu página y a tu e-mail.'],
     ],
@@ -251,7 +252,7 @@ const es: Dict = {
     refs: 'Referencias', refsHint: 'Links de Spotify, YouTube, SoundCloud o Beatport — uno por línea.',
     idea: 'La idea', ideaHint: 'Vibra, energía, con voz o sin voz, lo que no puede faltar, lo que no quieres.',
     accept: 'Leí y acepto los', terms: 'términos de licencia exclusiva',
-    pay: 'Pagar R$ 1.200 y empezar', paying: 'Abriendo el pago…',
+    pay: 'Pagar {ghost} y empezar', paying: 'Abriendo el pago…',
     err: 'No se pudo abrir el pago ahora. Inténtalo de nuevo.',
     note: 'Pago seguro con Stripe. Tu página de seguimiento se abre justo después.',
   },
@@ -260,7 +261,7 @@ const es: Dict = {
     yours: 'Tu track por encargo',
     waitingPay: 'Esperando el pago',
     waitingPayP: 'En cuanto se confirme el pago, empieza la producción y esta página muestra cada etapa.',
-    payNow: 'Pagar R$ 1.200',
+    payNow: 'Pagar {ghost}',
     stageNow: 'Etapa actual',
     chat: 'Conversación con el productor',
     placeholder: 'Escríbele al productor…',
@@ -273,11 +274,11 @@ const es: Dict = {
     test: 'Pedido de prueba (tienda local): no se cobró nada.',
     delivered: 'Entregado',
   },
-  pay: { metaTitle: 'Pago · SignalGen', h1: 'Pago', test: 'Tienda local: este es un pago de prueba. No se cobra ninguna tarjeta. Online, este paso es Stripe Checkout.', btn: 'Pagar R$ 1.200 (prueba)', item: 'Ghost production por encargo', itemSub: 'Extended Mix + Radio Edit, WAV 24-bit, licencia exclusiva' },
+  pay: { metaTitle: 'Pago · SignalGen', h1: 'Pago', test: 'Tienda local: este es un pago de prueba. No se cobra ninguna tarjeta. Online, este paso es Stripe Checkout.', btn: 'Pagar {ghost} (prueba)', item: 'Ghost production por encargo', itemSub: 'Extended Mix + Radio Edit, WAV 24-bit, licencia exclusiva' },
   mail: {
     paidSubject: 'Tu track está en producción',
     paidHi: (n: string) => `¡Hola, ${n}!`,
-    paidBody: 'Recibimos tu pago de R$ 1.200. Tu track ya está en producción.',
+    paidBody: 'Recibimos tu pago de {ghost}. Tu track ya está en producción.',
     paidFollow: 'Sigue cada etapa y habla con el productor en tu página:',
     open: 'Abrir mi página',
     updSubject: 'Novedades de tu track',
@@ -363,7 +364,7 @@ const es: Dict = {
     ],
     trademark: 'Ableton, Logic, FL Studio y Bitwig son marcas de sus dueños. SignalGen no está afiliada a esas empresas.',
   },
-  home: { ghostLine: '¿Necesitas un tema listo?', ghostSub: 'Ghost production por encargo: hecho desde cero para tu nombre, R$ 1.200.', ghostCta: 'Ghost production',
+  home: { ghostLine: '¿Necesitas un tema listo?', ghostSub: 'Ghost production por encargo: hecho desde cero para tu nombre, {ghost}.', ghostCta: 'Ghost production',
     softEyebrow: 'Software de SignalGen', sgH: 'SignalGen', sgP: 'Generador, remix, rebuild, resynth y stem splitter ilimitado, en Ableton Live. Con Monet.', sgCta: 'Conocer SignalGen', monetH: 'Monet', monetP: 'El sintetizador de SignalGen: calidad comparable a los sintetizadores más famosos de hoy. Instalador oficial, sin crack, sin virus.', monetCta: 'Conocer Monet',
   },
 };
@@ -395,7 +396,7 @@ const en: Dict = {
     howH: 'How it works',
     how: [
       ['Brief', 'Genre, BPM, key, references and the vibe you want. Two minutes.'],
-      ['Payment', 'R$ 1.200 through Stripe. An e-mail arrives right away: your track is in production.'],
+      ['Payment', '{ghost} through Stripe. An e-mail arrives right away: your track is in production.'],
       ['Live production', 'See which stage the track is at — brief, sketch, arrangement, mix, master — and talk to the producer right there.'],
       ['Delivery', 'The final files arrive on your page and in your inbox.'],
     ],
@@ -427,7 +428,7 @@ const en: Dict = {
     refs: 'References', refsHint: 'Spotify, YouTube, SoundCloud or Beatport links — one per line.',
     idea: 'The idea', ideaHint: 'Vibe, energy, vocals or not, what must be there, what you do not want.',
     accept: 'I have read and accept the', terms: 'exclusive license terms',
-    pay: 'Pay R$ 1.200 and start', paying: 'Opening checkout…',
+    pay: 'Pay {ghost} and start', paying: 'Opening checkout…',
     err: 'Checkout could not open right now. Please try again.',
     note: 'Secure payment by Stripe. Your tracking page opens right after.',
   },
@@ -436,7 +437,7 @@ const en: Dict = {
     yours: 'Your on-demand track',
     waitingPay: 'Waiting for payment',
     waitingPayP: 'As soon as the payment is confirmed, production starts and this page shows every stage.',
-    payNow: 'Pay R$ 1.200',
+    payNow: 'Pay {ghost}',
     stageNow: 'Current stage',
     chat: 'Chat with the producer',
     placeholder: 'Write to the producer…',
@@ -449,11 +450,11 @@ const en: Dict = {
     test: 'Test order (local store): nothing was charged.',
     delivered: 'Delivered',
   },
-  pay: { metaTitle: 'Payment · SignalGen', h1: 'Payment', test: 'Local store: this is a test payment. No card is charged. Online, this step is Stripe Checkout.', btn: 'Pay R$ 1.200 (test)', item: 'On-demand ghost production', itemSub: 'Extended Mix + Radio Edit, WAV 24-bit, exclusive license' },
+  pay: { metaTitle: 'Payment · SignalGen', h1: 'Payment', test: 'Local store: this is a test payment. No card is charged. Online, this step is Stripe Checkout.', btn: 'Pay {ghost} (test)', item: 'On-demand ghost production', itemSub: 'Extended Mix + Radio Edit, WAV 24-bit, exclusive license' },
   mail: {
     paidSubject: 'Your track is in production',
     paidHi: (n: string) => `Hi ${n},`,
-    paidBody: 'We received your payment of R$ 1.200. Your track is now in production.',
+    paidBody: 'We received your payment of {ghost}. Your track is now in production.',
     paidFollow: 'Follow every stage and talk to the producer on your page:',
     open: 'Open my page',
     updSubject: 'An update on your track',
@@ -539,10 +540,26 @@ const en: Dict = {
     ],
     trademark: 'Ableton, Logic, FL Studio and Bitwig are trademarks of their owners. SignalGen is not affiliated with those companies.',
   },
-  home: { ghostLine: 'Need a finished track?', ghostSub: 'On-demand ghost production: made from scratch for your name, R$ 1.200.', ghostCta: 'Ghost production',
+  home: { ghostLine: 'Need a finished track?', ghostSub: 'On-demand ghost production: made from scratch for your name, {ghost}.', ghostCta: 'Ghost production',
     softEyebrow: 'SignalGen software', sgH: 'SignalGen', sgP: 'Generator, remix, rebuild, resynth and an unlimited stem splitter, in Ableton Live. With Monet.', sgCta: 'Meet SignalGen', monetH: 'Monet', monetP: 'The SignalGen synthesizer: quality comparable to today’s most famous synthesizers. Official installer, no cracks, no malware.', monetCta: 'Meet Monet',
   },
 };
 
 export const DICT: Record<Lang, Dict> = { pt, es, en };
-export const t = (l: Lang) => DICT[l];
+
+// Every text that names the ghost production price carries the mark {ghost}: t() fills it with the price of whoever is reading
+// (R$ 1.200 in Brazil, US$ 1,200 abroad), or with the label given (an order keeps the currency it was placed in).
+function fill<T>(v: T, label: string): T {
+  if (typeof v === 'string') return v.split('{ghost}').join(label) as unknown as T;
+  if (typeof v === 'function') return ((...a: unknown[]) => fill((v as unknown as (...x: unknown[]) => unknown)(...a), label)) as unknown as T;
+  if (Array.isArray(v)) return v.map((x) => fill(x, label)) as unknown as T;
+  if (v && typeof v === 'object') return Object.fromEntries(Object.entries(v as Record<string, unknown>).map(([k, x]) => [k, fill(x, label)])) as T;
+  return v;
+}
+const filled = new Map<string, Dict>();
+export const t = (l: Lang, ghost?: string): Dict => {
+  const label = ghost || ghostMoney(country()).display, key = `${l}|${label}`;
+  let d = filled.get(key);
+  if (!d) { d = fill(DICT[l], label); filled.set(key, d); }
+  return d;
+};

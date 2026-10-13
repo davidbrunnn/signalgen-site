@@ -16,7 +16,7 @@ const pt = {
   home: {
     eyebrow: 'Plugins AU + VST3 · macOS', h1a: 'Plugins avançados.', h1b: 'Preço justo.',
     lede: 'Um EQ e um sintetizador com qualidade que compete com plugins extremamente caros. Instalador oficial, licença vitalícia e download na hora, direto aqui no site.',
-    toPlugins: 'Ver plugins', toTempo: 'Baixar o Tempo grátis',
+    toPlugins: 'Ver plugins', toTempo: 'Baixar o Clocker grátis',
     facts: [['Vitalício', 'pague uma vez, é seu'], ['Na hora', 'chave e instalador ao pagar'], ['Pix ou cartão', 'pagamento seguro pelo Stripe'], ['Sua conta', 'baixe de novo quando quiser']],
     plugH: 'Plugins', plugP: 'AU + VST3 para macOS (Apple Silicon e Intel). Instalador oficial, chave pessoal, offline em até dois computadores.',
     refTag: 'EQ · 24 bandas', refP: 'O EQ que mostra onde cortar: ressonâncias marcadas no espectro, sidechain por banda e fase linear. Qualidade que compete com plugins extremamente caros.',
@@ -66,7 +66,7 @@ const es: UI = {
   home: {
     eyebrow: 'Plugins AU + VST3 · macOS', h1a: 'Plugins avanzados.', h1b: 'Precio justo.',
     lede: 'Un EQ y un sintetizador con una calidad que compite con plugins extremadamente caros. Instalador oficial, licencia de por vida y descarga al instante, aquí mismo.',
-    toPlugins: 'Ver plugins', toTempo: 'Descargar Tempo gratis',
+    toPlugins: 'Ver plugins', toTempo: 'Descargar Clocker gratis',
     facts: [['De por vida', 'pagas una vez, es tuyo'], ['Al instante', 'clave e instalador al pagar'], ['Tarjeta', 'pago seguro con Stripe'], ['Tu cuenta', 'descarga de nuevo cuando quieras']],
     plugH: 'Plugins', plugP: 'AU + VST3 para macOS (Apple Silicon e Intel). Instalador oficial, clave personal, offline en hasta dos computadoras.',
     refTag: 'EQ · 24 bandas', refP: 'El EQ que muestra dónde cortar: resonancias marcadas en el espectro, sidechain por banda y fase lineal. Calidad que compite con plugins extremadamente caros.',
@@ -115,7 +115,7 @@ const en: UI = {
   home: {
     eyebrow: 'AU + VST3 plugins · macOS', h1a: 'Advanced plugins.', h1b: 'Fair price.',
     lede: 'An EQ and a synthesizer with quality that competes with extremely expensive plugins. Official installers, lifetime licenses and instant download, right here.',
-    toPlugins: 'See plugins', toTempo: 'Get Tempo free',
+    toPlugins: 'See plugins', toTempo: 'Get Clocker free',
     facts: [['Lifetime', 'pay once, it is yours'], ['Instant', 'key and installer on payment'], ['Card', 'secure payment by Stripe'], ['Your account', 'download again any time']],
     plugH: 'Plugins', plugP: 'AU + VST3 for macOS (Apple Silicon and Intel). Official installer, personal key, offline on up to two computers.',
     refTag: 'EQ · 24 bands', refP: 'The EQ that shows you where to cut: resonances marked on the spectrum, per-band sidechain and linear phase. Quality that competes with extremely expensive plugins.',

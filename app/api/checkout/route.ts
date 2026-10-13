@@ -12,7 +12,7 @@ export const runtime = 'nodejs';
 
 export async function POST(req: Request) {
   const { id } = await req.json().catch(() => ({}));
-  const cat = await readCatalog();
+  const cat = await readCatalog(true);
   const t = cat.tracks.find((x) => x.id === id);
   if (!t) return NextResponse.json({ error: 'This track is no longer in the catalog.' }, { status: 404 });
   if (isSold(t)) return NextResponse.json({ error: 'This track was just signed by someone else — exclusive licenses sell once.' }, { status: 409 });

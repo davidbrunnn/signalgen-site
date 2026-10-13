@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { siteUrl } from '@/lib/site';
 import type { Metadata } from 'next';
 import Stripe from 'stripe';
-import { readGhost, tokenOk, markPaid, publicView, GHOST_PRICE_BRL } from '@/lib/ghost';
+import { readGhost, tokenOk, markPaid, publicView, orderLabel } from '@/lib/ghost';
 import { getLang, t } from '@/lib/i18n';
 import Thread from '@/components/Thread';
 import { headers } from 'next/headers';
@@ -15,7 +15,7 @@ const origin = () => { const h = headers(); return siteUrl() || `${h.get('x-forw
 // The buyer's page: the stages the producer moves, and the chat. The link (with ?k=) is in the confirmation e-mail.
 export default async function Order({ params, searchParams }: { params: { id: string }; searchParams: { k?: string; s?: string; lang?: string } }) {
   let o = await readGhost(params.id);
-  const L = t(o?.lang || getLang(searchParams));
+  const L = t(o?.lang || getLang(searchParams), o ? orderLabel(o) : undefined);
   if (!tokenOk(o, searchParams.k)) {
     return <main className="wrap narrow"><h1>{L.order.notFound}</h1><p className="muted">{L.order.notFoundP}</p><Link href="/ghost" className="btn quiet">{L.ghost.eyebrow}</Link></main>;
   }
@@ -44,7 +44,7 @@ export default async function Order({ params, searchParams }: { params: { id: st
           L={{ stageNow: L.order.stageNow, chat: L.order.chat, placeholder: L.order.placeholder, send: L.order.send, sending: L.order.sending, you: L.order.you, producer: L.order.producer, system: L.order.system, brief: L.order.brief }}
           briefLabels={{ artist: F.artist, genre: F.genre, bpm: F.bpm, key: F.key, refs: F.refs, idea: F.idea, name: F.name, email: F.email }} />
       )}
-      <p className="muted small" style={{ marginTop: 'var(--s4)' }}>{L.order.keep} · {(o as any).currency === 'BRL' || !o.amount ? `R$ ${(o.amount || GHOST_PRICE_BRL).toLocaleString('pt-BR')}` : `US$ ${o.amount}`}</p>
+      <p className="muted small" style={{ marginTop: 'var(--s4)' }}>{L.order.keep} · {orderLabel(o)}</p>
     </main>
   );
 }

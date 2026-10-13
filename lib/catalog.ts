@@ -59,7 +59,6 @@ export type Order = { session: string; trackId: string; email?: string; amount?:
 
 export const LOCAL = !process.env.BLOB_READ_WRITE_TOKEN;
 const DATA = path.join(process.cwd(), 'local-data');
-const KEY = 'studio/catalog.json';
 
 async function readJson<T>(file: string, empty: T): Promise<T> {
   try { return JSON.parse(await fs.readFile(path.join(DATA, file), 'utf8')) as T; } catch { return empty; }
@@ -69,24 +68,34 @@ async function writeJson(file: string, v: unknown) {
   await fs.writeFile(path.join(DATA, file), JSON.stringify(v, null, 1));
 }
 
-export async function readCatalog(): Promise<Catalog> {
-  if (LOCAL) return readJson<Catalog>('catalog.json', { tracks: [], updated: '' });
-  try {
-    const { blobs } = await list({ prefix: KEY, limit: 1 });
-    const b = blobs.find((x) => x.pathname === KEY);
-    if (!b) return { tracks: [], updated: '' };
-    const r = await fetch(`${b.url}?v=${Date.now()}`, { cache: 'no-store' });   // the query busts the CDN copy
-    if (!r.ok) return { tracks: [], updated: '' };
-    return (await r.json()) as Catalog;
-  } catch {
-    return { tracks: [], updated: '' };
+/** 13/10/2026 (David): the plugin Tempo is now called Clocker. The catalog id stays 'tempo' (orders and links point at it);
+ *  a catalog written before the rename gets the new name here. */
+function named(c: Catalog): Catalog {
+  for (const t of c.tracks) if (t.id === 'tempo' && t.title === 'Tempo') {
+    t.title = 'Clocker';
+    t.downloads = t.downloads?.map((d) => ({ ...d, label: d.label.replace(/\bTempo\b/, 'Clocker'), note: d.note?.replace(/\bTempo only\b/, 'Clocker only') }));
   }
+  return c;
+}
+
+export async function readCatalog(fresh = false): Promise<Catalog> {
+  if (LOCAL) return named(await readJson<Catalog>('catalog.json', { tracks: [], updated: '' }));
+  const { readBlobJson, writeBlobJson, removeBlob, CATALOG_KEY, OLD_CATALOG_KEY } = await import('@/lib/store');
+  let c = await readBlobJson<Catalog>(CATALOG_KEY, fresh);
+  if (!c?.tracks) {
+    // 13/10/2026: the catalog used to sit at a public, guessable address with the links of every paid download in it.
+    // First read after the change: move it to the private path and remove the old file.
+    const old = await readBlobJson<Catalog>(OLD_CATALOG_KEY, true);
+    if (old?.tracks) { c = old; try { await writeBlobJson(CATALOG_KEY, old); await removeBlob(OLD_CATALOG_KEY); } catch (e) { console.error('catalog move', e); } }
+  }
+  return c?.tracks ? named(c) : { tracks: [], updated: '' };
 }
 
 export async function writeCatalog(c: Catalog) {
   c.updated = new Date().toISOString();
   if (LOCAL) return writeJson('catalog.json', c);
-  await put(KEY, JSON.stringify(c), { access: 'public', addRandomSuffix: false, contentType: 'application/json', cacheControlMaxAge: 60 });
+  const { writeBlobJson, CATALOG_KEY } = await import('@/lib/store');
+  await writeBlobJson(CATALOG_KEY, c);
 }
 
 /** Orders: Blob keeps one file per order (random suffix); local mode keeps a list. Used for idempotency and the license page. */
@@ -115,7 +124,7 @@ export async function writeOrder(o: Order) {
 /** Marks a paid order once: increments `sold` and stores the order. Returns 'ok' | 'dup' | 'taken' (exclusive track already sold). */
 export async function recordSale(o: Order): Promise<'ok' | 'dup' | 'taken'> {
   if (await readOrder(o.session)) return 'dup';
-  const cat = await readCatalog();
+  const cat = await readCatalog(true);
   const t = cat.tracks.find((x) => x.id === o.trackId);
   if (t && t.sold && !t.nonExclusive) { await writeOrder({ ...o, refunded: true }); return 'taken'; }
   if (t) { t.sold = (t.sold || 0) + 1; await writeCatalog(cat); }
@@ -142,10 +151,10 @@ export const FOUNDER_SEATS = Number(process.env.FOUNDER_SEATS || 100);
 export function founderLeft(t?: Pick<Track, 'sold'> | null) { return Math.max(0, FOUNDER_SEATS - (t?.sold || 0)); }
 export const sgTier = (t?: Pick<Track, 'sold'> | null): 'founder' | 'lifetime' => (founderLeft(t) > 0 ? 'founder' : 'lifetime');
 export function priceOf(t: Track) {
-  if (t.kind === 'software' && t.licenseProduct === 'monet') return 19.9;
-  if (t.kind === 'software' && t.licenseProduct === 'refiner') return 9.9;
+  if (t.kind === 'software' && t.licenseProduct === 'monet') return 99;
+  if (t.kind === 'software' && t.licenseProduct === 'refiner') return 49;
   if (t.kind === 'software' && t.licenseProduct === 'ear') return 0;                        // Tempo is free (13/10/2026)
-  if (t.kind === 'software') return sgTier(t) === 'founder' ? Number(process.env.FOUNDER_PRICE_USD || 49) : Number(process.env.LIFETIME_PRICE_USD || 74);
+  if (t.kind === 'software') return sgTier(t) === 'founder' ? Number(process.env.FOUNDER_PRICE_BRL || 199) : Number(process.env.LIFETIME_PRICE_BRL || 299);
   return t.price || PRICE_USD;
 }
 export function isSold(t: Track) { return !!t.sold && !t.nonExclusive; }
@@ -155,7 +164,7 @@ export function approved(t: Track) { return t.kind !== 'track' || (t.score ?? 0)
 export const SELL_TRACKS = process.env.SELL_TRACKS !== '0';    // ghost productions: each track sold once; SELL_TRACKS=0 turns the tracks into demos
 /** Where a product lives on the site. */
 export function hrefOf(t: Pick<Track, 'id' | 'kind'>) {
-  return t.kind === 'track' ? `/t/${t.id}` : t.kind === 'software' ? (t.id === 'monet' ? '/monet' : t.id === 'refiner' ? '/refiner' : t.id === 'tempo' ? '/tempo' : '/signalgen') : `/p/${t.id}`;
+  return t.kind === 'track' ? `/t/${t.id}` : t.kind === 'software' ? (t.id === 'monet' ? '/monet' : t.id === 'refiner' ? '/refiner' : t.id === 'tempo' ? '/clocker' : '/signalgen') : `/p/${t.id}`;
 }
 /** 13/10/2026 (David: "bloqueie todos os outros produtos"): the only things on sale. Everything else in the catalog is "coming soon"
  *  (the SignalGen) or out of the window. FOR_SALE in the environment can widen it (comma-separated ids). */
@@ -180,7 +189,7 @@ export function downloadsOf(t: Track) {
 export async function tierOf(t: Track): Promise<'founder' | 'lifetime'> {
   if (isSignalGen(t)) return sgTier(t);
   const { offerOf } = await import('@/lib/launch');
-  return (await offerOf(t.id))?.tier || 'lifetime';
+  return (await offerOf(t.id, true))?.tier || 'lifetime';                    // what is charged is never decided from memory
 }
 export async function readOrders(): Promise<Order[]> {
   if (LOCAL) return readJson<Order[]>('orders.json', []);
