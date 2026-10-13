@@ -1,0 +1,12 @@
+// ?lang=pt|es|en on any page is remembered in the `lang` cookie (links in the e-mails carry the buyer's language).
+import { NextResponse, type NextRequest } from 'next/server';
+
+export function middleware(req: NextRequest) {
+  const l = req.nextUrl.searchParams.get('lang');
+  if (l !== 'pt' && l !== 'es' && l !== 'en') return NextResponse.next();
+  const res = NextResponse.next();
+  res.cookies.set('lang', l, { path: '/', maxAge: 31536000, sameSite: 'lax' });
+  return res;
+}
+
+export const config = { matcher: ['/((?!api|_next|product|sounds|media|local|favicon).*)'] };

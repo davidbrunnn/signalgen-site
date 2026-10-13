@@ -42,14 +42,14 @@ export default function Judge() {
         {(['a', 'b'] as const).map((side, i) => (
           <div key={side} className={`side${on === side ? ' on' : ''}`}>
             <div className="letter">{side.toUpperCase()}</div>
-            <button className="play" data-on={on === side ? '1' : '0'} onClick={() => play(side)} aria-label={`Play ${side}`} style={{ position: 'static', width: 72, height: 72, fontSize: 24 }}>{on === side ? '❚❚' : '▶'}</button>
+            <button className="playbtn big" data-on={on === side ? '1' : '0'} onClick={() => play(side)} aria-label={`Play ${side}`} style={{ margin: '0 auto', color: 'var(--night)', fontSize: 16 }}>{on === side ? '❚❚' : '▶'}</button>
             <div className="muted" style={{ marginTop: 14 }}>{pair[i].bpm} BPM · {pair[i].key} · {pair[i].genre}</div>
             <button className="btn" style={{ marginTop: 18 }} disabled={busy} onClick={() => vote(side)}>{side.toUpperCase()} wins</button>
           </div>
         ))}
       </div>
-      <div className="row" style={{ justifyContent: 'center', gap: 18, marginTop: 22 }}>
-        <button className="btn ghost" disabled={busy} onClick={() => vote('tie')}>Can&apos;t decide</button>
+      <div className="act" style={{ justifyContent: 'center', gap: 18, marginTop: 22 }}>
+        <button className="btn quiet" disabled={busy} onClick={() => vote('tie')}>Can&apos;t decide</button>
         <span className="muted">{count ? `${count} judged` : 'space = play · a / b = vote'}</span>
       </div>
     </section>

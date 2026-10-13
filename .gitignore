@@ -4,3 +4,9 @@ node_modules
 .vercel
 *.tsbuildinfo
 next-env.d.ts
+
+# local preview data (catalog, orders, copied covers/previews)
+local-data/
+public/local/
+.env.local
+_check/

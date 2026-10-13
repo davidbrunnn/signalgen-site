@@ -1,0 +1,51 @@
+// E-mail (10/10/2026). Online: Resend's HTTP API (RESEND_API_KEY + MAIL_FROM, no SDK). Local, or without a key: the message is
+// written to local-data/outbox/<time>-<to>.html and printed in the terminal — open it to see exactly what the buyer gets.
+import { promises as fs } from 'fs';
+import path from 'path';
+
+export type Mail = { to: string; subject: string; html: string; text: string; replyTo?: string };
+
+export async function sendMail(m: Mail): Promise<'sent' | 'outbox' | 'failed'> {
+  const key = process.env.RESEND_API_KEY, from = process.env.MAIL_FROM;
+  if (key && from) {
+    try {
+      const r = await fetch('https://api.resend.com/emails', {
+        method: 'POST', headers: { authorization: `Bearer ${key}`, 'content-type': 'application/json' },
+        body: JSON.stringify({ from, to: [m.to], subject: m.subject, html: m.html, text: m.text, reply_to: m.replyTo || process.env.GHOST_PRODUCER_EMAIL || undefined }),
+      });
+      if (r.ok) return 'sent';
+      console.error('mail failed', r.status, await r.text().catch(() => ''));
+    } catch (e) { console.error('mail failed', e); }
+    if (!process.env.BLOB_READ_WRITE_TOKEN) return outbox(m);
+    return 'failed';
+  }
+  return outbox(m);
+}
+
+async function outbox(m: Mail): Promise<'outbox' | 'failed'> {
+  try {
+    const dir = path.join(process.cwd(), 'local-data', 'outbox');
+    await fs.mkdir(dir, { recursive: true });
+    const f = path.join(dir, `${new Date().toISOString().replace(/[:.]/g, '-')}-${m.to.replace(/[^a-z0-9@._-]/gi, '_')}.html`);
+    await fs.writeFile(f, `<!-- to: ${m.to} · subject: ${m.subject} -->\n${m.html}`);
+    console.log(`[mail] ${m.to} · ${m.subject} -> ${f}`);
+    return 'outbox';
+  } catch { return 'failed'; }
+}
+
+const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
+
+/** The one layout of every e-mail: dark, Helvetica bold title, one amber button. */
+export function layout({ title, lines, button, url, foot }: { title: string; lines: string[]; button?: string; url?: string; foot: string }) {
+  const html = `<!doctype html><html><body style="margin:0;background:#08090b;padding:34px 0;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;color:#eeeae3">
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0"><tr><td align="center">
+<table role="presentation" width="560" cellspacing="0" cellpadding="0" style="max-width:560px;width:100%;background:#101216;border-radius:8px">
+<tr><td style="padding:34px 34px 8px;font-size:13px;letter-spacing:.18em;color:#8b919b;font-weight:700">SIGNALGEN</td></tr>
+<tr><td style="padding:8px 34px 13px;font-size:26px;line-height:1.25;font-weight:700;color:#eeeae3">${esc(title)}</td></tr>
+${lines.map((l) => `<tr><td style="padding:0 34px 13px;font-size:16px;line-height:1.6;color:#c9c5be">${esc(l).replace(/\n/g, '<br>')}</td></tr>`).join('')}
+${button && url ? `<tr><td style="padding:13px 34px 34px"><a href="${esc(url)}" style="display:inline-block;background:#e8a23a;color:#08090b;font-weight:700;font-size:16px;text-decoration:none;padding:16px 34px;border-radius:5px">${esc(button)}</a></td></tr>` : ''}
+<tr><td style="padding:0 34px 34px;font-size:13px;color:#5a606a">${esc(foot)}${url ? `<br><a href="${esc(url)}" style="color:#5a606a">${esc(url)}</a>` : ''}</td></tr>
+</table></td></tr></table></body></html>`;
+  const text = [title, '', ...lines, '', ...(url ? [url, ''] : []), foot].join('\n');
+  return { html, text };
+}

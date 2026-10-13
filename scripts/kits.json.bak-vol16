@@ -1,0 +1,2646 @@
+[
+ {
+  "id": "kit-01-basement-orders",
+  "vol": 1,
+  "title": "Basement Orders",
+  "type": "Vocal Kit",
+  "genre": "Tech House · 124–130",
+  "bpm": null,
+  "keys": [],
+  "formats": [
+   {
+    "format": "wav",
+    "label": "Sample pack",
+    "type": "Vocal Kit",
+    "zip": "/sessions/rcw-01kqvyakdxqxkdkueszxu72d/mnt/SignalGen/Kits/SG Voz Exclusiva/Venda/SignalGen Vol 01 - Basement Orders (Male Vocal Kit).zip",
+    "sizeMb": 33,
+    "price": 19,
+    "contents": "24 one shots · 96 loops (Knox, Orion, Barrett)",
+    "inside": [
+     {
+      "folder": "Loops / 124 BPM",
+      "count": 24,
+      "what": "24 WAV"
+     },
+     {
+      "folder": "Loops / 125 BPM",
+      "count": 10,
+      "what": "10 WAV"
+     },
+     {
+      "folder": "Loops / 126 BPM",
+      "count": 24,
+      "what": "24 WAV"
+     },
+     {
+      "folder": "Loops / 127 BPM",
+      "count": 15,
+      "what": "15 WAV"
+     },
+     {
+      "folder": "Loops / 128 BPM",
+      "count": 24,
+      "what": "24 WAV"
+     },
+     {
+      "folder": "Loops / 129 BPM",
+      "count": 16,
+      "what": "16 WAV"
+     },
+     {
+      "folder": "Loops / 130 BPM",
+      "count": 24,
+      "what": "24 WAV"
+     },
+     {
+      "folder": "Loops / 131 BPM",
+      "count": 7,
+      "what": "7 WAV"
+     },
+     {
+      "folder": "Loops / 132 BPM",
+      "count": 1,
+      "what": "1 WAV"
+     },
+     {
+      "folder": "Loops / 133 BPM",
+      "count": 1,
+      "what": "1 WAV"
+     },
+     {
+      "folder": "Loops / 134 BPM",
+      "count": 1,
+      "what": "1 WAV"
+     },
+     {
+      "folder": "One Shots",
+      "count": 24,
+      "what": "24 WAV"
+     }
+    ],
+    "wav": 171,
+    "midi": 0,
+    "presets": 0,
+    "specs": "48 kHz / 16-bit WAV",
+    "cover": "/sounds/kit-01-basement-orders/cover.jpg",
+    "demo": "/sounds/kit-01-basement-orders/demo.m4a",
+    "samples": [
+     {
+      "name": "v00 Feel the pressure 128bpm",
+      "tag": "Loop",
+      "src": "/sounds/kit-01-basement-orders/s/01.m4a"
+     },
+     {
+      "name": "v01 Lose control tonight 128bpm",
+      "tag": "Loop",
+      "src": "/sounds/kit-01-basement-orders/s/02.m4a"
+     },
+     {
+      "name": "v02 Move a little closer 128bpm",
+      "tag": "Loop",
+      "src": "/sounds/kit-01-basement-orders/s/03.m4a"
+     },
+     {
+      "name": "v06 We came to dance 128bpm",
+      "tag": "Loop",
+      "src": "/sounds/kit-01-basement-orders/s/04.m4a"
+     },
+     {
+      "name": "v07 Heat in the room 128bpm",
+      "tag": "Loop",
+      "src": "/sounds/kit-01-basement-orders/s/05.m4a"
+     },
+     {
+      "name": "v08 Say it louder 128bpm",
+      "tag": "Loop",
+      "src": "/sounds/kit-01-basement-orders/s/06.m4a"
+     },
+     {
+      "name": "v12 Turn it up 128bpm",
+      "tag": "Loop",
+      "src": "/sounds/kit-01-basement-orders/s/07.m4a"
+     },
+     {
+      "name": "v13 Body talking 128bpm",
+      "tag": "Loop",
+      "src": "/sounds/kit-01-basement-orders/s/08.m4a"
+     },
+     {
+      "name": "v14 Keep it moving 128bpm",
+      "tag": "Loop",
+      "src": "/sounds/kit-01-basement-orders/s/09.m4a"
+     },
+     {
+      "name": "v18 Let the drums speak 128bpm",
+      "tag": "Loop",
+      "src": "/sounds/kit-01-basement-orders/s/10.m4a"
+     },
+     {
+      "name": "v19 Nobody leaves 128bpm",
+      "tag": "Loop",
+      "src": "/sounds/kit-01-basement-orders/s/11.m4a"
+     },
+     {
+      "name": "v20 Deep in the groove 128bpm",
+      "tag": "Loop",
+      "src": "/sounds/kit-01-basement-orders/s/12.m4a"
+     }
+    ],
+    "description": "",
+    "demoNote": {
+     "tom": null,
+     "emprestada": true
+    }
+   }
+  ]
+ },
+ {
+  "id": "kit-02-velvet-hours",
+  "vol": 2,
+  "title": "Velvet Hours",
+  "type": "Vocal Kit",
+  "genre": "Tech House · 124–130",
+  "bpm": null,
+  "keys": [],
+  "formats": [
+   {
+    "format": "wav",
+    "label": "Sample pack",
+    "type": "Vocal Kit",
+    "zip": "/sessions/rcw-01kqvyakdxqxkdkueszxu72d/mnt/SignalGen/Kits/SG Voz Exclusiva/Venda/SignalGen Vol 02 - Velvet Hours (Female Vocal Kit).zip",
+    "sizeMb": 28,
+    "price": 19,
+    "contents": "24 one shots · 96 loops (Vesper, Luna, Sloane)",
+    "inside": [
+     {
+      "folder": "Loops / 124 BPM",
+      "count": 24,
+      "what": "24 WAV"
+     },
+     {
+      "folder": "Loops / 125 BPM",
+      "count": 12,
+      "what": "12 WAV"
+     },
+     {
+      "folder": "Loops / 126 BPM",
+      "count": 24,
+      "what": "24 WAV"
+     },
+     {
+      "folder": "Loops / 127 BPM",
+      "count": 16,
+      "what": "16 WAV"
+     },
+     {
+      "folder": "Loops / 128 BPM",
+      "count": 24,
+      "what": "24 WAV"
+     },
+     {
+      "folder": "Loops / 129 BPM",
+      "count": 11,
+      "what": "11 WAV"
+     },
+     {
+      "folder": "Loops / 130 BPM",
+      "count": 24,
+      "what": "24 WAV"
+     },
+     {
+      "folder": "Loops / 131 BPM",
+      "count": 3,
+      "what": "3 WAV"
+     },
+     {
+      "folder": "Loops / 134 BPM",
+      "count": 1,
+      "what": "1 WAV"
+     },
+     {
+      "folder": "One Shots",
+      "count": 24,
+      "what": "24 WAV"
+     }
+    ],
+    "wav": 163,
+    "midi": 0,
+    "presets": 0,
+    "specs": "48 kHz / 16-bit WAV",
+    "cover": "/sounds/kit-02-velvet-hours/cover.jpg",
+    "demo": "/sounds/kit-02-velvet-hours/demo.m4a",
+    "samples": [
+     {
+      "name": "v03 Don't stop the rhythm 128bpm",
+      "tag": "Loop",
+      "src": "/sounds/kit-02-velvet-hours/s/01.m4a"
+     },
+     {
+      "name": "v04 Under the lights 128bpm",
+      "tag": "Loop",
+      "src": "/sounds/kit-02-velvet-hours/s/02.m4a"
+     },
+     {
+      "name": "v05 Take me higher 128bpm",
+      "tag": "Loop",
+      "src": "/sounds/kit-02-velvet-hours/s/03.m4a"
+     },
+     {
+      "name": "v09 All night long 128bpm",
+      "tag": "Loop",
+      "src": "/sounds/kit-02-velvet-hours/s/04.m4a"
+     },
+     {
+      "name": "v10 Bring the bass back 128bpm",
+      "tag": "Loop",
+      "src": "/sounds/kit-02-velvet-hours/s/05.m4a"
+     },
+     {
+      "name": "v11 Lights down low 128bpm",
+      "tag": "Loop",
+      "src": "/sounds/kit-02-velvet-hours/s/06.m4a"
+     },
+     {
+      "name": "v15 Into the night 128bpm",
+      "tag": "Loop",
+      "src": "/sounds/kit-02-velvet-hours/s/07.m4a"
+     },
+     {
+      "name": "v16 Hands up high 128bpm",
+      "tag": "Loop",
+      "src": "/sounds/kit-02-velvet-hours/s/08.m4a"
+     },
+     {
+      "name": "v17 Midnight motion 128bpm",
+      "tag": "Loop",
+      "src": "/sounds/kit-02-velvet-hours/s/09.m4a"
+     },
+     {
+      "name": "v21 Got that feeling 128bpm",
+      "tag": "Loop",
+      "src": "/sounds/kit-02-velvet-hours/s/10.m4a"
+     },
+     {
+      "name": "v22 Running on rhythm 128bpm",
+      "tag": "Loop",
+      "src": "/sounds/kit-02-velvet-hours/s/11.m4a"
+     },
+     {
+      "name": "v23 Stay with me 128bpm",
+      "tag": "Loop",
+      "src": "/sounds/kit-02-velvet-hours/s/12.m4a"
+     }
+    ],
+    "description": "",
+    "demoNote": {
+     "tom": null,
+     "emprestada": true
+    }
+   }
+  ]
+ },
+ {
+  "id": "kit-03-low-pressure",
+  "vol": 3,
+  "title": "Low Pressure",
+  "type": "Bass Pack",
+  "genre": "Tech House · 128",
+  "bpm": 128,
+  "keys": [
+   "Am",
+   "Cm",
+   "Dm",
+   "Fm",
+   "G#m",
+   "Gm"
+  ],
+  "formats": [
+   {
+    "format": "wav",
+    "label": "Sample pack",
+    "type": "Bass Pack",
+    "zip": "/sessions/rcw-01kqvyakdxqxkdkueszxu72d/mnt/SignalGen/Kits/Venda/SignalGen Vol 03 - Low Pressure (Bass Pack).zip",
+    "sizeMb": 20,
+    "price": 12,
+    "contents": "24 bass",
+    "inside": [
+     {
+      "folder": "Bass",
+      "count": 24,
+      "what": "24 WAV · 24 MIDI"
+     },
+     {
+      "folder": "One Shots",
+      "count": 24,
+      "what": "24 WAV"
+     }
+    ],
+    "wav": 48,
+    "midi": 24,
+    "presets": 0,
+    "specs": "48 kHz / 24-bit WAV",
+    "cover": "/sounds/kit-03-low-pressure/cover.jpg",
+    "demo": "/sounds/kit-03-low-pressure/demo.m4a",
+    "samples": [
+     {
+      "name": "Bass 01 · Fm · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-03-low-pressure/s/01.m4a"
+     },
+     {
+      "name": "Bass 02 · Gm · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-03-low-pressure/s/02.m4a"
+     },
+     {
+      "name": "Bass 03 · Am · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-03-low-pressure/s/03.m4a"
+     },
+     {
+      "name": "Bass 04 · Cm · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-03-low-pressure/s/04.m4a"
+     },
+     {
+      "name": "Bass 05 · Dm · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-03-low-pressure/s/05.m4a"
+     },
+     {
+      "name": "Bass 06 · G#m · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-03-low-pressure/s/06.m4a"
+     },
+     {
+      "name": "Bass 07 · Fm · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-03-low-pressure/s/07.m4a"
+     },
+     {
+      "name": "Bass 08 · Gm · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-03-low-pressure/s/08.m4a"
+     },
+     {
+      "name": "Bass 09 · Am · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-03-low-pressure/s/09.m4a"
+     },
+     {
+      "name": "Bass 10 · Cm · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-03-low-pressure/s/10.m4a"
+     },
+     {
+      "name": "Bass 11 · Dm · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-03-low-pressure/s/11.m4a"
+     },
+     {
+      "name": "Bass 12 · G#m · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-03-low-pressure/s/12.m4a"
+     }
+    ],
+    "description": "24 tech house basslines: legato, glide and pitch play, Mau P / Matroda school. Powerful, night-time, sidechain-ready.",
+    "demoNote": {
+     "tom": "Dm",
+     "emprestada": true
+    }
+   },
+   {
+    "format": "serum",
+    "label": "Serum 2 presets",
+    "type": "Serum 2 Preset Pack",
+    "zip": "/sessions/rcw-01kqvyakdxqxkdkueszxu72d/mnt/SignalGen/Kits/Venda/SignalGen Vol 03 - Low Pressure (Serum 2 Presets).zip",
+    "sizeMb": 23,
+    "price": 12,
+    "contents": "24 bass (+ previews e MIDI)",
+    "inside": [
+     {
+      "folder": "Bass",
+      "count": 24,
+      "what": "24 presets · 24 audio previews · 24 MIDI"
+     }
+    ],
+    "wav": 24,
+    "midi": 24,
+    "presets": 24,
+    "specs": "Xfer Serum 2 (2.1.5 or later)",
+    "cover": "/sounds/kit-03-low-pressure/cover-serum.jpg",
+    "demo": "/sounds/kit-03-low-pressure/demo-serum.m4a",
+    "samples": [
+     {
+      "name": "Bass 01 · Fm · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-03-low-pressure/s2/01.m4a"
+     },
+     {
+      "name": "Bass 02 · Gm · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-03-low-pressure/s2/02.m4a"
+     },
+     {
+      "name": "Bass 03 · Am · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-03-low-pressure/s2/03.m4a"
+     },
+     {
+      "name": "Bass 04 · Cm · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-03-low-pressure/s2/04.m4a"
+     },
+     {
+      "name": "Bass 05 · Dm · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-03-low-pressure/s2/05.m4a"
+     },
+     {
+      "name": "Bass 06 · G#m · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-03-low-pressure/s2/06.m4a"
+     },
+     {
+      "name": "Bass 07 · Fm · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-03-low-pressure/s2/07.m4a"
+     },
+     {
+      "name": "Bass 08 · Gm · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-03-low-pressure/s2/08.m4a"
+     },
+     {
+      "name": "Bass 09 · Am · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-03-low-pressure/s2/09.m4a"
+     },
+     {
+      "name": "Bass 10 · Cm · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-03-low-pressure/s2/10.m4a"
+     },
+     {
+      "name": "Bass 11 · Dm · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-03-low-pressure/s2/11.m4a"
+     },
+     {
+      "name": "Bass 12 · G#m · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-03-low-pressure/s2/12.m4a"
+     }
+    ],
+    "description": "24 presets for Xfer Serum 2: every synth sound of Low Pressure (SignalGen Vol. 03), as the exact Serum 2 patches that play the loops of the sample pack: load one, play its MIDI clip and you get the loop. Each preset comes with a preview of the loop it plays in the sample pack and that loop's MIDI clip, so you can hear it, load it and play it straight away.",
+    "demoNote": {
+     "tom": "um preset por vez, bateria no tom de cada um",
+     "emprestada": true,
+     "ordem": [
+      "Bass 01 · Fm · 128 BPM",
+      "Bass 02 · Gm · 128 BPM",
+      "Bass 03 · Am · 128 BPM",
+      "Bass 04 · Cm · 128 BPM",
+      "Bass 05 · Dm · 128 BPM",
+      "Bass 06 · G#m · 128 BPM",
+      "Bass 07 · Fm · 128 BPM",
+      "Bass 08 · Gm · 128 BPM",
+      "Bass 09 · Am · 128 BPM",
+      "Bass 10 · Cm · 128 BPM",
+      "Bass 11 · Dm · 128 BPM",
+      "Bass 12 · G#m · 128 BPM"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "id": "kit-04-valve-kicks",
+  "vol": 4,
+  "title": "Valve Kicks",
+  "type": "Kick Pack",
+  "genre": "Tech House · Bass House · one shots",
+  "bpm": null,
+  "keys": [],
+  "formats": [
+   {
+    "format": "wav",
+    "label": "Sample pack",
+    "type": "Kick Pack",
+    "zip": "/sessions/rcw-01kqvyakdxqxkdkueszxu72d/mnt/SignalGen/Kits/Venda/SignalGen Vol 04 - Valve Kicks (Kick Pack).zip",
+    "sizeMb": 4,
+    "price": 9,
+    "contents": "40 kicks",
+    "inside": [
+     {
+      "folder": "Kicks",
+      "count": 40,
+      "what": "40 WAV"
+     }
+    ],
+    "wav": 40,
+    "midi": 0,
+    "presets": 0,
+    "specs": "48 kHz / 24-bit WAV",
+    "cover": "/sounds/kit-04-valve-kicks/cover.jpg",
+    "demo": "/sounds/kit-04-valve-kicks/demo.m4a",
+    "samples": [
+     {
+      "name": "Kick 01 · C2",
+      "tag": "One shot",
+      "src": "/sounds/kit-04-valve-kicks/s/01.m4a"
+     },
+     {
+      "name": "Kick 02 · A#1",
+      "tag": "One shot",
+      "src": "/sounds/kit-04-valve-kicks/s/02.m4a"
+     },
+     {
+      "name": "Kick 03 · A1",
+      "tag": "One shot",
+      "src": "/sounds/kit-04-valve-kicks/s/03.m4a"
+     },
+     {
+      "name": "Kick 04 · A1",
+      "tag": "One shot",
+      "src": "/sounds/kit-04-valve-kicks/s/04.m4a"
+     },
+     {
+      "name": "Kick 05 · G1",
+      "tag": "One shot",
+      "src": "/sounds/kit-04-valve-kicks/s/05.m4a"
+     },
+     {
+      "name": "Kick 06 · F1",
+      "tag": "One shot",
+      "src": "/sounds/kit-04-valve-kicks/s/06.m4a"
+     },
+     {
+      "name": "Kick 07 · E1",
+      "tag": "One shot",
+      "src": "/sounds/kit-04-valve-kicks/s/07.m4a"
+     },
+     {
+      "name": "Kick 08 · G1",
+      "tag": "One shot",
+      "src": "/sounds/kit-04-valve-kicks/s/08.m4a"
+     },
+     {
+      "name": "Kick 09 · D2",
+      "tag": "One shot",
+      "src": "/sounds/kit-04-valve-kicks/s/09.m4a"
+     },
+     {
+      "name": "Kick 10 · A1",
+      "tag": "One shot",
+      "src": "/sounds/kit-04-valve-kicks/s/10.m4a"
+     },
+     {
+      "name": "Kick 11 · E1",
+      "tag": "One shot",
+      "src": "/sounds/kit-04-valve-kicks/s/11.m4a"
+     },
+     {
+      "name": "Kick 12 · A1",
+      "tag": "One shot",
+      "src": "/sounds/kit-04-valve-kicks/s/12.m4a"
+     }
+    ],
+    "description": "40 tube-saturated kicks from the KICKER engine, tuned by note (E1 to C2), from tight tech house punches to long bass house weight.",
+    "demoNote": {
+     "tom": "nota de cada kick",
+     "emprestada": true
+    }
+   }
+  ]
+ },
+ {
+  "id": "kit-05-night-stabs",
+  "vol": 5,
+  "title": "Night Stabs",
+  "type": "Stab Pack",
+  "genre": "Tech House · 128",
+  "bpm": 128,
+  "keys": [
+   "Am",
+   "Cm",
+   "Dm",
+   "Fm",
+   "G#m",
+   "Gm"
+  ],
+  "formats": [
+   {
+    "format": "wav",
+    "label": "Sample pack",
+    "type": "Stab Pack",
+    "zip": "/sessions/rcw-01kqvyakdxqxkdkueszxu72d/mnt/SignalGen/Kits/Venda/SignalGen Vol 05 - Night Stabs (Stab Pack).zip",
+    "sizeMb": 53,
+    "price": 12,
+    "contents": "30 stabs",
+    "inside": [
+     {
+      "folder": "One Shots",
+      "count": 30,
+      "what": "30 WAV"
+     },
+     {
+      "folder": "Stabs",
+      "count": 30,
+      "what": "30 WAV · 30 MIDI"
+     }
+    ],
+    "wav": 60,
+    "midi": 30,
+    "presets": 0,
+    "specs": "48 kHz / 24-bit WAV",
+    "cover": "/sounds/kit-05-night-stabs/cover.jpg",
+    "demo": "/sounds/kit-05-night-stabs/demo.m4a",
+    "samples": [
+     {
+      "name": "Stab 01 · Fm · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-05-night-stabs/s/01.m4a"
+     },
+     {
+      "name": "Stab 02 · Gm · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-05-night-stabs/s/02.m4a"
+     },
+     {
+      "name": "Stab 03 · Am · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-05-night-stabs/s/03.m4a"
+     },
+     {
+      "name": "Stab 04 · Cm · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-05-night-stabs/s/04.m4a"
+     },
+     {
+      "name": "Stab 05 · Dm · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-05-night-stabs/s/05.m4a"
+     },
+     {
+      "name": "Stab 06 · G#m · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-05-night-stabs/s/06.m4a"
+     },
+     {
+      "name": "Stab 07 · Fm · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-05-night-stabs/s/07.m4a"
+     },
+     {
+      "name": "Stab 08 · Gm · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-05-night-stabs/s/08.m4a"
+     },
+     {
+      "name": "Stab 09 · Am · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-05-night-stabs/s/09.m4a"
+     },
+     {
+      "name": "Stab 10 · Cm · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-05-night-stabs/s/10.m4a"
+     },
+     {
+      "name": "Stab 11 · Dm · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-05-night-stabs/s/11.m4a"
+     },
+     {
+      "name": "Stab 12 · G#m · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-05-night-stabs/s/12.m4a"
+     }
+    ],
+    "description": "30 dark house stabs in the low octave: seventh and ninth chords, offbeat and syncopated patterns, panned and ready.",
+    "demoNote": {
+     "tom": "Dm",
+     "emprestada": true
+    }
+   },
+   {
+    "format": "serum",
+    "label": "Serum 2 presets",
+    "type": "Serum 2 Preset Pack",
+    "zip": "/sessions/rcw-01kqvyakdxqxkdkueszxu72d/mnt/SignalGen/Kits/Venda/SignalGen Vol 05 - Night Stabs (Serum 2 Presets).zip",
+    "sizeMb": 43,
+    "price": 16,
+    "contents": "30 stab (+ previews e MIDI)",
+    "inside": [
+     {
+      "folder": "Stabs",
+      "count": 30,
+      "what": "30 presets · 30 audio previews · 30 MIDI"
+     }
+    ],
+    "wav": 30,
+    "midi": 30,
+    "presets": 30,
+    "specs": "Xfer Serum 2 (2.1.5 or later)",
+    "cover": "/sounds/kit-05-night-stabs/cover-serum.jpg",
+    "demo": "/sounds/kit-05-night-stabs/demo-serum.m4a",
+    "samples": [
+     {
+      "name": "Stab 01 · Fm · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-05-night-stabs/s2/01.m4a"
+     },
+     {
+      "name": "Stab 02 · Gm · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-05-night-stabs/s2/02.m4a"
+     },
+     {
+      "name": "Stab 03 · Am · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-05-night-stabs/s2/03.m4a"
+     },
+     {
+      "name": "Stab 04 · Cm · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-05-night-stabs/s2/04.m4a"
+     },
+     {
+      "name": "Stab 05 · Dm · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-05-night-stabs/s2/05.m4a"
+     },
+     {
+      "name": "Stab 06 · G#m · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-05-night-stabs/s2/06.m4a"
+     },
+     {
+      "name": "Stab 07 · Fm · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-05-night-stabs/s2/07.m4a"
+     },
+     {
+      "name": "Stab 08 · Gm · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-05-night-stabs/s2/08.m4a"
+     },
+     {
+      "name": "Stab 09 · Am · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-05-night-stabs/s2/09.m4a"
+     },
+     {
+      "name": "Stab 10 · Cm · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-05-night-stabs/s2/10.m4a"
+     },
+     {
+      "name": "Stab 11 · Dm · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-05-night-stabs/s2/11.m4a"
+     },
+     {
+      "name": "Stab 12 · G#m · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-05-night-stabs/s2/12.m4a"
+     }
+    ],
+    "description": "30 presets for Xfer Serum 2: every synth sound of Night Stabs (SignalGen Vol. 05), as the exact Serum 2 patches that play the loops of the sample pack: load one, play its MIDI clip and you get the loop. Each preset comes with a preview of the loop it plays in the sample pack and that loop's MIDI clip, so you can hear it, load it and play it straight away.",
+    "demoNote": {
+     "tom": "um preset por vez, bateria no tom de cada um",
+     "emprestada": true,
+     "ordem": [
+      "Stab 01 · Fm · 128 BPM",
+      "Stab 02 · Gm · 128 BPM",
+      "Stab 03 · Am · 128 BPM",
+      "Stab 04 · Cm · 128 BPM",
+      "Stab 05 · Dm · 128 BPM",
+      "Stab 06 · G#m · 128 BPM",
+      "Stab 07 · Fm · 128 BPM",
+      "Stab 08 · Gm · 128 BPM",
+      "Stab 09 · Am · 128 BPM",
+      "Stab 10 · Cm · 128 BPM",
+      "Stab 11 · Dm · 128 BPM",
+      "Stab 12 · G#m · 128 BPM"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "id": "kit-06-torn-leads",
+  "vol": 6,
+  "title": "Torn Leads",
+  "type": "Lead Pack",
+  "genre": "Tech House · 127",
+  "bpm": 127,
+  "keys": [
+   "Am",
+   "Cm",
+   "Dm",
+   "Fm",
+   "G#m",
+   "Gm"
+  ],
+  "formats": [
+   {
+    "format": "wav",
+    "label": "Sample pack",
+    "type": "Lead Pack",
+    "zip": "/sessions/rcw-01kqvyakdxqxkdkueszxu72d/mnt/SignalGen/Kits/Venda/SignalGen Vol 06 - Torn Leads (Lead Pack).zip",
+    "sizeMb": 48,
+    "price": 12,
+    "contents": "24 leads",
+    "inside": [
+     {
+      "folder": "Leads",
+      "count": 24,
+      "what": "24 WAV · 24 MIDI"
+     },
+     {
+      "folder": "One Shots",
+      "count": 24,
+      "what": "24 WAV"
+     }
+    ],
+    "wav": 48,
+    "midi": 24,
+    "presets": 0,
+    "specs": "48 kHz / 24-bit WAV",
+    "cover": "/sounds/kit-06-torn-leads/cover.jpg",
+    "demo": "/sounds/kit-06-torn-leads/demo.m4a",
+    "samples": [
+     {
+      "name": "Lead 01 · Fm · 127 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-06-torn-leads/s/01.m4a"
+     },
+     {
+      "name": "Lead 02 · Gm · 127 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-06-torn-leads/s/02.m4a"
+     },
+     {
+      "name": "Lead 03 · Am · 127 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-06-torn-leads/s/03.m4a"
+     },
+     {
+      "name": "Lead 04 · Cm · 127 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-06-torn-leads/s/04.m4a"
+     },
+     {
+      "name": "Lead 05 · Dm · 127 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-06-torn-leads/s/05.m4a"
+     },
+     {
+      "name": "Lead 06 · G#m · 127 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-06-torn-leads/s/06.m4a"
+     },
+     {
+      "name": "Lead 07 · Fm · 127 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-06-torn-leads/s/07.m4a"
+     },
+     {
+      "name": "Lead 08 · Gm · 127 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-06-torn-leads/s/08.m4a"
+     },
+     {
+      "name": "Lead 09 · Am · 127 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-06-torn-leads/s/09.m4a"
+     },
+     {
+      "name": "Lead 10 · Cm · 127 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-06-torn-leads/s/10.m4a"
+     },
+     {
+      "name": "Lead 11 · Dm · 127 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-06-torn-leads/s/11.m4a"
+     },
+     {
+      "name": "Lead 12 · G#m · 127 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-06-torn-leads/s/12.m4a"
+     }
+    ],
+    "description": "24 torn mid leads with the cutoff breathing over the hook. Monophonic, driven, written in minor pentatonic.",
+    "demoNote": {
+     "tom": "Dm",
+     "emprestada": true
+    }
+   },
+   {
+    "format": "serum",
+    "label": "Serum 2 presets",
+    "type": "Serum 2 Preset Pack",
+    "zip": "/sessions/rcw-01kqvyakdxqxkdkueszxu72d/mnt/SignalGen/Kits/Venda/SignalGen Vol 06 - Torn Leads (Serum 2 Presets).zip",
+    "sizeMb": 39,
+    "price": 12,
+    "contents": "24 lead (+ previews e MIDI)",
+    "inside": [
+     {
+      "folder": "Leads",
+      "count": 24,
+      "what": "24 presets · 24 audio previews · 24 MIDI"
+     }
+    ],
+    "wav": 24,
+    "midi": 24,
+    "presets": 24,
+    "specs": "Xfer Serum 2 (2.1.5 or later)",
+    "cover": "/sounds/kit-06-torn-leads/cover-serum.jpg",
+    "demo": "/sounds/kit-06-torn-leads/demo-serum.m4a",
+    "samples": [
+     {
+      "name": "Lead 01 · Fm · 127 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-06-torn-leads/s2/01.m4a"
+     },
+     {
+      "name": "Lead 02 · Gm · 127 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-06-torn-leads/s2/02.m4a"
+     },
+     {
+      "name": "Lead 03 · Am · 127 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-06-torn-leads/s2/03.m4a"
+     },
+     {
+      "name": "Lead 04 · Cm · 127 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-06-torn-leads/s2/04.m4a"
+     },
+     {
+      "name": "Lead 05 · Dm · 127 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-06-torn-leads/s2/05.m4a"
+     },
+     {
+      "name": "Lead 06 · G#m · 127 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-06-torn-leads/s2/06.m4a"
+     },
+     {
+      "name": "Lead 07 · Fm · 127 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-06-torn-leads/s2/07.m4a"
+     },
+     {
+      "name": "Lead 08 · Gm · 127 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-06-torn-leads/s2/08.m4a"
+     },
+     {
+      "name": "Lead 09 · Am · 127 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-06-torn-leads/s2/09.m4a"
+     },
+     {
+      "name": "Lead 10 · Cm · 127 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-06-torn-leads/s2/10.m4a"
+     },
+     {
+      "name": "Lead 11 · Dm · 127 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-06-torn-leads/s2/11.m4a"
+     },
+     {
+      "name": "Lead 12 · G#m · 127 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-06-torn-leads/s2/12.m4a"
+     }
+    ],
+    "description": "24 presets for Xfer Serum 2: every synth sound of Torn Leads (SignalGen Vol. 06), as the exact Serum 2 patches that play the loops of the sample pack: load one, play its MIDI clip and you get the loop. Each preset comes with a preview of the loop it plays in the sample pack and that loop's MIDI clip, so you can hear it, load it and play it straight away.",
+    "demoNote": {
+     "tom": "um preset por vez, bateria no tom de cada um",
+     "emprestada": true,
+     "ordem": [
+      "Lead 01 · Fm · 127 BPM",
+      "Lead 02 · Gm · 127 BPM",
+      "Lead 03 · Am · 127 BPM",
+      "Lead 04 · Cm · 127 BPM",
+      "Lead 05 · Dm · 127 BPM",
+      "Lead 06 · G#m · 127 BPM",
+      "Lead 07 · Fm · 127 BPM",
+      "Lead 08 · Gm · 127 BPM",
+      "Lead 09 · Am · 127 BPM",
+      "Lead 10 · Cm · 127 BPM",
+      "Lead 11 · Dm · 127 BPM",
+      "Lead 12 · G#m · 127 BPM"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "id": "kit-07-signal-midi",
+  "vol": 7,
+  "title": "Signal MIDI",
+  "type": "MIDI Pack",
+  "genre": "House · 126",
+  "bpm": 126,
+  "keys": [
+   "Am",
+   "Cm",
+   "Dm",
+   "Fm",
+   "G#m",
+   "Gm"
+  ],
+  "formats": [
+   {
+    "format": "wav",
+    "label": "Sample pack",
+    "type": "MIDI Pack",
+    "zip": "/sessions/rcw-01kqvyakdxqxkdkueszxu72d/mnt/SignalGen/Kits/Venda/SignalGen Vol 07 - Signal MIDI (MIDI Pack).zip",
+    "sizeMb": 90,
+    "price": 9,
+    "contents": "20 bass MIDI · 20 hook MIDI · 20 chord MIDI",
+    "inside": [
+     {
+      "folder": "Bass",
+      "count": 20,
+      "what": "20 WAV · 20 MIDI"
+     },
+     {
+      "folder": "Chords",
+      "count": 20,
+      "what": "20 WAV · 20 MIDI"
+     },
+     {
+      "folder": "Hooks",
+      "count": 20,
+      "what": "20 WAV · 20 MIDI"
+     }
+    ],
+    "wav": 60,
+    "midi": 60,
+    "presets": 0,
+    "specs": "48 kHz / 24-bit WAV",
+    "cover": "/sounds/kit-07-signal-midi/cover.jpg",
+    "demo": "/sounds/kit-07-signal-midi/demo.m4a",
+    "samples": [
+     {
+      "name": "Bass 01 · Fm · 126 BPM",
+      "tag": "MIDI · audio preview",
+      "src": "/sounds/kit-07-signal-midi/s/01.m4a"
+     },
+     {
+      "name": "Chords 01 · Fm · 126 BPM",
+      "tag": "MIDI · audio preview",
+      "src": "/sounds/kit-07-signal-midi/s/02.m4a"
+     },
+     {
+      "name": "Hook 01 · Fm · 126 BPM",
+      "tag": "MIDI · audio preview",
+      "src": "/sounds/kit-07-signal-midi/s/03.m4a"
+     },
+     {
+      "name": "Bass 02 · Gm · 126 BPM",
+      "tag": "MIDI · audio preview",
+      "src": "/sounds/kit-07-signal-midi/s/04.m4a"
+     },
+     {
+      "name": "Chords 02 · Gm · 126 BPM",
+      "tag": "MIDI · audio preview",
+      "src": "/sounds/kit-07-signal-midi/s/05.m4a"
+     },
+     {
+      "name": "Hook 02 · Gm · 126 BPM",
+      "tag": "MIDI · audio preview",
+      "src": "/sounds/kit-07-signal-midi/s/06.m4a"
+     },
+     {
+      "name": "Bass 03 · Am · 126 BPM",
+      "tag": "MIDI · audio preview",
+      "src": "/sounds/kit-07-signal-midi/s/07.m4a"
+     },
+     {
+      "name": "Chords 03 · Am · 126 BPM",
+      "tag": "MIDI · audio preview",
+      "src": "/sounds/kit-07-signal-midi/s/08.m4a"
+     },
+     {
+      "name": "Hook 03 · Am · 126 BPM",
+      "tag": "MIDI · audio preview",
+      "src": "/sounds/kit-07-signal-midi/s/09.m4a"
+     },
+     {
+      "name": "Bass 04 · Cm · 126 BPM",
+      "tag": "MIDI · audio preview",
+      "src": "/sounds/kit-07-signal-midi/s/10.m4a"
+     },
+     {
+      "name": "Chords 04 · Cm · 126 BPM",
+      "tag": "MIDI · audio preview",
+      "src": "/sounds/kit-07-signal-midi/s/11.m4a"
+     },
+     {
+      "name": "Hook 04 · Cm · 126 BPM",
+      "tag": "MIDI · audio preview",
+      "src": "/sounds/kit-07-signal-midi/s/12.m4a"
+     }
+    ],
+    "description": "60 MIDI clips — 20 basslines, 20 hooks, 20 chord progressions — in six keys, with audio previews.",
+    "demoNote": {
+     "tom": "Dm",
+     "emprestada": true
+    }
+   }
+  ]
+ },
+ {
+  "id": "kit-08-basement-tools",
+  "vol": 8,
+  "title": "Basement Tools",
+  "type": "Trio",
+  "genre": "Tech House · 128",
+  "bpm": 128,
+  "keys": [
+   "Am",
+   "Cm",
+   "Dm",
+   "Fm",
+   "G#m",
+   "Gm"
+  ],
+  "formats": [
+   {
+    "format": "wav",
+    "label": "Sample pack",
+    "type": "Trio",
+    "zip": "/sessions/rcw-01kqvyakdxqxkdkueszxu72d/mnt/SignalGen/Kits/Venda/SignalGen Vol 08 - Basement Tools (Trio).zip",
+    "sizeMb": 24,
+    "price": 9,
+    "contents": "3 bass · 6 leads · 6 stabs",
+    "inside": [
+     {
+      "folder": "Bass",
+      "count": 3,
+      "what": "3 WAV · 3 MIDI"
+     },
+     {
+      "folder": "Leads",
+      "count": 6,
+      "what": "6 WAV · 6 MIDI"
+     },
+     {
+      "folder": "One Shots",
+      "count": 15,
+      "what": "15 WAV"
+     },
+     {
+      "folder": "Stabs",
+      "count": 6,
+      "what": "6 WAV · 6 MIDI"
+     }
+    ],
+    "wav": 30,
+    "midi": 15,
+    "presets": 0,
+    "specs": "48 kHz / 24-bit WAV",
+    "cover": "/sounds/kit-08-basement-tools/cover.jpg",
+    "demo": "/sounds/kit-08-basement-tools/demo.m4a",
+    "samples": [
+     {
+      "name": "Bass 01 · Fm · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-08-basement-tools/s/01.m4a"
+     },
+     {
+      "name": "Stab 01 · Fm · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-08-basement-tools/s/02.m4a"
+     },
+     {
+      "name": "Lead 01 · Fm · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-08-basement-tools/s/03.m4a"
+     },
+     {
+      "name": "Bass 02 · Gm · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-08-basement-tools/s/04.m4a"
+     },
+     {
+      "name": "Stab 02 · Gm · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-08-basement-tools/s/05.m4a"
+     },
+     {
+      "name": "Lead 02 · Gm · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-08-basement-tools/s/06.m4a"
+     },
+     {
+      "name": "Bass 03 · Am · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-08-basement-tools/s/07.m4a"
+     },
+     {
+      "name": "Stab 03 · Am · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-08-basement-tools/s/08.m4a"
+     },
+     {
+      "name": "Lead 03 · Am · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-08-basement-tools/s/09.m4a"
+     },
+     {
+      "name": "Stab 04 · Cm · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-08-basement-tools/s/10.m4a"
+     },
+     {
+      "name": "Lead 04 · Cm · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-08-basement-tools/s/11.m4a"
+     },
+     {
+      "name": "Stab 05 · Dm · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-08-basement-tools/s/12.m4a"
+     }
+    ],
+    "description": "The tech house trio: 3 basslines, 6 leads, 6 stabs. Six keys across the pack, written in the file names — match them and everything fits.",
+    "demoNote": {
+     "tom": "Fm",
+     "emprestada": true
+    }
+   },
+   {
+    "format": "serum",
+    "label": "Serum 2 presets",
+    "type": "Serum 2 Preset Pack",
+    "zip": "/sessions/rcw-01kqvyakdxqxkdkueszxu72d/mnt/SignalGen/Kits/Venda/SignalGen Vol 08 - Basement Tools (Serum 2 Presets).zip",
+    "sizeMb": 19,
+    "price": 9,
+    "contents": "3 bass · 6 lead · 6 stab (+ previews e MIDI)",
+    "inside": [
+     {
+      "folder": "Bass",
+      "count": 3,
+      "what": "3 presets · 3 audio previews · 3 MIDI"
+     },
+     {
+      "folder": "Leads",
+      "count": 6,
+      "what": "6 presets · 6 audio previews · 6 MIDI"
+     },
+     {
+      "folder": "Stabs",
+      "count": 6,
+      "what": "6 presets · 6 audio previews · 6 MIDI"
+     }
+    ],
+    "wav": 15,
+    "midi": 15,
+    "presets": 15,
+    "specs": "Xfer Serum 2 (2.1.5 or later)",
+    "cover": "/sounds/kit-08-basement-tools/cover-serum.jpg",
+    "demo": "/sounds/kit-08-basement-tools/demo-serum.m4a",
+    "samples": [
+     {
+      "name": "Bass 01 · Fm · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-08-basement-tools/s2/01.m4a"
+     },
+     {
+      "name": "Lead 01 · Fm · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-08-basement-tools/s2/02.m4a"
+     },
+     {
+      "name": "Stab 01 · Fm · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-08-basement-tools/s2/03.m4a"
+     },
+     {
+      "name": "Bass 02 · Gm · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-08-basement-tools/s2/04.m4a"
+     },
+     {
+      "name": "Lead 02 · Gm · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-08-basement-tools/s2/05.m4a"
+     },
+     {
+      "name": "Stab 02 · Gm · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-08-basement-tools/s2/06.m4a"
+     },
+     {
+      "name": "Bass 03 · Am · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-08-basement-tools/s2/07.m4a"
+     },
+     {
+      "name": "Lead 03 · Am · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-08-basement-tools/s2/08.m4a"
+     },
+     {
+      "name": "Stab 03 · Am · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-08-basement-tools/s2/09.m4a"
+     },
+     {
+      "name": "Lead 04 · Cm · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-08-basement-tools/s2/10.m4a"
+     },
+     {
+      "name": "Stab 04 · Cm · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-08-basement-tools/s2/11.m4a"
+     },
+     {
+      "name": "Lead 05 · Dm · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-08-basement-tools/s2/12.m4a"
+     }
+    ],
+    "description": "15 presets for Xfer Serum 2: every synth sound of Basement Tools (SignalGen Vol. 08), as the exact Serum 2 patches that play the loops of the sample pack: load one, play its MIDI clip and you get the loop. Each preset comes with a preview of the loop it plays in the sample pack and that loop's MIDI clip, so you can hear it, load it and play it straight away.",
+    "demoNote": {
+     "tom": "um preset por vez, bateria no tom de cada um",
+     "emprestada": true,
+     "ordem": [
+      "Bass 01 · Fm · 128 BPM",
+      "Lead 01 · Fm · 128 BPM",
+      "Stab 01 · Fm · 128 BPM",
+      "Bass 02 · Gm · 128 BPM",
+      "Lead 02 · Gm · 128 BPM",
+      "Stab 02 · Gm · 128 BPM",
+      "Bass 03 · Am · 128 BPM",
+      "Lead 03 · Am · 128 BPM",
+      "Stab 03 · Am · 128 BPM",
+      "Lead 04 · Cm · 128 BPM",
+      "Stab 04 · Cm · 128 BPM",
+      "Lead 05 · Dm · 128 BPM"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "id": "kit-09-midnight-grammar",
+  "vol": 9,
+  "title": "Midnight Grammar",
+  "type": "Trio",
+  "genre": "Minimal · 130",
+  "bpm": 130,
+  "keys": [
+   "Am",
+   "Cm",
+   "Dm",
+   "Fm",
+   "G#m",
+   "Gm"
+  ],
+  "formats": [
+   {
+    "format": "wav",
+    "label": "Sample pack",
+    "type": "Trio",
+    "zip": "/sessions/rcw-01kqvyakdxqxkdkueszxu72d/mnt/SignalGen/Kits/Venda/SignalGen Vol 09 - Midnight Grammar (Trio).zip",
+    "sizeMb": 28,
+    "price": 9,
+    "contents": "3 bass · 6 stabs · 6 pads",
+    "inside": [
+     {
+      "folder": "Bass",
+      "count": 3,
+      "what": "3 WAV · 3 MIDI"
+     },
+     {
+      "folder": "One Shots",
+      "count": 15,
+      "what": "15 WAV"
+     },
+     {
+      "folder": "Pads",
+      "count": 6,
+      "what": "6 WAV · 6 MIDI"
+     },
+     {
+      "folder": "Stabs",
+      "count": 6,
+      "what": "6 WAV · 6 MIDI"
+     }
+    ],
+    "wav": 30,
+    "midi": 15,
+    "presets": 0,
+    "specs": "48 kHz / 24-bit WAV",
+    "cover": "/sounds/kit-09-midnight-grammar/cover.jpg",
+    "demo": "/sounds/kit-09-midnight-grammar/demo.m4a",
+    "samples": [
+     {
+      "name": "Bass 01 · Fm · 130 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-09-midnight-grammar/s/01.m4a"
+     },
+     {
+      "name": "Stab 01 · Fm · 130 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-09-midnight-grammar/s/02.m4a"
+     },
+     {
+      "name": "Pad 01 · Fm · 130 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-09-midnight-grammar/s/03.m4a"
+     },
+     {
+      "name": "Bass 02 · Gm · 130 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-09-midnight-grammar/s/04.m4a"
+     },
+     {
+      "name": "Stab 02 · Gm · 130 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-09-midnight-grammar/s/05.m4a"
+     },
+     {
+      "name": "Pad 02 · Gm · 130 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-09-midnight-grammar/s/06.m4a"
+     },
+     {
+      "name": "Bass 03 · Am · 130 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-09-midnight-grammar/s/07.m4a"
+     },
+     {
+      "name": "Stab 03 · Am · 130 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-09-midnight-grammar/s/08.m4a"
+     },
+     {
+      "name": "Pad 03 · Am · 130 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-09-midnight-grammar/s/09.m4a"
+     },
+     {
+      "name": "Stab 04 · Cm · 130 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-09-midnight-grammar/s/10.m4a"
+     },
+     {
+      "name": "Pad 04 · Cm · 130 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-09-midnight-grammar/s/11.m4a"
+     },
+     {
+      "name": "Stab 05 · Dm · 130 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-09-midnight-grammar/s/12.m4a"
+     }
+    ],
+    "description": "Minimal trio at 130: 3 rolling basslines, 6 short dark stabs, 6 pads one octave below for the break.",
+    "demoNote": {
+     "tom": "Am",
+     "emprestada": true
+    }
+   },
+   {
+    "format": "serum",
+    "label": "Serum 2 presets",
+    "type": "Serum 2 Preset Pack",
+    "zip": "/sessions/rcw-01kqvyakdxqxkdkueszxu72d/mnt/SignalGen/Kits/Venda/SignalGen Vol 09 - Midnight Grammar (Serum 2 Presets).zip",
+    "sizeMb": 25,
+    "price": 9,
+    "contents": "3 bass · 6 pad · 6 stab (+ previews e MIDI)",
+    "inside": [
+     {
+      "folder": "Bass",
+      "count": 3,
+      "what": "3 presets · 3 audio previews · 3 MIDI"
+     },
+     {
+      "folder": "Pads",
+      "count": 6,
+      "what": "6 presets · 6 audio previews · 6 MIDI"
+     },
+     {
+      "folder": "Stabs",
+      "count": 6,
+      "what": "6 presets · 6 audio previews · 6 MIDI"
+     }
+    ],
+    "wav": 15,
+    "midi": 15,
+    "presets": 15,
+    "specs": "Xfer Serum 2 (2.1.5 or later)",
+    "cover": "/sounds/kit-09-midnight-grammar/cover-serum.jpg",
+    "demo": "/sounds/kit-09-midnight-grammar/demo-serum.m4a",
+    "samples": [
+     {
+      "name": "Bass 01 · Fm · 130 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-09-midnight-grammar/s2/01.m4a"
+     },
+     {
+      "name": "Pad 01 · Fm · 130 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-09-midnight-grammar/s2/02.m4a"
+     },
+     {
+      "name": "Stab 01 · Fm · 130 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-09-midnight-grammar/s2/03.m4a"
+     },
+     {
+      "name": "Bass 02 · Gm · 130 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-09-midnight-grammar/s2/04.m4a"
+     },
+     {
+      "name": "Pad 02 · Gm · 130 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-09-midnight-grammar/s2/05.m4a"
+     },
+     {
+      "name": "Stab 02 · Gm · 130 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-09-midnight-grammar/s2/06.m4a"
+     },
+     {
+      "name": "Bass 03 · Am · 130 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-09-midnight-grammar/s2/07.m4a"
+     },
+     {
+      "name": "Pad 03 · Am · 130 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-09-midnight-grammar/s2/08.m4a"
+     },
+     {
+      "name": "Stab 03 · Am · 130 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-09-midnight-grammar/s2/09.m4a"
+     },
+     {
+      "name": "Pad 04 · Cm · 130 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-09-midnight-grammar/s2/10.m4a"
+     },
+     {
+      "name": "Stab 04 · Cm · 130 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-09-midnight-grammar/s2/11.m4a"
+     },
+     {
+      "name": "Pad 05 · Dm · 130 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-09-midnight-grammar/s2/12.m4a"
+     }
+    ],
+    "description": "15 presets for Xfer Serum 2: every synth sound of Midnight Grammar (SignalGen Vol. 09), as the exact Serum 2 patches that play the loops of the sample pack: load one, play its MIDI clip and you get the loop. Each preset comes with a preview of the loop it plays in the sample pack and that loop's MIDI clip, so you can hear it, load it and play it straight away.",
+    "demoNote": {
+     "tom": "um preset por vez, bateria no tom de cada um",
+     "emprestada": true,
+     "ordem": [
+      "Bass 01 · Fm · 130 BPM",
+      "Pad 01 · Fm · 130 BPM",
+      "Stab 01 · Fm · 130 BPM",
+      "Bass 02 · Gm · 130 BPM",
+      "Pad 02 · Gm · 130 BPM",
+      "Stab 02 · Gm · 130 BPM",
+      "Bass 03 · Am · 130 BPM",
+      "Pad 03 · Am · 130 BPM",
+      "Stab 03 · Am · 130 BPM",
+      "Pad 04 · Cm · 130 BPM",
+      "Stab 04 · Cm · 130 BPM",
+      "Pad 05 · Dm · 130 BPM"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "id": "kit-10-bassline-department",
+  "vol": 10,
+  "title": "Bassline Department",
+  "type": "Trio",
+  "genre": "Bass House · 126",
+  "bpm": 126,
+  "keys": [
+   "Am",
+   "Cm",
+   "Dm",
+   "Fm",
+   "G#m",
+   "Gm"
+  ],
+  "formats": [
+   {
+    "format": "wav",
+    "label": "Sample pack",
+    "type": "Trio",
+    "zip": "/sessions/rcw-01kqvyakdxqxkdkueszxu72d/mnt/SignalGen/Kits/Venda/SignalGen Vol 10 - Bassline Department (Trio).zip",
+    "sizeMb": 11,
+    "price": 9,
+    "contents": "6 bass · 3 leads · 6 kicks",
+    "inside": [
+     {
+      "folder": "Bass",
+      "count": 6,
+      "what": "6 WAV · 6 MIDI"
+     },
+     {
+      "folder": "Kicks",
+      "count": 6,
+      "what": "6 WAV"
+     },
+     {
+      "folder": "Leads",
+      "count": 3,
+      "what": "3 WAV · 3 MIDI"
+     },
+     {
+      "folder": "One Shots",
+      "count": 9,
+      "what": "9 WAV"
+     }
+    ],
+    "wav": 24,
+    "midi": 9,
+    "presets": 0,
+    "specs": "48 kHz / 24-bit WAV",
+    "cover": "/sounds/kit-10-bassline-department/cover.jpg",
+    "demo": "/sounds/kit-10-bassline-department/demo.m4a",
+    "samples": [
+     {
+      "name": "Bass 01 · Fm · 126 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-10-bassline-department/s/01.m4a"
+     },
+     {
+      "name": "Lead 01 · Fm · 126 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-10-bassline-department/s/02.m4a"
+     },
+     {
+      "name": "Kick 01 · G0",
+      "tag": "One shot",
+      "src": "/sounds/kit-10-bassline-department/s/03.m4a"
+     },
+     {
+      "name": "Bass 02 · Gm · 126 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-10-bassline-department/s/04.m4a"
+     },
+     {
+      "name": "Lead 02 · Gm · 126 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-10-bassline-department/s/05.m4a"
+     },
+     {
+      "name": "Kick 02 · C1",
+      "tag": "One shot",
+      "src": "/sounds/kit-10-bassline-department/s/06.m4a"
+     },
+     {
+      "name": "Bass 03 · Am · 126 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-10-bassline-department/s/07.m4a"
+     },
+     {
+      "name": "Lead 03 · Am · 126 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-10-bassline-department/s/08.m4a"
+     },
+     {
+      "name": "Kick 03 · D1",
+      "tag": "One shot",
+      "src": "/sounds/kit-10-bassline-department/s/09.m4a"
+     },
+     {
+      "name": "Bass 04 · Cm · 126 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-10-bassline-department/s/10.m4a"
+     },
+     {
+      "name": "Kick 04 · D1",
+      "tag": "One shot",
+      "src": "/sounds/kit-10-bassline-department/s/11.m4a"
+     },
+     {
+      "name": "Bass 05 · Dm · 126 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-10-bassline-department/s/12.m4a"
+     }
+    ],
+    "description": "Bass house trio: 6 heavy basslines, 3 leads, 6 tuned valve kicks that sit under them.",
+    "demoNote": {
+     "tom": "Am",
+     "emprestada": true
+    }
+   },
+   {
+    "format": "serum",
+    "label": "Serum 2 presets",
+    "type": "Serum 2 Preset Pack",
+    "zip": "/sessions/rcw-01kqvyakdxqxkdkueszxu72d/mnt/SignalGen/Kits/Venda/SignalGen Vol 10 - Bassline Department (Serum 2 Presets).zip",
+    "sizeMb": 8,
+    "price": 9,
+    "contents": "6 bass · 3 lead (+ previews e MIDI)",
+    "inside": [
+     {
+      "folder": "Bass",
+      "count": 6,
+      "what": "6 presets · 6 audio previews · 6 MIDI"
+     },
+     {
+      "folder": "Leads",
+      "count": 3,
+      "what": "3 presets · 3 audio previews · 3 MIDI"
+     }
+    ],
+    "wav": 9,
+    "midi": 9,
+    "presets": 9,
+    "specs": "Xfer Serum 2 (2.1.5 or later)",
+    "cover": "/sounds/kit-10-bassline-department/cover-serum.jpg",
+    "demo": "/sounds/kit-10-bassline-department/demo-serum.m4a",
+    "samples": [
+     {
+      "name": "Bass 01 · Fm · 126 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-10-bassline-department/s2/01.m4a"
+     },
+     {
+      "name": "Lead 01 · Fm · 126 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-10-bassline-department/s2/02.m4a"
+     },
+     {
+      "name": "Bass 02 · Gm · 126 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-10-bassline-department/s2/03.m4a"
+     },
+     {
+      "name": "Lead 02 · Gm · 126 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-10-bassline-department/s2/04.m4a"
+     },
+     {
+      "name": "Bass 03 · Am · 126 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-10-bassline-department/s2/05.m4a"
+     },
+     {
+      "name": "Lead 03 · Am · 126 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-10-bassline-department/s2/06.m4a"
+     },
+     {
+      "name": "Bass 04 · Cm · 126 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-10-bassline-department/s2/07.m4a"
+     },
+     {
+      "name": "Bass 05 · Dm · 126 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-10-bassline-department/s2/08.m4a"
+     },
+     {
+      "name": "Bass 06 · G#m · 126 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-10-bassline-department/s2/09.m4a"
+     }
+    ],
+    "description": "9 presets for Xfer Serum 2: every synth sound of Bassline Department (SignalGen Vol. 10), as the exact Serum 2 patches that play the loops of the sample pack: load one, play its MIDI clip and you get the loop. Each preset comes with a preview of the loop it plays in the sample pack and that loop's MIDI clip, so you can hear it, load it and play it straight away.",
+    "demoNote": {
+     "tom": "um preset por vez, bateria no tom de cada um",
+     "emprestada": true,
+     "ordem": [
+      "Bass 01 · Fm · 126 BPM",
+      "Lead 01 · Fm · 126 BPM",
+      "Bass 02 · Gm · 126 BPM",
+      "Lead 02 · Gm · 126 BPM",
+      "Bass 03 · Am · 126 BPM",
+      "Lead 03 · Am · 126 BPM",
+      "Bass 04 · Cm · 126 BPM",
+      "Bass 05 · Dm · 126 BPM",
+      "Bass 06 · G#m · 126 BPM"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "id": "kit-11-velvet-engine",
+  "vol": 11,
+  "title": "Velvet Engine",
+  "type": "Trio",
+  "genre": "UK Garage · 132",
+  "bpm": 132,
+  "keys": [
+   "Am",
+   "Cm",
+   "Dm",
+   "Fm",
+   "G#m",
+   "Gm"
+  ],
+  "formats": [
+   {
+    "format": "wav",
+    "label": "Sample pack",
+    "type": "Trio",
+    "zip": "/sessions/rcw-01kqvyakdxqxkdkueszxu72d/mnt/SignalGen/Kits/Venda/SignalGen Vol 11 - Velvet Engine (Trio).zip",
+    "sizeMb": 31,
+    "price": 9,
+    "contents": "3 bass · 6 keys · 6 plucks",
+    "inside": [
+     {
+      "folder": "Bass",
+      "count": 3,
+      "what": "3 WAV · 3 MIDI"
+     },
+     {
+      "folder": "Keys",
+      "count": 6,
+      "what": "6 WAV · 6 MIDI"
+     },
+     {
+      "folder": "One Shots",
+      "count": 15,
+      "what": "15 WAV"
+     },
+     {
+      "folder": "Plucks",
+      "count": 6,
+      "what": "6 WAV · 6 MIDI"
+     }
+    ],
+    "wav": 30,
+    "midi": 15,
+    "presets": 0,
+    "specs": "48 kHz / 24-bit WAV",
+    "cover": "/sounds/kit-11-velvet-engine/cover.jpg",
+    "demo": "/sounds/kit-11-velvet-engine/demo.m4a",
+    "samples": [
+     {
+      "name": "Bass 01 · Fm · 132 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-11-velvet-engine/s/01.m4a"
+     },
+     {
+      "name": "Keys 01 · Fm · 132 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-11-velvet-engine/s/02.m4a"
+     },
+     {
+      "name": "Pluck 01 · Fm · 132 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-11-velvet-engine/s/03.m4a"
+     },
+     {
+      "name": "Bass 02 · Gm · 132 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-11-velvet-engine/s/04.m4a"
+     },
+     {
+      "name": "Keys 02 · Gm · 132 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-11-velvet-engine/s/05.m4a"
+     },
+     {
+      "name": "Pluck 02 · Gm · 132 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-11-velvet-engine/s/06.m4a"
+     },
+     {
+      "name": "Bass 03 · Am · 132 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-11-velvet-engine/s/07.m4a"
+     },
+     {
+      "name": "Keys 03 · Am · 132 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-11-velvet-engine/s/08.m4a"
+     },
+     {
+      "name": "Pluck 03 · Am · 132 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-11-velvet-engine/s/09.m4a"
+     },
+     {
+      "name": "Keys 04 · Cm · 132 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-11-velvet-engine/s/10.m4a"
+     },
+     {
+      "name": "Pluck 04 · Cm · 132 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-11-velvet-engine/s/11.m4a"
+     },
+     {
+      "name": "Keys 05 · Dm · 132 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-11-velvet-engine/s/12.m4a"
+     }
+    ],
+    "description": "Every sound was synthesized in Serum 2 from SignalGen's own patches (no factory presets) and written by the SignalGen engine — no third-party samples. Loops are 4 bars, 48 kHz / 24-bit, levelled across the pack, key and tempo in the file name. Each loop comes with its MIDI clip and a one shot of the same patch, so you can replay the line with your own notes.",
+    "demoNote": {
+     "tom": "Fm",
+     "emprestada": true
+    }
+   },
+   {
+    "format": "serum",
+    "label": "Serum 2 presets",
+    "type": "Serum 2 Preset Pack",
+    "zip": "/sessions/rcw-01kqvyakdxqxkdkueszxu72d/mnt/SignalGen/Kits/Venda/SignalGen Vol 11 - Velvet Engine (Serum 2 Presets).zip",
+    "sizeMb": 27,
+    "price": 9,
+    "contents": "3 bass · 6 keys · 6 pluck (+ previews e MIDI)",
+    "inside": [
+     {
+      "folder": "Bass",
+      "count": 3,
+      "what": "3 presets · 3 audio previews · 3 MIDI"
+     },
+     {
+      "folder": "Keys",
+      "count": 6,
+      "what": "6 presets · 6 audio previews · 6 MIDI"
+     },
+     {
+      "folder": "Plucks",
+      "count": 6,
+      "what": "6 presets · 6 audio previews · 6 MIDI"
+     }
+    ],
+    "wav": 15,
+    "midi": 15,
+    "presets": 15,
+    "specs": "Xfer Serum 2 (2.1.5 or later)",
+    "cover": "/sounds/kit-11-velvet-engine/cover-serum.jpg",
+    "demo": "/sounds/kit-11-velvet-engine/demo-serum.m4a",
+    "samples": [
+     {
+      "name": "Bass 01 · Fm · 132 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-11-velvet-engine/s2/01.m4a"
+     },
+     {
+      "name": "Keys 01 · Fm · 132 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-11-velvet-engine/s2/02.m4a"
+     },
+     {
+      "name": "Pluck 01 · Fm · 132 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-11-velvet-engine/s2/03.m4a"
+     },
+     {
+      "name": "Bass 02 · Gm · 132 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-11-velvet-engine/s2/04.m4a"
+     },
+     {
+      "name": "Keys 02 · Gm · 132 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-11-velvet-engine/s2/05.m4a"
+     },
+     {
+      "name": "Pluck 02 · Gm · 132 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-11-velvet-engine/s2/06.m4a"
+     },
+     {
+      "name": "Bass 03 · Am · 132 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-11-velvet-engine/s2/07.m4a"
+     },
+     {
+      "name": "Keys 03 · Am · 132 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-11-velvet-engine/s2/08.m4a"
+     },
+     {
+      "name": "Pluck 03 · Am · 132 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-11-velvet-engine/s2/09.m4a"
+     },
+     {
+      "name": "Keys 04 · Cm · 132 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-11-velvet-engine/s2/10.m4a"
+     },
+     {
+      "name": "Pluck 04 · Cm · 132 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-11-velvet-engine/s2/11.m4a"
+     },
+     {
+      "name": "Keys 05 · Dm · 132 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-11-velvet-engine/s2/12.m4a"
+     }
+    ],
+    "description": "15 presets for Xfer Serum 2: every synth sound of Velvet Engine (SignalGen Vol. 11), as the exact Serum 2 patches that play the loops of the sample pack: load one, play its MIDI clip and you get the loop. Each preset comes with a preview of the loop it plays in the sample pack and that loop's MIDI clip, so you can hear it, load it and play it straight away.",
+    "demoNote": {
+     "tom": "um preset por vez, bateria no tom de cada um",
+     "emprestada": true,
+     "ordem": [
+      "Bass 01 · Fm · 132 BPM",
+      "Keys 01 · Fm · 132 BPM",
+      "Pluck 01 · Fm · 132 BPM",
+      "Bass 02 · Gm · 132 BPM",
+      "Keys 02 · Gm · 132 BPM",
+      "Pluck 02 · Gm · 132 BPM",
+      "Bass 03 · Am · 132 BPM",
+      "Keys 03 · Am · 132 BPM",
+      "Pluck 03 · Am · 132 BPM",
+      "Keys 04 · Cm · 132 BPM",
+      "Pluck 04 · Cm · 132 BPM",
+      "Keys 05 · Dm · 132 BPM"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "id": "kit-12-golden-static",
+  "vol": 12,
+  "title": "Golden Static",
+  "type": "Trio",
+  "genre": "Tech House · 127",
+  "bpm": 127,
+  "keys": [
+   "Am",
+   "Cm",
+   "Dm",
+   "Fm",
+   "G#m",
+   "Gm"
+  ],
+  "formats": [
+   {
+    "format": "wav",
+    "label": "Sample pack",
+    "type": "Trio",
+    "zip": "/sessions/rcw-01kqvyakdxqxkdkueszxu72d/mnt/SignalGen/Kits/Venda/SignalGen Vol 12 - Golden Static (Trio).zip",
+    "sizeMb": 37,
+    "price": 9,
+    "contents": "6 leads · 6 chords · 3 arps",
+    "inside": [
+     {
+      "folder": "Arps",
+      "count": 3,
+      "what": "3 WAV · 3 MIDI"
+     },
+     {
+      "folder": "Chords",
+      "count": 6,
+      "what": "6 WAV · 6 MIDI"
+     },
+     {
+      "folder": "Leads",
+      "count": 6,
+      "what": "6 WAV · 6 MIDI"
+     },
+     {
+      "folder": "One Shots",
+      "count": 15,
+      "what": "15 WAV"
+     }
+    ],
+    "wav": 30,
+    "midi": 15,
+    "presets": 0,
+    "specs": "48 kHz / 24-bit WAV",
+    "cover": "/sounds/kit-12-golden-static/cover.jpg",
+    "demo": "/sounds/kit-12-golden-static/demo.m4a",
+    "samples": [
+     {
+      "name": "Chords 01 · Fm · 127 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-12-golden-static/s/01.m4a"
+     },
+     {
+      "name": "Lead 01 · Fm · 127 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-12-golden-static/s/02.m4a"
+     },
+     {
+      "name": "Arp 01 · Fm · 127 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-12-golden-static/s/03.m4a"
+     },
+     {
+      "name": "Chords 02 · Gm · 127 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-12-golden-static/s/04.m4a"
+     },
+     {
+      "name": "Lead 02 · Gm · 127 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-12-golden-static/s/05.m4a"
+     },
+     {
+      "name": "Arp 02 · Gm · 127 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-12-golden-static/s/06.m4a"
+     },
+     {
+      "name": "Chords 03 · Am · 127 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-12-golden-static/s/07.m4a"
+     },
+     {
+      "name": "Lead 03 · Am · 127 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-12-golden-static/s/08.m4a"
+     },
+     {
+      "name": "Arp 03 · Am · 127 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-12-golden-static/s/09.m4a"
+     },
+     {
+      "name": "Chords 04 · Cm · 127 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-12-golden-static/s/10.m4a"
+     },
+     {
+      "name": "Lead 04 · Cm · 127 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-12-golden-static/s/11.m4a"
+     },
+     {
+      "name": "Chords 05 · Dm · 127 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-12-golden-static/s/12.m4a"
+     }
+    ],
+    "description": "The musical layer: 6 leads, 6 chord loops, 3 arps — the hook, the harmony and the ear candy of a tech house drop.",
+    "demoNote": {
+     "tom": "Fm",
+     "emprestada": true
+    }
+   },
+   {
+    "format": "serum",
+    "label": "Serum 2 presets",
+    "type": "Serum 2 Preset Pack",
+    "zip": "/sessions/rcw-01kqvyakdxqxkdkueszxu72d/mnt/SignalGen/Kits/Venda/SignalGen Vol 12 - Golden Static (Serum 2 Presets).zip",
+    "sizeMb": 31,
+    "price": 9,
+    "contents": "3 arp · 6 chords · 6 lead (+ previews e MIDI)",
+    "inside": [
+     {
+      "folder": "Arps",
+      "count": 3,
+      "what": "3 presets · 3 audio previews · 3 MIDI"
+     },
+     {
+      "folder": "Chords",
+      "count": 6,
+      "what": "6 presets · 6 audio previews · 6 MIDI"
+     },
+     {
+      "folder": "Leads",
+      "count": 6,
+      "what": "6 presets · 6 audio previews · 6 MIDI"
+     }
+    ],
+    "wav": 15,
+    "midi": 15,
+    "presets": 15,
+    "specs": "Xfer Serum 2 (2.1.5 or later)",
+    "cover": "/sounds/kit-12-golden-static/cover-serum.jpg",
+    "demo": "/sounds/kit-12-golden-static/demo-serum.m4a",
+    "samples": [
+     {
+      "name": "Arp 01 · Fm · 127 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-12-golden-static/s2/01.m4a"
+     },
+     {
+      "name": "Chords 01 · Fm · 127 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-12-golden-static/s2/02.m4a"
+     },
+     {
+      "name": "Lead 01 · Fm · 127 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-12-golden-static/s2/03.m4a"
+     },
+     {
+      "name": "Arp 02 · Gm · 127 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-12-golden-static/s2/04.m4a"
+     },
+     {
+      "name": "Chords 02 · Gm · 127 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-12-golden-static/s2/05.m4a"
+     },
+     {
+      "name": "Lead 02 · Gm · 127 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-12-golden-static/s2/06.m4a"
+     },
+     {
+      "name": "Arp 03 · Am · 127 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-12-golden-static/s2/07.m4a"
+     },
+     {
+      "name": "Chords 03 · Am · 127 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-12-golden-static/s2/08.m4a"
+     },
+     {
+      "name": "Lead 03 · Am · 127 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-12-golden-static/s2/09.m4a"
+     },
+     {
+      "name": "Chords 04 · Cm · 127 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-12-golden-static/s2/10.m4a"
+     },
+     {
+      "name": "Lead 04 · Cm · 127 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-12-golden-static/s2/11.m4a"
+     },
+     {
+      "name": "Chords 05 · Dm · 127 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-12-golden-static/s2/12.m4a"
+     }
+    ],
+    "description": "15 presets for Xfer Serum 2: every synth sound of Golden Static (SignalGen Vol. 12), as the exact Serum 2 patches that play the loops of the sample pack: load one, play its MIDI clip and you get the loop. Each preset comes with a preview of the loop it plays in the sample pack and that loop's MIDI clip, so you can hear it, load it and play it straight away.",
+    "demoNote": {
+     "tom": "um preset por vez, bateria no tom de cada um",
+     "emprestada": true,
+     "ordem": [
+      "Arp 01 · Fm · 127 BPM",
+      "Chords 01 · Fm · 127 BPM",
+      "Lead 01 · Fm · 127 BPM",
+      "Arp 02 · Gm · 127 BPM",
+      "Chords 02 · Gm · 127 BPM",
+      "Lead 02 · Gm · 127 BPM",
+      "Arp 03 · Am · 127 BPM",
+      "Chords 03 · Am · 127 BPM",
+      "Lead 03 · Am · 127 BPM",
+      "Chords 04 · Cm · 127 BPM",
+      "Lead 04 · Cm · 127 BPM",
+      "Chords 05 · Dm · 127 BPM"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "id": "kit-13-dark-current",
+  "vol": 13,
+  "title": "Dark Current",
+  "type": "Full Pack",
+  "genre": "Tech House · 128",
+  "bpm": 128,
+  "keys": [
+   "Am",
+   "C#m",
+   "Dm",
+   "F",
+   "Fm",
+   "G#m"
+  ],
+  "formats": [
+   {
+    "format": "wav",
+    "label": "Sample pack",
+    "type": "Full Pack",
+    "zip": "/sessions/rcw-01kqvyakdxqxkdkueszxu72d/mnt/SignalGen/Kits/Venda/SignalGen Vol 13 - Dark Current (Full Pack).zip",
+    "sizeMb": 114,
+    "price": 24,
+    "contents": "104 sounds, masterizado (drums, bass, leads, stabs, pads, chords, plucks, arps, FX, loops)",
+    "inside": [
+     {
+      "folder": "Arps",
+      "count": 2,
+      "what": "2 WAV · 2 MIDI"
+     },
+     {
+      "folder": "Bass",
+      "count": 8,
+      "what": "8 WAV · 8 MIDI"
+     },
+     {
+      "folder": "Chords",
+      "count": 4,
+      "what": "4 WAV · 4 MIDI"
+     },
+     {
+      "folder": "Drum Loops",
+      "count": 8,
+      "what": "8 WAV · 8 MIDI"
+     },
+     {
+      "folder": "Drums / Claps",
+      "count": 6,
+      "what": "6 WAV"
+     },
+     {
+      "folder": "Drums / Hats",
+      "count": 14,
+      "what": "14 WAV"
+     },
+     {
+      "folder": "Drums / Percs",
+      "count": 8,
+      "what": "8 WAV"
+     },
+     {
+      "folder": "Drums / Rides",
+      "count": 2,
+      "what": "2 WAV"
+     },
+     {
+      "folder": "Drums / Shakers",
+      "count": 4,
+      "what": "4 WAV"
+     },
+     {
+      "folder": "FX / Downlifters",
+      "count": 3,
+      "what": "3 WAV"
+     },
+     {
+      "folder": "FX / Impacts",
+      "count": 3,
+      "what": "3 WAV"
+     },
+     {
+      "folder": "FX / Risers",
+      "count": 4,
+      "what": "4 WAV"
+     },
+     {
+      "folder": "Kicks",
+      "count": 8,
+      "what": "8 WAV"
+     },
+     {
+      "folder": "Leads",
+      "count": 6,
+      "what": "6 WAV · 6 MIDI"
+     },
+     {
+      "folder": "One Shots",
+      "count": 36,
+      "what": "36 WAV"
+     },
+     {
+      "folder": "Pads",
+      "count": 4,
+      "what": "4 WAV · 4 MIDI"
+     },
+     {
+      "folder": "Plucks",
+      "count": 4,
+      "what": "4 WAV · 4 MIDI"
+     },
+     {
+      "folder": "Stabs",
+      "count": 8,
+      "what": "8 WAV · 8 MIDI"
+     },
+     {
+      "folder": "Top Loops",
+      "count": 8,
+      "what": "8 WAV · 8 MIDI"
+     }
+    ],
+    "wav": 140,
+    "midi": 52,
+    "presets": 0,
+    "specs": "48 kHz / 24-bit WAV",
+    "cover": "/sounds/kit-13-dark-current/cover.jpg",
+    "demo": "/sounds/kit-13-dark-current/demo.m4a",
+    "samples": [
+     {
+      "name": "Drum Loop 01 · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-13-dark-current/s/01.m4a"
+     },
+     {
+      "name": "Top Loop 01 · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-13-dark-current/s/02.m4a"
+     },
+     {
+      "name": "Bass 01 · Dm · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-13-dark-current/s/03.m4a"
+     },
+     {
+      "name": "Stab 01 · Dm · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-13-dark-current/s/04.m4a"
+     },
+     {
+      "name": "Chords 01 · Dm · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-13-dark-current/s/05.m4a"
+     },
+     {
+      "name": "Lead 01 · Dm · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-13-dark-current/s/06.m4a"
+     },
+     {
+      "name": "Pad 01 · Dm · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-13-dark-current/s/07.m4a"
+     },
+     {
+      "name": "Pluck 01 · Dm · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-13-dark-current/s/08.m4a"
+     },
+     {
+      "name": "Arp 01 · Dm · 128 BPM",
+      "tag": "Loop",
+      "src": "/sounds/kit-13-dark-current/s/09.m4a"
+     },
+     {
+      "name": "Kick 01 · F0",
+      "tag": "One shot",
+      "src": "/sounds/kit-13-dark-current/s/10.m4a"
+     },
+     {
+      "name": "Clap 01",
+      "tag": "One shot",
+      "src": "/sounds/kit-13-dark-current/s/11.m4a"
+     },
+     {
+      "name": "Downlifter 01 · 128 BPM",
+      "tag": "One shot",
+      "src": "/sounds/kit-13-dark-current/s/12.m4a"
+     }
+    ],
+    "description": "A complete tech house pack, every element already mastered. Low and dark: basses in octave 0, stabs and pads in octave 1, leads never above octave 2. Six keys — D minor, F major, F minor, G# minor, A minor, C# minor — at 128 BPM. Drums, bass, leads, stabs, pads, chords, plucks, arps, FX, drum loops and top loops, with the MIDI of every musical line.",
+    "demoNote": {
+     "tom": "Dm",
+     "emprestada": false
+    }
+   },
+   {
+    "format": "serum",
+    "label": "Serum 2 presets",
+    "type": "Serum 2 Preset Pack",
+    "zip": "/sessions/rcw-01kqvyakdxqxkdkueszxu72d/mnt/SignalGen/Kits/Venda/SignalGen Vol 13 - Dark Current (Serum 2 Presets).zip",
+    "sizeMb": 57,
+    "price": 16,
+    "contents": "2 arp · 8 bass · 4 chords · 6 lead · 4 pad · 4 pluck · 8 stab (+ previews e MIDI)",
+    "inside": [
+     {
+      "folder": "Arps",
+      "count": 2,
+      "what": "2 presets · 2 audio previews · 2 MIDI"
+     },
+     {
+      "folder": "Bass",
+      "count": 8,
+      "what": "8 presets · 8 audio previews · 8 MIDI"
+     },
+     {
+      "folder": "Chords",
+      "count": 4,
+      "what": "4 presets · 4 audio previews · 4 MIDI"
+     },
+     {
+      "folder": "Leads",
+      "count": 6,
+      "what": "6 presets · 6 audio previews · 6 MIDI"
+     },
+     {
+      "folder": "Pads",
+      "count": 4,
+      "what": "4 presets · 4 audio previews · 4 MIDI"
+     },
+     {
+      "folder": "Plucks",
+      "count": 4,
+      "what": "4 presets · 4 audio previews · 4 MIDI"
+     },
+     {
+      "folder": "Stabs",
+      "count": 8,
+      "what": "8 presets · 8 audio previews · 8 MIDI"
+     }
+    ],
+    "wav": 36,
+    "midi": 36,
+    "presets": 36,
+    "specs": "Xfer Serum 2 (2.1.5 or later)",
+    "cover": "/sounds/kit-13-dark-current/cover-serum.jpg",
+    "demo": "/sounds/kit-13-dark-current/demo-serum.m4a",
+    "samples": [
+     {
+      "name": "Arp 01 · Dm · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-13-dark-current/s2/01.m4a"
+     },
+     {
+      "name": "Bass 01 · Dm · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-13-dark-current/s2/02.m4a"
+     },
+     {
+      "name": "Chords 01 · Dm · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-13-dark-current/s2/03.m4a"
+     },
+     {
+      "name": "Lead 01 · Dm · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-13-dark-current/s2/04.m4a"
+     },
+     {
+      "name": "Pad 01 · Dm · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-13-dark-current/s2/05.m4a"
+     },
+     {
+      "name": "Pluck 01 · Dm · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-13-dark-current/s2/06.m4a"
+     },
+     {
+      "name": "Stab 01 · Dm · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-13-dark-current/s2/07.m4a"
+     },
+     {
+      "name": "Arp 02 · F · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-13-dark-current/s2/08.m4a"
+     },
+     {
+      "name": "Bass 02 · F · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-13-dark-current/s2/09.m4a"
+     },
+     {
+      "name": "Chords 02 · F · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-13-dark-current/s2/10.m4a"
+     },
+     {
+      "name": "Lead 02 · F · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-13-dark-current/s2/11.m4a"
+     },
+     {
+      "name": "Pad 02 · F · 128 BPM",
+      "tag": "Serum 2 preset",
+      "src": "/sounds/kit-13-dark-current/s2/12.m4a"
+     }
+    ],
+    "description": "36 presets for Xfer Serum 2: every synth sound of Dark Current (SignalGen Vol. 13), as the exact Serum 2 patches that play the loops of the sample pack: load one, play its MIDI clip and you get the loop. Each preset comes with a preview of the loop it plays in the sample pack and that loop's MIDI clip, so you can hear it, load it and play it straight away.",
+    "demoNote": {
+     "tom": "um preset por vez, bateria no tom de cada um",
+     "emprestada": true,
+     "ordem": [
+      "Arp 01 · Dm · 128 BPM",
+      "Bass 01 · Dm · 128 BPM",
+      "Chords 01 · Dm · 128 BPM",
+      "Lead 01 · Dm · 128 BPM",
+      "Pad 01 · Dm · 128 BPM",
+      "Pluck 01 · Dm · 128 BPM",
+      "Stab 01 · Dm · 128 BPM",
+      "Arp 02 · F · 128 BPM",
+      "Bass 02 · F · 128 BPM",
+      "Chords 02 · F · 128 BPM",
+      "Lead 02 · F · 128 BPM",
+      "Pad 02 · F · 128 BPM"
+     ]
+    }
+   }
+  ]
+ }
+]
