@@ -25,7 +25,9 @@ export async function POST(req: Request) {
   const price = priceOf(t);
   const stripe = new Stripe(key);
   const site = process.env.SITE_URL || new URL(req.url).origin;
-  const session = await stripe.checkout.sessions.create({
+  let session: Stripe.Checkout.Session;
+  try {
+  session = await stripe.checkout.sessions.create({
     mode: 'payment',
     line_items: [{
       quantity: 1,
@@ -52,5 +54,9 @@ export async function POST(req: Request) {
     cancel_url: `${site}${hrefOf(t)}`,
     allow_promotion_codes: true,
   });
+  } catch (e: any) {                                                        // 13/10/2026: show Stripe's reason instead of a blank 500
+    console.error('checkout', e?.type, e?.code, e?.message);
+    return NextResponse.json({ error: `Stripe: ${e?.message || 'checkout failed'}`, code: e?.code || e?.type || '' }, { status: 502 });
+  }
   return NextResponse.json({ url: session.url });
 }
