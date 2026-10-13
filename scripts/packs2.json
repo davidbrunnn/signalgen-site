@@ -229,7 +229,7 @@
    "description": "The first pack of the new SignalGen series, made by the SignalGen engine in Serum 2. The heart of it is the bass: a tube-driven saw bass through a resonant 12 dB low-pass with a short filter envelope, mono and legato, and a delayed portamento that lands each glide a 32nd late — the little lag that makes a tech house bassline groove. 24 basslines written on that groove in six minor keys, plus 12 driven mid leads, 12 night stabs, 6 chord loops and 6 plucks. Every loop ships as mastered WAV, as MIDI and as the exact Serum 2 preset that plays it: hear it, load it, write your own notes.",
    "cover": "/sounds/low-glide/cover.jpg",
    "preview": "/sounds/low-glide/demo.mp3",
-   "sizeMb": 178,
+   "sizeMb": 180,
    "downloads": [
     {
      "key": "zip",
