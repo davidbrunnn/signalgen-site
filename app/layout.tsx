@@ -29,7 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/#plugins">Plugins</Link>
               <Link href="/#packs">{L.nav.packs}</Link>
               <Link href="/signalgen">{L.nav.signalgen}</Link>
-              <Link href="/ghost">{L.nav.ghost}</Link>
+              <Link href="/ghost">Ghost<span className="xl"> production</span></Link>
             </nav>
             <LangSwitch lang={lang} />
           </header>
