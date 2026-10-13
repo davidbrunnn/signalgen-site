@@ -18,11 +18,11 @@ export const KIT_TERMS = [
   'The license is personal to the licensee (one person or one studio) and is not transferable.',
 ];
 export const SOFTWARE_TERMS = [
-  'SignalGen grants the licensee a personal, perpetual, non-transferable license to install and use the SignalGen plugin named above on up to two computers they own.',
+  'SignalGen grants the licensee a personal, perpetual, non-transferable license to install and use the SignalGen plugin named above on up to two computers they own. The plugin is activated online: the key is bound to each computer by the SignalGen site.',
   'The license key is tied to the licensee’s email address and may not be shared, sold or published.',
   'Anything the licensee makes with the software — tracks, stems, MIDI, presets — belongs to the licensee and may be released commercially with no royalties and no credit required.',
   'Updates within the same major version are included. New major versions may be offered at a discount.',
-  'Refund: within 14 days of purchase, if the software does not run in the licensee’s Ableton Live 12 on a supported macOS, the purchase is refunded in full and the key is revoked.',
+  'Refund: within 14 days of purchase, if the software does not run in the licensee’s DAW on a supported Windows or macOS, the purchase is refunded in full and the key is revoked.',
   'The licensee may not reverse engineer, redistribute or resell the software or its sound content as a library.',
 ];
 

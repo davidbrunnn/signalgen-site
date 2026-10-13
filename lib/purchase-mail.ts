@@ -13,8 +13,8 @@ export async function purchaseMail(t: Track, o: Order) {
     ? [
         free ? `O ${name} é seu, de graça e para sempre.` : `Obrigado pela compra. O ${name} é seu, vitalício.`,
         `Sua chave de licença:\n${o.key || '(abra a página da compra: a chave aparece lá)'}`,
-        'Para instalar: baixe o instalador pelo botão abaixo, rode o .pkg, abra o Ableton Live → Settings → Plug-Ins → Rescan. No plugin, clique em ACTIVATE e cole o seu e-mail e esta chave.',
-        'A chave funciona offline em até dois computadores seus.',
+        'Para instalar: baixe o instalador do seu sistema (Windows ou macOS) pelo botão abaixo, rode-o e mande a sua DAW reescanear os plugins. No plugin, clique em ACTIVATE e cole o seu e-mail e esta chave.',
+        'A ativação é online (precisa de internet) e vale para até dois computadores seus.',
       ]
     : [
         `Obrigado pela compra. ${name} é seu.`,

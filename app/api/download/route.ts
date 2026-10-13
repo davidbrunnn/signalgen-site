@@ -7,7 +7,7 @@ import { readCatalog, LOCAL } from '@/lib/catalog';
 import { verify } from '@/lib/sign';
 
 export const runtime = 'nodejs';
-const TYPES: Record<string, string> = { wav: 'audio/wav', zip: 'application/zip', pkg: 'application/octet-stream', mid: 'audio/midi', pdf: 'application/pdf' };
+const TYPES: Record<string, string> = { wav: 'audio/wav', zip: 'application/zip', pkg: 'application/octet-stream', exe: 'application/octet-stream', mid: 'audio/midi', pdf: 'application/pdf' };
 
 export async function GET(req: Request) {
   const t = new URL(req.url).searchParams.get('t') || '';

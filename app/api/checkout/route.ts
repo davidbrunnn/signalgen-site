@@ -42,8 +42,8 @@ export async function POST(req: Request) {
         unit_amount: minorUnits(money),
         product_data: {
           name: t.kind === 'vocal' ? `${t.title} — exclusive vocals (1 of 1)` : t.kind === 'track' ? `${t.artist} — ${t.title}` : t.licenseProduct === 'monet' ? 'MONET — synthesizer' : t.licenseProduct === 'refiner' ? 'REFINER — 24-band EQ' : `SignalGen — ${t.title}${t.kind === 'preset' ? ' (Serum 2 presets)' : t.format === 'bundle' ? ' (Bundle)' : ''}`,
-          description: t.kind === 'software' && t.licenseProduct === 'monet' ? `${tier === 'founder' ? 'Launch price (first 10) · ' : ''}Lifetime license: MONET synthesizer (AU + VST3). Key and installer on the confirmation page and in your account.`
-            : t.kind === 'software' && t.licenseProduct === 'refiner' ? `${tier === 'founder' ? 'Launch price (first 10) · ' : ''}Lifetime license: REFINER, the 24-band EQ that shows you where to cut (AU + VST3). Key and installer on the confirmation page and in your account.`
+          description: t.kind === 'software' && t.licenseProduct === 'monet' ? `${tier === 'founder' ? 'Launch price (first 10) · ' : ''}Lifetime license: MONET synthesizer for Windows (VST3) and macOS (AU + VST3). Key and installer on the confirmation page and in your account.`
+            : t.kind === 'software' && t.licenseProduct === 'refiner' ? `${tier === 'founder' ? 'Launch price (first 10) · ' : ''}Lifetime license: REFINER, the 24-band EQ that shows you where to cut, for Windows (VST3) and macOS (AU + VST3). Key and installer on the confirmation page and in your account.`
             : t.kind === 'software' && isSignalGen(t) ? `${founderLeft(t) > 0 ? 'Founder lifetime license (first 100)' : 'Lifetime license'}: SignalGen + Monet. License key issued on the confirmation page.`
             : t.kind === 'software' ? 'Lifetime license. License key issued on the confirmation page.'
             : t.kind === 'vocal' ? `${t.voices || 1} exclusive vocal${(t.voices || 1) > 1 ? 's' : ''}, sold once and removed from the catalog. WAV. Exclusive, perpetual license.`
