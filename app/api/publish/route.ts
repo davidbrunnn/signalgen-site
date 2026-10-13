@@ -35,6 +35,22 @@ export async function POST(req: Request) {
   return NextResponse.json({ ok: true, count: cat.tracks.length });
 }
 
+// 13/10/2026: the Mac's "PUBLICAR LOJA" sends the whole product catalog here. It used to write the catalog straight into Blob at a
+// path derived from ITS blob token; when that token is not the same string as the site's, the site never saw the new
+// catalog. Through this route the site itself writes it, wherever it reads from. `sold` already counted here is kept.
+export async function PUT(req: Request) {
+  if (!authed(req)) return NextResponse.json({ error: 'unauthorized' }, { status: 401 });
+  const body = await req.json().catch(() => null);
+  const tracks = body?.tracks as Track[] | undefined;
+  if (!Array.isArray(tracks) || !tracks.length || tracks.some((t) => !t?.id || !t.title || !t.files)) return NextResponse.json({ error: 'catalog needs tracks with id, title and files' }, { status: 400 });
+  if (tracks.some((t) => Object.values(t.files).some((u) => typeof u === 'string' && u.startsWith('file:')))) return NextResponse.json({ error: 'a file was not uploaded (file: path)' }, { status: 400 });
+  const cur = await readCatalog(true);
+  const sold = new Map(cur.tracks.map((t) => [t.id, t.sold || 0]));
+  const next = { ...cur, ...body, tracks: tracks.map((t) => ({ ...t, sold: Math.max(t.sold || 0, sold.get(t.id) || 0) })) };
+  await writeCatalog(next);
+  return NextResponse.json({ ok: true, count: next.tracks.length });
+}
+
 export async function DELETE(req: Request) {
   if (!authed(req)) return NextResponse.json({ error: 'unauthorized' }, { status: 401 });
   const { id } = await req.json().catch(() => ({}));
