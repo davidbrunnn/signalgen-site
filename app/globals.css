@@ -981,3 +981,7 @@ body::before { content: ''; position: absolute; left: 0; right: 0; top: 0; heigh
   .vtile.big { grid-column: auto; flex-direction: column; }
   .vtile.big .vc { flex: none; }
 }
+.seats ul { list-style: none; margin: var(--s1) 0 0; padding: 0; display: grid; gap: 2px; }
+.seats li { display: flex; justify-content: space-between; align-items: center; gap: var(--s2); padding: var(--s1) var(--s2); border-radius: var(--r2); background: var(--night); font-size: var(--t0); }
+.seats li em { font-style: normal; color: var(--smoke); }
+.seats p { margin: var(--s1) 0 0; }

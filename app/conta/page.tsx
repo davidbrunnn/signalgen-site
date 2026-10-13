@@ -11,6 +11,8 @@ import { country, refinerPrice, monetPrice } from '@/lib/region';
 import { readCounters, offerFrom } from '@/lib/launch';
 import CopyKey from '@/components/CopyKey';
 import LogoutButton from '@/components/LogoutButton';
+import Seats from '@/components/Seats';
+import { serialOf, readSeats, SEATS } from '@/lib/license';
 
 export const dynamic = 'force-dynamic';
 export function generateMetadata(): Metadata { return { title: ui(getLang()).account.title, robots: { index: false } }; }
@@ -27,6 +29,11 @@ export default async function Account() {
   const day = (iso: string) => { try { return new Date(iso).toLocaleDateString(LOCALE[lang], { day: 'numeric', month: 'long', year: 'numeric' }); } catch { return ''; } };
   const rows = orders.map((o) => ({ o, t: cat.tracks.find((x) => x.id === o.trackId) })).filter((r): r is { o: Order; t: Track } => !!r.t);
   const owned = new Set(rows.map((r) => r.t.id));
+  // the computers each key is active on (online activation, two per key)
+  const seats = Object.fromEntries(await Promise.all(rows.filter((r) => r.t.kind === 'software' && r.o.key).map(async (r) => {
+    const serial = serialOf(r.o.key);
+    return [r.o.session, serial === null ? [] : ((await readSeats(serial).catch(() => null))?.devices || [])] as const;
+  })));
   const mine = ghosts.filter((g) => g.status === 'paid' && g.brief.email === email);
   const cc = country();
   const more = (await Promise.all((['refiner', 'monet', 'tempo'] as const).filter((id) => !owned.has(id)).map(async (id) => {
@@ -73,6 +80,7 @@ export default async function Account() {
                     ))}
                     <Link className="btn quiet" href={`/license/${o.session}`}>{A.cert}</Link>
                   </div>
+                  {soft && o.key ? <Seats session={o.session} seats={seats[o.session] || []} max={SEATS} T={A.seats} /> : null}
                   {soft ? (
                     <details className="acct-how"><summary>{A.how}</summary><ol className="steps-mini">{A.steps.map((s) => <li key={s}>{s}</li>)}</ol></details>
                   ) : null}
