@@ -135,7 +135,7 @@ export async function recordSale(o: Order): Promise<'ok' | 'dup' | 'taken'> {
     try {
       const { issueKey, nextSerial } = await import('@/lib/license');
       o.serial = await nextSerial();
-      o.key = await issueKey(o.email, t.licenseProduct || 'bundle', o.serial);
+      o.key = await issueKey(o.email, t.licenseProduct || (isSignalGen(t) ? 'signalgen' : 'bundle'), o.serial);
     } catch (e) { console.error('license key not issued', e); }
   }
   if (t && o.email) {                                            // 13/10/2026: the buyer gets the key + the link to the downloads by e-mail

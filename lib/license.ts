@@ -64,7 +64,7 @@ export async function nextSerial() {
 //   payload = version 1 · the key's product · the key's serial u32 · device tag (8 bytes) · issued day u16 · last valid day u16
 export const SEATS = 2;
 export const ACTIVATION_DAYS = 90;
-const BUNDLE = 9, EAR = 6, CLOCKER = 8;
+const BUNDLE = 9, EAR = 6, CLOCKER = 8, SIGNALGEN = 1, MONET = 5;   // 14/10/2026: the SignalGen key also opens Monet (the only plugin that ships with it) and nothing else
 
 function unb32(text: string): Buffer | null {
   const A = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567'; let acc = 0, bits = 0; const out: number[] = [];
@@ -127,7 +127,7 @@ export async function activate(req: { key: string; email: string; product: numbe
   const info = await readKey(req.key, req.email);
   if (!info) return { ok: false, error: 'invalid', message: 'This key and email do not match a SignalGen license. Use the email of the purchase and copy the whole key.' };
   const p = Number(req.product) || 0;
-  if (!(info.product === p || info.product === BUNDLE || (p === CLOCKER && info.product === EAR))) return { ok: false, error: 'product', message: 'This key belongs to another SignalGen plugin.' };
+  if (!(info.product === p || info.product === BUNDLE || (p === CLOCKER && info.product === EAR) || (p === MONET && info.product === SIGNALGEN))) return { ok: false, error: 'product', message: 'This key belongs to another SignalGen plugin.' };
   const rec: Seats = (await readSeats(info.serial)) || { serial: info.serial, product: info.product, devices: [] };
   if (rec.revoked || revokedList().has(info.serial)) return { ok: false, error: 'revoked', message: 'This key was cancelled (refund or leak). Contact support at signalgen-site.vercel.app/suporte.' };
   const now = new Date().toISOString(), clean = (x?: string) => String(x || '').replace(/[^\x20-\x7e]/g, '').slice(0, 60);
