@@ -8,8 +8,8 @@ import { ui } from '@/lib/i18n-ui';
 import { currentEmail } from '@/lib/account';
 
 export const metadata: Metadata = {
-  title: 'SignalGen — plugins avançados, preço justo, e vocais exclusivos',
-  description: 'Plugins avançados, preço justo. O EQ Refiner, o sintetizador Monet e o Clocker grátis (BPM e tom). E vocais exclusivos, vendidos uma única vez: só quem compra tem. Instalador oficial, licença vitalícia, download na hora.',
+  title: 'SignalGen — a faixa inteira no Ableton Live, em um clique',
+  description: 'O SignalGen gera a música completa no seu Ableton Live: bateria, baixo, lead, acordes e vocais em MIDI, mixada e masterizada. Remix de qualquer voz em qualquer beat, WAV em projeto do Live e timbres recriados no Monet. Mais o EQ Refiner, o Clocker grátis e vocais exclusivos.',
   icons: { icon: '/favicon.svg' },
 };
 export const viewport: Viewport = { themeColor: '#0a0c10' };
