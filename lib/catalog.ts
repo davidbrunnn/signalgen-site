@@ -170,11 +170,11 @@ export function hrefOf(t: Pick<Track, 'id' | 'kind'>) {
 }
 /** 13/10/2026 (David: "bloqueie todos os outros produtos"): the only things on sale. Everything else in the catalog is "coming soon"
  *  (the SignalGen) or out of the window. FOR_SALE in the environment can widen it (comma-separated ids). */
-export const FOR_SALE = new Set((process.env.FOR_SALE || 'refiner,monet,tempo,hit-stars-pack').split(',').map((s) => s.trim()).filter(Boolean));
+export const FOR_SALE = new Set([...(process.env.FOR_SALE || 'refiner,monet,tempo').split(',').map((s) => s.trim()).filter(Boolean), 'signalgen'].filter((s) => s !== 'hit-stars-pack'));   // 14/10/2026: o SignalGen entra a venda; samples e packs saem
 /** 13/10/2026 (David): the sample packs are "em breve" too and the vocals left the window — no pack is sold until PACKS_OPEN=1.
  *  13/10/2026 (David, mais tarde): Hit Stars Pack vai a venda; mantem PACKS_OPEN como chave geral e abre o Hit Stars pelo id. */
 export const PACKS_OPEN = process.env.PACKS_OPEN === '1';
-const OPEN_IDS = new Set(['hit-stars-pack']);                               // packs individualmente liberados mesmo com PACKS_OPEN=0
+const OPEN_IDS = new Set<string>();                               // packs individualmente liberados mesmo com PACKS_OPEN=0
 export const forSale = (t?: Pick<Track, 'id' | 'kind'> & Partial<Pick<Track, 'files' | 'priceBrl' | 'sold' | 'nonExclusive'>> | null) => {
   if (!t) return false;
   // 13/10/2026 (David): exclusive vocals sell once — on sale while there is a file to deliver, a price, and no buyer yet
