@@ -9,7 +9,7 @@ import { currentEmail } from '@/lib/account';
 
 export const metadata: Metadata = {
   title: 'SignalGen — a faixa inteira no Ableton Live, em um clique',
-  description: 'O SignalGen gera a música completa no seu Ableton Live: bateria, baixo, lead, acordes e vocais em MIDI, mixada e masterizada. Remix de qualquer voz em qualquer beat, WAV em projeto do Live e timbres recriados no Monet. Mais o EQ Refiner, o Clocker grátis e vocais exclusivos.',
+  description: 'O SignalGen gera a música completa no seu Ableton Live: bateria, baixo, lead, acordes e vocais em MIDI, mixada e masterizada. Remix de qualquer voz em qualquer beat, WAV em projeto do Live e timbres recriados no Monet. Mais o EQ Refiner, o sintetizador Monet e o Clocker grátis.',
   icons: { icon: '/favicon.svg' },
 };
 export const viewport: Viewport = { themeColor: '#0a0c10' };
@@ -30,7 +30,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Link href="/" className="mark"><Mark /> SIGNALGEN</Link>
             <nav aria-label="Main" className="capsule">
               <Link href="/#plugins">{U.nav.plugins}</Link>
-              <Link href="/#packs"><span className="xl">{U.nav.packs}</span><span className="xs">{U.nav.packsShort}</span></Link>
               <Link href="/signalgen">{U.nav.signalgen}</Link>
               <Link href="/ghost">Ghost<span className="xl"> production</span></Link>
             </nav>
@@ -47,7 +46,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/monet">Monet</Link>
               <Link href="/clocker">Clocker</Link>
               <Link href="/signalgen">SignalGen</Link>
-              <Link href="/#packs">{U.nav.packs}</Link>
               <Link href="/ghost">{U.nav.ghost}</Link>
               <Link href={signedIn ? '/conta' : '/entrar'}>{signedIn ? U.nav.account : U.nav.signIn}</Link>
               <Link href="/suporte">{U.nav.support}</Link>

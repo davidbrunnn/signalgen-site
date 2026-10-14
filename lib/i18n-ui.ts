@@ -4,7 +4,7 @@ import type { Lang } from './i18n-shared';
 
 const pt = {
   nav: { plugins: 'Plugins', packs: 'Packs e Vocais', packsShort: 'Vocais', signalgen: 'SignalGen', ghost: 'Ghost production', signIn: 'Entrar', account: 'Minha conta', accountShort: 'Conta', support: 'Suporte' },
-  footer: { line: 'plugins, vocais exclusivos e produção sob encomenda. Pagamentos pelo Stripe.', license: 'Termos de licença' },
+  footer: { line: 'plugins e produção sob encomenda. Pagamentos pelo Stripe.', license: 'Termos de licença' },
   soon: 'Em breve', free: 'Grátis', buy: 'Comprar', details: 'Ver detalhes', see: 'Conhecer',
   offer: {
     launch: 'Preço de lançamento', first: 'Só para os 10 primeiros',
@@ -29,7 +29,7 @@ const pt = {
     sgFacts: [['Monet incluso', 'o sintetizador da casa'], ['Stems sem limite', 'separação no seu computador'], ['MIDI editável', 'cada parte é sua'], ['Vitalício', 'pague uma vez']],
     moreH: 'Também da SignalGen', moreP: 'O EQ, o sintetizador e o analisador, vendidos separados. Windows (VST3) e macOS (AU + VST3), chave pessoal ativada online em até dois computadores.',
     eyebrow: 'Plugins para Windows e macOS · VST3 / AU', h1a: 'Plugins avançados.', h1b: 'Preço justo.',
-    lede: 'Um EQ e um sintetizador com qualidade que compete com plugins extremamente caros. E vocais exclusivos: cada vocal é vendido uma única vez, só quem compra tem, e ele some do catálogo.',
+    lede: 'Um EQ e um sintetizador com qualidade que compete com plugins extremamente caros.',
     toPlugins: 'Ver plugins', toTempo: 'Baixar o Clocker grátis', toVocals: 'Vocais exclusivos',
     baitTag: 'Novo · venda única', bait: 'Camaleon Pack: 6 vocais exclusivos, gravados em estúdio por uma cantora real.',
     facts: [['Vitalício', 'pague uma vez, é seu'], ['Na hora', 'chave e instalador ao pagar'], ['Pix ou cartão', 'pagamento seguro pelo Stripe'], ['Sua conta', 'baixe de novo quando quiser']],
@@ -88,7 +88,7 @@ type UI = typeof pt;
 
 const es: UI = {
   nav: { plugins: 'Plugins', packs: 'Packs y Voces', packsShort: 'Voces', signalgen: 'SignalGen', ghost: 'Ghost production', signIn: 'Entrar', account: 'Mi cuenta', accountShort: 'Cuenta', support: 'Soporte' },
-  footer: { line: 'plugins, voces exclusivas y producción por encargo. Pagos con Stripe.', license: 'Términos de licencia' },
+  footer: { line: 'plugins y producción por encargo. Pagos con Stripe.', license: 'Términos de licencia' },
   soon: 'Próximamente', free: 'Gratis', buy: 'Comprar', details: 'Ver detalles', see: 'Conocer',
   offer: {
     launch: 'Precio de lanzamiento', first: 'Solo para los 10 primeros',
@@ -112,7 +112,7 @@ const es: UI = {
     sgFacts: [['Monet incluido', 'el sintetizador de la casa'], ['Stems sin límite', 'separación en tu computadora'], ['MIDI editable', 'cada parte es tuya'], ['De por vida', 'pagas una vez']],
     moreH: 'También de SignalGen', moreP: 'El EQ, el sintetizador y el analizador, vendidos por separado. Windows (VST3) y macOS (AU + VST3), clave personal activada online en hasta dos computadoras.',
     eyebrow: 'Plugins para Windows y macOS · VST3 / AU', h1a: 'Plugins avanzados.', h1b: 'Precio justo.',
-    lede: 'Un EQ y un sintetizador con una calidad que compite con plugins extremadamente caros. Y voces exclusivas: cada voz se vende una sola vez, solo la tiene quien la compra, y desaparece del catálogo.',
+    lede: 'Un EQ y un sintetizador con una calidad que compite con plugins extremadamente caros.',
     toPlugins: 'Ver plugins', toTempo: 'Descargar Clocker gratis', toVocals: 'Voces exclusivas',
     baitTag: 'Nuevo · venta única', bait: 'Camaleon Pack: 6 voces exclusivas, grabadas en estudio por una cantante real.',
     facts: [['De por vida', 'pagas una vez, es tuyo'], ['Al instante', 'clave e instalador al pagar'], ['Tarjeta', 'pago seguro con Stripe'], ['Tu cuenta', 'descarga de nuevo cuando quieras']],
@@ -170,7 +170,7 @@ const es: UI = {
 
 const en: UI = {
   nav: { plugins: 'Plugins', packs: 'Packs & Vocals', packsShort: 'Vocals', signalgen: 'SignalGen', ghost: 'Ghost production', signIn: 'Sign in', account: 'My account', accountShort: 'Account', support: 'Support' },
-  footer: { line: 'plugins, exclusive vocals and on-demand production. Payments by Stripe.', license: 'License terms' },
+  footer: { line: 'plugins and on-demand production. Payments by Stripe.', license: 'License terms' },
   soon: 'Coming soon', free: 'Free', buy: 'Buy', details: 'See details', see: 'Learn more',
   offer: {
     launch: 'Launch price', first: 'First 10 buyers only',
@@ -194,7 +194,7 @@ const en: UI = {
     sgFacts: [['Monet included', 'the house synthesizer'], ['Unlimited stems', 'separation on your computer'], ['Editable MIDI', 'every part is yours'], ['Lifetime', 'pay once']],
     moreH: 'Also from SignalGen', moreP: 'The EQ, the synthesizer and the analyzer, sold on their own. Windows (VST3) and macOS (AU + VST3), a personal key activated online on up to two computers.',
     eyebrow: 'Plugins for Windows and macOS · VST3 / AU', h1a: 'Advanced plugins.', h1b: 'Fair price.',
-    lede: 'An EQ and a synthesizer with quality that competes with extremely expensive plugins. And exclusive vocals: each vocal is sold once, only its buyer has it, and it leaves the catalog.',
+    lede: 'An EQ and a synthesizer with quality that competes with extremely expensive plugins.',
     toPlugins: 'See plugins', toTempo: 'Get Clocker free', toVocals: 'Exclusive vocals',
     baitTag: 'New · sold once', bait: 'Camaleon Pack: 6 exclusive vocals, recorded in a studio by a real singer.',
     facts: [['Lifetime', 'pay once, it is yours'], ['Instant', 'key and installer on payment'], ['Card', 'secure payment by Stripe'], ['Your account', 'download again any time']],

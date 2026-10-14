@@ -6,14 +6,11 @@ import { country, refinerPrice, monetPrice, ghostMoney, sgPrice } from '@/lib/re
 import { readCounters, offerFrom } from '@/lib/launch';
 import BuyButton from '@/components/BuyButton';
 import Offer from '@/components/Offer';
-import VocalTile from '@/components/VocalTile';
-import { vocalsOf, vocalState } from '@/lib/vocals';
-import { priceFor } from '@/lib/region';
 
 export const dynamic = 'force-dynamic';
 
 // 14/10/2026 (David): the SignalGen — the track generator — is the flagship of the brand. The home is his: hero, the four modes,
-// then the plugins sold on their own (Refiner, Monet, the free Clocker), the exclusive vocals and the ghost production line.
+// then the plugins sold on their own (Refiner, Monet, the free Clocker), and the ghost production line.
 export default async function Home() {
   const lang = getLang(), U = ui(lang), X = U.home;
   const [cat, counters] = await Promise.all([readCatalog(), readCounters()]);
@@ -26,9 +23,6 @@ export default async function Home() {
     const [now, after] = await Promise.all([price(cc, offer?.tier || 'lifetime'), price(cc, 'lifetime')]);
     return { id, offer, now, after, t: by(id) };
   }));
-  const V = U.vocals;
-  const vocals = await Promise.all(vocalsOf(cat.tracks).map(async (t) => ({ t, state: vocalState(t), price: (await priceFor(t, cc)).display })));
-  const vq = vocals.filter((v) => v.t.preview).map(({ t }) => ({ id: t.id, title: t.title, artist: 'SignalGen', cover: t.cover, preview: t.preview, href: `/v/${t.id}`, sub: V.preview, cta: V.exclusive }));
   const copy = {
     refiner: { name: 'Refiner', tag: X.refTag, p: X.refP, img: '/product/ui2/refiner_01.png', href: '/refiner' },
     monet: { name: 'Monet', tag: X.monetTag, p: X.monetP, img: '/product/ui2/monet_01_synth.jpg', href: '/monet' },
@@ -96,15 +90,6 @@ export default async function Home() {
             <div><span className="eyebrow">{X.tempoTag}</span><h3>Clocker</h3><p className="muted">{X.tempoP}</p></div>
             <span className="pill free">{U.free}</span>
           </Link>
-        </div>
-      </section>
-
-      <section className="block" id="packs">
-        <header><h2>{V.h}</h2><p>{V.p}</p></header>
-        <ul className="facts4 three-up">{V.facts.map(([b, s]) => <li key={b}><b>{b}</b><span>{s}</span></li>)}</ul>
-        <div className="vgrid">
-          {vocals.map(({ t, state, price }, i) => <VocalTile key={t.id} t={t} state={state} price={price} V={V} soon={U.soon} queue={vq} big={i === 0 && vocals.length < 3} />)}
-          {!vocals.length ? <p className="muted">{V.empty}</p> : null}
         </div>
       </section>
 
