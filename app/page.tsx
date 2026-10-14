@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import { readCatalog, forSale } from '@/lib/catalog';
+import { readCatalog, forSale, isSignalGen, founderLeft } from '@/lib/catalog';
 import { getLang } from '@/lib/i18n';
 import { ui } from '@/lib/i18n-ui';
-import { country, refinerPrice, monetPrice, ghostMoney } from '@/lib/region';
+import { country, refinerPrice, monetPrice, ghostMoney, sgPrice } from '@/lib/region';
 import { readCounters, offerFrom } from '@/lib/launch';
 import BuyButton from '@/components/BuyButton';
 import Offer from '@/components/Offer';
@@ -12,14 +12,15 @@ import { priceFor } from '@/lib/region';
 
 export const dynamic = 'force-dynamic';
 
-// 13/10/2026 (David): "Plugins avançados. Preço justo." The window: Refiner and Monet at their launch price (first 10 buyers, the
-// real counter), the free Clocker (ex-Tempo), the SignalGen as "em breve" (only the Monet goes with it), the EXCLUSIVE VOCALS
-// (sold once each, lib/vocals) and the sample packs as "em breve".
+// 14/10/2026 (David): the SignalGen — the track generator — is the flagship of the brand. The home is his: hero, the four modes,
+// then the plugins sold on their own (Refiner, Monet, the free Clocker), the exclusive vocals and the ghost production line.
 export default async function Home() {
   const lang = getLang(), U = ui(lang), X = U.home;
   const [cat, counters] = await Promise.all([readCatalog(), readCounters()]);
   const cc = country();
   const by = (id: string) => cat.tracks.find((t) => t.id === id);
+  const sg = cat.tracks.find(isSignalGen), sgOn = forSale(sg), left = founderLeft(sg);
+  const sgNow = await sgPrice(sgOn && left <= 0 ? 'lifetime' : 'founder', cc);
   const items = await Promise.all((['refiner', 'monet'] as const).map(async (id) => {
     const offer = offerFrom(id, counters), price = id === 'refiner' ? refinerPrice : monetPrice;
     const [now, after] = await Promise.all([price(cc, offer?.tier || 'lifetime'), price(cc, 'lifetime')]);
@@ -34,27 +35,40 @@ export default async function Home() {
   };
   return (
     <main className="wrap">
-      <section className="hero3">
-        <div className="hero3-copy">
-          <span className="eyebrow">{X.eyebrow}</span>
-          <h1>{X.h1a} <em>{X.h1b}</em></h1>
-          <p className="lede">{X.lede}</p>
+      <section className="hero-sg" id="signalgen">
+        <div className="hero-sg-copy">
+          <span className="eyebrow">{X.sgEyebrow}</span>
+          <h1>{X.sgH1a} <em>{X.sgH1b}</em></h1>
+          <p className="lede">{X.sgLede}</p>
           <div className="act">
-            <Link href="#plugins" className="btn">{X.toPlugins}</Link>
-            <Link href="#packs" className="btn quiet">{X.toVocals}</Link>
+            {sgOn && sg ? <BuyButton id={sg.id} price={sgNow.amount} label={`${U.buy} · ${sgNow.display}`} /> : <Link href="/signalgen" className="btn">{X.sgCta}</Link>}
+            <Link href="#modes" className="btn quiet">{X.sgCta2}</Link>
           </div>
-          <Link href="/v/camaleon-pack" className="bait"><span className="o-badge">{X.baitTag}</span><span>{X.bait}</span></Link>
+          <p className="hero-sg-price"><span className="o-badge">{X.sgPriceTag}</span><span>{X.sgPriceSub(sgNow.display)}</span>{!sgOn ? <span className="muted"> {X.sgSoon}</span> : null}</p>
         </div>
-        <div className="hero3-art" aria-hidden="true">
-          <img className="a" src="/product/ui2/monet_01_synth.jpg" alt="" />
-          <img className="b" src="/product/ui2/refiner_01.png" alt="" />
+        <Link href="/signalgen" className="hero-sg-shot" aria-label="SignalGen">
+          <img src="/product/ui2/sg_05_generate_pronto.jpg" alt="SignalGen · GENERATE" />
+        </Link>
+      </section>
+
+      <ul className="facts4">{X.sgFacts.map(([b, s]) => <li key={b}><b>{b}</b><span>{s}</span></li>)}</ul>
+
+      <section className="block" id="modes">
+        <header><h2>{X.sgModesH}</h2><p>{X.sgModesP}</p></header>
+        <div className="modes4">
+          {X.sgModes.map(([tag, h, p, img], i) => (
+            <Link href="/signalgen" key={tag} className="mode">
+              <img src={img} alt={tag} loading="lazy" />
+              <span className="eyebrow">0{i + 1} · {tag}</span>
+              <h3>{h}</h3>
+              <p className="muted">{p}</p>
+            </Link>
+          ))}
         </div>
       </section>
 
-      <ul className="facts4">{X.facts.map(([b, s]) => <li key={b}><b>{b}</b><span>{s}</span></li>)}</ul>
-
       <section className="block" id="plugins">
-        <header><h2>{X.plugH}</h2><p>{X.plugP}</p></header>
+        <header><h2>{X.moreH}</h2><p>{X.moreP}</p></header>
         <div className="pgrid">
           {items.map(({ id, offer, now, after, t }) => {
             const c = copy[id], on = forSale(t);
@@ -82,11 +96,6 @@ export default async function Home() {
             <div><span className="eyebrow">{X.tempoTag}</span><h3>Clocker</h3><p className="muted">{X.tempoP}</p></div>
             <span className="pill free">{U.free}</span>
           </Link>
-          <Link href="/signalgen" className="pmini soon">
-            <div className="shot"><img src="/product/ui2/sg_05_generate_pronto.jpg" alt="SignalGen" loading="lazy" /></div>
-            <div><span className="eyebrow">{X.sgTag}</span><h3>SignalGen</h3><p className="muted">{X.sgP}</p></div>
-            <span className="pill soon">{U.soon}</span>
-          </Link>
         </div>
       </section>
 
@@ -96,10 +105,6 @@ export default async function Home() {
         <div className="vgrid">
           {vocals.map(({ t, state, price }, i) => <VocalTile key={t.id} t={t} state={state} price={price} V={V} soon={U.soon} queue={vq} big={i === 0 && vocals.length < 3} />)}
           {!vocals.length ? <p className="muted">{V.empty}</p> : null}
-        </div>
-        <div className="soonband" style={{ marginTop: 'var(--s4)' }}>
-          <div><h2>{X.packH}</h2><p className="muted">{X.packP}</p></div>
-          <span className="pill soon big">{U.soon}</span>
         </div>
       </section>
 

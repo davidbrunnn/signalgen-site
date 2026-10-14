@@ -985,3 +985,23 @@ body::before { content: ''; position: absolute; left: 0; right: 0; top: 0; heigh
 .seats li { display: flex; justify-content: space-between; align-items: center; gap: var(--s2); padding: var(--s1) var(--s2); border-radius: var(--r2); background: var(--night); font-size: var(--t0); }
 .seats li em { font-style: normal; color: var(--smoke); }
 .seats p { margin: var(--s1) 0 0; }
+
+/* 14/10/2026: the SignalGen hero — copy on top, the screen full width below (the generator is the product) */
+.hero-sg { padding: var(--s5) 0 0; display: grid; gap: var(--s4); }
+.hero-sg-copy { max-width: 46em; }
+.hero-sg h1 { font-size: clamp(44px, 6.2vw, 96px); line-height: .94; letter-spacing: -0.05em; font-weight: 700; margin: var(--s2) 0 var(--s3); }
+.hero-sg h1 em { font-style: normal; color: var(--ice); }
+.hero-sg .lede { color: var(--smoke); font-size: 18px; line-height: 1.55; max-width: 36em; margin: 0 0 var(--s4); }
+.hero-sg-price { display: flex; flex-wrap: wrap; gap: var(--s2); align-items: center; margin: var(--s3) 0 0; font-size: var(--t0); color: var(--text); }
+.hero-sg-shot { display: block; position: relative; border-radius: var(--r3); overflow: hidden; outline: 1px solid var(--line-2); box-shadow: 0 34px 89px rgba(0, 0, 0, .6); background: #07080b; }
+.hero-sg-shot::before { content: ''; position: absolute; inset: -20% 10%; background: radial-gradient(closest-side, rgba(166, 207, 251, .18), transparent); filter: blur(55px); pointer-events: none; }
+.hero-sg-shot img { display: block; width: 100%; height: auto; }
+.modes4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s3); }
+.mode { display: grid; gap: var(--s1); align-content: start; text-decoration: none; color: inherit; padding: var(--s2); border-radius: 21px; }
+.mode:hover { background: rgba(166, 207, 251, .03); box-shadow: inset 0 0 0 1px var(--line-2); }
+.mode img { width: 100%; height: auto; border-radius: var(--r2); outline: 1px solid var(--line-2); background: #07080b; margin-bottom: var(--s1); }
+.mode h3 { margin: 0; font-size: var(--t2); letter-spacing: -0.03em; line-height: 1.1; }
+.mode p { margin: 0; font-size: var(--t0); line-height: 1.5; }
+.mode .eyebrow { margin: 0; }
+@media (max-width: 1060px) { .modes4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .modes4 { grid-template-columns: 1fr; } .hero-sg h1 { font-size: clamp(40px, 12vw, 68px); } .hero-sg .act .btn { flex: 1 1 100%; } }

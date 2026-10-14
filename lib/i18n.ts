@@ -111,12 +111,12 @@ const pt = {
   sg: {
     metaTitle: 'SignalGen — gerador, remix, stem splitter, rebuild e o synth Monet, no Ableton Live',
     metaDesc: 'Gera faixas completas, separa stems sem limite (Demucs), põe qualquer voz num beat, reconstrói faixas em projeto do Live e recria timbres no Monet, o synth que acompanha. Licença vitalícia.',
-    eyebrow: 'SignalGen 5 · AU + VST3 · Ableton Live 12 · macOS',
+    eyebrow: 'SignalGen 5 · AU + VST3 · Ableton Live 12',
     h1: 'O fim do bloqueio criativo.',
     lede: 'Um plugin, quatro modos — GENERATE, REMIX, REBUILD e RESYNTH — e um stem splitter ilimitado. O Monet, o sintetizador da SignalGen, acompanha a licença: tudo abre no seu Live sem nenhum synth de terceiros.',
     buy: (p: string) => `Garantir o meu, ${p}`,
     founderLeft: (n: number) => `Preço de fundador: restam ${n} de 100 licenças`,
-    trust: [['Vitalício', 'pague uma vez'], ['Com o Monet', 'o synth acompanha'], ['2 computadores', 'licença offline']],
+    trust: [['Vitalício', 'pague uma vez'], ['Com o Monet', 'o synth acompanha'], ['2 computadores', 'ativação online']],
     doesH: 'O que ele faz',
     doesP: 'A tela é sempre o mesmo caminho: 01 SOURCE → 02 SHAPE → 03 GO. Sai set do Live, MIDI, WAV, stems ou preset.',
     does: [
@@ -139,7 +139,7 @@ const pt = {
     lifetime: 'Vitalícia', lifetimeSub: 'Para todos, depois das 100 de fundador',
     soldOut: 'Esgotado', after: 'Depois das 100 de fundador',
     current: 'Preço atual',
-    includes: ['SignalGen: GENERATE, REMIX, REBUILD e RESYNTH', 'Stem splitter ilimitado (Demucs, instalado junto)', 'Monet, o sintetizador', 'SignalGen Engine', 'Licença offline em 2 computadores'],
+    includes: ['SignalGen: GENERATE, REMIX, REBUILD e RESYNTH', 'Stem splitter ilimitado (Demucs, instalado junto)', 'Monet, o sintetizador', 'SignalGen Engine', 'Ativação online em 2 computadores'],
     fine: 'Pagamento seguro pelo Stripe. macOS hoje; a versão para Windows está em desenvolvimento.',
     faqH: 'Perguntas',
     faq: [
@@ -289,12 +289,12 @@ const es: Dict = {
   sg: {
     metaTitle: 'SignalGen — generador, remix, stem splitter, rebuild y el synth Monet, en Ableton Live',
     metaDesc: 'Genera temas completos, separa stems sin límite (Demucs), pone cualquier voz sobre un beat, reconstruye temas como proyecto de Live y recrea timbres en Monet, el synth que lo acompaña. Licencia de por vida.',
-    eyebrow: 'SignalGen 5 · AU + VST3 · Ableton Live 12 · macOS',
+    eyebrow: 'SignalGen 5 · AU + VST3 · Ableton Live 12',
     h1: 'El fin del bloqueo creativo.',
     lede: 'Un plugin, cuatro modos — GENERATE, REMIX, REBUILD y RESYNTH — y un stem splitter ilimitado. Monet, el sintetizador de SignalGen, acompaña la licencia: todo abre en tu Live sin ningún synth de terceros.',
     buy: (p: string) => `Quiero el mío, ${p}`,
     founderLeft: (n: number) => `Precio de fundador: quedan ${n} de 100 licencias`,
-    trust: [['De por vida', 'pagas una vez'], ['Con Monet', 'el synth lo acompaña'], ['2 computadoras', 'licencia offline']],
+    trust: [['De por vida', 'pagas una vez'], ['Con Monet', 'el synth lo acompaña'], ['2 computadoras', 'activación online']],
     doesH: 'Lo que hace',
     doesP: 'La pantalla es siempre el mismo camino: 01 SOURCE → 02 SHAPE → 03 GO. Sale set de Live, MIDI, WAV, stems o preset.',
     does: [
@@ -317,7 +317,7 @@ const es: Dict = {
     lifetime: 'De por vida', lifetimeSub: 'Para todos, después de las 100 de fundador',
     soldOut: 'Agotado', after: 'Después de las 100 de fundador',
     current: 'Precio actual',
-    includes: ['SignalGen: GENERATE, REMIX, REBUILD y RESYNTH', 'Stem splitter ilimitado (Demucs, instalado junto)', 'Monet, el sintetizador', 'SignalGen Engine', 'Licencia offline en 2 computadoras'],
+    includes: ['SignalGen: GENERATE, REMIX, REBUILD y RESYNTH', 'Stem splitter ilimitado (Demucs, instalado junto)', 'Monet, el sintetizador', 'SignalGen Engine', 'Activación online en 2 computadoras'],
     fine: 'Pago seguro con Stripe. macOS hoy; la versión para Windows está en desarrollo.',
     faqH: 'Preguntas',
     faq: [
@@ -465,12 +465,12 @@ const en: Dict = {
   sg: {
     metaTitle: 'SignalGen — generator, remix, stem splitter, rebuild and the Monet synth, in Ableton Live',
     metaDesc: 'Writes full tracks, splits stems without limits (Demucs), puts any vocal on any beat, rebuilds tracks into Live projects and recreates sounds in Monet, the synth that ships with it. Lifetime license.',
-    eyebrow: 'SignalGen 5 · AU + VST3 · Ableton Live 12 · macOS',
+    eyebrow: 'SignalGen 5 · AU + VST3 · Ableton Live 12',
     h1: 'The end of creative block.',
     lede: 'One plugin, four modes — GENERATE, REMIX, REBUILD and RESYNTH — and an unlimited stem splitter. Monet, the SignalGen synthesizer, ships with the license: everything opens in your Live with no third-party synth.',
     buy: (p: string) => `Get mine, ${p}`,
     founderLeft: (n: number) => `Founder price: ${n} of 100 licenses left`,
-    trust: [['Lifetime', 'pay once'], ['With Monet', 'the synth ships with it'], ['2 computers', 'offline license']],
+    trust: [['Lifetime', 'pay once'], ['With Monet', 'the synth ships with it'], ['2 computers', 'online activation']],
     doesH: 'What it does',
     doesP: 'The screen is always the same path: 01 SOURCE → 02 SHAPE → 03 GO. Out comes a Live set, MIDI, WAV, stems or a preset.',
     does: [
@@ -493,7 +493,7 @@ const en: Dict = {
     lifetime: 'Lifetime', lifetimeSub: 'For everyone, after the 100 founder licenses',
     soldOut: 'Sold out', after: 'After the 100 founder licenses',
     current: 'Current price',
-    includes: ['SignalGen: GENERATE, REMIX, REBUILD and RESYNTH', 'Unlimited stem splitter (Demucs, installed with it)', 'Monet, the synthesizer', 'SignalGen Engine', 'Offline license on 2 computers'],
+    includes: ['SignalGen: GENERATE, REMIX, REBUILD and RESYNTH', 'Unlimited stem splitter (Demucs, installed with it)', 'Monet, the synthesizer', 'SignalGen Engine', 'Online activation on 2 computers'],
     fine: 'Secure payment by Stripe. macOS today; the Windows version is in development.',
     faqH: 'Questions',
     faq: [
